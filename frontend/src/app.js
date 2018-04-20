@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
-import { Nav, Navbar, NavItem } from "react-bootstrap"
+import { Nav, Navbar, NavItem } from 'react-bootstrap'
 import Routes from './routes'
-import "./styles/app.css"
+import './styles/app.css'
 
 class App extends Component {
   render() {

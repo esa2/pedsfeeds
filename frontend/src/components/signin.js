@@ -14,7 +14,7 @@ export default class Signin extends Component {
   }
 
   validateForm() {
-    return this.state.email.length > 8 && this.state.password.length > 7
+    return this.state.email.length > 7 && this.state.password.length > 7
   }
 
   handleChange = e => {
@@ -27,7 +27,7 @@ export default class Signin extends Component {
     e.preventDefault()
     try {
       await Auth.signIn(this.state.email, this.state.password)
-      alert('Sign in completed')
+      this.props.userHasAuthenticated(true)
     } catch (error) {
       alert(error.message)
     }

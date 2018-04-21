@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Nav, Navbar, NavItem } from 'react-bootstrap'
+import { Auth } from 'aws-amplify'
 import Routes from './routes'
 import './styles/app.css'
 
@@ -11,16 +12,34 @@ class App extends Component {
     super(props)
   
     this.state = {
-      isAuthenticated: false
+      isAuthenticated: false,
+      isAuthenticating: true
     }
   }
+
+  async componentDidMount() {
+    try {
+      if (await Auth.currentSession()) {
+        this.userHasAuthenticated(true)
+      }
+    }
+    catch(e) {
+      if (e !== 'No current user') {
+        alert(e);
+      }
+    }
+  
+    this.setState({ isAuthenticating: false })
+  }  
   
   userHasAuthenticated = authenticated => {
     this.setState({ isAuthenticated: authenticated })
   }
 
-  handleLogout = event => {
+  handleLogout =  async event => {
+    await Auth.signOut()
     this.userHasAuthenticated(false)
+    this.props.history.push('/signin')
   }
 
   render() {
@@ -31,6 +50,7 @@ class App extends Component {
     }
 
     return (
+      !this.state.isAuthenticating &&
       <div className="app container">
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
@@ -44,11 +64,11 @@ class App extends Component {
             {this.state.isAuthenticated
               ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
               : <Fragment>
-                  <LinkContainer to="/signup">
-                    <NavItem>Sign up</NavItem>
-                  </LinkContainer>
                   <LinkContainer to="/signin">
                     <NavItem>Sign in</NavItem>
+                  </LinkContainer>
+                  <LinkContainer to="/signup">
+                    <NavItem>Sign up</NavItem>
                   </LinkContainer>
                 </Fragment>
             }
@@ -60,4 +80,4 @@ class App extends Component {
     )
   }
 }
-export default App
+export default withRouter(App)

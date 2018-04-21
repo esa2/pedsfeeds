@@ -19,14 +19,14 @@ export default class Signin extends Component {
     return this.state.email.length > 7 && this.state.password.length > 7
   }
 
-  handleChange = e => {
+  handleChange = event => {
     this.setState({
-      [e.target.id]: e.target.value
+      [event.target.id]: event.target.value
     })
   }
 
-  handleSubmit = async e => {
-    e.preventDefault()
+  handleSubmit = async event => {
+    event.preventDefault()
 
     this.setState({ isLoading: true })
     try {

@@ -17,7 +17,6 @@ export default class NewEvent extends Component {
 
   validateForm() {
     return this.state.title.length > 0
-    return this.state.description.length > 0
   }
 
   handleChange = event => {
@@ -44,7 +43,7 @@ export default class NewEvent extends Component {
   }
   
   createEvent(event) {
-    return API.post("peds", "/peds", {
+    return API.post('events', '/events', {
       body: event
     })
   }

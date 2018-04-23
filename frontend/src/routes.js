@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Home from './components/home'
+import Home from './containers/home'
 import Signin from './containers/signin'
 import Signup from './containers/signup'
 import NewEvent from './containers/new-event'
@@ -12,6 +12,6 @@ export default ({ childProps }) =>
     <AppliedRoute path='/' exact component={Home} props={childProps}/>
     <AppliedRoute path='/signin' exact component={Signin} props={childProps}/>
     <AppliedRoute path='/signup' exact component={Signup} props={childProps}/>
-    <AppliedRoute path='/calendar/new' exact component={NewEvent} props={childProps} />
+    <AppliedRoute path='/events/new' exact component={NewEvent} props={childProps}/>
     <Route component={RouteError}/>
   </Switch>

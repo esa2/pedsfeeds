@@ -55,10 +55,10 @@ class App extends Component {
         <Navbar className="navbar" fluid collapseOnSelect>
         <Navbar.Header>
          <div>
-						<a href="/">
-						<img src="https://s3-us-west-2.amazonaws.com/pedsfeeds/images/logo.png"  alt="pedsfeeds" />
-						</a>
-					</div>
+           <a href="/">
+           <img src="https://s3-us-west-2.amazonaws.com/pedsfeeds/images/logo.png"  alt="pedsfeeds" />
+           </a>
+          </div>
           </Navbar.Header>
           <Navbar.Header>
             {/* <Navbar.Brand>

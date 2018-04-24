@@ -11,6 +11,12 @@ export default class NewEvent extends Component {
     this.state = {
       isLoading: null,
       title: '',
+      startDate: '',
+      endDate: '',
+      startTime: '',
+      endTime: '',
+      urlName: '',
+      theLocation: '',
       description: ''
     }
   }
@@ -33,6 +39,9 @@ export default class NewEvent extends Component {
     try {
       await this.createEvent({
         title: this.state.title,
+        startDate: this.state.startDate,
+        endDate: this.state.endDate,
+        theLocation: this.state.theLocation !== '' ? this.state.theLocation : null,
         description: this.state.description
       })
       this.props.history.push('/')
@@ -52,10 +61,36 @@ export default class NewEvent extends Component {
     return (
       <div className="new-event">
         <form onSubmit={this.handleSubmit}>
-        <FormGroup controlId="title">
+        <FormGroup  className="xx" controlId="title">
+            {'Title'}
             <FormControl
               onChange={this.handleChange}
               value={this.state.title}
+              placeholder="Title"
+              componentClass="input"
+            />
+          </FormGroup>
+          <FormGroup controlId="startDate">
+            <FormControl
+              onChange={this.handleChange}
+              value={this.state.startDate}
+              placeholder="Start date"
+              componentClass="input"
+            />
+          </FormGroup>
+          <FormGroup controlId="endDate">
+            <FormControl
+              onChange={this.handleChange}
+              value={this.state.endDate}
+              placeholder="End date"
+              componentClass="input"
+            />
+          </FormGroup>
+          <FormGroup controlId="theLocation">
+            <FormControl
+              onChange={this.handleChange}
+              value={this.state.theLocation}
+              placeholder="Location"
               componentClass="input"
             />
           </FormGroup>

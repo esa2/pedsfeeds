@@ -52,11 +52,18 @@ class App extends Component {
     return (
       !this.state.isAuthenticating &&
       <div className="app container">
-        <Navbar fluid collapseOnSelect>
+        <Navbar className="navbar" fluid collapseOnSelect>
+        <Navbar.Header>
+         <div>
+           <a href="/">
+           <img src="https://s3-us-west-2.amazonaws.com/pedsfeeds/images/logo.png"  alt="pedsfeeds" />
+           </a>
+          </div>
+          </Navbar.Header>
           <Navbar.Header>
-            <Navbar.Brand>
+            {/* <Navbar.Brand>
               <Link to="/">Home</Link>
-            </Navbar.Brand>
+            </Navbar.Brand> */}
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>

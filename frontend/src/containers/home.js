@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { API } from 'aws-amplify'
 import { PageHeader, ListGroup, ListGroupItem } from 'react-bootstrap'
+import Lander from './lander'
 import '../styles/home.css'
 
 export default class Home extends Component {
@@ -15,10 +16,7 @@ export default class Home extends Component {
   }
 
   async componentDidMount() {
-    if (!this.props.isAuthenticated) {
-      return
-    }
-  
+
     try {
       const events = await this.events()
       this.setState({ events })
@@ -43,7 +41,6 @@ export default class Home extends Component {
               onClick={this.handleEventClick}
               header={event.description.trim().split("\n")[0]}
             >
-              {"Created: " + new Date(event.createdAt).toLocaleString()}
             </ListGroupItem>
           : <ListGroupItem
               key="new"
@@ -62,19 +59,10 @@ export default class Home extends Component {
     this.props.history.push(event.currentTarget.getAttribute("href"))
   }
 
-  renderLander() {
-    return (
-      <div className="lander">
-        <h1>Home</h1>
-        <p>Resources, support, experts for pediatric feeding and swallowing</p>
-      </div>
-    )
-  }
-
   renderEvents() {
     return (
-      <div className="events">
-        <PageHeader>Your Events</PageHeader>
+      <div>
+        <PageHeader>Calendar Events</PageHeader>
         <ListGroup>
           {!this.state.isLoading && this.renderEventsList(this.state.events)}
         </ListGroup>
@@ -84,8 +72,11 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div className="home">
-        {this.props.isAuthenticated ? this.renderEvents() : this.renderLander()}
+      <div>
+        {/* {this.props.isAuthenticated ? this.renderEvents() : this.renderLander()} */}
+        <Lander>
+        </Lander>
+        {this.renderEvents()}
       </div>
     )
   }

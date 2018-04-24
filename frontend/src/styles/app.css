@@ -2,6 +2,14 @@
   margin-top: 10px;
 }
 
+.navbar {
+  background-color: #333;
+}
+
 .app .navbar-brand {
-  font-weight: bold;
+  color: #f3714f;
+}
+
+.app a {
+  color: #f3714f;
 }

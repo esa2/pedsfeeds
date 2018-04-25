@@ -6,10 +6,6 @@
   background-color: #333;
 }
 
-.app .navbar-brand {
-  color: #f3714f;
-}
-
-.app a {
-  color: #f3714f;
+.navbar-default .navbar-nav > li > a {
+  color: #e47911;
 }

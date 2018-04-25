@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { API } from 'aws-amplify'
 import { PageHeader, ListGroup, ListGroupItem, Button, Modal } from 'react-bootstrap'
 import Lander from './lander'
+import '../styles/base.css'
 import '../styles/home.css'
 
 export default class Home extends Component {
@@ -104,7 +105,7 @@ export default class Home extends Component {
   renderEvents() {
     return (
       <div>
-        <PageHeader>Calendar Events</PageHeader>
+        <PageHeader className="header-green">Calendar Events</PageHeader>
         <ListGroup>
           {!this.state.isLoading && this.renderEventsList(this.state.events)}
         </ListGroup>

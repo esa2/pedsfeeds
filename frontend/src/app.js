@@ -61,9 +61,9 @@ class App extends Component {
           </div>
           </Navbar.Header>
           <Navbar.Header>
-            {/* <Navbar.Brand>
-              <Link to="/">Home</Link>
-            </Navbar.Brand> */}
+            <Navbar.Brand>
+              <Link to="/about">About</Link>
+            </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>

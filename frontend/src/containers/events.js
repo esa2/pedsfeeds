@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { API } from 'aws-amplify'
 import { FormGroup, FormControl } from 'react-bootstrap'
 import LoaderButton from '../components/loader-button'
-// import '../styles/notes.css'
+import '../styles/base.css'
 
 export default class Events extends Component {
   constructor(props) {
@@ -99,7 +99,7 @@ export default class Events extends Component {
   
   render() {
     return (
-      <div className="events">
+      <div>
         {this.state.event &&
           <form onSubmit={this.handleSubmit}>
             <FormGroup controlId="description">

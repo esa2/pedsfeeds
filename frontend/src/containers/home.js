@@ -105,7 +105,7 @@ export default class Home extends Component {
   renderEvents() {
     return (
       <div>
-        <PageHeader className="header-green">Calendar Events</PageHeader>
+        <PageHeader className="header-green-center">Calendar of Events</PageHeader>
         <ListGroup>
           {!this.state.isLoading && this.renderEventsList(this.state.events)}
         </ListGroup>

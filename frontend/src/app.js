@@ -72,8 +72,8 @@ class App extends Component {
                 <MenuItem href="providers">Find Resources</MenuItem>
                 <MenuItem divider />
                 <MenuItem header>OTHER</MenuItem>
-                <MenuItem href="#">Continuing Education</MenuItem>
-                <MenuItem href="#">Community Jobs</MenuItem>
+                <MenuItem href="education">Continuing Education</MenuItem>
+                <MenuItem href="jobs">Community Jobs</MenuItem>
                 <MenuItem href="faq">FAQs</MenuItem>
                 <MenuItem href="#">Terms and Conditions of Use</MenuItem>
                 <MenuItem href="#">Contact Us</MenuItem>

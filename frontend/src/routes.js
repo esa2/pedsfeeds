@@ -8,8 +8,10 @@ import Events from './containers/events'
 import About from './containers/about'
 import Resources from './containers/family-resources'
 import Providers from './containers/provider-resources'
+import Education from './containers/education'
 import Faq from './containers/faq'
 import Join from './containers/join'
+import Jobs from './containers/jobs'
 import AppliedRoute from './components/applied-route'
 import RouteError from './components/route-error'
 
@@ -23,7 +25,9 @@ export default ({ childProps }) =>
     <Route path='/about' exact component={About}/>
     <Route path='/resources' exact component={Resources}/>
     <Route path='/providers' exact component={Providers}/>
+    <Route path='/education' exact component={Education}/>
     <Route path='/join' exact component={Join}/>
+    <Route path='/jobs' exact component={Jobs}/>
     <Route path='/faq' exact component={Faq}/>
     <Route component={RouteError}/>
   </Switch>

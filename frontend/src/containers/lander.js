@@ -7,7 +7,7 @@ export default class Welcome extends Component {
   render() {
     return (
       <div>
-        <div className="center-div">
+        <div className="flex-box">
            <Image src="https://s3-us-west-2.amazonaws.com/pedsfeeds/images/mainintro.png" alt="home page image" responsive />
         </div>
       <h3 className="header-green-center">Resources, support, experts for pediatric feeding and swallowing</h3>

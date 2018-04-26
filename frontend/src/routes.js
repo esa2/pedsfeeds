@@ -16,6 +16,6 @@ export default ({ childProps }) =>
     <AppliedRoute path='/signup' exact component={Signup} props={childProps}/>
     <AppliedRoute path='/events/new' exact component={NewEvent} props={childProps}/>
     <AppliedRoute path='/events/:id' exact component={Events} props={childProps}/>
-    <AppliedRoute path='/about/' exact component={About}/>
+    <Route path='/about/' exact component={About}/>
     <Route component={RouteError}/>
   </Switch>

@@ -1,12 +1,18 @@
 .header-green {
   color: #8bb02e;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .header-green-center {
   color: #8bb02e;
   text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
-.center-div {
-  margin: 0 auto;
+.flex-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

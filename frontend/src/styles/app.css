@@ -9,3 +9,7 @@
 .navbar-default .navbar-nav > li > a {
   color: #e47911;
 }
+
+.navbar-default .navbar-nav > li > a:hover {
+  background-color: #8bb02e;
+}

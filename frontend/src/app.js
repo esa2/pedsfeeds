@@ -65,7 +65,7 @@ class App extends Component {
               <NavDropdown title="Menu" id="basic-nav-dropdown">
                 <MenuItem header>FAMILIES</MenuItem>
                 <MenuItem href="#">Find a Provider</MenuItem>
-                <MenuItem href="#">Find Resources</MenuItem>
+                <MenuItem href="resources">Find Resources</MenuItem>
                 <MenuItem divider />
                 <MenuItem header>PROVIDERS</MenuItem>
                 <MenuItem href="#">How to Join</MenuItem>

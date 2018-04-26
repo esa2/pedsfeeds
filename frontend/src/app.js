@@ -68,8 +68,8 @@ class App extends Component {
                 <MenuItem href="resources">Find Resources</MenuItem>
                 <MenuItem divider />
                 <MenuItem header>PROVIDERS</MenuItem>
-                <MenuItem href="#">How to Join</MenuItem>
-                <MenuItem href="#">Find Resources</MenuItem>
+                <MenuItem href="join">How to Join</MenuItem>
+                <MenuItem href="providers">Find Resources</MenuItem>
                 <MenuItem divider />
                 <MenuItem header>OTHER</MenuItem>
                 <MenuItem href="#">Continuing Education</MenuItem>

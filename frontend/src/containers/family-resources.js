@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import '../styles/base.css'
 
-export default class Faq extends Component {
+export default class Family extends Component {
   render() {
     return (
       <div>

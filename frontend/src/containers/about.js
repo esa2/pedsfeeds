@@ -8,7 +8,7 @@ export default class About extends Component {
       <div>
         <h4 className="header-green">
           PedsFeeds.com is dedicated to providing help for children with feeding
-          issues. Founded by a group of 13 pediatric feeding professionals and
+          issues. Founded by a group of pediatric feeding professionals and
           parents of children with severe feeding issues, we aim to:
         </h4>
         <p>

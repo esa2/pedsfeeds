@@ -74,7 +74,7 @@ class App extends Component {
                 <MenuItem header>OTHER</MenuItem>
                 <MenuItem href="#">Continuing Education</MenuItem>
                 <MenuItem href="#">Community Jobs</MenuItem>
-                <MenuItem href="#">FAQs</MenuItem>
+                <MenuItem href="faq">FAQs</MenuItem>
                 <MenuItem href="#">Terms and Conditions of Use</MenuItem>
                 <MenuItem href="#">Contact Us</MenuItem>
                 <MenuItem href="/about">About Us</MenuItem>
@@ -100,6 +100,8 @@ class App extends Component {
             </Navbar.Collapse>
           </Navbar>
           <Routes childProps={childProps} />
+          <footer className="footer">
+            </footer>
         </div>
       )
     )

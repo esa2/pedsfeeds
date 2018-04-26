@@ -6,6 +6,7 @@ import Signup from './containers/signup'
 import NewEvent from './containers/new-event'
 import Events from './containers/events'
 import About from './containers/about'
+import Faq from './containers/faq'
 import AppliedRoute from './components/applied-route'
 import RouteError from './components/route-error'
 
@@ -16,6 +17,7 @@ export default ({ childProps }) =>
     <AppliedRoute path='/signup' exact component={Signup} props={childProps}/>
     <AppliedRoute path='/events/new' exact component={NewEvent} props={childProps}/>
     <AppliedRoute path='/events/:id' exact component={Events} props={childProps}/>
-    <Route path='/about/' exact component={About}/>
+    <Route path='/about' exact component={About}/>
+    <Route path='/faq' exact component={Faq}/>
     <Route component={RouteError}/>
   </Switch>

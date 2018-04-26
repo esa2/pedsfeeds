@@ -68,6 +68,7 @@ export default class Home extends Component {
   
     try {
       const event = await this.getEvent(currentEvent)
+      console.log(event)
       this.setState({ ...event })
     } catch (e) {
       alert(e)
@@ -87,8 +88,8 @@ export default class Home extends Component {
               key={event.eventId}
               data={event.eventId}
               onClick={this.handleEventClick}
-              header={`${event.startDate} ${event.title}`}
-            >
+              header={`${event.title}`}
+            >{event.startDate}
             </ListGroupItem>
           : <ListGroupItem
               key="new"
@@ -121,15 +122,17 @@ export default class Home extends Component {
         show
         ? <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>{this.state.title}</Modal.Title>
+            <Modal.Title><p className="small-grey-text">The continuing education courses and workshops posted on this website do not reflect endorsement of the course content by the Pediatric Feeding Association.</p></Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>Date</h4>
+            <h3>{this.state.title}</h3>
             {this.state.startDate}
-            <h4>Location</h4>
-            {this.state.theLocation}
-            <h4>Description</h4>
+            <hr></hr>
+            <div className="pre-wrap">
             {this.state.description}
+            </div>
+            <hr></hr>
+            <h4>Location: {this.state.theLocation}</h4>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.handleClose}>Close</Button>

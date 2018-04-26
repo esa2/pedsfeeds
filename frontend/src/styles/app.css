@@ -13,3 +13,8 @@
 .navbar-default .navbar-nav > li > a:hover {
   background-color: #8bb02e;
 }
+
+.footer{
+  height: 80px;
+  background-color: #333;
+}

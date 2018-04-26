@@ -65,17 +65,17 @@ class App extends Component {
               <NavDropdown title="Menu" id="basic-nav-dropdown">
                 <MenuItem header>FAMILIES</MenuItem>
                 <MenuItem href="#">Find a Provider</MenuItem>
-                <MenuItem href="#">Find Resources</MenuItem>
+                <MenuItem href="resources">Find Resources</MenuItem>
                 <MenuItem divider />
                 <MenuItem header>PROVIDERS</MenuItem>
-                <MenuItem href="#">How to Join</MenuItem>
-                <MenuItem href="#">Find Resources</MenuItem>
+                <MenuItem href="join">How to Join</MenuItem>
+                <MenuItem href="providers">Find Resources</MenuItem>
                 <MenuItem divider />
                 <MenuItem header>OTHER</MenuItem>
-                <MenuItem href="#">Continuing Education</MenuItem>
-                <MenuItem href="#">Community Jobs</MenuItem>
+                <MenuItem href="education">Continuing Education</MenuItem>
+                <MenuItem href="jobs">Community Jobs</MenuItem>
                 <MenuItem href="faq">FAQs</MenuItem>
-                <MenuItem href="#">Terms and Conditions of Use</MenuItem>
+                <MenuItem href="tos">Terms and Conditions of Use</MenuItem>
                 <MenuItem href="#">Contact Us</MenuItem>
                 <MenuItem href="/about">About Us</MenuItem>
                 <MenuItem divider />

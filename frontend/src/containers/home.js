@@ -80,16 +80,18 @@ export default class Home extends Component {
   }
 
   renderEventsList(events) {
-    return [{}].concat(events).map(
-      (event, i) =>
-        i !== 0
-          ? <ListGroupItem
+    return [{}].concat(events).map((event, i) =>
+        (i !== 0)
+          ?  <ListGroupItem
               key={event.eventId}
               data={event.eventId}
               onClick={this.handleEventClick}
               header={`${event.title}`}
+        
             >{event.startDate}
             </ListGroupItem>
+          // :
+          //   null
           : <ListGroupItem
               key="new"
               href="/events/new"

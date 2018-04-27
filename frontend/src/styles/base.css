@@ -21,11 +21,17 @@ p {
   margin-bottom: 30px;
 }
 
-.header-green-center, .page-header {
+.header-green-center {
   color: #8bb02e;
   text-align: center;
   margin-top: 30px;
   margin-bottom: 30px;
+}
+
+.page-header {
+  color: #8bb02e;
+  margin-top: 30px;
+  border-bottom: 0;
 }
 
 .flex-box {

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { LinkContainer } from "react-router-bootstrap"
 import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
 import { Auth } from 'aws-amplify'
@@ -59,29 +59,27 @@ class App extends Component {
                 </a>
               <Navbar.Toggle />
             </Navbar.Header>
-            <Nav>
-              <NavDropdown title="Menu" id="basic-nav-dropdown">
-                <MenuItem header>FAMILIES</MenuItem>
-                <MenuItem href="#">Find a Provider</MenuItem>
-                <MenuItem href="resources">Find Resources</MenuItem>
-                <MenuItem divider />
-                <MenuItem header>PROVIDERS</MenuItem>
-                <MenuItem href="join">How to Join</MenuItem>
-                <MenuItem href="providers">Find Resources</MenuItem>
-                <MenuItem divider />
-                <MenuItem header>OTHER</MenuItem>
-                <MenuItem href="education">Continuing Education</MenuItem>
-                <MenuItem href="jobs">Community Jobs</MenuItem>
-                <MenuItem href="faq">FAQs</MenuItem>
-                <MenuItem href="tos">Terms and Conditions of Use</MenuItem>
-                <MenuItem href="#">Contact Us</MenuItem>
-                <MenuItem href="/about">About Us</MenuItem>
-                <MenuItem divider />
-                <MenuItem href="/">Home</MenuItem>
-              </NavDropdown>
-            </Nav>
             <Navbar.Collapse>
               <Nav pullRight>
+                <NavDropdown title="Menu" id="basic-nav-dropdown">
+                  <MenuItem header>FAMILIES</MenuItem>
+                  <MenuItem href="#">Find a Provider</MenuItem>
+                  <MenuItem href="resources">Find Resources</MenuItem>
+                  <MenuItem divider />
+                  <MenuItem header>PROVIDERS</MenuItem>
+                  <MenuItem href="join">How to Join</MenuItem>
+                  <MenuItem href="providers">Find Resources</MenuItem>
+                  <MenuItem divider />
+                  <MenuItem header>OTHER</MenuItem>
+                  <MenuItem href="education">Continuing Education</MenuItem>
+                  <MenuItem href="jobs">Community Jobs</MenuItem>
+                  <MenuItem href="faq">FAQs</MenuItem>
+                  <MenuItem href="tos">Terms and Conditions of Use</MenuItem>
+                  <MenuItem href="#">Contact Us</MenuItem>
+                  <MenuItem href="/about">About Us</MenuItem>
+                  <MenuItem divider />
+                  <MenuItem href="/">Home</MenuItem>
+                </NavDropdown>
                 {this.state.isAuthenticated ? (
                   <NavItem onClick={this.handleLogout}>Logout</NavItem>
                 ) : (

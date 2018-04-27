@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import '../styles/base.css'
 
 export default class Family extends Component {
   render() {
     return (
       <div>
-        <h4 class="header-green-center">
+        <h4 className="header-green-center">
           Below you will find links to websites with resources to support
           families
         </h4>

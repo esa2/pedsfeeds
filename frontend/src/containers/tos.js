@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import '../styles/base.css'
 
 export default class Tos extends Component {
   render() {
     return (
       <div>
-        <h4 class="header-green-center">
+        <h4 className="header-green-center">
           TERMS AND CONDITIONS OF USE
         </h4>
         <h5>
@@ -151,7 +150,7 @@ export default class Tos extends Component {
         <p className="clear-whitespace">2026 N. 77th Street</p>
         <p>Seattle, WA 9810</p>
         <hr />
-        <h4 class="header-green-center" id="SATU">
+        <h4 className="header-green-center" id="SATU">
           SUBSCRIBER AGREEMENT AND TERMS OF USE
         </h4>
         <p>

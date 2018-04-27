@@ -61,7 +61,7 @@ export default class NewEvent extends Component {
     return (
       <div className="new-event">
         <form onSubmit={this.handleSubmit}>
-        <FormGroup  className="xx" controlId="title">
+        <FormGroup  className="field-size" controlId="title">
             {'Title'}
             <FormControl
               onChange={this.handleChange}
@@ -70,7 +70,7 @@ export default class NewEvent extends Component {
               componentClass="input"
             />
           </FormGroup>
-          <FormGroup controlId="startDate">
+          <FormGroup  className="field-size" controlId="startDate">
             <FormControl
               onChange={this.handleChange}
               value={this.state.startDate}
@@ -78,7 +78,7 @@ export default class NewEvent extends Component {
               componentClass="input"
             />
           </FormGroup>
-          <FormGroup controlId="endDate">
+          <FormGroup  className="field-size" controlId="endDate">
             <FormControl
               onChange={this.handleChange}
               value={this.state.endDate}
@@ -86,7 +86,7 @@ export default class NewEvent extends Component {
               componentClass="input"
             />
           </FormGroup>
-          <FormGroup controlId="theLocation">
+          <FormGroup  className="field-size" controlId="theLocation">
             <FormControl
               onChange={this.handleChange}
               value={this.state.theLocation}

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Image } from 'react-bootstrap'
-import '../styles/base.css'
 
 export default class Welcome extends Component {
 
@@ -10,7 +9,7 @@ export default class Welcome extends Component {
         <div className="flex-box">
            <Image src="https://s3-us-west-2.amazonaws.com/pedsfeeds/images/mainintro.png" alt="home page image" responsive />
         </div>
-      <h3 className="header-green-center">Resources, support, experts for pediatric feeding and swallowing</h3>
+      <h1 className="header-green-center">Resources, support, experts for pediatric feeding and swallowing</h1>
 
       <p>At the Pediatric Feeding Association, our mission is to provide help for babies, children, and adolescents who struggle with feeding and swallowing, whether they eat orally or are tube fed via NG tubes, g-tubes, and gj-tubes.</p>
 

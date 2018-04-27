@@ -5,7 +5,8 @@ import App from './app'
 import registerServiceWorker from './registerServiceWorker'
 import Amplify from 'aws-amplify'
 import amplifyConfig from './amplify-config'
-import './styles/index.css'
+import './styles/normalize.css'
+import './styles/base.css'
 
 Amplify.configure({
   Auth: {

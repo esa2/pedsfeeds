@@ -9,8 +9,7 @@
 
 @media all and (min-width: 480px) {
   
-  .xx {
+  .field-size {
     max-width: 320px;
-    padding: 20px 0;
   }
 }

@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import '../styles/base.css'
 
 export default class Provider extends Component {
   render() {
     return (
       <div>
-        <h4 class="header-green-center">
+        <h4 className="header-green-center">
           Below you will find links to websites with resources to support
           professionals
         </h4>
@@ -13,7 +12,7 @@ export default class Provider extends Component {
           <a
             title="\\http://www.pediatricfeedingnews.com/"
             href="http://www.pediatricfeedingnews.com/"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
           >
             Pediatric Feeding News
           </a>
@@ -27,7 +26,7 @@ export default class Provider extends Component {
           <a
             title="https://insideoutcare.com/Home"
             href="https://insideoutcare.com/Home"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
           >
             Inside Out Care
           </a>
@@ -41,7 +40,7 @@ export default class Provider extends Component {
           <a
             title="http://www.dysphagiaresearch.org/"
             href="http://www.dysphagiaresearch.org/"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
           >
             Dysphagia Research Society
           </a>
@@ -52,7 +51,7 @@ export default class Provider extends Component {
           <a
             title="http://agesandstages.net/"
             href="http://agesandstages.net//"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
           >
             Ages and Stages® website
           </a>
@@ -63,7 +62,7 @@ export default class Provider extends Component {
           <a
             title="http://neonataltherapists.com/"
             href="http://neonataltherapists.com/"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
           >
             National Association of Neonatal Therapists (NANT)
           </a>
@@ -74,7 +73,7 @@ export default class Provider extends Component {
           <a
             title="http://www.new-vis.com/p-fym.htm"
             href="http://www.new-vis.com/p-fym.htm"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
           >
             New Visions
           </a>
@@ -88,7 +87,7 @@ export default class Provider extends Component {
           <a
             title="http://www.ndta.org/"
             href="http://www.ndta.org/"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
           >
             Neuro-Developmental Treatment Association (NDTA)
           </a>
@@ -102,7 +101,7 @@ export default class Provider extends Component {
           <a
             title="http://depts.washington.edu/nutrfoc/webapps/"
             href="http://depts.washington.edu/nutrfoc/webapps/"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
           >
             Nutrition Focus newsletter
           </a>
@@ -116,7 +115,7 @@ export default class Provider extends Component {
           <a
             title="http://www.oralmotorinstitute.org/"
             href="http://www.oralmotorinstitute.org/"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
           >
             Oral Motor Institute
           </a>
@@ -130,7 +129,7 @@ export default class Provider extends Component {
           <a
             title="http://www.medrehabweb.com/pediatric-seminars-occupational-therapy-physical-therapy-speech-therapy.asp.asp#"
             href="http://www.medrehabweb.com/pediatric-seminars-occupational-therapy-physical-therapy-speech-therapy.asp.asp#"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
           >
             MedRehabWeb
           </a>

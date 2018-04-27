@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { API } from 'aws-amplify'
 import { PageHeader, ListGroup, ListGroupItem, Button, Modal } from 'react-bootstrap'
 import Lander from './lander'
-import '../styles/base.css'
 import '../styles/home.css'
 
 export default class Home extends Component {
@@ -106,7 +105,7 @@ export default class Home extends Component {
   renderEvents() {
     return (
       <div>
-        <PageHeader className="header-green-center">Calendar of Events</PageHeader>
+        <PageHeader>Calendar of Events</PageHeader>
         <ListGroup>
           {!this.state.isLoading && this.renderEventsList(this.state.events)}
         </ListGroup>
@@ -122,7 +121,7 @@ export default class Home extends Component {
         show
         ? <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title><p className="small-grey-text">The continuing education courses and workshops posted on this website do not reflect endorsement of the course content by the Pediatric Feeding Association.</p></Modal.Title>
+            <Modal.Title>The continuing education courses and workshops posted on this website do not reflect endorsement of the course content by the Pediatric Feeding Association.</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <h3>{this.state.title}</h3>

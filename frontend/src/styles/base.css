@@ -1,10 +1,27 @@
+body {
+  font-size: 18px;
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+p {
+  margin: 1em 0 1em 0;
+}
+
+.wrapper {
+  margin: 0 80px 0 80px;
+}
+
+
 .header-green {
   color: #8bb02e;
   margin-top: 30px;
   margin-bottom: 30px;
 }
 
-.header-green-center {
+.header-green-center, .page-header {
   color: #8bb02e;
   text-align: center;
   margin-top: 30px;
@@ -17,8 +34,18 @@
   justify-content: center;
 }
 
-.small-grey-text {
-  font-size: 12px;
+select.form-control,
+textarea.form-control,
+input.form-control {
+  font-size: 16px;
+}
+input[type=file] {
+  width: 100%;
+}
+
+
+.modal-title {
+  font-size: 14px;
   color: #999;
   padding: 30px 20px 0 0;
 }
@@ -26,4 +53,9 @@
 .clear-whitespace {
   padding:0;
   margin:0;
+}
+
+.footer{
+  height: 80px;
+  background-color: #333;
 }

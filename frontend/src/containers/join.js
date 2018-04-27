@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import '../styles/base.css'
 
 export default class Join extends Component {
   render() {
     return (
       <div>
-        <h4 class="header-green-center">How to join</h4>
+        <h4 className="header-green-center">How to join</h4>
         <p>
           <strong>1. Create an Account:</strong>
         </p>

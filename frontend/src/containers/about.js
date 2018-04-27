@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Media } from 'react-bootstrap'
-import '../styles/base.css'
 
 export default class About extends Component {
   render() {

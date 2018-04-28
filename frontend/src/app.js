@@ -63,7 +63,7 @@ class App extends Component {
               <Nav pullRight>
                 <NavDropdown title="Menu" id="basic-nav-dropdown">
                   <MenuItem header>FAMILIES</MenuItem>
-                  <MenuItem href="#">Find a Provider</MenuItem>
+                  <MenuItem href="directory">Find a Provider</MenuItem>
                   <MenuItem href="resources">Find Resources</MenuItem>
                   <MenuItem divider />
                   <MenuItem header>PROVIDERS</MenuItem>
@@ -71,11 +71,12 @@ class App extends Component {
                   <MenuItem href="providers">Find Resources</MenuItem>
                   <MenuItem divider />
                   <MenuItem header>OTHER</MenuItem>
+                  <MenuItem href="library">Library</MenuItem>
                   <MenuItem href="education">Continuing Education</MenuItem>
                   <MenuItem href="jobs">Community Jobs</MenuItem>
                   <MenuItem href="faq">FAQs</MenuItem>
                   <MenuItem href="tos">Terms and Conditions of Use</MenuItem>
-                  <MenuItem href="#">Contact Us</MenuItem>
+                  <MenuItem href="contact">Contact Us</MenuItem>
                   <MenuItem href="/about">About Us</MenuItem>
                   <MenuItem divider />
                   <MenuItem href="/">Home</MenuItem>

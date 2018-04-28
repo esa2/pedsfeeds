@@ -41,6 +41,8 @@ export default class NewEvent extends Component {
         title: this.state.title,
         startDate: this.state.startDate,
         endDate: this.state.endDate,
+        startTime: this.state.startTime,
+        endTime: this.state.endTime,
         theLocation: this.state.theLocation !== '' ? this.state.theLocation : null,
         description: this.state.description
       })
@@ -76,6 +78,7 @@ export default class NewEvent extends Component {
               value={this.state.startDate}
               placeholder="Start date"
               componentClass="input"
+              type="date"
             />
           </FormGroup>
           <FormGroup  className="field-size" controlId="endDate">
@@ -84,6 +87,25 @@ export default class NewEvent extends Component {
               value={this.state.endDate}
               placeholder="End date"
               componentClass="input"
+              type="date"
+            />
+          </FormGroup>
+          <FormGroup  className="field-size" controlId="startTime">
+            <FormControl
+              onChange={this.handleChange}
+              value={this.state.startTime}
+              placeholder="Start time"
+              componentClass="input"
+              type="time"
+            />
+          </FormGroup>
+          <FormGroup  className="field-size" controlId="endTime">
+            <FormControl
+              onChange={this.handleChange}
+              value={this.state.endTime}
+              placeholder="End time"
+              componentClass="input"
+              type="time"
             />
           </FormGroup>
           <FormGroup  className="field-size" controlId="theLocation">

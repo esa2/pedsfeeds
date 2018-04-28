@@ -5,7 +5,7 @@ export default class Family extends Component {
     return (
       <div>
         <h4 className="header-green-center">
-          Below you will find links to websites with resources to support
+          Links to websites with resources to support
           families
         </h4>
         <p>

@@ -30,7 +30,13 @@ export default class Home extends Component {
 
   async componentDidMount() {
     try {
-      const events = await this.events()
+      const allEvents = await this.events()
+      const today = new Date()
+      let events = []
+      for (let i = 0; i < allEvents.length; i++) {
+        const eventDate = new Date(allEvents[i].startDate + ' 23:59')
+        if (eventDate >= today ) events.push(allEvents[i])
+      }
       this.setState({ events })
     } catch (error) {
       alert(error)
@@ -67,7 +73,6 @@ export default class Home extends Component {
   
     try {
       const event = await this.getEvent(currentEvent)
-      console.log(event)
       this.setState({ ...event })
     } catch (e) {
       alert(e)
@@ -127,7 +132,8 @@ export default class Home extends Component {
           </Modal.Header>
           <Modal.Body>
             <h3>{this.state.title}</h3>
-            {this.state.startDate}
+            <p>{this.state.startDate}</p>
+            <p>{this.state.startTime}</p>
             <hr></hr>
             <div className="pre-wrap">
             {this.state.description}

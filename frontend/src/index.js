@@ -10,7 +10,7 @@ import './styles/base.css'
 
 Amplify.configure({
   Auth: {
-    mandatorySignIn: true,
+    mandatorySignIn: false,
     region: amplifyConfig.cognito.REGION,
     userPoolId: amplifyConfig.cognito.USER_POOL_ID,
     identityPoolId: amplifyConfig.cognito.IDENTITY_POOL_ID,

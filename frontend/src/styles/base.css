@@ -14,18 +14,23 @@ p {
   margin: 0 80px 0 80px;
 }
 
-
 .header-green {
   color: #8bb02e;
   margin-top: 30px;
   margin-bottom: 30px;
 }
 
-.header-green-center, .page-header {
+.header-green-center {
   color: #8bb02e;
   text-align: center;
   margin-top: 30px;
   margin-bottom: 30px;
+}
+
+.page-header {
+  color: #8bb02e;
+  margin-top: 30px;
+  border-bottom: 0;
 }
 
 .flex-box {
@@ -43,11 +48,14 @@ input[type=file] {
   width: 100%;
 }
 
-
 .modal-title {
   font-size: 14px;
   color: #999;
   padding: 30px 20px 0 0;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
 }
 
 .clear-whitespace {

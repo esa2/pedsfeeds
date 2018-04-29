@@ -42,19 +42,18 @@ export default class NewEvent extends Component {
   handleSubmit = async event => {
     event.preventDefault()
     this.setState({ isLoading: true })
-
     try {
       await this.createEvent({
         title: this.state.title,
-        startDate: new Date(this.state.startDate).toDateString(),
-        endDate: this.state.endDate !== '' ? 'Ends: ' + new Date(this.state.endDate).toDateString() : null,
+        startDate: new Date(this.state.startDate.replace(/-/g, '/')).toDateString(),
+        endDate: this.state.endDate !== '' ? 'Ends: ' + new Date(this.state.endDate.replace(/-/g, '/')).toDateString() : null,
         startTime: this.state.startTime,
         endTime: this.state.endTime,
         multiDay: this.state.multiDay,
-        contact: this.state.contact !== '' ? this.state.contact : null,
-        theLocation: this.state.theLocation !== '' ? this.state.theLocation : null,
+        contact: this.state.contact !== '' ? 'Contact: ' + this.state.contact : null,
+        theLocation: this.state.theLocation !== '' ? 'Location: ' + this.state.theLocation : null,
         urlName: this.state.urlName !== '' ? this.state.urlName : null,
-        description: this.state.description
+        description: this.state.description !== '' ? this.state.description : null
       })
       this.props.history.push('/')
     } catch (error) {
@@ -71,13 +70,6 @@ export default class NewEvent extends Component {
 
   getValidationTitle() {
     const length = this.state.title.length
-    if (length > 3) return 'success'
-    else if (length > 0) return 'error'
-    return null;
-  }
-
-  getValidationDescription() {
-    const length = this.state.description.length
     if (length > 3) return 'success'
     else if (length > 0) return 'error'
     return null;
@@ -160,9 +152,7 @@ export default class NewEvent extends Component {
               componentClass="input"
             />
           </FormGroup>
-          <FormGroup controlId="description"
-            validationState={this.getValidationDescription()}
-          >
+          <FormGroup controlId="description">
             <FormControl
               onChange={this.handleChange}
               value={this.state.description}

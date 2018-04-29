@@ -12,4 +12,10 @@
 
 .list-group-item-text {
   font-size: 20px;
+  margin: 0;
+  color: #8bb02e;
+}
+
+.green-modal-title {
+  color: #8bb02e;
 }

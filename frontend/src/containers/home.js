@@ -34,6 +34,9 @@ export default class Home extends Component {
     try {
       const allEvents = await this.events()
       console.log(allEvents)
+      allEvents.sort(function(a,b) { 
+        return new Date(a.startDate) - new Date(b.startDate) 
+    })
       const today = new Date()
       let events = []
       for (let i = 0; i < allEvents.length; i++) {
@@ -135,8 +138,9 @@ export default class Home extends Component {
             <Modal.Title>The continuing education courses and workshops posted on this website do not reflect endorsement of the course content by the Pediatric Feeding Association.</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <p>{this.state.title}</p>
-            <p>Starts: {this.state.startDate} {this.state.endDate}</p>
+            <p className="green-modal-title">{this.state.title}</p>
+            <p>Starts: {this.state.startDate}</p>
+            <p>{this.state.endDate}</p>
             <p>From: {this.state.startTime} To: {this.state.endTime}</p>
             <hr></hr>
             <div className="pre-wrap">
@@ -144,9 +148,9 @@ export default class Home extends Component {
             </div>
             <hr></hr>
             {this.state.contact}
-            <p>Contact: {this.state.contact}</p>
-            <p>Location: {this.state.theLocation}</p>
-            <p>URL: <a href={this.state.urlName}>{this.state.urlName}</a></p>
+            <p>{this.state.contact}</p>
+            <p>{this.state.theLocation}</p>
+            <p><a href={this.state.urlName}>{this.state.urlName}</a></p>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.handleClose}>Close</Button>

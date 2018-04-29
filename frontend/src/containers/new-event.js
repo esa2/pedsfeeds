@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { API } from 'aws-amplify'
-import { FormGroup, FormControl } from 'react-bootstrap'
+import { FormGroup, FormControl, Checkbox } from 'react-bootstrap'
 import LoaderButton from '../components/loader-button'
 import '../styles/new-event.css'
 
@@ -15,8 +15,10 @@ export default class NewEvent extends Component {
       endDate: '',
       startTime: '',
       endTime: '',
-      urlName: '',
+      multiDay: false,
+      contact: '',
       theLocation: '',
+      urlName: '',
       description: ''
     }
   }
@@ -31,19 +33,27 @@ export default class NewEvent extends Component {
     })
   }
 
+  handleCheckboxChange = () => {
+    this.setState({
+      multiDay: !this.state.multiDay
+    })
+  }
+
   handleSubmit = async event => {
     event.preventDefault()
-  
     this.setState({ isLoading: true })
-  
+
     try {
       await this.createEvent({
         title: this.state.title,
-        startDate: this.state.startDate,
-        endDate: this.state.endDate,
+        startDate: new Date(this.state.startDate).toDateString(),
+        endDate: this.state.endDate !== '' ? 'Ends: ' + new Date(this.state.endDate).toDateString() : null,
         startTime: this.state.startTime,
         endTime: this.state.endTime,
+        multiDay: this.state.multiDay,
+        contact: this.state.contact !== '' ? this.state.contact : null,
         theLocation: this.state.theLocation !== '' ? this.state.theLocation : null,
+        urlName: this.state.urlName !== '' ? this.state.urlName : null,
         description: this.state.description
       })
       this.props.history.push('/')
@@ -59,11 +69,27 @@ export default class NewEvent extends Component {
     })
   }
 
+  getValidationTitle() {
+    const length = this.state.title.length
+    if (length > 3) return 'success'
+    else if (length > 0) return 'error'
+    return null;
+  }
+
+  getValidationDescription() {
+    const length = this.state.description.length
+    if (length > 3) return 'success'
+    else if (length > 0) return 'error'
+    return null;
+  }
+
   render() {
     return (
       <div className="new-event">
         <form onSubmit={this.handleSubmit}>
-        <FormGroup  className="field-size" controlId="title">
+        <FormGroup  className="field-size" controlId="title"
+          validationState={this.getValidationTitle()}
+        >
             {'Title'}
             <FormControl
               onChange={this.handleChange}
@@ -89,6 +115,10 @@ export default class NewEvent extends Component {
               componentClass="input"
               type="date"
             />
+            <Checkbox
+              checked={this.state.multiDay}
+              onChange={this.handleCheckboxChange}
+            >Multi-day Event</Checkbox>
           </FormGroup>
           <FormGroup  className="field-size" controlId="startTime">
             <FormControl
@@ -96,7 +126,6 @@ export default class NewEvent extends Component {
               value={this.state.startTime}
               placeholder="Start time"
               componentClass="input"
-              type="time"
             />
           </FormGroup>
           <FormGroup  className="field-size" controlId="endTime">
@@ -105,7 +134,6 @@ export default class NewEvent extends Component {
               value={this.state.endTime}
               placeholder="End time"
               componentClass="input"
-              type="time"
             />
           </FormGroup>
           <FormGroup  className="field-size" controlId="theLocation">
@@ -116,7 +144,25 @@ export default class NewEvent extends Component {
               componentClass="input"
             />
           </FormGroup>
-          <FormGroup controlId="description">
+          <FormGroup  className="field-size" controlId="contact">
+            <FormControl
+              onChange={this.handleChange}
+              value={this.state.contact}
+              placeholder="Contact"
+              componentClass="input"
+            />
+          </FormGroup>
+          <FormGroup  className="field-size" controlId="urlName">
+            <FormControl
+              onChange={this.handleChange}
+              value={this.state.urlName}
+              placeholder="URL"
+              componentClass="input"
+            />
+          </FormGroup>
+          <FormGroup controlId="description"
+            validationState={this.getValidationDescription()}
+          >
             <FormControl
               onChange={this.handleChange}
               value={this.state.description}

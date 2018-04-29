@@ -20,8 +20,10 @@ export default class Home extends Component {
       title: '',
       startDate: '',
       endDate: '',
+      multiDay: '',
       startTime: '',
       endTime: '',
+      contact: '',
       urlName: '',
       theLocation: '',
       description: ''
@@ -31,6 +33,7 @@ export default class Home extends Component {
   async componentDidMount() {
     try {
       const allEvents = await this.events()
+      console.log(allEvents)
       const today = new Date()
       let events = []
       for (let i = 0; i < allEvents.length; i++) {
@@ -91,9 +94,10 @@ export default class Home extends Component {
               key={event.eventId}
               data={event.eventId}
               onClick={this.handleEventClick}
-              header={`${event.title}`}
+              
+              header={`${event.startDate}`}
         
-            >{event.startDate}
+            >{event.title}
             </ListGroupItem>
           // :
           //   null
@@ -131,15 +135,18 @@ export default class Home extends Component {
             <Modal.Title>The continuing education courses and workshops posted on this website do not reflect endorsement of the course content by the Pediatric Feeding Association.</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h3>{this.state.title}</h3>
-            <p>{this.state.startDate}</p>
-            <p>{this.state.startTime}</p>
+            <p>{this.state.title}</p>
+            <p>Starts: {this.state.startDate} {this.state.endDate}</p>
+            <p>From: {this.state.startTime} To: {this.state.endTime}</p>
             <hr></hr>
             <div className="pre-wrap">
             {this.state.description}
             </div>
             <hr></hr>
-            <h4>Location: {this.state.theLocation}</h4>
+            {this.state.contact}
+            <p>Contact: {this.state.contact}</p>
+            <p>Location: {this.state.theLocation}</p>
+            <p>URL: <a href={this.state.urlName}>{this.state.urlName}</a></p>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.handleClose}>Close</Button>

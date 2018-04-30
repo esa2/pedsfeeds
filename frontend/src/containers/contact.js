@@ -5,9 +5,9 @@ export default class Contact extends Component {
     return (
       <div>
         <h4 className="header-green-center">
-          Email
+          Contact Us
         </h4>
-       
+        
       </div>
     )
   }

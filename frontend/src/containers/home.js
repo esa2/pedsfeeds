@@ -102,17 +102,17 @@ export default class Home extends Component {
         
             >{event.title}
             </ListGroupItem>
-          // :
-          //   null
-          : <ListGroupItem
-              key="new"
-              href="/events/new"
-              onClick={this.handleNewClick}
-            >
-              <h4>
-                <b>{"\uFF0B"}</b> Create a new event
-              </h4>
-            </ListGroupItem>
+          :
+            null
+          // : <ListGroupItem
+          //     key="new"
+          //     href="/events/new"
+          //     onClick={this.handleNewClick}
+          //   >
+          //     <h4>
+          //       <b>{"\uFF0B"}</b> Create a new event
+          //     </h4>
+          //   </ListGroupItem>
     )
   }
   

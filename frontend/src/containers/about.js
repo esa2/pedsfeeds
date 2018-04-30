@@ -235,21 +235,7 @@ export default class About extends Component {
           <Media.Body>
             <Media.Heading>Maria Cho</Media.Heading>
             <p>
-              Maria is the mother of a little boy named Kai, who is the
-              inspiration behind her service to the Pediatric Feeding
-              Association. Born three months early, Kai has faced a host of
-              feeding complications, including a swallowing and vomiting
-              disorder, which led to g-tube placement. Having received treatment
-              for Kai from numerous members of the Pediatric Feeding
-              Association, Maria helped facilitate the evolution of the Special
-              Interest Feeding Group into the Pediatric Feeding Association.
-              Together with her husband, Ed, they founded pedsfeeds.com to
-              better connect medical, therapeutic, mental health, and nutrition
-              professionals to provide comprehensive support for families as
-              they undertake the long and difficult journey of helping their
-              children stabilize, grow, and gain weight while forming positive
-              relationships with food, with family mealtimes, and most
-              importantly, with the people who love them.
+            Maria is the mother of Kai, who is the inspiration behind her service to the Pediatric Feeding Association. Born three months early, Kai has faced a host of feeding complications, including a swallowing and vomiting disorder, which led to g-tube placement. Recognizing the importance of timely access to the right services, Maria wanted to further develop and expand the network of professionals and services available to families. As part of that work, she helped facilitate the evolution of the Special Interest Feeding Group into the Pediatric Feeding Association. Together with her husband, Ed, they created the pedsfeeds.com website to better connect medical, therapeutic, mental health, and nutrition professionals to offer comprehensive support for families as they undertake the long and difficult journey of helping their children stabilize, grow, and gain weight while forming positive relationships with food, with family mealtimes, and most importantly, with the people who love them. She is founder of Inside Out Care, a patient program platform that allows health care teams to launch programs, enroll patients, and maximize care for families.
             </p>
           </Media.Body>
         </Media>

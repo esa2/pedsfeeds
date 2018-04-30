@@ -43,32 +43,6 @@ export default class About extends Component {
             <img
               width={84}
               height={84}
-              src="https://s3-us-west-2.amazonaws.com/pedsfeeds/images/Bio/alicia_raaum.jpg"
-              alt="thumbnail"
-            />
-          </Media.Left>
-          <Media.Body>
-            <Media.Heading>Alicia Raaum</Media.Heading>
-            <p>
-              Alicia works in a Neonatal Intensive Care Unit (NICU) with
-              premature and medically fragile infants as well as on an
-              outpatient basis at Swedish Hospital. She has served on the
-              committee that rolled out a cue-based feeding protocol that
-              applies to all premature and sick infants at the hospital’s
-              NICU/ISCU. Alicia has also educated medical professionals at her
-              hospital on oral motor and feeding skills, and she has mentored
-              multiple speech language pathologists as part of preparing other
-              professionals to provide inpatient feeding therapy to premature
-              babies.
-            </p>
-          </Media.Body>
-        </Media>
-        <hr></hr>
-        <Media>
-          <Media.Left align="top">
-            <img
-              width={84}
-              height={84}
               src="https://s3-us-west-2.amazonaws.com/pedsfeeds/images/Bio/amy_faherty.jpg"
               alt="thumbnail"
             />
@@ -76,34 +50,9 @@ export default class About extends Component {
           <Media.Body>
             <Media.Heading>Amy Faherty</Media.Heading>
             <p>
-              Amy is a speech language pathologist with expertise in pediatric
-              feeding and swallowing disorders, particularly with respect to
-              instrumental examination with the videofluoroscopic swallowing
-              study (VFSS). She has more than 25 years’ experience conducting
-              VFSSs for babies and children, dating back to the very first study
-              at Seattle Children’s Hospital. Amy also works as a feeding
-              specialist in the Neonatal Intensive Care Unit (NICU) and on an
-              outpatient basis at Valley Medical Center's Children's Therapy.
-              Sharing her passion for assessment and treatment of
-              feeding/swallowing issues, Amy has instructed at the university
-              level at multiple universities and presented regionally,
-              nationally, and internationally. Amy co-authored a chapter titled
-              “Issues in Pediatric Feeding & Swallowing” with Gay Lloyd Pinder,
-              PhD, CCC-SLP [1], and has also published several other articles
-              about pediatric swallowing and NICU best practices. Amy’s approach
-              to working with children and families is centered on making
-              mealtimes safe, fun and a positive experience for all. She finds
-              it a wondrous, rewarding experience to help tiny, fragile infants
-              learn how to safely bottle or breastfeed, and to help
-              understandably overwhelmed parents and children transform into
-              happy, thriving families as the infant/child's feeding skills and
-              overall medical status improves. Amy lives in the greater Seattle
-              area with her husband Jeff. She loves laughing with family and
-              friends, travelling, entertaining and playing at the lake. [1]
-              Pinder, GL. & Faherty, AS., "Issues in Pediatic Feeding &
-              Swallowing" Clinical Management of Motor Speech Disorder in
-              Children, A. Caruso & E. Strand, (eds.) Theme Medical Publishers,
-              Inc., New York, 1999, pp. 281-318.
+            Amy is a speech language pathologist with expertise in pediatric feeding and swallowing disorders, particularly with respect to instrumental examination with the videofluoroscopic swallowing study (VFSS) and Fiberoptic Endoscopy Evaluation of Swallowing (FEES). She has more than 30 years’ experience conducting VFSSs for babies and children. In addition, she now serves as a speech-language pathologist (SLP) swallowing specialist on the tertiary multidisciplinary Aerodigestive Clinic team at Seattle Children’s hospital. Since 2014, Amy has also worked as an infant feeding specialist in the University of Washington Neonatal Intensive Care Unit (NICU). Sharing her passion for assessment and treatment of feeding/swallowing issues, Amy has instructed at the university level at multiple universities and presented regionally, nationally, and internationally. Amy has several publications related to pediatric swallowing, dysphagia research and NICU best practices.
+            Amy’s approach to working with children and families is centered on making mealtimes safe, fun, and a positive experience for all. She finds it a wondrous, rewarding experience to help tiny, fragile infants learn how to safely bottle or breastfeed, and to help understandably overwhelmed parents and children transform into happy, thriving families as the infant/child's feeding skills and overall medical status improves. Amy lives in the greater Seattle area with her husband Jeff. She loves laughing with family and friends, traveling, entertaining and playing at the lake. 
+
             </p>
           </Media.Body>
         </Media>
@@ -133,21 +82,6 @@ export default class About extends Component {
               to work in a restaurant and is a salsa queen. In her spare time,
               she loves to surf.
             </p>
-          </Media.Body>
-        </Media>
-        <hr></hr>
-        <Media>
-          <Media.Left align="top">
-            <img
-              width={84}
-              height={84}
-              src="https://s3-us-west-2.amazonaws.com/pedsfeeds/images/Bio/profile_noimg.jpg"
-              alt="thumbnail"
-            />
-          </Media.Left>
-          <Media.Body>
-            <Media.Heading>Dar Mikkelsen</Media.Heading>
-            <p />
           </Media.Body>
         </Media>
         <hr></hr>
@@ -196,36 +130,6 @@ export default class About extends Component {
               Vermeer paintings and attend one of each of the four types of
               Grand Slam tennis tournaments with her husband and best friend,
               Scott.
-            </p>
-          </Media.Body>
-        </Media>
-        <hr></hr>
-        <Media>
-          <Media.Left align="top">
-            <img
-              width={84}
-              height={84}
-              src="https://s3-us-west-2.amazonaws.com/pedsfeeds/images/Bio/gay_burton.jpg"
-              alt="thumbnail"
-            />
-          </Media.Left>
-          <Media.Body>
-            <Media.Heading>Gay Naganuma Burton</Media.Heading>
-            <p>
-              Gay is a physical therapist as well as a supervisor of the
-              occupational therapists, physical therapist, and speech language
-              pathologists at a Washington state Birth-to-Three center. She
-              enjoys helping infants become oral feeders so they are no longer
-              in need of their g-tubes. Because eating is such a significant
-              component of family life, Gay finds that helping kids have a safe,
-              fun experience with meals is one of the most important
-              developmental skills a therapist can address. Gay applies her
-              background in Neurodevelopmental Treatment (NDT) to help children
-              who have feeding issues and/or gross motor challenges. Although
-              indirectly related to her focus on feeding, Gay enjoys gardening
-              and travel. She grows vegetables and only travels to places that
-              have amazing food, so having pleasurable experiences with food
-              ranks high in both her professional and personal life!
             </p>
           </Media.Body>
         </Media>
@@ -392,22 +296,7 @@ export default class About extends Component {
           <Media.Body>
             <Media.Heading>Tiffany Elliot</Media.Heading>
             <p>
-              Tiffany is a speech-language pathologist and serves medically
-              fragile infants and children at Mary Bridge Children's Hospital in
-              the outpatient setting as well as inpatient setting, including the
-              Neonatal Intensive Care Unit. She also works at Seattle Children's
-              Hospital completing Videofluoroscopic Swallow Studies. Tiffany has
-              been a repeat lecturer for a graduate early intervention course,
-              presented at a local early childhood conference, and lectured for
-              nursing staff at her hospital. She also was selected to be in the
-              ASHA Leadership Development Program, leading an improvement
-              project for the care of pediatric dysphagia patients. Her passion
-              is meeting families and children where they are. She enjoys
-              developing a plan that meets the child's needs and addresses the
-              family's goals to help feeding be a safe and pleasurable
-              experience. Tiffany lives in Seattle with her husband, Andrew, and
-              their daughter. In her spare time, she enjoys spending time with
-              her family and enjoying the city.
+            Tiffany is a speech-language pathologist specializing in pediatric feeding and swallowing disorders. She has focused her career on serving preterm and medically complex infants. She works in the Level IV neonatal intensive care unit (NICU) at the University of Washington Medical Center, where she cofounded the unit’s SLP program. Tiffany is a Certified Neonatal Therapist and enjoys the embedded, preventative neonatal therapy model. She is dedicated to serving the whole infant and family and partners with professionals at the county and state level to improve transitions home for fragile infants and their families. She previously worked on the VFSS team at Seattle Children’s Hospital and as a provider treating pediatric swallowing/feeding issues in both the inpatient and outpatient settings at Mary Bridge Children’s Hospital. She also enjoys teaching and has lectured locally, regionally, and nationally on pediatric feeding and swallowing disorders. She was chosen for the ASHA Leadership Development Program in 2013 and was awarded a Distinguished Professional Achievement Award in 2018 from her undergraduate university. Tiffany enjoys spending time with her husband and their two daughters.
             </p>
           </Media.Body>
         </Media>

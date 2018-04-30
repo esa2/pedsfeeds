@@ -17,10 +17,13 @@ export default class Faq extends Component {
           providing better support for one another and for families of children
           with feeding issues.
         </p>
+        <hr></hr>
         <p>
           <strong>How do I get a listing in the directory?</strong>
         </p>
+        <p>
           Follow these simple steps:
+        </p>
         <ol>
           <li>
             Create an account by clicking on the link at the top of the page.
@@ -38,6 +41,7 @@ export default class Faq extends Component {
             your state license number  ready before filling out the form.
           </li>
         </ol>
+        <hr></hr>
         <p>
           <strong>Who can submit a listing in the directory?</strong>
         </p>
@@ -52,6 +56,7 @@ export default class Faq extends Component {
           <li>Registered dietitians</li>
           <li>Feeding therapists</li>
         </ul>
+        <hr></hr>
         <p>
           <strong>Does Pediatric Feeding Association endorse specific providers?</strong>
         </p>
@@ -61,6 +66,7 @@ export default class Faq extends Component {
           treatment of feeding issues, or the provision of any services related
           to feeding and swallowing.
         </p>
+        <hr></hr>
         <p>
           <strong>How do I find the right resources to help my child?</strong>
         </p>
@@ -103,8 +109,11 @@ export default class Faq extends Component {
           <strong>A counselor.</strong>
         </p>
         <ul>
-          to help your family cope with the time demands and disruptive nature of dealing with feeding issues.
+            <li>
+            to help your family cope with the time demands and disruptive nature of dealing with feeding issues.
+          </li>
         </ul>
+        <hr></hr>
         <p>
           <strong>How do I submit a listing if I work in two locations, or if my
             services cross two categories (e.g. feeding therapy and mental

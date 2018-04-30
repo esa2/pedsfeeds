@@ -75,12 +75,11 @@ class App extends Component {
                   <MenuItem href="education">Continuing Education</MenuItem>
                   <MenuItem href="jobs">Community Jobs</MenuItem>
                   <MenuItem href="faq">FAQs</MenuItem>
+                  <MenuItem href="/about">About Us</MenuItem>
                   <MenuItem href="tos">Terms and Conditions of Use</MenuItem>
                   <MenuItem href="contact">Contact Us</MenuItem>
-                  <MenuItem href="/about">About Us</MenuItem>
-                  <MenuItem divider />
-                  <MenuItem href="/">Home</MenuItem>
                 </NavDropdown>
+                <NavItem href="/">Home</NavItem>
                 {this.state.isAuthenticated ? (
                   <NavItem onClick={this.handleLogout}>Logout</NavItem>
                 ) : (

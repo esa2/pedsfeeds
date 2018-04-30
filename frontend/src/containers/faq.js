@@ -11,16 +11,16 @@ export default class Faq extends Component {
           <strong>As a provider, why should I join the Pediatric Feeding Association?</strong>
         </p>
         <p>
-          The PFA will be a resourceful forum for providers interested in
-          assessment and treatment of pediatric swallowing and feeding issues,
-          with a goal of sharing information, networking, mentoring, and
+          The PFA is a resourceful forum for providers interested in
+          assessment and treatment of pediatric swallowing and feeding issues.
+          We share information, networking, mentoring, and
           providing better support for one another and for families of children
           with feeding issues.
         </p>
         <p>
           <strong>How do I get a listing in the directory?</strong>
         </p>
-          There are just a few simple steps:
+          Follow these simple steps:
         <ol>
           <li>
             Create an account by clicking on the link at the top of the page.
@@ -34,8 +34,8 @@ export default class Faq extends Component {
             Account link at the top of the page.
           </li>
           <li>
-            Fill out the form, and click submit! (You'll want to get a photo and
-            your state license number before filling out the form).
+            Fill out the form, and click submit! Get a digital photo and
+            your state license number  ready before filling out the form.
           </li>
         </ol>
         <p>
@@ -65,7 +65,7 @@ export default class Faq extends Component {
           <strong>How do I find the right resources to help my child?</strong>
         </p>
         <p>
-          Feeding issues are often complex, so we believe the best approach to
+          Feeding issues are complex, so we believe the best approach to
           finding help for your child’s feeding and swallowing issues involves
           gathering perspectives from variety of disciplines, and determining
           what works best for your child and family. As a starting point, we
@@ -96,17 +96,14 @@ export default class Faq extends Component {
         </p>
         <ul>
           <li>
-            We encourage working with a registered dietitian who understands the
-            complexity of nourishing children with feeding issues.
+            We encourage working with a registered dietitian with expertise in working with children with feeding issues.
           </li>
         </ul>
         <p>
           <strong>A counselor.</strong>
         </p>
         <ul>
-          to help your family cope with the stress and challenges of feeding
-          challenges, which can be very time consuming and disruptive to family
-          routines and stability.
+          to help your family cope with the time demands and disruptive nature of dealing with feeding issues.
         </ul>
         <p>
           <strong>How do I submit a listing if I work in two locations, or if my
@@ -132,7 +129,7 @@ export default class Faq extends Component {
           of an existing group known as the Feeding Special Interest Group,
           which was founded in Seattle in May 2000. Currently, the group is
           facilitated by a parent, and steered by a group of 13 pediatric
-          feeding professionals. See the About Us section for more information.
+          feeding professionals.
         </p>
         <p>
           <strong> Where is the Pediatric Feeding Association located?</strong>
@@ -165,35 +162,6 @@ export default class Faq extends Component {
           We welcome suggestions for helpful resources! Please submit your ideas
           via our contact page.
         </p>
-        <p>
-          <strong>Where do I go if I have more questions?</strong>
-        </p>
-        <p>
-          Please contact us anytime at on our contact page and we will ensure
-          your question is routed to the appropriate person as quickly as
-          possible.
-        </p>
-        <hr></hr>
-        <h4 className="header-green-center">
-          Feeding Community
-        </h4>
-        <p>
-          <strong>What’s next for PedsFeeds.com?</strong>
-        </p>
-        <p>
-          We are in the process of building out the next phase of the website.
-        </p>
-        <ul>
-          <li>
-            For professionals, it will include more educational resources,
-            publications and articles, and a mentoring club to allow for greater
-            professional networking and development.
-          </li>
-          <li>
-            For families, we are building out a support forum. Look for this
-            development later in 2013.
-          </li>
-        </ul>
       </div>
     )
   }

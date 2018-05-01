@@ -1,3 +1,3 @@
 # pedsfeeds
 
-## This is a website about pediatric feeding issues.
+## This is an app about pediatric feeding issues.

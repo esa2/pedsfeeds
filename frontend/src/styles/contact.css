@@ -1,0 +1,19 @@
+.control-label {
+  margin-bottom: 10px;
+}
+
+.contact form {
+  padding-bottom: 15px;
+}
+
+.contact form textarea {
+  height: 200px;
+}
+
+.loader-button {
+  width: 120px;
+}
+
+.required {
+  margin-bottom: 30px;
+}

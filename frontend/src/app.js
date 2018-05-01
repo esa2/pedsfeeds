@@ -98,8 +98,6 @@ class App extends Component {
           <div className="wrapper">
           <Routes childProps={childProps} />
           </div>
-            <footer className="footer">
-            </footer>
         </div>
       )
     )

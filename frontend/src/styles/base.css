@@ -67,7 +67,7 @@ input[type=file] {
   margin:0;
 }
 
-.footer{
+.footer {
   height: 80px;
   background-color: #333;
 }
@@ -76,5 +76,9 @@ input[type=file] {
   
   .dropdown:hover .dropdown-menu {
     display: block;
+  }
+
+  .field-size {
+    max-width: 320px;
   }
 }

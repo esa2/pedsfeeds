@@ -6,10 +6,3 @@
   height: 300px;
   font-size: 24px;
 }
-
-@media all and (min-width: 480px) {
-  
-  .field-size {
-    max-width: 320px;
-  }
-}

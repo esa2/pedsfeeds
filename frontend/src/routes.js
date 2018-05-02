@@ -6,6 +6,7 @@ import Signup from './containers/signup'
 import NewEvent from './containers/new-event'
 import Events from './containers/events'
 import About from './containers/about'
+import Consent from './containers/consent'
 import Directory from './containers/directory'
 import Resources from './containers/family-resources'
 import Providers from './containers/provider-resources'
@@ -29,6 +30,7 @@ export default ({ childProps }) =>
     <Route path='/directory' exact component={Directory}/>
     <Route path='/about' exact component={About}/>
     <Route path='/resources' exact component={Resources}/>
+    <Route path='/consent' exact component={Consent}/>
     <Route path='/providers' exact component={Providers}/>
     <Route path='/library' exact component={Library}/>
     <Route path='/education' exact component={Education}/>

@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
 import { Button, ButtonToolbar } from 'react-bootstrap'
 
 export default class Consent extends Component {
@@ -6,10 +6,10 @@ export default class Consent extends Component {
     return (
       <div>
         <p>
-          Please read these{" "}
+          Please read these
           <a href="/tos" target="_blank" rel="noopener noreferrer">
             Terms and Conditions of Use
-          </a>{" "}
+          </a>
           carefully. By accessing or using this Website, you agree to be bound
           by the terms and conditions described herein and all terms, policies,
           guidelines and disclosures incorporated by reference. <strong>If you do not
@@ -34,7 +34,7 @@ export default class Consent extends Component {
           Website should not substitute for medical advice from a health
           professional. If you or your child has a health problem, speak to your
           doctor or a health professional immediately about your condition. Use
-          of our Website signifies your agreement to our{" "}
+          of our Website signifies your agreement to our
           <a href="/tos" target="_blank" rel="noopener noreferrer">
             Terms and Conditions of Use
           </a>.</em>
@@ -48,6 +48,6 @@ export default class Consent extends Component {
   </Button>
 </ButtonToolbar>
       </div>
-    );
+    )
   }
 }

@@ -10,9 +10,9 @@
   font-size: 16px;
 }
 
-.list-group-item-text {
+.event-title {
   font-size: 20px;
-  margin: 0;
+  margin-bottom: 10px;
   color: #8bb02e;
 }
 

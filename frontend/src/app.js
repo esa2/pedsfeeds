@@ -26,7 +26,6 @@ class App extends Component {
         alert(e)
       }
     }
-
     this.setState({ isAuthenticating: false })
   }
 
@@ -43,7 +42,7 @@ class App extends Component {
   render() {
     const childProps = {
       isAuthenticated: this.state.isAuthenticated,
-      userHasAuthenticated: this.userHasAuthenticated
+      userHasAuthenticated: this.userHasAuthenticated,
     }
 
     return (
@@ -68,6 +67,7 @@ class App extends Component {
                   <MenuItem divider />
                   <MenuItem header>PROVIDERS</MenuItem>
                   <MenuItem href="join">How to Join</MenuItem>
+                  <MenuItem href="profile">Your Profile</MenuItem>
                   <MenuItem href="providers">Find Resources</MenuItem>
                   <MenuItem divider />
                   <MenuItem header>OTHER</MenuItem>

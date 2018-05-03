@@ -78,7 +78,7 @@ export default class Signup extends Component {
       await Auth.signIn(this.state.email, this.state.password)
   
       this.props.userHasAuthenticated(true)
-      this.props.history.push('/')
+      this.props.history.push('/profile')
     } catch (error) {
       alert(error.message)
       this.setState({ isLoading: false })

@@ -51,7 +51,7 @@ export default class NewEvent extends Component {
         endTime: this.state.endTime,
         multiDay: this.state.multiDay,
         contact: this.state.contact !== '' ? 'Contact: ' + this.state.contact : null,
-        theLocation: this.state.theLocation !== '' ? 'Location: ' + this.state.theLocation : null,
+        theLocation: this.state.theLocation !== '' ? this.state.theLocation : null,
         urlName: this.state.urlName !== '' ? this.state.urlName : null,
         description: this.state.description !== '' ? this.state.description : null
       })

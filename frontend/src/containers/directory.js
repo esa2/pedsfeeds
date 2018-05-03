@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { ButtonToolbar, Button } from 'react-bootstrap'
 
 export default class Directory extends Component {
+
   render() {
     return (
       <div>
@@ -12,7 +13,6 @@ export default class Directory extends Component {
           the Directory.
         </p>
         <p>Check back soon.</p>
-
         <ButtonToolbar>
           <Button bsStyle="primary" bsSize="large">
             Medical Care Providers

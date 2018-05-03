@@ -100,7 +100,8 @@ export default class Home extends Component {
               
               header={`${event.startDate}`}
         
-            >{event.title}
+            ><p className="event-title">{event.title}</p>
+            {event.theLocation}
             </ListGroupItem>
           :
             null
@@ -134,28 +135,28 @@ export default class Home extends Component {
         {
         show
         ? <Modal show={this.state.show} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>The continuing education courses and workshops posted on this website do not reflect endorsement of the course content by the Pediatric Feeding Association.</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <p className="green-modal-title">{this.state.title}</p>
-            <p>Starts: {this.state.startDate}</p>
-            <p>{this.state.endDate}</p>
-            <p>From: {this.state.startTime} To: {this.state.endTime}</p>
-            <hr></hr>
-            <div className="pre-wrap">
-            {this.state.description}
-            </div>
-            <hr></hr>
-            {this.state.contact}
-            <p>{this.state.contact}</p>
-            <p>{this.state.theLocation}</p>
-            <p><a href={this.state.urlName}>{this.state.urlName}</a></p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={this.handleClose}>Close</Button>
-          </Modal.Footer>
-        </Modal>
+            <Modal.Header closeButton>
+              <Modal.Title>The continuing education courses and workshops posted on this website do not reflect endorsement of the course content by the Pediatric Feeding Association.</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <p className="green-modal-title">{this.state.title}</p>
+              <p>Starts: {this.state.startDate}</p>
+              <p>{this.state.endDate}</p>
+              <p>From: {this.state.startTime} To: {this.state.endTime}</p>
+              <hr></hr>
+              <div className="pre-wrap">
+                {this.state.description}
+              </div>
+              <hr></hr>
+              {this.state.contact}
+              <p>{this.state.contact}</p>
+              <p>{this.state.theLocation}</p>
+              <p><a href={this.state.urlName}>{this.state.urlName}</a></p>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button onClick={this.handleClose}>Close</Button>
+            </Modal.Footer>
+          </Modal>
         : null
         }
       </div>
@@ -166,12 +167,11 @@ export default class Home extends Component {
     return (
       <div>
         <div>
-        <Lander>
-        </Lander>
-        {this.renderEvents()}
-        {this.renderModal()}
-        
-      </div>
+          <Lander>
+          </Lander>
+          {this.renderEvents()}
+          {this.renderModal()}
+        </div>
       </div>
     )
   }

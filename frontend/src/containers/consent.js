@@ -40,13 +40,13 @@ export default class Consent extends Component {
           </a>.</em>
         </p>
         <ButtonToolbar>
-  <Button bsStyle="success" bsSize="large" active href="/directory">
-    I agree
-  </Button>
-  <Button bsSize="large" active href="/">
-    I decline
-  </Button>
-</ButtonToolbar>
+          <Button bsStyle="success" bsSize="large" active href="/directory">
+            I agree
+          </Button>
+          <Button bsStyle="primary" bsSize="large" active href="/">
+            I decline
+          </Button>
+        </ButtonToolbar>
       </div>
     )
   }

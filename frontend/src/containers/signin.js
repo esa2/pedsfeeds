@@ -63,6 +63,7 @@ export default class Signin extends Component {
           <LoaderButton
             block
             bsSize="large"
+            bsStyle="primary"
             disabled={!this.validateForm()}
             type="submit"
             isLoading={this.state.isLoading}

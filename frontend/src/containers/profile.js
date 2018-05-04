@@ -7,6 +7,12 @@ export default class Profile extends Component {
     super(props)
   }
 
+  handleCreate = event => {
+    console.log(event)
+    event.preventDefault()
+    this.props.history.push(event.currentTarget.getAttribute("href"))
+  }
+
   render() {
     console.log(this.props)
     return (
@@ -15,7 +21,7 @@ export default class Profile extends Component {
        
         {this.props.isAuthenticated ? (
           <ButtonToolbar>
-            <Button bsStyle="primary" bsSize="large">
+            <Button bsStyle="primary" bsSize="large" onClick={this.handleCreate}href="/listing/new">
               Create Listing
             </Button>
             <Button bsStyle="primary" bsSize="large">

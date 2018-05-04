@@ -98,9 +98,9 @@ export default class Home extends Component {
               data={event.eventId}
               onClick={this.handleEventClick}
               
-              header={`${event.startDate}`}
+              header={`${event.title}`}
         
-            ><p className="event-title">{event.title}</p>
+            >{event.startDate}<br />
             {event.theLocation}
             </ListGroupItem>
           :

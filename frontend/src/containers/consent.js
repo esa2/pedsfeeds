@@ -8,7 +8,7 @@ export default class Consent extends Component {
         <p>
           Please read these
           <a href="/tos" target="_blank" rel="noopener noreferrer">
-            Terms and Conditions of Use
+            <span> Terms and Conditions of Use </span>
           </a>
           carefully. By accessing or using this Website, you agree to be bound
           by the terms and conditions described herein and all terms, policies,
@@ -36,7 +36,7 @@ export default class Consent extends Component {
           doctor or a health professional immediately about your condition. Use
           of our Website signifies your agreement to our
           <a href="/tos" target="_blank" rel="noopener noreferrer">
-            Terms and Conditions of Use
+            <span> Terms and Conditions of Use</span>
           </a>.</em>
         </p>
         <ButtonToolbar>

@@ -84,7 +84,15 @@ input[type=file] {
   color: #e47911;
 }
 
+.btn-toolbar > .btn {
+  margin-bottom: 20px;
+}
+
 @media all and (min-width: 480px) {
+
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
   
   .field-size {
     max-width: 320px;

@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Checkbox } from 'react-bootstrap'
 import LoaderButton from '../components/loader-button'
 import '../styles/new-event.css'
 
-export default class NewEvent extends Component {
+export default class ListingNew extends Component {
   constructor(props) {
     super(props)
 

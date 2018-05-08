@@ -88,6 +88,14 @@ input[type=file] {
   margin-bottom: 20px;
 }
 
+.required {
+  color: #e60000;
+}
+
+input[type=radio] {
+  margin-top: 0px;
+}
+
 @media all and (min-width: 480px) {
 
   .dropdown:hover .dropdown-menu {

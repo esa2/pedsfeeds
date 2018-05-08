@@ -35,7 +35,7 @@ export default class Contact extends Component {
     return (
       <div className="contact">
         <h4 className="header-green-center">Contact Us</h4>
-        <p className="required">*Required field</p>
+        <p className="required-text">*Required field</p>
         <form
           action="https://formspree.io/esabrahamsen@yahoo.com"
           method="POST"

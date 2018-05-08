@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, FormGroup, FormControl, ControlLabel, Radio } from 'react-bootstrap'
+import { Form, FormGroup, FormControl, ControlLabel, Radio, Checkbox } from 'react-bootstrap'
 import LoaderButton from '../components/loader-button'
 import '../styles/profile-new.css'
 
@@ -38,7 +38,7 @@ export default class ProfileNew extends Component {
   render() {
     return (
         <form>
-
+        <h6>Name</h6>
         <FormGroup controlId="lastName">
           <ControlLabel className="required">*</ControlLabel>
           <ControlLabel>Last Name</ControlLabel>
@@ -50,30 +50,111 @@ export default class ProfileNew extends Component {
             onChange={this.handleChange}
           />
         </FormGroup>
-
         <FormGroup controlId="firstName">
           <ControlLabel className="required">*</ControlLabel>
           <ControlLabel>First Name</ControlLabel>
           <FormControl
             type="text"
             value={this.state.firstName}
-            placeholder="Enter first name"
+            placeholder=""
             required
             onChange={this.handleChange}
           />
         </FormGroup>
-
         <FormGroup controlId="middleInitial">
           <ControlLabel>Middle Initial</ControlLabel>
           <FormControl
             type="text"
             value={this.state.middleInitial}
-            placeholder="Enter middle initial"
+            placeholder=""
             maxLength = "1"
             onChange={this.handleChange}
           />
         </FormGroup>
+        <hr />
+        <h6>Licensure</h6>
+        <FormGroup controlId="licenseState">
+          <ControlLabel></ControlLabel>
+          <ControlLabel className="required">*</ControlLabel>
+          <ControlLabel>State</ControlLabel>
+          <FormControl componentClass="select">
+            <option value="AK">AK</option>
+            <option value="AL">AL</option>
+            <option value="AR">AR</option>
+            <option value="AZ">AZ</option>
+            <option value="CA">CA</option>
+            <option value="CO">CO</option>
+            <option value="CT">CT</option>
+            <option value="DC">DC</option>
+            <option value="DE">DE</option>
+            <option value="FL">FL</option>
+            <option value="GA">GA</option>
+            <option value="HI">HI</option>
+            <option value="IA">IA</option>
+            <option value="ID">ID</option>
+            <option value="IL">IL</option>
+            <option value="IN">IN</option>
+            <option value="KS">KS</option>
+            <option value="KY">KY</option>
+            <option value="LA">LA</option>
+            <option value="MA">MA</option>
+            <option value="MD">MD</option>
+            <option value="ME">ME</option>
+            <option value="MI">MI</option>
+            <option value="MN">MN</option>
+            <option value="MO">MO</option>
+            <option value="MS">MS</option>
+            <option value="MT">MT</option>
+            <option value="NC">NC</option>
+            <option value="ND">ND</option>
+            <option value="NE">NE</option>
+            <option value="NH">NH</option>
+            <option value="NJ">NJ</option>
+            <option value="NM">NM</option>
+            <option value="NV">NV</option>
+            <option value="NY">NY</option>
+            <option value="OH">OH</option>
+            <option value="OK">OK</option>
+            <option value="OR">OR</option>
+            <option value="PA">PA</option>
+            <option value="RI">RI</option>
+            <option value="SC">SC</option>
+            <option value="SD">SD</option>
+            <option value="TN">TN</option>
+            <option value="TX">TX</option>
+            <option value="UT">UT</option>
+            <option value="VA">VA</option>
+            <option value="VT">VT</option>
+            <option value="WA">WA</option>
+            <option value="WI">WI</option>
+            <option value="WV">WV</option>
+      </FormControl>
+        </FormGroup>
+        <FormGroup controlId="licenseNumber">
+        <ControlLabel className="required">*</ControlLabel>
+          <ControlLabel>State License Number</ControlLabel>
+          <FormControl
+            type="text"
+            value={this.state.licenseNumber}
+            placeholder=""
+            onChange={this.handleChange}
+          />
+        </FormGroup>
+        <Checkbox readOnly>
+          I am in good standing with the state and national liscensing or certification bodies required for my profession
+        </Checkbox>
+        <FormGroup controlId="taxId">
+          <ControlLabel>Tax ID</ControlLabel>
+          <FormControl
+            type="text"
+            value={this.state.taxId}
+            placeholder=""
+            onChange={this.handleChange}
+          />
+        </FormGroup>
 
+        <hr />
+        <h6></h6>
         <FormGroup controlId="professionalDiscipline">
           <ControlLabel>Professional Discipline</ControlLabel>
           <FormControl
@@ -93,16 +174,6 @@ export default class ProfileNew extends Component {
           <Radio name="radioGroup" onChange={this.handleRadioChangeNo}>
             No
           </Radio>{' '}
-        </FormGroup>
-
-        <FormGroup controlId="">
-          <ControlLabel>Licensure</ControlLabel>
-          <FormControl
-            type="text"
-            value={this.state.x}
-            placeholder=""
-            onChange={this.handleChange}
-          />
         </FormGroup>
 
         <FormGroup controlId="">

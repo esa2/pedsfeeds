@@ -15,25 +15,13 @@ export default class Home extends Component {
     this.state = {
       isLoading: true,
       show: false,
-      events: [],
-      eventId: '',
-      title: '',
-      startDate: '',
-      endDate: '',
-      multiDay: '',
-      startTime: '',
-      endTime: '',
-      contact: '',
-      urlName: '',
-      theLocation: '',
-      description: ''
+      events: []
     }
   }
 
   async componentDidMount() {
     try {
       const allEvents = await this.events()
-      console.log(allEvents)
       allEvents.sort(function(a,b) { 
         return new Date(a.startDate) - new Date(b.startDate) 
     })

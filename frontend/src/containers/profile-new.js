@@ -14,7 +14,7 @@ export default class ProfileNew extends Component {
 
     this.state = {
       isLoading: null,
-      lastName: 'bbbb',
+      lastName: '',
       firstName: '',
       middleInitial: '',
       displayListing: false,
@@ -399,6 +399,55 @@ export default class ProfileNew extends Component {
             <Checkbox>Adolescent: 13 - 21 years</Checkbox>
           </FormGroup>
         </Well>
+        <Well>
+          <h6>Payment Types Accepted</h6>
+          <FormGroup controlId="payments">
+            <ControlLabel>Select all payment types accepted<span className="required">*</span></ControlLabel>
+            <Checkbox>Medicaid</Checkbox>
+            <Checkbox>Private insurance</Checkbox>
+            <Checkbox>Private pay</Checkbox>
+            <Checkbox>Part C</Checkbox>
+          </FormGroup>
+        </Well>
+        <Well>
+          <h6>Experience in Treating Children with These Medical Conditions</h6>
+          <FormGroup controlId="">
+            <ControlLabel>Select all medical conditions you treat</ControlLabel>
+            <Checkbox>Autism spectrum disorders</Checkbox>
+            <Checkbox>Cancer</Checkbox>
+            <Checkbox>Craniofacial anomalies (including cleft lip and palate)</Checkbox>
+            <Checkbox>Developmental delay</Checkbox>
+            <Checkbox>Gastroesophageal reflux disease (GERD)</Checkbox>
+            <Checkbox>GI issued (short gut syndrome, necrotizing enterocolitis, eosinophilic esophagitis, etc)</Checkbox>
+            <Checkbox>Growth issues (FTT, poor weight gain)</Checkbox>
+            <Checkbox>G-tube placement</Checkbox>
+            <Checkbox>Heart defects</Checkbox>
+            <Checkbox>Medically fragile children</Checkbox>
+            <Checkbox>Neurologic deficits (cerebral palsy, static encephalopathy, hydrocephalus, etc)</Checkbox>
+            <Checkbox>NG/ND tube placement</Checkbox>
+            <Checkbox>Premature infants</Checkbox>
+            <Checkbox>Pulmonary issues (chronic lung disease, reactive airway disease)</Checkbox>
+            <Checkbox>Spinal cord injury</Checkbox>
+            <Checkbox>Tracheotomy/ventilator dependent</Checkbox>
+            <Checkbox>Traumatic brain injury</Checkbox>
+          </FormGroup>
+        </Well>
+        <Well>
+          <h6>Experience in Treating Children with These Feeding Conditions</h6>
+          <FormGroup controlId="">
+            <ControlLabel>Select all feeding conditions of children you treat</ControlLabel>
+            <Checkbox>Breastfeeding issues</Checkbox>
+            <Checkbox>Difficulty transitioning to solids</Checkbox>
+            <Checkbox>Non-oral feeders (fed via NG, ND, g-tube, etc)</Checkbox>
+            <Checkbox>Oral aversion</Checkbox>
+            <Checkbox>Oral sensory dysfunction</Checkbox>
+            <Checkbox>Oral dyspraxia/apraxia</Checkbox>
+            <Checkbox>Psychosocial dysfunction related to feeding</Checkbox>
+            <Checkbox>Swallowing difficulty</Checkbox>
+            <Checkbox>Tongue tie</Checkbox>
+            
+          </FormGroup>
+        </Well>
 
         <FormGroup controlId="">
           <ControlLabel>Specialty</ControlLabel>
@@ -461,27 +510,7 @@ export default class ProfileNew extends Component {
         </FormGroup>
 
         <FormGroup controlId="">
-          <ControlLabel>Payment Types Accepted</ControlLabel>
-          <FormControl
-            type="text"
-            value={this.state.x}
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </FormGroup>
-
-        <FormGroup controlId="">
           <ControlLabel>Mental Health / Counseling Services</ControlLabel>
-          <FormControl
-            type="text"
-            value={this.state.x}
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </FormGroup>
-
-        <FormGroup controlId="">
-          <ControlLabel>Experience in Treating Children with These Medical Conditions</ControlLabel>
           <FormControl
             type="text"
             value={this.state.x}

@@ -324,7 +324,7 @@ export default class ProfileNew extends Component {
           <ControlLabel className="required">*</ControlLabel>
             <ControlLabel>Appointment Scheduling Phone Number</ControlLabel>
             <FormControl
-              type="text"
+              type="phone"
               value={this.state.workPhone}
               onChange={this.handleChange}
             />
@@ -448,107 +448,62 @@ export default class ProfileNew extends Component {
             
           </FormGroup>
         </Well>
-
-        <FormGroup controlId="">
-          <ControlLabel>Specialty</ControlLabel>
-          <FormControl
-            type="text"
-            value={this.state.x}
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </FormGroup>
-
-        <FormGroup controlId="">
-          <ControlLabel>Certifications</ControlLabel>
-          <FormControl
-            type="text"
-            value={this.state.x}
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </FormGroup>
-
-        <FormGroup controlId="">
-          <ControlLabel>Professional Experience Treating Pediatric Feeding</ControlLabel>
-          <FormControl
-            type="text"
-            value={this.state.x}
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </FormGroup>
-
-        <FormGroup controlId="">
-          <ControlLabel>Experience Treating Patients with the Following Issues or Conditions</ControlLabel>
-          <FormControl
-            type="text"
-            value={this.state.x}
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </FormGroup>
-
-        <FormGroup controlId="">
-          <ControlLabel>Specific Education / Training on Pediatric Feeding</ControlLabel>
-          <FormControl
-            type="text"
-            value={this.state.x}
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </FormGroup>
-
-        <FormGroup controlId="">
-          <ControlLabel>Research / Publication / Presentations on Pediatric Feeding</ControlLabel>
-          <FormControl
-            type="text"
-            value={this.state.x}
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </FormGroup>
-
-        <FormGroup controlId="">
-          <ControlLabel>Mental Health / Counseling Services</ControlLabel>
-          <FormControl
-            type="text"
-            value={this.state.x}
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </FormGroup>
-
-        <FormGroup controlId="">
-          <ControlLabel>Feeding Clinical Practice Specialities</ControlLabel>
-          <FormControl
-            type="text"
-            value={this.state.x}
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </FormGroup>
-
-        <FormGroup controlId="">
-          <ControlLabel>Years of Experience Related to Pediatric Feeding</ControlLabel>
-          <FormControl
-            type="text"
-            value={this.state.x}
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </FormGroup>
-
-        <FormGroup controlId="">
-          <ControlLabel>Agreements</ControlLabel>
-          <FormControl
-            type="text"
-            value={this.state.x}
-            placeholder=""
-            onChange={this.handleChange}
-          />
-        </FormGroup>
-
+        <Well>
+          <h6>Feeding Clinical Practice Secialties</h6>
+          <FormGroup controlId="">
+            <ControlLabel>Select all practice areas related to feeding that apply</ControlLabel>
+            <Checkbox>Behavioral management</Checkbox>
+            <Checkbox>Blenderized diets</Checkbox>
+            <Checkbox>Breastfeeding management</Checkbox>
+            <Checkbox>clinical feeding and / or swallowing assessment</Checkbox>
+            <Checkbox>Craniosacral therapy</Checkbox>
+            <Checkbox>E stim / Vital stim</Checkbox>
+            <Checkbox>Feeding groups</Checkbox>
+            <Checkbox>Fiberoptic endoscope evaluation of swallowing (FEES)</Checkbox>
+            <Checkbox>Food texture advancement</Checkbox>
+            <Checkbox>Kinesiotaping</Checkbox>
+            <Checkbox>Manual therapy</Checkbox>
+            <Checkbox>Nutritional assessment and management</Checkbox>
+            <Checkbox>Oral motor therapy</Checkbox>
+            <Checkbox>Psychosocial treatment</Checkbox>
+            <Checkbox>Sensory processing related to feeding</Checkbox>
+            <Checkbox>Videofluoroscopic swallowing studies (VFSS) / Modified barium swallows (MBS)</Checkbox>
+            <Checkbox>Weaning from feeding tubes</Checkbox>
+          </FormGroup>
+        </Well>
+        <Well>
+          <h6>Years of Experience Related to Pediatric Feeding</h6>
+          <FormGroup controlId="professionalDiscipline">
+            <ControlLabel className="required">*</ControlLabel>
+            <ControlLabel>Select one experience category</ControlLabel>
+            <Radio
+              name="radioExperience"
+              value="0 - 5 years"
+              onChange={this.handleExperience}>
+              0 - 5 years
+            </Radio>{' '}
+            <Radio name="radioExperience"
+              value="5 - 10 years"
+              onChange={this.handleExperience}>
+              5 - 10 years
+            </Radio>{' '}
+            <Radio name="radioExperience"
+              value="10+ years"
+              onChange={this.handleExperience}>
+              10+ years
+            </Radio>{' '}
+          </FormGroup>
+        </Well>
+        <Well>
+          <FormGroup controlId="toc">
+            <ControlLabel>Terms and Conditions<span className="required">*</span></ControlLabel>
+            <Checkbox readOnly
+              checked={this.state.toc}
+              onChange={this.handleTocChange}>
+              I have read the terms and conditions and certify that the above data is accurate and true and that I have liability insurance. I understand that PedsFeeds.com is not liable for any consequences resulting from my feeding practice.
+              </Checkbox>
+            </FormGroup>
+          </Well>
         <LoaderButton
             block
             bsStyle="primary"

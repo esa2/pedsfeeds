@@ -110,7 +110,8 @@ export default class EventNew extends Component {
             <Checkbox
               checked={this.state.multiDay}
               onChange={this.handleCheckboxChange}
-            >Multi-day Event</Checkbox>
+            >Multi-day Event
+            </Checkbox>
           </FormGroup>
           <FormGroup  className="field-size" controlId="startTime">
             <FormControl

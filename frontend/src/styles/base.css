@@ -101,6 +101,10 @@ input[type=radio] {
   margin-top: 0px;
 }
 
+input[type=checkbox] {
+  margin-top: 0px;
+}
+
 @media all and (min-width: 480px) {
 
   .dropdown:hover .dropdown-menu {

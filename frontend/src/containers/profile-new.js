@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { API } from 'aws-amplify'
 import { Form, FormGroup, FormControl, ControlLabel, Radio, Checkbox, Well } from 'react-bootstrap'
 import LoaderButton from '../components/loader-button'
 import '../styles/profile-new.css'
@@ -7,6 +8,7 @@ export default class ProfileNew extends Component {
   constructor(props) {
     super(props)
     console.log(props)
+    console.log(props.match.params.id)
 
     this.handleChange = this.handleChange.bind(this)
     this.handleRadioDisplay = this.handleRadioDisplay.bind(this)
@@ -36,11 +38,33 @@ export default class ProfileNew extends Component {
     this.setState({ professionalDiscipline: e.target.value })
   }
 
+  handleSubmit = async e => {
+    e.preventDefault()
+    this.setState({ isLoading: true })
+    try {
+      await this.createProfile({
+        name: this.state.lastName
+      })
+      this.props.history.push('/')
+    } catch (error) {
+      alert(error)
+      this.setState({ isLoading: false })
+    }
+  }
+
+  createProfile(profile) {
+    return API.post('profile', '/profile', {
+      body: profile
+    })
+  }
+
   render() {
     return (
       <div>
+        {/* {this.state.event &&
+          <form onSubmit={this.handleSubmit}> */}
         <p>Required fields<span className="required">*</span></p>
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           <Well>
           <h6>Name</h6>
           <FormGroup controlId="lastName">
@@ -445,7 +469,7 @@ export default class ProfileNew extends Component {
             <Checkbox>Psychosocial dysfunction related to feeding</Checkbox>
             <Checkbox>Swallowing difficulty</Checkbox>
             <Checkbox>Tongue tie</Checkbox>
-            
+
           </FormGroup>
         </Well>
         <Well>

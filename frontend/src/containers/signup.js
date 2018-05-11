@@ -124,7 +124,7 @@ export default class Signup extends Component {
           />
         </FormGroup>
         <FormGroup controlId="password" bsSize="large">
-          <ControlLabel>Password</ControlLabel>
+          <ControlLabel>Password - requires minimum length of 8 and must contain at least one lowercase, uppercase, numeric and symbol</ControlLabel>
           <FormControl
             value={this.state.password}
             onChange={this.handleChange}

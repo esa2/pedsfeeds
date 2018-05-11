@@ -84,6 +84,7 @@ export default class EventNew extends Component {
         >
             {'Title'}
             <FormControl
+              autoFocus
               onChange={this.handleChange}
               value={this.state.title}
               placeholder="Title"

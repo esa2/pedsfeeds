@@ -71,6 +71,7 @@ export default class ProfileNew extends Component {
             <ControlLabel className="required">*</ControlLabel>
             <ControlLabel>Last Name</ControlLabel>
             <FormControl
+              autoFocus
               type="text"
               value={this.state.lastName}
               required

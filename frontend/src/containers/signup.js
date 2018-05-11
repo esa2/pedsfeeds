@@ -55,15 +55,18 @@ export default class Signup extends Component {
         newUser
       })
     } catch (error) {
+      console.log(error)
       if (error.code === 'UsernameExistsException') {
-        const resendVerification = await Auth.resendSignUp(this.state.email)
-        this.setState({
-          newUser: resendVerification
-        })
-      } else {
-      alert(error.message)
+        try {
+          const resendVerification = await Auth.resendSignUp(this.state.email)
+          this.setState({
+            newUser: resendVerification
+          })
+        } catch (error) {
+      alert('There is already an account with this user name')
       }
     }
+  }
   
     this.setState({ isLoading: false })
   }

@@ -15,7 +15,7 @@ export default class Profile extends Component {
        
         {this.props.isAuthenticated ? (
           <ButtonToolbar>
-            <Button bsStyle="primary" bsSize="large" onClick={this.handleNewClick}href="/profile/new">
+            <Button bsStyle="primary" bsSize="large" onClick={this.handleNewClick}href="/profile-new">
               Create Profile
             </Button>
             <Button bsStyle="primary" bsSize="large">

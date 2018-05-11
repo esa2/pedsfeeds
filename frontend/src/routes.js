@@ -28,7 +28,7 @@ export default ({ childProps }) =>
     <AppliedRoute path='/signin' exact component={Signin} props={childProps}/>
     <AppliedRoute path='/signup' exact component={Signup} props={childProps}/>
     <AppliedRoute path='/profile' exact component={Profile} props={childProps}/>
-    <AppliedRoute path='/profile/new' exact component={ProfileNew} props={childProps}/>
+    <AppliedRoute path='/profile-new' exact component={ProfileNew} props={childProps}/>
     <AppliedRoute path='/events/new' exact component={EventNew} props={childProps}/>
     <AppliedRoute path='/events/:id' exact component={Events} props={childProps}/>
     <Route path='/directory' exact component={Directory}/>

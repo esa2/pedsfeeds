@@ -43,7 +43,9 @@ export default class ProfileNew extends Component {
     this.setState({ isLoading: true })
     try {
       await this.createProfile({
-        name: this.state.lastName
+        lastName: this.state.lastName,
+        firstName: this.state.firstName
+
       })
       this.props.history.push('/')
     } catch (error) {
@@ -53,7 +55,7 @@ export default class ProfileNew extends Component {
   }
 
   createProfile(profile) {
-    return API.post('profile', '/profile', {
+    return API.post('peds', '/profile-new', {
       body: profile
     })
   }
@@ -61,8 +63,6 @@ export default class ProfileNew extends Component {
   render() {
     return (
       <div>
-        {/* {this.state.event &&
-          <form onSubmit={this.handleSubmit}> */}
         <p>Required fields<span className="required">*</span></p>
         <Form onSubmit={this.handleSubmit}>
           <Well>

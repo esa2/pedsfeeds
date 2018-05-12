@@ -33,7 +33,7 @@ export default class Events extends Component {
   }
 
   getEvent() {
-    return API.get('events', `/events/${this.props.match.params.id}`)
+    return API.get('events', `/calendar/${this.props.match.params.id}`)
   }
 
   validateForm() {

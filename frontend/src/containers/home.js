@@ -15,31 +15,31 @@ export default class Home extends Component {
     this.state = {
       isLoading: true,
       show: false,
-      events: []
+      entries: []
     }
   }
 
   async componentDidMount() {
     try {
-      const allEvents = await this.events()
-      allEvents.sort(function(a,b) { 
+      const calendarEntries = await this.calendar()
+      calendarEntries.sort(function(a,b) { 
         return new Date(a.startDate) - new Date(b.startDate) 
     })
       const today = new Date()
-      let events = []
-      for (let i = 0; i < allEvents.length; i++) {
-        const eventDate = new Date(allEvents[i].startDate + ' 23:59')
-        if (eventDate >= today ) events.push(allEvents[i])
+      let entries = []
+      for (let i = 0; i < calendarEntries.length; i++) {
+        const entryDate = new Date(calendarEntries[i].startDate + ' 23:59')
+        if (entryDate >= today ) entries.push(calendarEntries[i])
       }
-      this.setState({ events })
+      this.setState({ entries })
     } catch (error) {
       alert(error)
     }
     this.setState({ isLoading: false })
   }
   
-  events() {
-    return API.get("events", "/events")
+  calendar() {
+    return API.get("peds", "/calendar")
   }
 
   handleClose() {
@@ -50,10 +50,10 @@ export default class Home extends Component {
     this.setState({ show: true })
   }
 
-  handleEventClick = event => {
+  handleCalendarClick = event => {
     event.preventDefault()
-    const currentEvent = event.currentTarget.getAttribute("data")
-    this.handleGet(currentEvent)
+    const currentEntry = event.currentTarget.getAttribute("data")
+    this.handleGet(currentEntry)
     this.handleShow()
   }
 
@@ -62,40 +62,40 @@ export default class Home extends Component {
     this.props.history.push(event.currentTarget.getAttribute("href"))
   }
   
-  async handleGet(currentEvent) {
+  async handleGet(currentEntry) {
     this.setState({ isLoading: true })
   
     try {
-      const event = await this.getEvent(currentEvent)
-      this.setState({ ...event })
+      const entry = await this.getCalendar(currentEntry)
+      this.setState({ ...entry })
     } catch (e) {
       alert(e)
     }
     this.setState({ isLoading: false })
   }
 
-  getEvent(currentEvent) {
-    return API.get('events', `/events/${currentEvent}`)
+  getCalendar(currentEntry) {
+    return API.get('peds', `/calendar/${currentEntry}`)
   }
 
-  renderEventsList(events) {
-    return [{}].concat(events).map((event, i) =>
+  renderCalendarList(entries) {
+    return [{}].concat(entries).map((entry, i) =>
         (i !== 0)
           ?  <ListGroupItem
-              key={event.eventId}
-              data={event.eventId}
-              onClick={this.handleEventClick}
+              key={entry.eventId}
+              data={entry.eventId}
+              onClick={this.handleCalendarClick}
               
-              header={`${event.title}`}
+              header={`${entry.title}`}
         
-            >{event.startDate}<br />
-            {event.theLocation}
+            >{entry.startDate}<br />
+            {entry.theLocation}
             </ListGroupItem>
           :
             null
           // : <ListGroupItem
           //     key="new"
-          //     href="/events/new"
+          //     href="/calendar/new"
           //     onClick={this.handleNewClick}
           //   >
           //     <h4>
@@ -105,12 +105,12 @@ export default class Home extends Component {
     )
   }
   
-  renderEvents() {
+  renderCalendar() {
     return (
       <div>
         <PageHeader>Calendar of Events</PageHeader>
         <ListGroup>
-          {!this.state.isLoading && this.renderEventsList(this.state.events)}
+          {!this.state.isLoading && this.renderCalendarList(this.state.entries)}
         </ListGroup>
       </div>
     )
@@ -157,7 +157,7 @@ export default class Home extends Component {
         <div>
           <Lander>
           </Lander>
-          {this.renderEvents()}
+          {this.renderCalendar()}
           {this.renderModal()}
         </div>
       </div>

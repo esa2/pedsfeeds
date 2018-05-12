@@ -24,7 +24,7 @@ Amplify.configure({
   API: {
     endpoints: [
       {
-        name: "events",
+        name: "peds",
         endpoint: amplifyConfig.apiGateway.URL,
         region: amplifyConfig.apiGateway.REGION
       },

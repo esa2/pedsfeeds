@@ -21,6 +21,8 @@ export default class ProfileNew extends Component {
       middleInitial: '',
       displayListing: false,
       professionalDiscipline: '',
+      licenseState: '',
+      licenseNumber: '',
     }
   }
 
@@ -44,7 +46,12 @@ export default class ProfileNew extends Component {
     try {
       await this.createProfile({
         lastName: this.state.lastName,
-        firstName: this.state.firstName
+        firstName: this.state.firstName,
+        middleInitial: this.state.middleInitial !== '' ? this.state.middleInitial : null,
+        displayListing: this.state.displayListing,
+        professionalDiscipline: this.state.professionalDiscipline,
+        // licenseState: this.state.licenseState,
+        // licenseNumber: this.state.licenseNumber
 
       })
       this.props.history.push('/')
@@ -124,6 +131,7 @@ export default class ProfileNew extends Component {
             <Radio
               name="radioDiscipline"
               value="Occupational Therapist"
+              required
               onChange={this.handleDiscipline}>
               Occupational Therapist
             </Radio>{' '}
@@ -149,7 +157,12 @@ export default class ProfileNew extends Component {
           <FormGroup controlId="licenseState">
             <ControlLabel className="required">*</ControlLabel>
             <ControlLabel>State</ControlLabel>
-            <FormControl componentClass="select">
+            <FormControl componentClass="select"
+            type="select"
+            required
+            value={this.state.licenseState}
+            onChange={this.handleChange}>
+              <option value="">-- Select State --</option>
               <option value="AK">AK</option>
               <option value="AL">AL</option>
               <option value="AR">AR</option>
@@ -206,6 +219,7 @@ export default class ProfileNew extends Component {
             <ControlLabel><span className="required">*</span>Enter your state license number (state credential number for WA state). This field is used to validate your credentials. It is treated with confidentiality and will not be displayed in your profile.</ControlLabel>
             <FormControl
               type="text"
+              required
               value={this.state.licenseNumber}
               onChange={this.handleChange}
             />
@@ -215,6 +229,7 @@ export default class ProfileNew extends Component {
               <ControlLabel className="required">*</ControlLabel>
               <ControlLabel>Check standing</ControlLabel>
               <Checkbox readOnly
+              required
                 checked={this.state.multiDay}
                 onChange={this.handleCheckboxChange}>
               I am in good standing with the state and national liscensing or certification bodies required for my profession
@@ -284,6 +299,7 @@ export default class ProfileNew extends Component {
             <ControlLabel className="required">*</ControlLabel>
             <ControlLabel>State</ControlLabel>
             <FormControl componentClass="select">
+              <option value="">-- Select State --</option>
               <option value="AK">AK</option>
               <option value="AL">AL</option>
               <option value="AR">AR</option>

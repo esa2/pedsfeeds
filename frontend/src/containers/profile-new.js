@@ -22,7 +22,19 @@ export default class ProfileNew extends Component {
       displayListing: false,
       professionalDiscipline: '',
       licenseState: '',
+      licenseStanding: false,
       licenseNumber: '',
+      taxId: '',
+      empOrganization: '',
+      empUrl: '',
+      workAddress1: '',
+      workAddress2: '',
+      workCity: '',
+      workState: '',
+      workZip: '',
+      workPhone: '',
+      workExtension: '',
+      workEmail: ''
     }
   }
 
@@ -40,6 +52,12 @@ export default class ProfileNew extends Component {
     this.setState({ professionalDiscipline: e.target.value })
   }
 
+  handleCheckboxChange = () => {
+    this.setState({
+      licenseStanding: !this.state.licenseStanding
+    })
+  }
+
   handleSubmit = async e => {
     e.preventDefault()
     this.setState({ isLoading: true })
@@ -47,14 +65,26 @@ export default class ProfileNew extends Component {
       await this.createProfile({
         lastName: this.state.lastName,
         firstName: this.state.firstName,
-        middleInitial: this.state.middleInitial !== '' ? this.state.middleInitial : null,
+        middleInitial: this.state.middleInitial !== '' ? this.state.middleInitial : false,
         displayListing: this.state.displayListing,
         professionalDiscipline: this.state.professionalDiscipline,
-        // licenseState: this.state.licenseState,
-        // licenseNumber: this.state.licenseNumber
+        licenseState: this.state.licenseState,
+        licenseStanding: this.state.licenseStanding,
+        licenseNumber: this.state.licenseNumber,
+        taxId: this.state.taxId !== '' ? this.state.taxId : false,
+        empOrganization: this.state.empOrganization,
+        empUrl: this.state.empUrl !== '' ? this.state.empUrl : false,
+        workAddress1: this.state.workAddress1,
+        workAddress2: this.state.workAddress2 !== '' ? this.state.workAddress2 : false,
+        workCity: this.state.workCity,
+        workState: this.state.workState,
+        workZip: this.state.workZip,
+        workPhone: this.state.workPhone,
+        workExtension: this.state.workExtension !== '' ? this.state.workExtension : false,
+        workEmail: this.state.workEmail !== '' ? this.state.workEmail : false
 
       })
-      this.props.history.push('/')
+      this.props.history.push('/profile')
     } catch (error) {
       alert(error)
       this.setState({ isLoading: false })
@@ -158,10 +188,9 @@ export default class ProfileNew extends Component {
             <ControlLabel className="required">*</ControlLabel>
             <ControlLabel>State</ControlLabel>
             <FormControl componentClass="select"
-            type="select"
-            required
-            value={this.state.licenseState}
-            onChange={this.handleChange}>
+              required
+              value={this.state.licenseState}
+              onChange={this.handleChange}>
               <option value="">-- Select State --</option>
               <option value="AK">AK</option>
               <option value="AL">AL</option>
@@ -228,9 +257,7 @@ export default class ProfileNew extends Component {
             <Well>
               <ControlLabel className="required">*</ControlLabel>
               <ControlLabel>Check standing</ControlLabel>
-              <Checkbox readOnly
-              required
-                checked={this.state.multiDay}
+              <Checkbox
                 onChange={this.handleCheckboxChange}>
               I am in good standing with the state and national liscensing or certification bodies required for my profession
               </Checkbox>
@@ -247,12 +274,12 @@ export default class ProfileNew extends Component {
        </Well>
        <Well>
         <h6>Place of Employment</h6>
-        <FormGroup controlId="organization">
+        <FormGroup controlId="empOrganization">
           <ControlLabel className="required">*</ControlLabel>
           <ControlLabel>Organization / Company</ControlLabel>
           <FormControl
             type="text"
-            value={this.state.organization}
+            value={this.state.empOrganization}
             onChange={this.handleChange}
           />
         </FormGroup>
@@ -274,7 +301,6 @@ export default class ProfileNew extends Component {
             <FormControl
               type="text"
               value={this.state.workAddress1}
-              placeholder=""
               onChange={this.handleChange}
             />
           </FormGroup>
@@ -298,7 +324,10 @@ export default class ProfileNew extends Component {
           <FormGroup controlId="workState">
             <ControlLabel className="required">*</ControlLabel>
             <ControlLabel>State</ControlLabel>
-            <FormControl componentClass="select">
+            <FormControl componentClass="select"
+              required
+              value={this.state.workState}
+              onChange={this.handleChange}>
               <option value="">-- Select State --</option>
               <option value="AK">AK</option>
               <option value="AL">AL</option>
@@ -351,8 +380,8 @@ export default class ProfileNew extends Component {
               <option value="WI">WI</option>
               <option value="WV">WV</option>
         </FormControl>
-        </FormGroup>
-        <FormGroup controlId="workZip">
+          </FormGroup>
+          <FormGroup controlId="workZip">
           <ControlLabel className="required">*</ControlLabel>
             <ControlLabel>Zip</ControlLabel>
             <FormControl
@@ -538,7 +567,7 @@ export default class ProfileNew extends Component {
         <Well>
           <FormGroup controlId="toc">
             <ControlLabel>Terms and Conditions<span className="required">*</span></ControlLabel>
-            <Checkbox readOnly
+            <Checkbox
               checked={this.state.toc}
               onChange={this.handleTocChange}>
               I have read the terms and conditions and certify that the above data is accurate and true and that I have liability insurance. I understand that PedsFeeds.com is not liable for any consequences resulting from my feeding practice.

@@ -7,8 +7,6 @@ import '../styles/profile-new.css'
 export default class ProfileNew extends Component {
   constructor(props) {
     super(props)
-    console.log(props)
-    console.log(props.match.params.id)
 
     this.handleChange = this.handleChange.bind(this)
     this.handleRadioDisplay = this.handleRadioDisplay.bind(this)
@@ -34,7 +32,10 @@ export default class ProfileNew extends Component {
       workZip: '',
       workPhone: '',
       workExtension: '',
-      workEmail: ''
+      workEmail: '',
+      providerGroup: '',
+      providerGroupText: '',
+      workSetting: [],
     }
   }
 
@@ -57,6 +58,18 @@ export default class ProfileNew extends Component {
       licenseStanding: !this.state.licenseStanding
     })
   }
+
+  handleMultipleChange = (e, stateName) => {
+    let updateState = this.state[stateName]
+    if (e.target.checked) {
+      updateState.push(e.target.value)
+      this.setState({ [stateName]: updateState })
+    } else {
+      const index = updateState.indexOf(e.target.value)
+        if (~index) updateState.splice(index, 1)
+    }   
+  }
+    
 
   handleSubmit = async e => {
     e.preventDefault()
@@ -81,7 +94,10 @@ export default class ProfileNew extends Component {
         workZip: this.state.workZip,
         workPhone: this.state.workPhone,
         workExtension: this.state.workExtension !== '' ? this.state.workExtension : false,
-        workEmail: this.state.workEmail !== '' ? this.state.workEmail : false
+        workEmail: this.state.workEmail !== '' ? this.state.workEmail : false,
+        providerGroup: this.state.providerGroup !== '' ? this.state.providerGroup  : false,
+        providerGroupText: this.state.providerGroupText !== '' ? this.state.providerGroupText : false,
+        workSetting: this.state.workSetting
 
       })
       this.props.history.push('/profile')
@@ -421,11 +437,14 @@ export default class ProfileNew extends Component {
           <h6>Provider Group</h6>
           <FormGroup controlId="providerGroup">
             <ControlLabel></ControlLabel>
-            <FormControl componentClass="select">
+            <FormControl componentClass="select"
+              required
+              value={this.state.providerGroup}
+              onChange={this.handleChange}>
               <option value="">-- Select Provider Group --</option>
               <option value="Boyer Children's Clinic (WA)">Boyer Children's Clinic (WA)</option>
               <option value="Cildren's Therapy Center of Kent (WA)">Cildren's Therapy Center of Kent (WA)</option>
-              <option value="Children's Therapt Center of Woodinville (WA)">Children's Therapy Center of Woodinville (WA)</option>
+              <option value="Children's Therapy Center of Woodinville (WA)">Children's Therapy Center of Woodinville (WA)</option>
               <option value="Mosaic Center for Therapy Services (WA)">Mosaic Center for Therapy Services (WA)</option>
               <option value="Northwest Center (WA)">Northwest Center (WA)</option>
               <option value="Pediatric Speech and Language Therapy (WA)">Pediatric Speech and Language Therapy (WA)</option>
@@ -436,26 +455,26 @@ export default class ProfileNew extends Component {
               <option value="Valley Medical Center (WA)">Valley Medical Center (WA)</option>
             </FormControl>
           </FormGroup>
-          <FormGroup controlId="providerGroup">
+          <FormGroup controlId="providerGroupText">
             <ControlLabel>Enter provider group if not found in the above select list</ControlLabel>
             <FormControl
               type="text"
-              value={this.state.providerGroup}
+              value={this.state.providerGroupText}
               onChange={this.handleChange}
             />
           </FormGroup>
         </Well>
         <Well>
           <h6>Work Setting</h6>
-          <FormGroup controlId="workSetting">
+          <FormGroup controlId="workSetting" onChange={e => this.handleMultipleChange(e, 'workSetting')}>
             <ControlLabel>Select all work settings that apply<span className="required">*</span></ControlLabel>
-            <Checkbox>Center-based services</Checkbox>
-            <Checkbox>Early Intervention program</Checkbox>
-            <Checkbox>Home-based services</Checkbox>
-            <Checkbox>Hospital inpatient</Checkbox>
-            <Checkbox>Hospital outpatient</Checkbox>
-            <Checkbox>Private practice</Checkbox>
-            <Checkbox>School based</Checkbox>
+            <Checkbox value="Center-based services">Center-based services</Checkbox>
+            <Checkbox value="Early Intervention program">Early Intervention program</Checkbox>
+            <Checkbox value="Home-based services">Home-based services</Checkbox>
+            <Checkbox value="Hospital inpatient">Hospital inpatient</Checkbox>
+            <Checkbox value="Hospital outpatient">Hospital outpatient</Checkbox>
+            <Checkbox value="Private practice">Private practice</Checkbox>
+            <Checkbox value="School based">School based</Checkbox>
           </FormGroup>
         </Well>
         <Well>
@@ -566,8 +585,8 @@ export default class ProfileNew extends Component {
         </Well>
         <Well>
           <FormGroup controlId="toc">
-            <ControlLabel>Terms and Conditions<span className="required">*</span></ControlLabel>
-            <Checkbox
+          <ControlLabel>Terms and Conditions<span className="required">*</span></ControlLabel>
+          <Checkbox
               checked={this.state.toc}
               onChange={this.handleTocChange}>
               I have read the terms and conditions and certify that the above data is accurate and true and that I have liability insurance. I understand that PedsFeeds.com is not liable for any consequences resulting from my feeding practice.

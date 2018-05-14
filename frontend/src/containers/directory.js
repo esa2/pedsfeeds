@@ -1,7 +1,29 @@
 import React, { Component } from 'react'
+import { API } from 'aws-amplify'
 import { ButtonToolbar, Button } from 'react-bootstrap'
 
 export default class Directory extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      isLoading: true
+    }
+  }
+
+  async componentDidMount() {
+    try {
+      const profiles = await this.directory()
+    } catch (error) {
+      alert(error)
+    }
+    this.setState({ isLoading: false })
+  }
+  
+  directory() {
+    return API.get("peds", "/all-profiles")
+  }
 
   render() {
     return (

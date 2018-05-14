@@ -27,8 +27,8 @@ export default ({ childProps }) =>
     <AppliedRoute path='/' exact component={Home} props={childProps}/>
     <AppliedRoute path='/signin' exact component={Signin} props={childProps}/>
     <AppliedRoute path='/signup' exact component={Signup} props={childProps}/>
-    <AppliedRoute path='/profile' exact component={Profile} props={childProps}/>
     <AppliedRoute path='/profile-new' exact component={ProfileNew} props={childProps}/>
+    <AppliedRoute path='/profile' exact component={Profile} props={childProps}/>
     <AppliedRoute path='/calendar/new' exact component={CalendarNew} props={childProps}/>
     <AppliedRoute path='/calendar/:id' exact component={Calendar} props={childProps}/>
     <Route path='/directory' exact component={Directory}/>

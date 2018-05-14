@@ -63,7 +63,7 @@ export default class EventNew extends Component {
   }
   
   createEvent(event) {
-    return API.post('events', '/events', {
+    return API.post('peds', '/events', {
       body: event
     })
   }

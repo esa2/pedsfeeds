@@ -36,6 +36,12 @@ export default class ProfileNew extends Component {
       providerGroup: '',
       providerGroupText: '',
       workSetting: [],
+      agesServed: [],
+      paymentTypes: [],
+      medicalConditions: [],
+      feedingConditions: [],
+      practiceSpecialties: [],
+      experience: [],
     }
   }
 
@@ -97,7 +103,12 @@ export default class ProfileNew extends Component {
         workEmail: this.state.workEmail !== '' ? this.state.workEmail : false,
         providerGroup: this.state.providerGroup !== '' ? this.state.providerGroup  : false,
         providerGroupText: this.state.providerGroupText !== '' ? this.state.providerGroupText : false,
-        workSetting: this.state.workSetting
+        workSetting: this.state.workSetting,
+        agesServed: this.state.agesServed,
+        paymentTypes: this.state.paymentTypes,
+        medicalConditions: this.setState.medicalConditions,
+        feedingConditions: this.state.feedingConditions,
+        experience: this.state.experience,
 
       })
       this.props.history.push('/profile')
@@ -479,90 +490,89 @@ export default class ProfileNew extends Component {
         </Well>
         <Well>
           <h6>Ages Served</h6>
-          <FormGroup controlId="agesServed">
+          <FormGroup controlId="agesServed" onChange={e => this.handleMultipleChange(e, 'agesServed')}>
             <ControlLabel>Select all ages served that apply<span className="required">*</span></ControlLabel>
-            <Checkbox>Infants: 0 - 12 months</Checkbox>
-            <Checkbox>Toddlers: 13 - 36 months</Checkbox>
-            <Checkbox>Preschool: 3 - 5 years</Checkbox>
-            <Checkbox>School age: 5 - 12 years</Checkbox>
-            <Checkbox>Adolescent: 13 - 21 years</Checkbox>
+            <Checkbox value="Infants: 0 - 12 months">Infants: 0 - 12 months</Checkbox>
+            <Checkbox value="Toddlers: 13 - 36 months">Toddlers: 13 - 36 months</Checkbox>
+            <Checkbox value="Preschool: 3 - 5 years">Preschool: 3 - 5 years</Checkbox>
+            <Checkbox value="School age: 5 - 12 years">School age: 5 - 12 years</Checkbox>
+            <Checkbox value="Adolescent: 13 - 21 years">Adolescent: 13 - 21 years</Checkbox>
           </FormGroup>
         </Well>
         <Well>
           <h6>Payment Types Accepted</h6>
-          <FormGroup controlId="payments">
+          <FormGroup controlId="paymentTypes" onChange={e => this.handleMultipleChange(e, 'paymentTypes')}>
             <ControlLabel>Select all payment types accepted<span className="required">*</span></ControlLabel>
-            <Checkbox>Medicaid</Checkbox>
-            <Checkbox>Private insurance</Checkbox>
-            <Checkbox>Private pay</Checkbox>
-            <Checkbox>Part C</Checkbox>
+            <Checkbox value="Medicaid">Medicaid</Checkbox>
+            <Checkbox value="Private insurance">Private insurance</Checkbox>
+            <Checkbox value="Private pay">Private pay</Checkbox>
+            <Checkbox value="Part C">Part C</Checkbox>
           </FormGroup>
         </Well>
         <Well>
           <h6>Experience in Treating Children with These Medical Conditions</h6>
-          <FormGroup controlId="">
+          <FormGroup controlId="medicalConditions" onChange={e => this.handleMultipleChange(e, 'medicalConditions')}>
             <ControlLabel>Select all medical conditions you treat</ControlLabel>
-            <Checkbox>Autism spectrum disorders</Checkbox>
-            <Checkbox>Cancer</Checkbox>
-            <Checkbox>Craniofacial anomalies (including cleft lip and palate)</Checkbox>
-            <Checkbox>Developmental delay</Checkbox>
-            <Checkbox>Gastroesophageal reflux disease (GERD)</Checkbox>
-            <Checkbox>GI issued (short gut syndrome, necrotizing enterocolitis, eosinophilic esophagitis, etc)</Checkbox>
-            <Checkbox>Growth issues (FTT, poor weight gain)</Checkbox>
-            <Checkbox>G-tube placement</Checkbox>
-            <Checkbox>Heart defects</Checkbox>
-            <Checkbox>Medically fragile children</Checkbox>
-            <Checkbox>Neurologic deficits (cerebral palsy, static encephalopathy, hydrocephalus, etc)</Checkbox>
-            <Checkbox>NG/ND tube placement</Checkbox>
-            <Checkbox>Premature infants</Checkbox>
-            <Checkbox>Pulmonary issues (chronic lung disease, reactive airway disease)</Checkbox>
-            <Checkbox>Spinal cord injury</Checkbox>
-            <Checkbox>Tracheotomy/ventilator dependent</Checkbox>
-            <Checkbox>Traumatic brain injury</Checkbox>
+            <Checkbox value="Autism spectrum disorders">Autism spectrum disorders</Checkbox>
+            <Checkbox value="Cancer">Cancer</Checkbox>
+            <Checkbox value="Craniofacial anomalies (including cleft lip and palate)">Craniofacial anomalies (including cleft lip and palate)</Checkbox>
+            <Checkbox value="Developmental delay">Developmental delay</Checkbox>
+            <Checkbox value="Gastroesophageal reflux disease (GERD)">Gastroesophageal reflux disease (GERD)</Checkbox>
+            <Checkbox value="GI issued (short gut syndrome, necrotizing enterocolitis, eosinophilic esophagitis, etc)">GI issued (short gut syndrome, necrotizing enterocolitis, eosinophilic esophagitis, etc)</Checkbox>
+            <Checkbox value="Growth issues (FTT, poor weight gain)">Growth issues (FTT, poor weight gain)</Checkbox>
+            <Checkbox value="G-tube placement">G-tube placement</Checkbox>
+            <Checkbox value="Heart defects">Heart defects</Checkbox>
+            <Checkbox value="Medically fragile children">Medically fragile children</Checkbox>
+            <Checkbox value="Neurologic deficits (cerebral palsy, static encephalopathy, hydrocephalus, etc)">Neurologic deficits (cerebral palsy, static encephalopathy, hydrocephalus, etc)</Checkbox>
+            <Checkbox value=">NG/ND tube placement">NG/ND tube placement</Checkbox>
+            <Checkbox value="Premature infants">Premature infants</Checkbox>
+            <Checkbox value="Pulmonary issues (chronic lung disease, reactive airway disease)">Pulmonary issues (chronic lung disease, reactive airway disease)</Checkbox>
+            <Checkbox value="Spinal cord injury">Spinal cord injury</Checkbox>
+            <Checkbox value="Tracheotomy/ventilator dependent">Tracheotomy/ventilator dependent</Checkbox>
+            <Checkbox value="Traumatic brain injury">Traumatic brain injury</Checkbox>
           </FormGroup>
         </Well>
         <Well>
           <h6>Experience in Treating Children with These Feeding Conditions</h6>
-          <FormGroup controlId="">
+          <FormGroup controlId="feedingConditions" onChange={e => this.handleMultipleChange(e, 'feedingConditions')}>
             <ControlLabel>Select all feeding conditions of children you treat</ControlLabel>
-            <Checkbox>Breastfeeding issues</Checkbox>
-            <Checkbox>Difficulty transitioning to solids</Checkbox>
-            <Checkbox>Non-oral feeders (fed via NG, ND, g-tube, etc)</Checkbox>
-            <Checkbox>Oral aversion</Checkbox>
-            <Checkbox>Oral sensory dysfunction</Checkbox>
-            <Checkbox>Oral dyspraxia/apraxia</Checkbox>
-            <Checkbox>Psychosocial dysfunction related to feeding</Checkbox>
-            <Checkbox>Swallowing difficulty</Checkbox>
-            <Checkbox>Tongue tie</Checkbox>
-
+            <Checkbox value="Breastfeeding issues">Breastfeeding issues</Checkbox>
+            <Checkbox value="Difficulty transitioning to solids">Difficulty transitioning to solids</Checkbox>
+            <Checkbox value="Non-oral feeders (fed via NG, ND, g-tube, etc)">Non-oral feeders (fed via NG, ND, g-tube, etc)</Checkbox>
+            <Checkbox value="Oral aversion">Oral aversion</Checkbox>
+            <Checkbox value="Oral sensory dysfunction">Oral sensory dysfunction</Checkbox>
+            <Checkbox value="Oral dyspraxia/apraxia">Oral dyspraxia/apraxia</Checkbox>
+            <Checkbox value="Psychosocial dysfunction related to feeding">Psychosocial dysfunction related to feeding</Checkbox>
+            <Checkbox value="Swallowing difficulty">Swallowing difficulty</Checkbox>
+            <Checkbox value="Tongue tie">Tongue tie</Checkbox>
           </FormGroup>
         </Well>
         <Well>
           <h6>Feeding Clinical Practice Secialties</h6>
-          <FormGroup controlId="">
+          <FormGroup controlId="practiceSpecialties" onChange={e => this.handleMultipleChange(e, 'practiceSpecialties')}>
             <ControlLabel>Select all practice areas related to feeding that apply</ControlLabel>
-            <Checkbox>Behavioral management</Checkbox>
-            <Checkbox>Blenderized diets</Checkbox>
-            <Checkbox>Breastfeeding management</Checkbox>
-            <Checkbox>clinical feeding and / or swallowing assessment</Checkbox>
-            <Checkbox>Craniosacral therapy</Checkbox>
-            <Checkbox>E stim / Vital stim</Checkbox>
-            <Checkbox>Feeding groups</Checkbox>
-            <Checkbox>Fiberoptic endoscope evaluation of swallowing (FEES)</Checkbox>
-            <Checkbox>Food texture advancement</Checkbox>
-            <Checkbox>Kinesiotaping</Checkbox>
-            <Checkbox>Manual therapy</Checkbox>
-            <Checkbox>Nutritional assessment and management</Checkbox>
-            <Checkbox>Oral motor therapy</Checkbox>
-            <Checkbox>Psychosocial treatment</Checkbox>
-            <Checkbox>Sensory processing related to feeding</Checkbox>
-            <Checkbox>Videofluoroscopic swallowing studies (VFSS) / Modified barium swallows (MBS)</Checkbox>
-            <Checkbox>Weaning from feeding tubes</Checkbox>
+            <Checkbox value="Behavioral management">Behavioral management</Checkbox>
+            <Checkbox value="Blenderized diets">Blenderized diets</Checkbox>
+            <Checkbox value="Breastfeeding management">Breastfeeding management</Checkbox>
+            <Checkbox value="clinical feeding and / or swallowing assessment">clinical feeding and / or swallowing assessment</Checkbox>
+            <Checkbox value="Craniosacral therapy">Craniosacral therapy</Checkbox>
+            <Checkbox value="E stim / Vital stim">E stim / Vital stim</Checkbox>
+            <Checkbox value="Feeding groups">Feeding groups</Checkbox>
+            <Checkbox value="Fiberoptic endoscope evaluation of swallowing (FEES)">Fiberoptic endoscope evaluation of swallowing (FEES)</Checkbox>
+            <Checkbox value="Food texture advancement">Food texture advancement</Checkbox>
+            <Checkbox value="Kinesiotaping">Kinesiotaping</Checkbox>
+            <Checkbox value="Manual therapy">Manual therapy</Checkbox>
+            <Checkbox value="Nutritional assessment and management">Nutritional assessment and management</Checkbox>
+            <Checkbox value="Oral motor therapy">Oral motor therapy</Checkbox>
+            <Checkbox value="Psychosocial treatment">Psychosocial treatment</Checkbox>
+            <Checkbox value="Sensory processing related to feeding">Sensory processing related to feeding</Checkbox>
+            <Checkbox value="Videofluoroscopic swallowing studies (VFSS) / Modified barium swallows (MBS)">Videofluoroscopic swallowing studies (VFSS) / Modified barium swallows (MBS)</Checkbox>
+            <Checkbox value="Weaning from feeding tubes">Weaning from feeding tubes</Checkbox>
           </FormGroup>
         </Well>
         <Well>
           <h6>Years of Experience Related to Pediatric Feeding</h6>
-          <FormGroup controlId="professionalDiscipline">
+          <FormGroup controlId="experience">
             <ControlLabel className="required">*</ControlLabel>
             <ControlLabel>Select one experience category</ControlLabel>
             <Radio

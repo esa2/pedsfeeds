@@ -55,7 +55,6 @@ export default class Signup extends Component {
         newUser
       })
     } catch (error) {
-      console.log(error)
       if (error.code === 'UsernameExistsException') {
         try {
           const resendVerification = await Auth.resendSignUp(this.state.email)

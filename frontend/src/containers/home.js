@@ -6,8 +6,8 @@ import '../styles/home.css'
 
 export default class Home extends Component {
 
-  constructor(props, context) {
-    super(props, context)
+  constructor(props) {
+    super(props)
 
     this.handleShow = this.handleShow.bind(this)
     this.handleClose = this.handleClose.bind(this)

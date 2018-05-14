@@ -1,7 +1,31 @@
 import React, { Component } from 'react'
+import { API } from 'aws-amplify'
 import { ButtonToolbar, Button } from 'react-bootstrap'
 
 export default class Profile extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      isLoading: true
+    }
+  }
+  
+  async componentDidMount() {
+    try {
+      const profile = await this.profile()
+      console.log('getting profile')
+      console.log(profile)
+    } catch (error) {
+      alert(error)
+    }
+    this.setState({ isLoading: false })
+  }
+  
+  profile() {
+    return API.get("peds", "/profile")
+  }
 
   handleNewClick = event => {
     event.preventDefault()
@@ -12,7 +36,6 @@ export default class Profile extends Component {
     return (
       <div>
         <h4 className="header-green-center">Create, Edit or Delete your profile</h4>
-       
         {this.props.isAuthenticated ? (
           <ButtonToolbar>
             <Button bsStyle="primary" bsSize="large" onClick={this.handleNewClick}href="/profile-new">

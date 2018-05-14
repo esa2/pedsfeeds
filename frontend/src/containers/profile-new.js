@@ -9,11 +9,13 @@ export default class ProfileNew extends Component {
     super(props)
 
     this.handleChange = this.handleChange.bind(this)
-    this.handleRadioDisplay = this.handleRadioDisplay.bind(this)
+    this.handleListingDisplay = this.handleListingDisplay.bind(this)
     this.handleDiscipline = this.handleDiscipline.bind(this)
+    this.handleExperience = this.handleExperience.bind(this)
 
     this.state = {
       isLoading: null,
+      approvedListing: false,
       lastName: '',
       firstName: '',
       middleInitial: '',
@@ -41,7 +43,8 @@ export default class ProfileNew extends Component {
       medicalConditions: [],
       feedingConditions: [],
       practiceSpecialties: [],
-      experience: [],
+      experience: '',
+      toc: false
     }
   }
 
@@ -51,7 +54,7 @@ export default class ProfileNew extends Component {
     console.log(this.state)
   }
 
-  handleRadioDisplay() {
+  handleListingDisplay() {
     this.setState({ displayListing: !this.state.displayListing })
   }
 
@@ -59,9 +62,19 @@ export default class ProfileNew extends Component {
     this.setState({ professionalDiscipline: e.target.value })
   }
 
-  handleCheckboxChange = () => {
+  handleExperience(e) {
+    this.setState({ experience: e.target.value })
+  }
+
+  handleLicenseChange = () => {
     this.setState({
       licenseStanding: !this.state.licenseStanding
+    })
+  }
+
+  handleTocChange = () => {
+    this.setState({
+      toc: !this.state.toc
     })
   }
 
@@ -76,12 +89,12 @@ export default class ProfileNew extends Component {
     }   
   }
     
-
   handleSubmit = async e => {
     e.preventDefault()
     this.setState({ isLoading: true })
     try {
       await this.createProfile({
+        approvedListing: this.state.approvedListing,
         lastName: this.state.lastName,
         firstName: this.state.firstName,
         middleInitial: this.state.middleInitial !== '' ? this.state.middleInitial : false,
@@ -106,9 +119,11 @@ export default class ProfileNew extends Component {
         workSetting: this.state.workSetting,
         agesServed: this.state.agesServed,
         paymentTypes: this.state.paymentTypes,
-        medicalConditions: this.setState.medicalConditions,
+        medicalConditions: this.state.medicalConditions,
         feedingConditions: this.state.feedingConditions,
+        practiceSpecialties: this.state.practiceSpecialties,
         experience: this.state.experience,
+        toc: this.state.toc
 
       })
       this.props.history.push('/profile')
@@ -170,12 +185,12 @@ export default class ProfileNew extends Component {
             <Radio
               defaultChecked
               name="radioDisplay"
-              onChange={this.handleRadioDisplay}>
+              onChange={this.handleListingDisplay}>
               No thanks please keep it private
             </Radio>{' '}
             <Radio
               name="radioDisplay"
-              onChange={this.handleRadioDisplay}>
+              onChange={this.handleListingDisplay}>
               Yes display my profile
             </Radio>{' '}
           </FormGroup>
@@ -285,7 +300,7 @@ export default class ProfileNew extends Component {
               <ControlLabel className="required">*</ControlLabel>
               <ControlLabel>Check standing</ControlLabel>
               <Checkbox
-                onChange={this.handleCheckboxChange}>
+                onChange={this.handleLicenseChange}>
               I am in good standing with the state and national liscensing or certification bodies required for my profession
               </Checkbox>
             </Well>
@@ -578,6 +593,7 @@ export default class ProfileNew extends Component {
             <Radio
               name="radioExperience"
               value="0 - 5 years"
+              required
               onChange={this.handleExperience}>
               0 - 5 years
             </Radio>{' '}
@@ -597,7 +613,6 @@ export default class ProfileNew extends Component {
           <FormGroup controlId="toc">
           <ControlLabel>Terms and Conditions<span className="required">*</span></ControlLabel>
           <Checkbox
-              checked={this.state.toc}
               onChange={this.handleTocChange}>
               I have read the terms and conditions and certify that the above data is accurate and true and that I have liability insurance. I understand that PedsFeeds.com is not liable for any consequences resulting from my feeding practice.
               </Checkbox>

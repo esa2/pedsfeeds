@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import { API } from 'aws-amplify'
+import { s3Upload } from '../lib/aws-lib'
 import { Form, FormGroup, FormControl, ControlLabel, Radio, Checkbox, Well } from 'react-bootstrap'
 import LoaderButton from '../components/loader-button'
+import Config from '../amplify-config'
 import '../styles/profile-new.css'
 
 export default class ProfileNew extends Component {
   constructor(props) {
     super(props)
 
+    this.file = null
     this.handleChange = this.handleChange.bind(this)
     this.handleListingDisplay = this.handleListingDisplay.bind(this)
     this.handleDiscipline = this.handleDiscipline.bind(this)
@@ -86,12 +89,27 @@ export default class ProfileNew extends Component {
         if (~index) updateState.splice(index, 1)
     }   
   }
-    
+
+  handleFileChange = e => {
+    this.file = e.target.files[0]
+  }
+
   handleSubmit = async e => {
     e.preventDefault()
+    if (this.file && this.file.size > Config.MAX_ATTACHMENT_SIZE) {
+      alert("Your image file must be smaller than 1MB")
+      return
+    }
+
     this.setState({ isLoading: true })
+
     try {
+      const attachment = this.file
+        ? await s3Upload(this.file)
+        : null
+
       await this.createProfile({
+        attachment,
         approvedListing: this.state.approvedListing,
         lastName: this.state.lastName,
         firstName: this.state.firstName,
@@ -614,6 +632,12 @@ export default class ProfileNew extends Component {
               onChange={this.handleTocChange}>
               I have read the terms and conditions and certify that the above data is accurate and true and that I have liability insurance. I understand that PedsFeeds.com is not liable for any consequences resulting from my feeding practice.
               </Checkbox>
+            </FormGroup>
+          </Well>
+          <Well>
+            <FormGroup controlId="file">
+              <ControlLabel>Attach a photo</ControlLabel>
+              <FormControl onChange={this.handleFileChange} type="file" />
             </FormGroup>
           </Well>
         <LoaderButton

@@ -88,14 +88,29 @@ export default class Directory extends Component {
       return [{}].concat(discipline).map((ele, i) =>
         (i !== 0)
           ?
-          <ListGroupItem
-              key={i}
-              header={`${ele.lastName}, ${ele.firstName}`}
-            >
-            Ages Served: {ele.agesServed}
+          <div key={i}>
+            <ListGroupItem>
+              <p>{ele.lastName}, {ele.firstName}</p>
             </ListGroupItem>
-        :
-        null 
+            <br />
+
+            <ListGroupItem>
+              <p>Ages Served:</p>
+              {ele.agesServed.map((ele, i) =>
+                <p key={i}>{ele}</p>
+              )}
+            </ListGroupItem>
+            <br />
+
+            <ListGroupItem>
+              <h1>Practice Specialties:</h1>
+              {ele.practiceSpecialties.map((ele, i) =>
+                <p key={i}>{ele}</p>
+              )}
+            </ListGroupItem>
+          </div>
+          :
+          null 
     )
   }
 

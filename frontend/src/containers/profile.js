@@ -36,7 +36,8 @@ export default class Profile extends Component {
     return (
       <div>
         <h4 className="header-green-center">Create, Edit or Delete your profile</h4>
-        {this.props.isAuthenticated ? (
+        {this.props.isAuthenticated && !this.state.isLoading ? (
+          <div>
           <ButtonToolbar>
             <Button bsStyle="primary" bsSize="large" onClick={this.handleNewClick}href="/profile-new">
               Create Profile
@@ -48,6 +49,8 @@ export default class Profile extends Component {
               Delete Profile
             </Button>
           </ButtonToolbar>
+          </div>
+           
           ) : (
             <p>You must be logged in to access your profile</p>
           )}

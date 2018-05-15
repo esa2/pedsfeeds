@@ -1,20 +1,37 @@
 import React, { Component } from 'react'
 import { API } from 'aws-amplify'
-import { ButtonToolbar, Button } from 'react-bootstrap'
+import { ListGroup, ListGroupItem, PageHeader, ButtonToolbar, Button } from 'react-bootstrap'
 
 export default class Directory extends Component {
-
+  
   constructor(props) {
     super(props)
 
     this.state = {
-      isLoading: true
+      isLoading: true,
+      show: false,
+      Occupational: false,
+      Behavioral: false,
+      Physical: false,
+      Speech: false,
     }
+  }
+
+  handleClick = e => {
+    e.preventDefault()
+    let discipline = []
+    this.state.allProfiles.map(ele => {
+      if (ele.professionalDiscipline
+        === e.target.value) discipline.push(ele)
+    })
+    this.setState({ show: true, discipline })
+    console.log(this.state.allProfiles)
   }
 
   async componentDidMount() {
     try {
-      const profiles = await this.directory()
+      const allProfiles = await this.directory()
+      this.setState({ allProfiles })
     } catch (error) {
       alert(error)
     }
@@ -25,7 +42,7 @@ export default class Directory extends Component {
     return API.get("peds", "/all-profiles")
   }
 
-  render() {
+  renderButtons() {
     return (
       <div>
         <h4 className="header-green-center">Provider Directory</h4>
@@ -35,10 +52,10 @@ export default class Directory extends Component {
         </p>
         <p>Check back soon.</p>
         <ButtonToolbar>
-          <Button bsStyle="primary" bsSize="large">
+          <Button bsStyle="primary" bsSize="large" onClick={this.handleClick} value="Speech Language Pathologist">
             Medical Care Providers
           </Button>
-          <Button bsStyle="primary" bsSize="large">
+          <Button bsStyle="primary" bsSize="large" onClick={this.handleClick} value="Occupational Therapist">
             Feeding Therapists, OT/PT, SLP
           </Button>
           <Button bsStyle="primary" bsSize="large">
@@ -48,6 +65,45 @@ export default class Directory extends Component {
             Dieticians, Registered
           </Button>
         </ButtonToolbar>
+      </div>
+    )
+  }
+
+  renderProviders() {
+    const show = this.state.show
+    return (
+      show ?
+      <div>
+        <PageHeader>Providers</PageHeader>
+        <ListGroup>
+          {!this.state.isLoading && this.renderProviderList(this.state.discipline)}
+        </ListGroup>
+      </div>
+      :
+      null
+    )
+  }
+
+  renderProviderList(discipline) {
+      return [{}].concat(discipline).map((ele, i) =>
+        (i !== 0)
+          ?
+          <ListGroupItem
+              key={i}
+              header={`${ele.lastName}, ${ele.firstName}`}
+            >
+            Ages Served: {ele.agesServed}
+            </ListGroupItem>
+        :
+        null 
+    )
+  }
+
+  render() {
+    return (
+      <div>
+        {this.renderButtons()}
+        {this.renderProviders()}
       </div>
     )
   }

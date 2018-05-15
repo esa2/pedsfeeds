@@ -31,7 +31,6 @@ export default class Signin extends Component {
     this.setState({ isLoading: true })
     try {
       await Auth.signIn(this.state.email, this.state.password)
-      .then(user => console.log(user))
       this.props.userHasAuthenticated(true)
       this.props.history.push('/profile')
     } catch (error) {

@@ -19,15 +19,14 @@ export default class ProfileNew extends Component {
     this.state = {
       isLoading: null,
       approvedListing: false,
+      listingTitle: '',
       lastName: '',
       firstName: '',
-      middleInitial: '',
       displayListing: false,
       professionalDiscipline: '',
       licenseState: '',
       licenseStanding: false,
       licenseNumber: '',
-      taxId: '',
       empOrganization: '',
       empUrl: '',
       workAddress1: '',
@@ -111,15 +110,14 @@ export default class ProfileNew extends Component {
       await this.createProfile({
         attachment,
         approvedListing: this.state.approvedListing,
+        listingTitle: this.state.listingTitle,
         lastName: this.state.lastName,
         firstName: this.state.firstName,
-        middleInitial: this.state.middleInitial !== '' ? this.state.middleInitial : false,
         displayListing: this.state.displayListing,
         professionalDiscipline: this.state.professionalDiscipline,
         licenseState: this.state.licenseState,
         licenseStanding: this.state.licenseStanding,
         licenseNumber: this.state.licenseNumber,
-        taxId: this.state.taxId !== '' ? this.state.taxId : false,
         empOrganization: this.state.empOrganization,
         empUrl: this.state.empUrl !== '' ? this.state.empUrl : false,
         workAddress1: this.state.workAddress1,
@@ -161,12 +159,25 @@ export default class ProfileNew extends Component {
         <p>Required fields<span className="required">*</span></p>
         <Form onSubmit={this.handleSubmit}>
           <Well>
+            <h6>Listing Title</h6>
+            <FormGroup controlId="lastName">
+              <ControlLabel className="required">*</ControlLabel>
+              <ControlLabel>Your name and post-nominal initials</ControlLabel>
+              <FormControl
+                autoFocus
+                type="text"
+                value={this.state.listingTitle}
+                required
+                onChange={this.handleChange}
+              />
+            </FormGroup>
+            </Well>
+          <Well>
           <h6>Name</h6>
           <FormGroup controlId="lastName">
             <ControlLabel className="required">*</ControlLabel>
             <ControlLabel>Last Name</ControlLabel>
             <FormControl
-              autoFocus
               type="text"
               value={this.state.lastName}
               required
@@ -180,15 +191,6 @@ export default class ProfileNew extends Component {
               type="text"
               value={this.state.firstName}
               required
-              onChange={this.handleChange}
-            />
-          </FormGroup>
-          <FormGroup controlId="middleInitial">
-            <ControlLabel>Middle Initial</ControlLabel>
-            <FormControl
-              type="text"
-              value={this.state.middleInitial}
-              maxLength = "1"
               onChange={this.handleChange}
             />
           </FormGroup>
@@ -321,14 +323,6 @@ export default class ProfileNew extends Component {
               </Checkbox>
             </Well>
           </FormGroup>
-          <FormGroup controlId="taxId">
-            <ControlLabel>Tax ID</ControlLabel>
-            <FormControl
-              type="text"
-              value={this.state.taxId}
-              onChange={this.handleChange}
-            />
-          </FormGroup>
        </Well>
        <Well>
         <h6>Place of Employment</h6>
@@ -342,7 +336,7 @@ export default class ProfileNew extends Component {
           />
         </FormGroup>
         <FormGroup controlId="empUrl">
-          <ControlLabel>Employers Website</ControlLabel>
+          <ControlLabel>Employer's Website</ControlLabel>
           <FormControl
             type="text"
             value={this.state.empUrl}
@@ -441,7 +435,7 @@ export default class ProfileNew extends Component {
           </FormGroup>
           <FormGroup controlId="workZip">
           <ControlLabel className="required">*</ControlLabel>
-            <ControlLabel>Zip</ControlLabel>
+            <ControlLabel>Zip Code</ControlLabel>
             <FormControl
               type="text"
               value={this.state.workZip}
@@ -468,7 +462,7 @@ export default class ProfileNew extends Component {
             />
           </FormGroup>
           <FormGroup controlId="workEmail">
-            <ControlLabel>Email - complete this field if you wish families or providers to contact you via email</ControlLabel>
+            <ControlLabel>Email - Complete this optional field if you wish families or providers to contact you via email. This email will display on your public listing.</ControlLabel>
             <FormControl
               type="text"
               value={this.state.workEmail}
@@ -627,6 +621,7 @@ export default class ProfileNew extends Component {
           </FormGroup>
         </Well>
         <Well>
+          <h6>Agreements</h6>
           <FormGroup controlId="toc">
           <ControlLabel>Terms and Conditions<span className="required">*</span></ControlLabel>
           <Checkbox
@@ -647,7 +642,7 @@ export default class ProfileNew extends Component {
             bsSize="large"
             type="submit"
             isLoading={this.state.isLoading}
-            text="Create"
+            text="Submit"
             loadingText="Creating…"
           />
         </Form>

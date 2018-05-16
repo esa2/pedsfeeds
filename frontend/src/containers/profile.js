@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { API } from 'aws-amplify'
-import { ButtonToolbar, Button } from 'react-bootstrap'
-
+import { ButtonToolbar, Button, FormGroup, ControlLabel, Radio, Well } from 'react-bootstrap'
 export default class Profile extends Component {
 
   constructor(props) {
@@ -40,17 +39,43 @@ export default class Profile extends Component {
           <div>
           <ButtonToolbar>
             <Button bsStyle="primary" bsSize="large" onClick={this.handleNewClick}href="/profile-new">
-              Create Profile
+              Submit a new listing
             </Button>
             <Button bsStyle="primary" bsSize="large">
-              Edit Profile
-            </Button>
-            <Button bsStyle="primary" bsSize="large">
-              Delete Profile
+              Manage my listings
             </Button>
           </ButtonToolbar>
+
+          <Well>
+          <h6>Listing Category</h6>
+          <FormGroup controlId="professionalDiscipline">
+            <ControlLabel className="required">*</ControlLabel>
+            <ControlLabel>Select one Category</ControlLabel>
+            <Radio
+              name="radioDiscipline"
+              value="Occupational Therapist"
+              required
+              onChange={this.handleDiscipline}>
+              Counselor / Mental Health Professionals
+            </Radio>{' '}
+            <Radio name="radioDiscipline"
+              value="Behavioral / Clinical Child Psychologist"
+              onChange={this.handleDiscipline}>
+              Dietitians, Registered
+            </Radio>{' '}
+            <Radio name="radioDiscipline"
+              value="Physical Therapist"
+              onChange={this.handleDiscipline}>
+              Feeding Therapists (Occupational Therapists, Physical Therapists, Speech Language Pathologists)
+            </Radio>{' '}
+            <Radio name="radioDiscipline"
+              value="Speech Language Pathologist"
+              onChange={this.handleDiscipline}>
+              Medical Care Providers
+            </Radio>{' '}
+          </FormGroup>
+        </Well>
           </div>
-           
           ) : (
             <p>You must be logged in to access your profile</p>
           )}

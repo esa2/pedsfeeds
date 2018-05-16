@@ -452,7 +452,8 @@ export default class ProfileNew extends Component {
           <ControlLabel className="required">*</ControlLabel>
             <ControlLabel>Appointment Scheduling Phone Number</ControlLabel>
             <FormControl
-              type="phone"
+              type="text"
+              pattern="[0-9]*"
               value={this.state.workPhone}
               onChange={this.handleChange}
             />

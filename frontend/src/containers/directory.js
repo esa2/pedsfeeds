@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { API } from 'aws-amplify'
-import { ListGroup, ListGroupItem, PageHeader, ButtonToolbar, Button } from 'react-bootstrap'
+import { ListGroup, ListGroupItem, PageHeader, ButtonToolbar, Button, Media } from 'react-bootstrap'
+import '../styles/directory.css'
 
 export default class Directory extends Component {
   
@@ -26,6 +27,10 @@ export default class Directory extends Component {
     })
     this.setState({ show: true, discipline })
     console.log(this.state.allProfiles)
+  }
+
+  handleProviderClick= e => {
+    console.log('provider click')
   }
 
   async componentDidMount() {
@@ -85,16 +90,26 @@ export default class Directory extends Component {
   }
 
   renderProviderList(discipline) {
-      return [{}].concat(discipline).map((ele, i) =>
-        (i !== 0)
-          ?
-          <div key={i}>
-            <ListGroupItem>
-              <p>{ele.lastName}, {ele.firstName}</p>
-            </ListGroupItem>
-            <br />
+    return [{}].concat(discipline).map((ele, i) =>
+      (i !== 0)
+      ?
+      <div key={i}>
+        <ListGroupItem onClick={this.handleProviderClick}>
+          <Media>
+            <Media.Body>
+              <Media.Heading>{ele.lastName}, {ele.firstName}</Media.Heading>
+              <p className="group">{ele.professionalDiscipline}</p>
+              <p className="group">{ele.workCity}, {ele.workState}</p>
+              <p className="group">{ele.workPhone}</p>
+            </Media.Body>
+            <Media.Right>
+              <img width={70} height={80} src="https://s3-us-west-2.amazonaws.com/pedsfeeds/images/Bio/maria.png" alt="thumbnail" />
+            </Media.Right>
+          </Media>       
+        </ListGroupItem>
+        <br />
 
-            <ListGroupItem>
+            {/* <ListGroupItem>
               <p>Ages Served:</p>
               {ele.agesServed.map((ele, i) =>
                 <p key={i}>{ele}</p>
@@ -107,7 +122,7 @@ export default class Directory extends Component {
               {ele.practiceSpecialties.map((ele, i) =>
                 <p key={i}>{ele}</p>
               )}
-            </ListGroupItem>
+            </ListGroupItem> */}
           </div>
           :
           null 

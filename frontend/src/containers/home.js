@@ -9,7 +9,6 @@ export default class Home extends Component {
   constructor(props) {
     super(props)
 
-    this.handleShow = this.handleShow.bind(this)
     this.handleClose = this.handleClose.bind(this)
 
     this.state = {
@@ -45,15 +44,11 @@ export default class Home extends Component {
     this.setState({ show: false })
   }
 
-  handleShow() {
-    this.setState({ show: true })
-  }
-
   handleCalendarClick = event => {
     event.preventDefault()
     const currentEntry = event.currentTarget.getAttribute("data")
     this.handleGet(currentEntry)
-    this.handleShow()
+    this.setState({ show: true })
   }
 
   handleNewClick = event => {
@@ -154,8 +149,7 @@ export default class Home extends Component {
     return (
       <div>
         <div>
-          <Lander>
-          </Lander>
+          <Lander></Lander>
           {this.renderCalendar()}
           {this.renderModal()}
         </div>

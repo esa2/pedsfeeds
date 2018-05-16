@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { API } from 'aws-amplify'
 import { ListGroup, ListGroupItem, PageHeader, ButtonToolbar, Button, Media } from 'react-bootstrap'
+import ProviderDetail from './provider-detail'
+
 import '../styles/directory.css'
 
 export default class Directory extends Component {
@@ -11,6 +13,7 @@ export default class Directory extends Component {
     this.state = {
       isLoading: true,
       show: false,
+      showProvider: false,
       Occupational: false,
       Behavioral: false,
       Physical: false,
@@ -29,8 +32,9 @@ export default class Directory extends Component {
     console.log(this.state.allProfiles)
   }
 
-  handleProviderClick= e => {
-    console.log('provider click')
+  handleProviderClick= (e, currentProvider) => {
+    e.preventDefault()
+    this.setState({ showProvider: true, show: false,  currentProvider})
   }
 
   async componentDidMount() {
@@ -94,7 +98,7 @@ export default class Directory extends Component {
       (i !== 0)
       ?
       <div key={i}>
-        <ListGroupItem onClick={this.handleProviderClick}>
+        <ListGroupItem onClick={e => this.handleProviderClick(e, ele)}>
           <Media>
             <Media.Body>
               <Media.Heading>{ele.lastName}, {ele.firstName}</Media.Heading>
@@ -103,7 +107,7 @@ export default class Directory extends Component {
               <p className="group">{ele.workPhone}</p>
             </Media.Body>
             <Media.Right>
-              <img width={70} height={80} src="https://s3-us-west-2.amazonaws.com/pedsfeeds/images/Bio/maria.png" alt="thumbnail" />
+              <img width={70} height={80} src={`https://s3-us-west-2.amazonaws.com/peds-app-uploads/private/us-west-2%3A3a9b35a8-34d4-4c46-a2b1-5529a933337e/${ele.attachment}`} alt="thumbnail" />
             </Media.Right>
           </Media>       
         </ListGroupItem>
@@ -129,11 +133,24 @@ export default class Directory extends Component {
     )
   }
 
+  renderSelectedProvider(current) {
+    const showProvider = this.state.showProvider
+    return (
+      showProvider ?
+      <div>
+        <ProviderDetail value={current}></ProviderDetail>
+      </div>
+      :
+      null
+    )
+  }
+
   render() {
     return (
       <div>
         {this.renderButtons()}
         {this.renderProviders()}
+        {this.renderSelectedProvider(this.state.currentProvider)}
       </div>
     )
   }

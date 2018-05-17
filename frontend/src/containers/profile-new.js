@@ -51,6 +51,8 @@ export default class ProfileNew extends Component {
   }
 
   handleChange(e) {
+    console.log('state')
+    console.log(this.state)
     this.setState({ [e.target.id]: e.target.value })
   }
 
@@ -110,6 +112,7 @@ export default class ProfileNew extends Component {
       await this.createProfile({
         attachment,
         approvedListing: this.state.approvedListing,
+        listingCategory: this.props.value,
         listingTitle: this.state.listingTitle,
         lastName: this.state.lastName,
         firstName: this.state.firstName,
@@ -140,7 +143,7 @@ export default class ProfileNew extends Component {
         toc: this.state.toc
 
       })
-      this.props.history.push('/profile')
+      // this.props.history.push('/profile')
     } catch (error) {
       alert(error)
       this.setState({ isLoading: false })
@@ -148,7 +151,7 @@ export default class ProfileNew extends Component {
   }
 
   createProfile(profile) {
-    return API.post('peds', '/profile-new', {
+    return API.post('peds', '/profile', {
       body: profile
     })
   }
@@ -216,7 +219,8 @@ export default class ProfileNew extends Component {
             </Radio>{' '}
           </FormGroup>
         </Well>
-        {listingCategory === "Feeding Therapist" ?
+        {listingCategory === "Feeding Therapist"
+        ?
         <Well>
           <h6>Professional Discipline</h6>
           <FormGroup controlId="professionalDiscipline">

@@ -13,22 +13,18 @@ export default class Directory extends Component {
     this.state = {
       isLoading: true,
       show: false,
-      showProvider: false,
-      Occupational: false,
-      Behavioral: false,
-      Physical: false,
-      Speech: false,
+      showProvider: false
     }
   }
 
-  handleClick = e => {
+  handleCategoryClick = e => {
     e.preventDefault()
-    let discipline = []
+    let category = []
     this.state.allProfiles.map(ele => {
-      if (ele.professionalDiscipline
-        === e.target.value) discipline.push(ele)
+      if (ele.listingCategory
+        === e.target.value) category.push(ele)
     })
-    this.setState({ show: true, discipline })
+    this.setState({ show: true, category })
     console.log(this.state.allProfiles)
   }
 
@@ -61,18 +57,21 @@ export default class Directory extends Component {
         </p>
         <p>Check back soon.</p>
         <ButtonToolbar>
-          <Button bsStyle="primary" bsSize="large" onClick={this.handleClick} value="Speech Language Pathologist">
-            Medical Care Providers
-          </Button>
-          <Button bsStyle="primary" bsSize="large" onClick={this.handleClick} value="Occupational Therapist">
-            Feeding Therapists, OT/PT, SLP
-          </Button>
-          <Button bsStyle="primary" bsSize="large">
+          <Button bsStyle="primary" bsSize="large" onClick={this.handleCategoryClick} value="Counselor / Mental Health">
             Counselor / Mental Health Professionals
           </Button>
-          <Button bsStyle="primary" bsSize="large">
+          <Button bsStyle="primary" bsSize="large" onClick={this.handleCategoryClick} value="Dietitian">
             Dieticians, Registered
           </Button>
+          <Button bsStyle="primary" bsSize="large" onClick={this.handleCategoryClick} value="Feeding Therapist">
+            Feeding Therapists, OT/PT, SLP
+          </Button>
+          <Button bsStyle="primary" bsSize="large" onClick={this.handleCategoryClick} value="Medical Care Provider">
+            Medical Care Providers
+          </Button>
+          
+          
+          
         </ButtonToolbar>
       </div>
     )
@@ -85,7 +84,7 @@ export default class Directory extends Component {
       <div>
         <PageHeader>Providers</PageHeader>
         <ListGroup>
-          {!this.state.isLoading && this.renderProviderList(this.state.discipline)}
+          {!this.state.isLoading && this.renderProviderList(this.state.category)}
         </ListGroup>
       </div>
       :
@@ -93,8 +92,8 @@ export default class Directory extends Component {
     )
   }
 
-  renderProviderList(discipline) {
-    return [{}].concat(discipline).map((ele, i) =>
+  renderProviderList(category) {
+    return [{}].concat(category).map((ele, i) =>
       (i !== 0)
       ?
       <div key={i}>
@@ -106,9 +105,9 @@ export default class Directory extends Component {
               <p className="group">{ele.workCity}, {ele.workState}</p>
               <p className="group">{ele.workPhone}</p>
             </Media.Body>
-            <Media.Right>
+            {/* <Media.Right>
               <img width={70} height={80} src={`https://s3-us-west-2.amazonaws.com/peds-app-uploads/private/us-west-2%3A3a9b35a8-34d4-4c46-a2b1-5529a933337e/${ele.attachment}`} alt="thumbnail" />
-            </Media.Right>
+            </Media.Right> */}
           </Media>       
         </ListGroupItem>
         <br />

@@ -12,10 +12,7 @@ export default class Profile extends Component {
     this.state = {
       isLoading: true,
       showCategories: false,
-      counselor: false,
-      dietician: false,
-      feeding: false,
-      medical: false,
+      listingCategory: '',
       showNewListing: false
     }
   }
@@ -41,20 +38,7 @@ export default class Profile extends Component {
   }
 
   handleCategory(e) {
-    switch(e.target.value) {
-      case 'Counselor / Mental Health':
-        this.setState({ counselor: true })
-      break
-      case 'Dietitian':
-        this.setState({ dietician: true })
-      break
-      case 'Feeding Therapist':
-        this.setState({ feeding: true, showNewListing: true })
-      break
-        case 'Medical Care Provider':
-        this.setState({ medical: true })
-      break
-    }
+    this.setState({ listingCategory: e.target.value, showNewListing: true })
   }
 
   renderCategories() {
@@ -119,7 +103,7 @@ export default class Profile extends Component {
           {this.renderCategories()} {
             showNewListing
             ?
-            <ProfileNew></ProfileNew>
+            <ProfileNew value={this.state.listingCategory}></ProfileNew>
             :
             null}
           </div>

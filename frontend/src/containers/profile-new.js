@@ -154,13 +154,15 @@ export default class ProfileNew extends Component {
   }
 
   render() {
+    const listingCategory = this.props.value
     return (
       <div>
+        <h6 className="header-green-center">{this.props.value} listing</h6>
         <p>Required fields<span className="required">*</span></p>
         <Form onSubmit={this.handleSubmit}>
           <Well>
             <h6>Listing Title</h6>
-            <FormGroup controlId="lastName">
+            <FormGroup controlId="listingTitle">
               <ControlLabel className="required">*</ControlLabel>
               <ControlLabel>Your name and post-nominal initials</ControlLabel>
               <FormControl
@@ -168,6 +170,7 @@ export default class ProfileNew extends Component {
                 type="text"
                 value={this.state.listingTitle}
                 required
+                placeholder="e.g. Last, First, XX"
                 onChange={this.handleChange}
               />
             </FormGroup>
@@ -213,6 +216,7 @@ export default class ProfileNew extends Component {
             </Radio>{' '}
           </FormGroup>
         </Well>
+        {listingCategory === "Feeding Therapist" ?
         <Well>
           <h6>Professional Discipline</h6>
           <FormGroup controlId="professionalDiscipline">
@@ -242,6 +246,8 @@ export default class ProfileNew extends Component {
             </Radio>{' '}
           </FormGroup>
         </Well>
+        :
+        null }
         <Well>
           <h6>Licensure</h6>
           <FormGroup controlId="licenseState">

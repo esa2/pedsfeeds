@@ -67,7 +67,6 @@ class App extends Component {
                   <MenuItem divider />
                   <MenuItem header>PROVIDERS</MenuItem>
                   <MenuItem href="join">How to Join</MenuItem>
-                  <MenuItem href="profile">Your Profile</MenuItem>
                   <MenuItem href="providers">Find Resources</MenuItem>
                   <MenuItem divider />
                   <MenuItem header>OTHER</MenuItem>
@@ -81,7 +80,12 @@ class App extends Component {
                 </NavDropdown>
                 <NavItem href="/">Home</NavItem>
                 {this.state.isAuthenticated ? (
+                  <Fragment>
+                    <LinkContainer to="/profile">
+                      <NavItem>Your Listings</NavItem>
+                    </LinkContainer>
                   <NavItem onClick={this.handleLogout}>Logout</NavItem>
+                  </Fragment>
                 ) : (
                   <Fragment>
                     <LinkContainer to="/signin">

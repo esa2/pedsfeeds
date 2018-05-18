@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { withRouter } from 'react-router-dom'
-import { LinkContainer } from "react-router-bootstrap"
+import { LinkContainer } from 'react-router-bootstrap'
 import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
 import { Auth } from 'aws-amplify'
 import Routes from './routes'
@@ -12,7 +12,7 @@ class App extends Component {
 
     this.state = {
       isAuthenticated: false,
-      isAuthenticating: true
+      isAuthenticating: true,
     }
   }
 
@@ -22,7 +22,7 @@ class App extends Component {
         this.userHasAuthenticated(true)
       }
     } catch (e) {
-      if (e !== "No current user") {
+      if (e !== 'No current user') {
         alert(e)
       }
     }
@@ -36,7 +36,7 @@ class App extends Component {
   handleLogout = async event => {
     await Auth.signOut()
     this.userHasAuthenticated(false)
-    this.props.history.push("/signin")
+    this.props.history.push('/signin')
   }
 
   render() {
@@ -50,12 +50,12 @@ class App extends Component {
         <div>
           <Navbar fluid collapseOnSelect>
             <Navbar.Header>
-                <a href="/">
-                  <img
-                    src="https://s3-us-west-2.amazonaws.com/pedsfeeds/images/logo.png"
-                    alt="pedsfeeds"
-                  />
-                </a>
+              <a href="/">
+                <img
+                  src="https://s3-us-west-2.amazonaws.com/pedsfeeds/images/logo.png"
+                  alt="pedsfeeds"
+                />
+              </a>
               <Navbar.Toggle />
             </Navbar.Header>
             <Navbar.Collapse>
@@ -84,7 +84,7 @@ class App extends Component {
                     <LinkContainer to="/profile">
                       <NavItem>Your Listings</NavItem>
                     </LinkContainer>
-                  <NavItem onClick={this.handleLogout}>Logout</NavItem>
+                    <NavItem onClick={this.handleLogout}>Logout</NavItem>
                   </Fragment>
                 ) : (
                   <Fragment>
@@ -100,7 +100,7 @@ class App extends Component {
             </Navbar.Collapse>
           </Navbar>
           <div className="wrapper">
-          <Routes childProps={childProps} />
+            <Routes childProps={childProps} />
           </div>
         </div>
       )

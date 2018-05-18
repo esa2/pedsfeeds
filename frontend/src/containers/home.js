@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 import { API } from 'aws-amplify'
-import { PageHeader, ListGroup, ListGroupItem, Button, Modal } from 'react-bootstrap'
+import {
+  PageHeader,
+  ListGroup,
+  ListGroupItem,
+  Button,
+  Modal,
+} from 'react-bootstrap'
 import Lander from './lander'
 import '../styles/home.css'
 
 export default class Home extends Component {
-
   constructor(props) {
     super(props)
 
@@ -13,21 +18,21 @@ export default class Home extends Component {
 
     this.state = {
       isLoading: true,
-      show: false
+      show: false,
     }
   }
 
   async componentDidMount() {
     try {
       const calendarEntries = await this.calendar()
-      calendarEntries.sort(function(a,b) { 
-        return new Date(a.startDate) - new Date(b.startDate) 
-    })
+      calendarEntries.sort(function(a, b) {
+        return new Date(a.startDate) - new Date(b.startDate)
+      })
       const today = new Date()
       let entries = []
       for (let i = 0; i < calendarEntries.length; i++) {
         const entryDate = new Date(calendarEntries[i].startDate + ' 23:59')
-        if (entryDate >= today ) entries.push(calendarEntries[i])
+        if (entryDate >= today) entries.push(calendarEntries[i])
       }
       this.setState({ entries })
     } catch (error) {
@@ -35,9 +40,9 @@ export default class Home extends Component {
     }
     this.setState({ isLoading: false })
   }
-  
+
   calendar() {
-    return API.get("peds", "/calendar")
+    return API.get('peds', '/calendar')
   }
 
   handleClose() {
@@ -46,19 +51,19 @@ export default class Home extends Component {
 
   handleCalendarClick = event => {
     event.preventDefault()
-    const currentEntry = event.currentTarget.getAttribute("data")
+    const currentEntry = event.currentTarget.getAttribute('data')
     this.handleGet(currentEntry)
     this.setState({ show: true })
   }
 
   handleNewClick = event => {
     event.preventDefault()
-    this.props.history.push(event.currentTarget.getAttribute("href"))
+    this.props.history.push(event.currentTarget.getAttribute('href'))
   }
-  
+
   async handleGet(currentEntry) {
     this.setState({ isLoading: true })
-  
+
     try {
       const entry = await this.getCalendar(currentEntry)
       this.setState({ ...entry })
@@ -73,32 +78,32 @@ export default class Home extends Component {
   }
 
   renderCalendarList(entries) {
-    return [{}].concat(entries).map((entry, i) =>
-        (i !== 0)
-          ?  <ListGroupItem
-              key={entry.eventId}
-              data={entry.eventId}
-              onClick={this.handleCalendarClick}
-              
-              header={`${entry.title}`}
-        
-            >{entry.startDate}<br />
+    return [{}].concat(entries).map(
+      (entry, i) =>
+        i !== 0 ? (
+          <ListGroupItem
+            key={entry.eventId}
+            data={entry.eventId}
+            onClick={this.handleCalendarClick}
+            header={`${entry.title}`}
+          >
+            {entry.startDate}
+            <br />
             {entry.theLocation}
-            </ListGroupItem>
-          :
-            null
-          // : <ListGroupItem
-          //     key="new"
-          //     href="/calendar/new"
-          //     onClick={this.handleNewClick}
-          //   >
-          //     <h4>
-          //       <b>{"\uFF0B"}</b> Create a new event
-          //     </h4>
-          //   </ListGroupItem>
+          </ListGroupItem>
+        ) : null
+      // : <ListGroupItem
+      //     key="new"
+      //     href="/calendar/new"
+      //     onClick={this.handleNewClick}
+      //   >
+      //     <h4>
+      //       <b>{"\uFF0B"}</b> Create a new event
+      //     </h4>
+      //   </ListGroupItem>
     )
   }
-  
+
   renderCalendar() {
     return (
       <div>
@@ -114,33 +119,37 @@ export default class Home extends Component {
     const show = this.state.show
     return (
       <div>
-        {
-        show
-        ? <Modal show={this.state.show} onHide={this.handleClose}>
+        {show ? (
+          <Modal show={this.state.show} onHide={this.handleClose}>
             <Modal.Header closeButton>
-              <Modal.Title>The continuing education courses and workshops posted on this website do not reflect endorsement of the course content by the Pediatric Feeding Association.</Modal.Title>
+              <Modal.Title>
+                The continuing education courses and workshops posted on this
+                website do not reflect endorsement of the course content by the
+                Pediatric Feeding Association.
+              </Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <p className="green-modal-title">{this.state.title}</p>
               <p>Starts: {this.state.startDate}</p>
               <p>{this.state.endDate}</p>
-              <p>From: {this.state.startTime} To: {this.state.endTime}</p>
-              <hr></hr>
-              <div className="pre-wrap">
-                {this.state.description}
-              </div>
-              <hr></hr>
+              <p>
+                From: {this.state.startTime} To: {this.state.endTime}
+              </p>
+              <hr />
+              <div className="pre-wrap">{this.state.description}</div>
+              <hr />
               {this.state.contact}
               <p>{this.state.contact}</p>
               <p>{this.state.theLocation}</p>
-              <p><a href={this.state.urlName}>{this.state.urlName}</a></p>
+              <p>
+                <a href={this.state.urlName}>{this.state.urlName}</a>
+              </p>
             </Modal.Body>
             <Modal.Footer>
               <Button onClick={this.handleClose}>Close</Button>
             </Modal.Footer>
           </Modal>
-        : null
-        }
+        ) : null}
       </div>
     )
   }
@@ -149,7 +158,7 @@ export default class Home extends Component {
     return (
       <div>
         <div>
-          <Lander></Lander>
+          <Lander />
           {this.renderCalendar()}
           {this.renderModal()}
         </div>

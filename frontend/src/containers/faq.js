@@ -8,22 +8,21 @@ export default class Faq extends Component {
           Frequently Asked Questions about the PedsFeeds.com Directory
         </h4>
         <p>
-          <strong>As a provider, why should I join the Pediatric Feeding Association?</strong>
+          <strong>
+            As a provider, why should I join the Pediatric Feeding Association?
+          </strong>
         </p>
         <p>
-          The PFA is a resourceful forum for providers interested in
-          assessment and treatment of pediatric swallowing and feeding issues.
-          We share information, networking, mentoring, and
-          providing better support for one another and for families of children
-          with feeding issues.
+          The PFA is a resourceful forum for providers interested in assessment
+          and treatment of pediatric swallowing and feeding issues. We share
+          information, networking, mentoring, and providing better support for
+          one another and for families of children with feeding issues.
         </p>
-        <hr></hr>
+        <hr />
         <p>
           <strong>How do I get a listing in the directory?</strong>
         </p>
-        <p>
-          Follow these simple steps:
-        </p>
+        <p>Follow these simple steps:</p>
         <ol>
           <li>
             Create an account by clicking on the link at the top of the page.
@@ -37,11 +36,11 @@ export default class Faq extends Component {
             Account link at the top of the page.
           </li>
           <li>
-            Fill out the form, and click submit! Get a digital photo and
-            your state license number  ready before filling out the form.
+            Fill out the form, and click submit! Get a digital photo and your
+            state license number ready before filling out the form.
           </li>
         </ol>
-        <hr></hr>
+        <hr />
         <p>
           <strong>Who can submit a listing in the directory?</strong>
         </p>
@@ -56,9 +55,11 @@ export default class Faq extends Component {
           <li>Registered dietitians</li>
           <li>Feeding therapists</li>
         </ul>
-        <hr></hr>
+        <hr />
         <p>
-          <strong>Does Pediatric Feeding Association endorse specific providers?</strong>
+          <strong>
+            Does Pediatric Feeding Association endorse specific providers?
+          </strong>
         </p>
         <p>
           No. Users are urged to exercise independent judgment and request
@@ -66,16 +67,16 @@ export default class Faq extends Component {
           treatment of feeding issues, or the provision of any services related
           to feeding and swallowing.
         </p>
-        <hr></hr>
+        <hr />
         <p>
           <strong>How do I find the right resources to help my child?</strong>
         </p>
         <p>
-          Feeding issues are complex, so we believe the best approach to
-          finding help for your child’s feeding and swallowing issues involves
-          gathering perspectives from variety of disciplines, and determining
-          what works best for your child and family. As a starting point, we
-          recommend you consult with the following:
+          Feeding issues are complex, so we believe the best approach to finding
+          help for your child’s feeding and swallowing issues involves gathering
+          perspectives from variety of disciplines, and determining what works
+          best for your child and family. As a starting point, we recommend you
+          consult with the following:
         </p>
         <p>
           <strong>A doctor familiar with pediatric feeding issues.</strong>
@@ -102,28 +103,32 @@ export default class Faq extends Component {
         </p>
         <ul>
           <li>
-            We encourage working with a registered dietitian with expertise in working with children with feeding issues.
+            We encourage working with a registered dietitian with expertise in
+            working with children with feeding issues.
           </li>
         </ul>
         <p>
           <strong>A counselor.</strong>
         </p>
         <ul>
-            <li>
-            to help your family cope with the time demands and disruptive nature of dealing with feeding issues.
+          <li>
+            to help your family cope with the time demands and disruptive nature
+            of dealing with feeding issues.
           </li>
         </ul>
-        <hr></hr>
+        <hr />
         <p>
-          <strong>How do I submit a listing if I work in two locations, or if my
+          <strong>
+            How do I submit a listing if I work in two locations, or if my
             services cross two categories (e.g. feeding therapy and mental
-            health support?)</strong>
+            health support?)
+          </strong>
         </p>
         <p>
           Please submit two separate listings in the directory to allow families
           and referring providers to more easily locate you for services.
         </p>
-        <hr></hr>
+        <hr />
         <h4 className="header-green-center">
           About the Pediatric Feeding Association
         </h4>
@@ -150,8 +155,10 @@ export default class Faq extends Component {
           States only.
         </p>
         <p>
-          <strong>What level of expertise do I need to join as a member of the
-            Pediatric Feeding Association?</strong>
+          <strong>
+            What level of expertise do I need to join as a member of the
+            Pediatric Feeding Association?
+          </strong>
         </p>
         <p>
           While experts in pediatric feeding issues are welcome to join the PFA,
@@ -160,12 +167,13 @@ export default class Faq extends Component {
           their knowledge base and share in our passion for helping children
           with feeding issues.
         </p>
-        <hr></hr>
-        <h4 className="header-green-center">
-          Resources
-        </h4>
+        <hr />
+        <h4 className="header-green-center">Resources</h4>
         <p>
-          <strong>How do I submit links or other helpful resources for publication on PedsFeeds.com?</strong>
+          <strong>
+            How do I submit links or other helpful resources for publication on
+            PedsFeeds.com?
+          </strong>
         </p>
         <p>
           We welcome suggestions for helpful resources! Please submit your ideas

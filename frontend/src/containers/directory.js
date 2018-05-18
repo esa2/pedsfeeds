@@ -1,19 +1,25 @@
 import React, { Component } from 'react'
 import { API } from 'aws-amplify'
-import { ListGroup, ListGroupItem, PageHeader, ButtonToolbar, Button, Media } from 'react-bootstrap'
+import {
+  ListGroup,
+  ListGroupItem,
+  PageHeader,
+  ButtonToolbar,
+  Button,
+  Media,
+} from 'react-bootstrap'
 import ProviderDetail from './provider-detail'
 
 import '../styles/directory.css'
 
 export default class Directory extends Component {
-  
   constructor(props) {
     super(props)
 
     this.state = {
       isLoading: true,
       show: false,
-      showProvider: false
+      showProvider: false,
     }
   }
 
@@ -21,8 +27,7 @@ export default class Directory extends Component {
     e.preventDefault()
     let category = []
     this.state.allProfiles.map(ele => {
-      if (ele.listingCategory
-        === e.target.value) category.push(ele)
+      if (ele.listingCategory === e.target.value) category.push(ele)
     })
     this.setState({ show: true, category })
     console.log(this.state.allProfiles)
@@ -30,7 +35,7 @@ export default class Directory extends Component {
 
   handleProviderClick = (e, currentProvider) => {
     e.preventDefault()
-    this.setState({ showProvider: true, show: false,  currentProvider})
+    this.setState({ showProvider: true, show: false, currentProvider })
   }
 
   async componentDidMount() {
@@ -42,9 +47,9 @@ export default class Directory extends Component {
     }
     this.setState({ isLoading: false })
   }
-  
+
   directory() {
-    return API.get("peds", "/all-profiles")
+    return API.get('peds', '/all-profiles')
   }
 
   renderButtons() {
@@ -53,25 +58,43 @@ export default class Directory extends Component {
         <h4 className="header-green-center">Provider Directory</h4>
         <p>Excuse our dust.</p>
         <p>
-          The Provider Directory is temporarily offline while the site is being upgraded.
+          The Provider Directory is temporarily offline while the site is being
+          upgraded.
         </p>
         <p>Check back soon.</p>
         <ButtonToolbar>
-          <Button bsStyle="primary" bsSize="large" onClick={this.handleCategoryClick} value="Counselor / Mental Health">
+          <Button
+            bsStyle="primary"
+            bsSize="large"
+            onClick={this.handleCategoryClick}
+            value="Counselor / Mental Health"
+          >
             Counselor / Mental Health Professionals
           </Button>
-          <Button bsStyle="primary" bsSize="large" onClick={this.handleCategoryClick} value="Dietitian">
+          <Button
+            bsStyle="primary"
+            bsSize="large"
+            onClick={this.handleCategoryClick}
+            value="Dietitian"
+          >
             Dieticians, Registered
           </Button>
-          <Button bsStyle="primary" bsSize="large" onClick={this.handleCategoryClick} value="Feeding Therapist">
+          <Button
+            bsStyle="primary"
+            bsSize="large"
+            onClick={this.handleCategoryClick}
+            value="Feeding Therapist"
+          >
             Feeding Therapists, OT/PT, SLP
           </Button>
-          <Button bsStyle="primary" bsSize="large" onClick={this.handleCategoryClick} value="Medical Care Provider">
+          <Button
+            bsStyle="primary"
+            bsSize="large"
+            onClick={this.handleCategoryClick}
+            value="Medical Care Provider"
+          >
             Medical Care Providers
           </Button>
-          
-          
-          
         </ButtonToolbar>
       </div>
     )
@@ -79,38 +102,40 @@ export default class Directory extends Component {
 
   renderProviders() {
     const show = this.state.show
-    return (
-      show ?
+    return show ? (
       <div>
         <PageHeader>Providers</PageHeader>
         <ListGroup>
-          {!this.state.isLoading && this.renderProviderList(this.state.category)}
+          {!this.state.isLoading &&
+            this.renderProviderList(this.state.category)}
         </ListGroup>
       </div>
-      :
-      null
-    )
+    ) : null
   }
 
   renderProviderList(category) {
-    return [{}].concat(category).map((ele, i) =>
-      (i !== 0)
-      ?
-      <div key={i}>
-        <ListGroupItem onClick={e => this.handleProviderClick(e, ele)}>
-          <Media>
-            <Media.Body>
-              <Media.Heading>{ele.lastName}, {ele.firstName}</Media.Heading>
-              <p className="group">{ele.professionalDiscipline}</p>
-              <p className="group">{ele.workCity}, {ele.workState}</p>
-              <p className="group">{ele.workPhone}</p>
-            </Media.Body>
-            {/* <Media.Right>
+    return [{}].concat(category).map(
+      (ele, i) =>
+        i !== 0 ? (
+          <div key={i}>
+            <ListGroupItem onClick={e => this.handleProviderClick(e, ele)}>
+              <Media>
+                <Media.Body>
+                  <Media.Heading>
+                    {ele.lastName}, {ele.firstName}
+                  </Media.Heading>
+                  <p className="group">{ele.professionalDiscipline}</p>
+                  <p className="group">
+                    {ele.workCity}, {ele.workState}
+                  </p>
+                  <p className="group">{ele.workPhone}</p>
+                </Media.Body>
+                {/* <Media.Right>
               <img width={70} height={80} src={`https://s3-us-west-2.amazonaws.com/peds-app-uploads/private/us-west-2%3A3a9b35a8-34d4-4c46-a2b1-5529a933337e/${ele.attachment}`} alt="thumbnail" />
             </Media.Right> */}
-          </Media>       
-        </ListGroupItem>
-        <br />
+              </Media>
+            </ListGroupItem>
+            <br />
 
             {/* <ListGroupItem>
               <p>Ages Served:</p>
@@ -127,21 +152,17 @@ export default class Directory extends Component {
               )}
             </ListGroupItem> */}
           </div>
-          :
-          null 
+        ) : null
     )
   }
 
   renderSelectedProvider(current) {
     const showProvider = this.state.showProvider
-    return (
-      showProvider ?
+    return showProvider ? (
       <div>
-        <ProviderDetail value={current}></ProviderDetail>
+        <ProviderDetail value={current} />
       </div>
-      :
-      null
-    )
+    ) : null
   }
 
   render() {

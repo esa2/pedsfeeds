@@ -4,7 +4,7 @@ import {
   HelpBlock,
   FormGroup,
   FormControl,
-  ControlLabel
+  ControlLabel,
 } from 'react-bootstrap'
 import LoaderButton from '../components/loader-button'
 import '../styles/signup.css'
@@ -15,11 +15,11 @@ export default class Signup extends Component {
 
     this.state = {
       isLoading: false,
-      email: "",
-      password: "",
-      confirmPassword: "",
-      confirmationCode: "",
-      newUser: null
+      email: '',
+      password: '',
+      confirmPassword: '',
+      confirmationCode: '',
+      newUser: null,
     }
   }
 
@@ -37,48 +37,48 @@ export default class Signup extends Component {
 
   handleChange = event => {
     this.setState({
-      [event.target.id]: event.target.value
+      [event.target.id]: event.target.value,
     })
   }
 
   handleSubmit = async event => {
     event.preventDefault()
-  
+
     this.setState({ isLoading: true })
-  
+
     try {
       const newUser = await Auth.signUp({
         username: this.state.email,
-        password: this.state.password
+        password: this.state.password,
       })
       this.setState({
-        newUser
+        newUser,
       })
     } catch (error) {
       if (error.code === 'UsernameExistsException') {
         try {
           const resendVerification = await Auth.resendSignUp(this.state.email)
           this.setState({
-            newUser: resendVerification
+            newUser: resendVerification,
           })
         } catch (error) {
-      alert('There is already an account with this user name')
+          alert('There is already an account with this user name')
+        }
       }
     }
-  }
-  
+
     this.setState({ isLoading: false })
   }
-  
+
   handleConfirmationSubmit = async event => {
     event.preventDefault()
-  
+
     this.setState({ isLoading: true })
 
     try {
       await Auth.confirmSignUp(this.state.email, this.state.confirmationCode)
       await Auth.signIn(this.state.email, this.state.password)
-  
+
       this.props.userHasAuthenticated(true)
       this.props.history.push('/')
     } catch (error) {
@@ -126,7 +126,10 @@ export default class Signup extends Component {
           />
         </FormGroup>
         <FormGroup controlId="password" bsSize="large">
-          <ControlLabel>Password - requires minimum length of 8 and must contain at least one lowercase, uppercase, numeric and symbol</ControlLabel>
+          <ControlLabel>
+            Password - requires minimum length of 8 and must contain at least
+            one lowercase, uppercase, numeric and symbol
+          </ControlLabel>
           <FormControl
             value={this.state.password}
             onChange={this.handleChange}

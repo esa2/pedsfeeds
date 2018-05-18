@@ -6,10 +6,10 @@ export default ({
   isLoading,
   text,
   loadingText,
-  className = "",
+  className = '',
   disabled = false,
   ...props
-}) =>
+}) => (
   <Button
     className={`loader-button ${className}`}
     disabled={disabled || isLoading}
@@ -18,3 +18,4 @@ export default ({
     {isLoading && <Glyphicon glyph="refresh" className="spinning" />}
     {!isLoading ? text : loadingText}
   </Button>
+)

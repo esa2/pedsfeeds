@@ -10,27 +10,47 @@ export default class Education extends Component {
           courses related to pediatric feeding.
         </h4>
         <p>
-          <a href="http://www.educationresourcesinc.com/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="http://www.educationresourcesinc.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Education Resources, Inc.
           </a>
         </p>
         <p>
-          <a href="http://www.pediatricfeedinginstitute.com/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="http://www.pediatricfeedinginstitute.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Pediatric Feeding Institute
           </a>
         </p>
         <p>
-          <a href="http://www.feedingmatters.org/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="http://www.feedingmatters.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Feeding Matters
           </a>
         </p>
         <p>
-          <a href="http://www.ciaoseminars.com/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="http://www.ciaoseminars.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             CIAO Seminars
           </a>
         </p>
         <p>
-          <a href="http://www.clinicians-view.com/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="http://www.clinicians-view.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Clinician's View
           </a>
         </p>

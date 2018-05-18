@@ -9,10 +9,10 @@ export default class Contact extends Component {
 
     this.file = null
     this.state = {
-      name: "",
-      email: "",
-      subject: "",
-      message: ""
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
     }
   }
 
@@ -27,7 +27,7 @@ export default class Contact extends Component {
 
   handleChange = event => {
     this.setState({
-      [event.target.id]: event.target.value
+      [event.target.id]: event.target.value,
     })
   }
 

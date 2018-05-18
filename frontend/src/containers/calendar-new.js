@@ -19,7 +19,7 @@ export default class EventNew extends Component {
       contact: '',
       theLocation: '',
       urlName: '',
-      description: ''
+      description: '',
     }
   }
 
@@ -29,13 +29,13 @@ export default class EventNew extends Component {
 
   handleChange = event => {
     this.setState({
-      [event.target.id]: event.target.value
+      [event.target.id]: event.target.value,
     })
   }
 
   handleCheckboxChange = () => {
     this.setState({
-      multiDay: !this.state.multiDay
+      multiDay: !this.state.multiDay,
     })
   }
 
@@ -45,15 +45,24 @@ export default class EventNew extends Component {
     try {
       await this.createEvent({
         title: this.state.title,
-        startDate: new Date(this.state.startDate.replace(/-/g, '/')).toDateString(),
-        endDate: this.state.endDate !== '' ? 'Ends: ' + new Date(this.state.endDate.replace(/-/g, '/')).toDateString() : null,
+        startDate: new Date(
+          this.state.startDate.replace(/-/g, '/')
+        ).toDateString(),
+        endDate:
+          this.state.endDate !== ''
+            ? 'Ends: ' +
+              new Date(this.state.endDate.replace(/-/g, '/')).toDateString()
+            : null,
         startTime: this.state.startTime,
         endTime: this.state.endTime,
         multiDay: this.state.multiDay,
-        contact: this.state.contact !== '' ? 'Contact: ' + this.state.contact : null,
-        theLocation: this.state.theLocation !== '' ? this.state.theLocation : null,
+        contact:
+          this.state.contact !== '' ? 'Contact: ' + this.state.contact : null,
+        theLocation:
+          this.state.theLocation !== '' ? this.state.theLocation : null,
         urlName: this.state.urlName !== '' ? this.state.urlName : null,
-        description: this.state.description !== '' ? this.state.description : null
+        description:
+          this.state.description !== '' ? this.state.description : null,
       })
       this.props.history.push('/')
     } catch (error) {
@@ -61,10 +70,10 @@ export default class EventNew extends Component {
       this.setState({ isLoading: false })
     }
   }
-  
+
   createEvent(event) {
     return API.post('peds', '/events', {
-      body: event
+      body: event,
     })
   }
 
@@ -72,16 +81,18 @@ export default class EventNew extends Component {
     const length = this.state.title.length
     if (length > 3) return 'success'
     else if (length > 0) return 'error'
-    return null;
+    return null
   }
 
   render() {
     return (
       <div className="new-event">
         <form onSubmit={this.handleSubmit}>
-        <FormGroup  className="field-size" controlId="title"
-          validationState={this.getValidationTitle()}
-        >
+          <FormGroup
+            className="field-size"
+            controlId="title"
+            validationState={this.getValidationTitle()}
+          >
             {'Title'}
             <FormControl
               autoFocus
@@ -91,7 +102,7 @@ export default class EventNew extends Component {
               componentClass="input"
             />
           </FormGroup>
-          <FormGroup  className="field-size" controlId="startDate">
+          <FormGroup className="field-size" controlId="startDate">
             <FormControl
               onChange={this.handleChange}
               value={this.state.startDate}
@@ -100,7 +111,7 @@ export default class EventNew extends Component {
               type="date"
             />
           </FormGroup>
-          <FormGroup  className="field-size" controlId="endDate">
+          <FormGroup className="field-size" controlId="endDate">
             <FormControl
               onChange={this.handleChange}
               value={this.state.endDate}
@@ -111,10 +122,11 @@ export default class EventNew extends Component {
             <Checkbox
               checked={this.state.multiDay}
               onChange={this.handleCheckboxChange}
-            >Multi-day Event
+            >
+              Multi-day Event
             </Checkbox>
           </FormGroup>
-          <FormGroup  className="field-size" controlId="startTime">
+          <FormGroup className="field-size" controlId="startTime">
             <FormControl
               onChange={this.handleChange}
               value={this.state.startTime}
@@ -122,7 +134,7 @@ export default class EventNew extends Component {
               componentClass="input"
             />
           </FormGroup>
-          <FormGroup  className="field-size" controlId="endTime">
+          <FormGroup className="field-size" controlId="endTime">
             <FormControl
               onChange={this.handleChange}
               value={this.state.endTime}
@@ -130,7 +142,7 @@ export default class EventNew extends Component {
               componentClass="input"
             />
           </FormGroup>
-          <FormGroup  className="field-size" controlId="theLocation">
+          <FormGroup className="field-size" controlId="theLocation">
             <FormControl
               onChange={this.handleChange}
               value={this.state.theLocation}
@@ -138,7 +150,7 @@ export default class EventNew extends Component {
               componentClass="input"
             />
           </FormGroup>
-          <FormGroup  className="field-size" controlId="contact">
+          <FormGroup className="field-size" controlId="contact">
             <FormControl
               onChange={this.handleChange}
               value={this.state.contact}
@@ -146,7 +158,7 @@ export default class EventNew extends Component {
               componentClass="input"
             />
           </FormGroup>
-          <FormGroup  className="field-size" controlId="urlName">
+          <FormGroup className="field-size" controlId="urlName">
             <FormControl
               onChange={this.handleChange}
               value={this.state.urlName}

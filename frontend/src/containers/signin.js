@@ -11,7 +11,7 @@ export default class Signin extends Component {
     this.state = {
       isLoading: false,
       email: '',
-      password: ''
+      password: '',
     }
   }
 
@@ -21,7 +21,7 @@ export default class Signin extends Component {
 
   handleChange = event => {
     this.setState({
-      [event.target.id]: event.target.value
+      [event.target.id]: event.target.value,
     })
   }
 
@@ -67,8 +67,8 @@ export default class Signin extends Component {
             disabled={!this.validateForm()}
             type="submit"
             isLoading={this.state.isLoading}
-            text='Sign in'
-            loadingText='Signing in'
+            text="Sign in"
+            loadingText="Signing in"
           />
         </form>
       </div>

@@ -12,7 +12,7 @@ export default class Join extends Component {
           It's easy. Create an account to get quick access to materials just for
           providers.
         </p>
-        <hr></hr>
+        <hr />
         <p>
           <strong>2. Create a Listing:</strong>
         </p>
@@ -20,7 +20,7 @@ export default class Join extends Component {
           Create a personal, complete professional profile and upload a photo to
           allow other families and professionals to connect with you.
         </p>
-        <hr></hr>
+        <hr />
         <p>
           <strong>3. Get Connected and Get Found:</strong>
         </p>

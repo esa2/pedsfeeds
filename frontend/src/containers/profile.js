@@ -9,6 +9,7 @@ import {
   Well,
 } from 'react-bootstrap'
 import ProfileNew from './profile-new'
+
 export default class Profile extends Component {
   constructor(props) {
     super(props)
@@ -54,13 +55,13 @@ export default class Profile extends Component {
         {showCategories ? (
           <Well>
             <h6>Listing Category</h6>
-            <FormGroup controlId="professionalDiscipline">
+            <FormGroup controlId="listingCategory">
               <ControlLabel className="required">*</ControlLabel>
               <ControlLabel>Select one Category</ControlLabel>
               <Radio
+                required
                 name="radioDiscipline"
                 value="Counselor / Mental Health"
-                required
                 onChange={this.handleCategory}
               >
                 Counselor / Mental Health Professionals

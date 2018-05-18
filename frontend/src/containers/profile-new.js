@@ -55,6 +55,10 @@ export default class ProfileNew extends Component {
       medicalConditions: [],
       feedingConditions: [],
       practiceSpecialties: [],
+      certifications: [],
+      mentalHealth: [],
+      medicalSpecialty: [],
+      medicalExperienceTreating: [],
       experience: '',
       medicalEducation1: '',
       medicalEducation2: '',
@@ -367,9 +371,9 @@ export default class ProfileNew extends Component {
                 <ControlLabel className="required">*</ControlLabel>
                 <ControlLabel>Select one Discipline</ControlLabel>
                 <Radio
+                  required
                   name="radioDiscipline"
                   value="Nurse Practitioner"
-                  required
                   onChange={this.handleDiscipline}
                 >
                   Nurse Practitioner
@@ -777,8 +781,8 @@ export default class ProfileNew extends Component {
             <Well>
               <h6>Specialty</h6>
               <FormGroup
-                controlId="specialty"
-                onChange={e => this.handleMultipleChange(e, 'specialty')}
+                controlId="medicalSpecialty"
+                onChange={e => this.handleMultipleChange(e, 'medicalSpecialty')}
               >
                 <ControlLabel>
                   Select all specialties that apply<span className="required">
@@ -804,7 +808,7 @@ export default class ProfileNew extends Component {
             <Well>
               <h6>Certifications</h6>
               <FormGroup
-                controlId="Certifications"
+                controlId="certifications"
                 onChange={e => this.handleMultipleChange(e, 'certifications')}
               >
                 <ControlLabel>
@@ -942,8 +946,8 @@ export default class ProfileNew extends Component {
             <Well>
               <h6>Mental Health / Counseling Services</h6>
               <FormGroup
-                controlId="MentalHealth"
-                onChange={e => this.handleMultipleChange(e, 'MentalHealth')}
+                controlId="mentalHealth"
+                onChange={e => this.handleMultipleChange(e, 'mentalHealth')}
               >
                 <ControlLabel>
                   Select all counseling services you provide
@@ -1266,9 +1270,7 @@ export default class ProfileNew extends Component {
                 }
               >
                 <ControlLabel>
-                  Select all issues or conditions that apply<span className="required">
-                    *
-                  </span>
+                  Select all issues or conditions that apply
                 </ControlLabel>
                 <Checkbox value="Central lines for long-term total parenteral nutrition">
                   Central lines for long-term total parenteral nutrition

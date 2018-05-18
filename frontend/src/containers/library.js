@@ -21,8 +21,8 @@ export default class Library extends Component {
             Cue based feeding in the NICU
           </a>
         </p>
+        <hr />
         <p>
-          <hr />
           <a href="https://s3-us-west-2.amazonaws.com/pedsfeeds/pdf/Feeding_Group_Presentation_9-13-11.pdf">
             Pediatric Feeding Professionals and GI Health Providers: A Team
             Approach

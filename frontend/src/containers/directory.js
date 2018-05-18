@@ -23,9 +23,15 @@ export default class Directory extends Component {
     }
   }
 
+  
+
   handleCategoryClick = e => {
     e.preventDefault()
     let category = []
+
+    // this.state.allProfiles
+    // .filter(listingCategory => listingCategory === e.target.value)
+    // .map((listingCategory) => category.push(listingCategory))
     this.state.allProfiles.map(ele => {
       if (ele.listingCategory === e.target.value) category.push(ele)
     })

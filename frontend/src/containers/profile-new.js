@@ -27,7 +27,7 @@ export default class ProfileNew extends Component {
     this.handleExperience = this.handleExperience.bind(this)
 
     this.state = {
-      isLoading: null,
+      isLoading: false,
       approvedListing: false,
       listingTitle: '',
       lastName: '',
@@ -163,6 +163,10 @@ export default class ProfileNew extends Component {
         medicalConditions: this.state.medicalConditions,
         feedingConditions: this.state.feedingConditions,
         practiceSpecialties: this.state.practiceSpecialties,
+        certifications: this.state.certifications,
+        mentalHealth: this.state.mentalHealth,
+        medicalSpecialty: this.state.medicalSpecialty,
+        medicalExperienceTreating: this.state.medicalExperienceTreating,
         experience: this.state.experience,
         medicalEducation1:
           this.state.medicalEducation1 !== ''
@@ -1394,7 +1398,7 @@ export default class ProfileNew extends Component {
               type="submit"
               isLoading={this.state.isLoading}
               text="Submit"
-              loadingText="Creating…"
+              loadingText="Creating profile"
             />
             <Button bsStyle="primary" bsSize="large" active href="/profile">
               Cancel

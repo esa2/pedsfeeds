@@ -8,9 +8,10 @@ export default class ProviderDetail extends Component {
       <div>
         <ListGroup>
           <ListGroupItem
-            header={`${this.props.value.lastName}, ${
-              this.props.value.firstName
-            }`}
+            // header={`${this.props.value.lastName}, ${
+            //   this.props.value.firstName
+            // }`}
+            header={this.props.value.listingTitle}
           />
         </ListGroup>
 

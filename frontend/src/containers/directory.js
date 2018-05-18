@@ -23,8 +23,6 @@ export default class Directory extends Component {
     }
   }
 
-  
-
   handleCategoryClick = e => {
     e.preventDefault()
     let category = []
@@ -35,7 +33,7 @@ export default class Directory extends Component {
     this.state.allProfiles.map(ele => {
       if (ele.listingCategory === e.target.value) category.push(ele)
     })
-    this.setState({ show: true, category })
+    this.setState({ show: true, showProvider: false, category })
     console.log(this.state.allProfiles)
   }
 
@@ -128,7 +126,7 @@ export default class Directory extends Component {
               <Media>
                 <Media.Body>
                   <Media.Heading>
-                    {ele.lastName}, {ele.firstName}
+                    {ele.listingTitle}
                   </Media.Heading>
                   <p className="group">{ele.professionalDiscipline}</p>
                   <p className="group">

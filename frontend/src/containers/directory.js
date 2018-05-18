@@ -28,7 +28,7 @@ export default class Directory extends Component {
     console.log(this.state.allProfiles)
   }
 
-  handleProviderClick= (e, currentProvider) => {
+  handleProviderClick = (e, currentProvider) => {
     e.preventDefault()
     this.setState({ showProvider: true, show: false,  currentProvider})
   }

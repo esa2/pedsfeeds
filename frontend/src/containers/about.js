@@ -34,7 +34,7 @@ export default class About extends Component {
           and professionals, we will improve the feeding experience for all of
           our kids who struggle with feeding and swallowing disorders.
         </p>
-        <hr></hr>
+        <hr />
         <h3 className="header-green-center">
           Meet the Pediatric Feeding Association Steering Committee
         </h3>
@@ -50,13 +50,35 @@ export default class About extends Component {
           <Media.Body>
             <Media.Heading>Amy Faherty</Media.Heading>
             <p>
-            Amy is a speech language pathologist with expertise in pediatric feeding and swallowing disorders, particularly with respect to instrumental examination with the videofluoroscopic swallowing study (VFSS) and Fiberoptic Endoscopy Evaluation of Swallowing (FEES). She has more than 30 years’ experience conducting VFSSs for babies and children. In addition, she now serves as a speech-language pathologist (SLP) swallowing specialist on the tertiary multidisciplinary Aerodigestive Clinic team at Seattle Children’s hospital. Since 2014, Amy has also worked as an infant feeding specialist in the University of Washington Neonatal Intensive Care Unit (NICU). Sharing her passion for assessment and treatment of feeding/swallowing issues, Amy has instructed at the university level at multiple universities and presented regionally, nationally, and internationally. Amy has several publications related to pediatric swallowing, dysphagia research and NICU best practices.
-            Amy’s approach to working with children and families is centered on making mealtimes safe, fun, and a positive experience for all. She finds it a wondrous, rewarding experience to help tiny, fragile infants learn how to safely bottle or breastfeed, and to help understandably overwhelmed parents and children transform into happy, thriving families as the infant/child's feeding skills and overall medical status improves. Amy lives in the greater Seattle area with her husband Jeff. She loves laughing with family and friends, traveling, entertaining and playing at the lake. 
-
+              Amy is a speech language pathologist with expertise in pediatric
+              feeding and swallowing disorders, particularly with respect to
+              instrumental examination with the videofluoroscopic swallowing
+              study (VFSS) and Fiberoptic Endoscopy Evaluation of Swallowing
+              (FEES). She has more than 30 years’ experience conducting VFSSs
+              for babies and children. In addition, she now serves as a
+              speech-language pathologist (SLP) swallowing specialist on the
+              tertiary multidisciplinary Aerodigestive Clinic team at Seattle
+              Children’s hospital. Since 2014, Amy has also worked as an infant
+              feeding specialist in the University of Washington Neonatal
+              Intensive Care Unit (NICU). Sharing her passion for assessment and
+              treatment of feeding/swallowing issues, Amy has instructed at the
+              university level at multiple universities and presented
+              regionally, nationally, and internationally. Amy has several
+              publications related to pediatric swallowing, dysphagia research
+              and NICU best practices. Amy’s approach to working with children
+              and families is centered on making mealtimes safe, fun, and a
+              positive experience for all. She finds it a wondrous, rewarding
+              experience to help tiny, fragile infants learn how to safely
+              bottle or breastfeed, and to help understandably overwhelmed
+              parents and children transform into happy, thriving families as
+              the infant/child's feeding skills and overall medical status
+              improves. Amy lives in the greater Seattle area with her husband
+              Jeff. She loves laughing with family and friends, traveling,
+              entertaining and playing at the lake.
             </p>
           </Media.Body>
         </Media>
-        <hr></hr>
+        <hr />
         <Media>
           <Media.Left align="top">
             <img
@@ -84,7 +106,7 @@ export default class About extends Component {
             </p>
           </Media.Body>
         </Media>
-        <hr></hr>
+        <hr />
         <Media>
           <Media.Left align="top">
             <img
@@ -99,7 +121,7 @@ export default class About extends Component {
             <p />
           </Media.Body>
         </Media>
-        <hr></hr>
+        <hr />
         <Media>
           <Media.Left align="top">
             <img
@@ -133,7 +155,7 @@ export default class About extends Component {
             </p>
           </Media.Body>
         </Media>
-        <hr></hr>
+        <hr />
         <Media>
           <Media.Left align="top">
             <img
@@ -169,7 +191,7 @@ export default class About extends Component {
             </p>
           </Media.Body>
         </Media>
-        <hr></hr>
+        <hr />
         <Media>
           <Media.Left align="top">
             <img
@@ -195,7 +217,7 @@ export default class About extends Component {
             </p>
           </Media.Body>
         </Media>
-        <hr></hr>
+        <hr />
         <Media>
           <Media.Left align="top">
             <img
@@ -222,7 +244,7 @@ export default class About extends Component {
             </p>
           </Media.Body>
         </Media>
-        <hr></hr>
+        <hr />
         <Media>
           <Media.Left align="top">
             <img
@@ -235,11 +257,29 @@ export default class About extends Component {
           <Media.Body>
             <Media.Heading>Maria Cho</Media.Heading>
             <p>
-            Maria is the mother of Kai, who is the inspiration behind her service to the Pediatric Feeding Association. Born three months early, Kai has faced a host of feeding complications, including a swallowing and vomiting disorder, which led to g-tube placement. Recognizing the importance of timely access to the right services, Maria wanted to further develop and expand the network of professionals and services available to families. As part of that work, she helped facilitate the evolution of the Special Interest Feeding Group into the Pediatric Feeding Association. Together with her husband, Ed, they created the pedsfeeds.com website to better connect medical, therapeutic, mental health, and nutrition professionals to offer comprehensive support for families as they undertake the long and difficult journey of helping their children stabilize, grow, and gain weight while forming positive relationships with food, with family mealtimes, and most importantly, with the people who love them. She is founder of Inside Out Care, a patient program platform that allows health care teams to launch programs, enroll patients, and maximize care for families.
+              Maria is the mother of Kai, who is the inspiration behind her
+              service to the Pediatric Feeding Association. Born three months
+              early, Kai has faced a host of feeding complications, including a
+              swallowing and vomiting disorder, which led to g-tube placement.
+              Recognizing the importance of timely access to the right services,
+              Maria wanted to further develop and expand the network of
+              professionals and services available to families. As part of that
+              work, she helped facilitate the evolution of the Special Interest
+              Feeding Group into the Pediatric Feeding Association. Together
+              with her husband, Ed, they created the pedsfeeds.com website to
+              better connect medical, therapeutic, mental health, and nutrition
+              professionals to offer comprehensive support for families as they
+              undertake the long and difficult journey of helping their children
+              stabilize, grow, and gain weight while forming positive
+              relationships with food, with family mealtimes, and most
+              importantly, with the people who love them. She is founder of
+              Inside Out Care, a patient program platform that allows health
+              care teams to launch programs, enroll patients, and maximize care
+              for families.
             </p>
           </Media.Body>
         </Media>
-        <hr></hr>
+        <hr />
         <Media>
           <Media.Left align="top">
             <img
@@ -269,7 +309,7 @@ export default class About extends Component {
             </p>
           </Media.Body>
         </Media>
-        <hr></hr>
+        <hr />
         <Media>
           <Media.Left align="top">
             <img
@@ -282,11 +322,29 @@ export default class About extends Component {
           <Media.Body>
             <Media.Heading>Tiffany Elliot</Media.Heading>
             <p>
-            Tiffany is a speech-language pathologist specializing in pediatric feeding and swallowing disorders. She has focused her career on serving preterm and medically complex infants. She works in the Level IV neonatal intensive care unit (NICU) at the University of Washington Medical Center, where she cofounded the unit’s SLP program. Tiffany is a Certified Neonatal Therapist and enjoys the embedded, preventative neonatal therapy model. She is dedicated to serving the whole infant and family and partners with professionals at the county and state level to improve transitions home for fragile infants and their families. She previously worked on the VFSS team at Seattle Children’s Hospital and as a provider treating pediatric swallowing/feeding issues in both the inpatient and outpatient settings at Mary Bridge Children’s Hospital. She also enjoys teaching and has lectured locally, regionally, and nationally on pediatric feeding and swallowing disorders. She was chosen for the ASHA Leadership Development Program in 2013 and was awarded a Distinguished Professional Achievement Award in 2018 from her undergraduate university. Tiffany enjoys spending time with her husband and their two daughters.
+              Tiffany is a speech-language pathologist specializing in pediatric
+              feeding and swallowing disorders. She has focused her career on
+              serving preterm and medically complex infants. She works in the
+              Level IV neonatal intensive care unit (NICU) at the University of
+              Washington Medical Center, where she cofounded the unit’s SLP
+              program. Tiffany is a Certified Neonatal Therapist and enjoys the
+              embedded, preventative neonatal therapy model. She is dedicated to
+              serving the whole infant and family and partners with
+              professionals at the county and state level to improve transitions
+              home for fragile infants and their families. She previously worked
+              on the VFSS team at Seattle Children’s Hospital and as a provider
+              treating pediatric swallowing/feeding issues in both the inpatient
+              and outpatient settings at Mary Bridge Children’s Hospital. She
+              also enjoys teaching and has lectured locally, regionally, and
+              nationally on pediatric feeding and swallowing disorders. She was
+              chosen for the ASHA Leadership Development Program in 2013 and was
+              awarded a Distinguished Professional Achievement Award in 2018
+              from her undergraduate university. Tiffany enjoys spending time
+              with her husband and their two daughters.
             </p>
           </Media.Body>
         </Media>
-        <hr></hr>
+        <hr />
       </div>
     )
   }

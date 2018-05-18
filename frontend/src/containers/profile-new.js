@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { API } from 'aws-amplify'
 import { s3Upload } from '../lib/aws-lib'
-import { Form, FormGroup, FormControl, ControlLabel, Radio, Checkbox, Well } from 'react-bootstrap'
+import { Form, FormGroup, FormControl, ControlLabel, Radio, Checkbox, ButtonToolbar, Button, Well } from 'react-bootstrap'
 import LoaderButton from '../components/loader-button'
 import Config from '../amplify-config'
 import '../styles/profile-new.css'
@@ -46,6 +46,12 @@ export default class ProfileNew extends Component {
       feedingConditions: [],
       practiceSpecialties: [],
       experience: '',
+      medicalEducation1: '',
+      medicalEducation2: '',
+      medicalEducation3: '',
+      medicalResearch1: '',
+      medicalResearch2: '',
+      medicalResearch3: '',
       toc: false
     }
   }
@@ -140,6 +146,12 @@ export default class ProfileNew extends Component {
         feedingConditions: this.state.feedingConditions,
         practiceSpecialties: this.state.practiceSpecialties,
         experience: this.state.experience,
+        medicalEducation1: this.state.medicalEducation1 !== '' ? this.state.medicalEducation1 : false,
+        medicalEducation2: this.state.medicalEducation2 !== '' ? this.state.medicalEducation2 : false,
+        medicalEducation3: this.state.medicalEducation3 !== '' ? this.state.medicalEducation3 : false,
+        medicalResearch1: this.state.medicalResearch1 !== '' ? this.state.medicalResearch1 : false,
+        medicalResearch2: this.state.medicalResearch2 !== '' ? this.state.medicalResearch2 : false,
+        medicalResearch3: this.state.medicalResearch3 !== '' ? this.state.medicalResearch3 : false,
         toc: this.state.toc
 
       })
@@ -219,6 +231,62 @@ export default class ProfileNew extends Component {
             </Radio>{' '}
           </FormGroup>
         </Well>
+
+        {listingCategory === "Counselor / Mental Health"
+        ?
+        <Well>
+          <h6>Professional Discipline</h6>
+          <FormGroup controlId="professionalDiscipline">
+            <ControlLabel className="required">*</ControlLabel>
+            <ControlLabel>Select one Discipline</ControlLabel>
+            <Radio
+              name="radioDiscipline"
+              value="Counselor / Therapist"
+              required
+              onChange={this.handleDiscipline}>
+              Counselor / Therapist
+            </Radio>{' '}
+            <Radio name="radioDiscipline"
+              value="Psychiatrist"
+              onChange={this.handleDiscipline}>
+              Psychiatrist
+            </Radio>{' '}
+            <Radio name="radioDiscipline"
+              value="Psychologist"
+              onChange={this.handleDiscipline}>
+              Psychologist
+            </Radio>{' '}
+            <Radio name="radioDiscipline"
+              value="Social Worker"
+              onChange={this.handleDiscipline}>
+              Social Worker
+            </Radio>{' '}
+          </FormGroup>
+        </Well>
+        :
+      null}
+
+
+      {listingCategory === "Dietitian"
+        ?
+        <Well>
+          <h6>Professional Discipline</h6>
+          <FormGroup controlId="professionalDiscipline">
+            <ControlLabel className="required">*</ControlLabel>
+            <ControlLabel>Select one Discipline</ControlLabel>
+            <Radio
+              name="radioDiscipline"
+              value="Registerd Dietitian"
+              required
+              onChange={this.handleDiscipline}>
+              Registerd Dietitian
+            </Radio>{' '}
+          </FormGroup>
+        </Well>
+        :
+        null }
+
+
         {listingCategory === "Feeding Therapist"
         ?
         <Well>
@@ -252,6 +320,47 @@ export default class ProfileNew extends Component {
         </Well>
         :
         null }
+
+        {listingCategory === "Medical Care Provider"
+        ?
+        <Well>
+          <h6>Professional Discipline</h6>
+          <FormGroup controlId="professionalDiscipline">
+            <ControlLabel className="required">*</ControlLabel>
+            <ControlLabel>Select one Discipline</ControlLabel>
+            <Radio
+              name="radioDiscipline"
+              value="Nurse Practitioner"
+              required
+              onChange={this.handleDiscipline}>
+              Nurse Practitioner
+            </Radio>{' '}
+            <Radio
+              name="radioDiscipline"
+              value="Psychiatrist"
+              required
+              onChange={this.handleDiscipline}>
+              Psychiatrist
+            </Radio>{' '}
+            <Radio
+              name="radioDiscipline"
+              value="Physician"
+              required
+              onChange={this.handleDiscipline}>
+              Physician
+            </Radio>{' '}
+            <Radio
+              name="radioDiscipline"
+              value="Physician's Assistant"
+              required
+              onChange={this.handleDiscipline}>
+              Physician's Assistant
+            </Radio>{' '}
+          </FormGroup>
+        </Well>
+        :
+        null }
+
         <Well>
           <h6>Licensure</h6>
           <FormGroup controlId="licenseState">
@@ -483,9 +592,7 @@ export default class ProfileNew extends Component {
         <Well>
           <h6>Provider Group</h6>
           <FormGroup controlId="providerGroup">
-            <ControlLabel></ControlLabel>
             <FormControl componentClass="select"
-              required
               value={this.state.providerGroup}
               onChange={this.handleChange}>
               <option value="">-- Select Provider Group --</option>
@@ -511,6 +618,9 @@ export default class ProfileNew extends Component {
             />
           </FormGroup>
         </Well>
+
+        {listingCategory === "Counselor / Mental Health" || listingCategory ===  "Feeding Therapist"
+        ?
         <Well>
           <h6>Work Setting</h6>
           <FormGroup controlId="workSetting" onChange={e => this.handleMultipleChange(e, 'workSetting')}>
@@ -524,6 +634,108 @@ export default class ProfileNew extends Component {
             <Checkbox value="School based">School based</Checkbox>
           </FormGroup>
         </Well>
+        :
+        null}
+        
+        {listingCategory === "Dietitian"
+        ?
+        <Well>
+          <h6>Work Setting</h6>
+          <FormGroup controlId="workSetting" onChange={e => this.handleMultipleChange(e, 'workSetting')}>
+            <ControlLabel>Select all work settings that apply<span className="required">*</span></ControlLabel>
+            <Checkbox value="Home health care">Home health care</Checkbox>
+            <Checkbox value="Hospital inpatient">Hospital inpatient</Checkbox>
+            <Checkbox value="Hospital outpatient">Hospital outpatient</Checkbox>
+            <Checkbox value="Office setting">Office setting</Checkbox>
+          </FormGroup>
+        </Well>
+        :
+        null}
+
+        {listingCategory === "Medical Care Provider"
+        ?
+        <Well>
+          <h6>Work Setting</h6>
+          <FormGroup controlId="workSetting" onChange={e => this.handleMultipleChange(e, 'workSetting')}>
+            <ControlLabel>Select all work settings that apply<span className="required">*</span></ControlLabel>
+            <Checkbox value="Hospital">Hospital</Checkbox>
+            <Checkbox value="Office setting">Office setting</Checkbox>
+          </FormGroup>
+        </Well>
+        :
+        null}
+
+        {listingCategory === "Medical Care Provider"
+        ?
+        <Well>
+          <h6>Specialty</h6>
+          <FormGroup controlId="specialty" onChange={e => this.handleMultipleChange(e, 'specialty')}>
+            <ControlLabel>Select all specialties that apply<span className="required">*</span></ControlLabel>
+            <Checkbox value="Cardiology">Cardiology</Checkbox>
+            <Checkbox value="Craniofacial">Craniofacial</Checkbox>
+            <Checkbox value="Internal medicine">Internal medicine</Checkbox>
+            <Checkbox value="Neonatology">Neonatology</Checkbox>
+            <Checkbox value="Neurology">Neurology</Checkbox>
+            <Checkbox value="Pediatrics">Pediatrics</Checkbox>
+            <Checkbox value="Pulmonology">Pulmonology</Checkbox>
+            <Checkbox value="Oncology">Oncology</Checkbox>
+            <Checkbox value="Radiology">Radiology</Checkbox>
+            <Checkbox value="Rehabilitation">Rehabilitation</Checkbox>
+            <Checkbox value="Surgery">Surgery</Checkbox>
+          </FormGroup>
+        </Well>
+        :
+        null}
+
+
+        {listingCategory === "Counselor / Mental Health"
+        ?
+        <Well>
+          <h6>Certifications</h6>
+          <FormGroup controlId="Certifications" onChange={e => this.handleMultipleChange(e, 'certifications')}>
+            <ControlLabel>Select applicable certifications or select "none" if not certified<span className="required">*</span></ControlLabel>
+            <Checkbox value="Behavior Analyst Certi􏰀cation Board">Behavior Analyst Certification Board</Checkbox>
+            <Checkbox value="Licensed Clinical Social Worker">Licensed Clinical Social Worker</Checkbox>
+            <Checkbox value="Licensed Marriage and Family Therapist">Licensed Marriage and Family Therapist</Checkbox>
+            <Checkbox value="Licensed Master Social Worker">Licensed Master Social Worker</Checkbox>
+            <Checkbox value="Licensed Mental Health Counselor">Licensed Mental Health Counselor</Checkbox>
+            <Checkbox value="Licensed Professional Counselor">Licensed Professional Counselor</Checkbox>
+            <Checkbox value="National Board for Certi􏰀ed Counselors
+            ">National Board for Certified Counselors
+            </Checkbox>
+            <Checkbox value="National Certi􏰀ed Counselor">National Certified Counselor</Checkbox>
+            <Checkbox value="None">None</Checkbox>
+          </FormGroup>
+        </Well>
+        :
+        null}
+
+        {listingCategory === "Medical Care Provider"
+        ?
+        <Well>
+          <h6>Certifications</h6>
+          <FormGroup controlId="Certifications" onChange={e => this.handleMultipleChange(e, 'certifications')}>
+            <ControlLabel>Select applicable certifications or select "none" if not certified<span className="required">*</span></ControlLabel>
+            <Checkbox value="American Board of Otolaryngology - Head and Neck Surgery">American Board of Otolaryngology - Head and Neck Surgery</Checkbox>
+            <Checkbox value="American Board of Pediatrics">American Board of Pediatrics</Checkbox>
+            <Checkbox value="American Board of Surgery">American Board of Surgery</Checkbox>
+            <Checkbox value="Pediatric Surgery Specialty Board">Pediatric Surgery Specialty Board</Checkbox>
+            <Checkbox value="Pediatric Nursing Certification Board">Pediatric Nursing Certification Board</Checkbox>
+            <Checkbox value="National Certification Board">National Certification Board</Checkbox>
+            <Checkbox value="National Commission on Certification of Physician Assistants
+            ">National Commission on Certification of Physician Assistants
+            </Checkbox>
+            <Checkbox value="None">None</Checkbox>
+          </FormGroup>
+        </Well>
+        :
+        null}
+
+
+
+
+        {listingCategory === "Counselor / Mental Health" || listingCategory === "Dietitian" || listingCategory ===  "Feeding Therapist"
+        ?
         <Well>
           <h6>Ages Served</h6>
           <FormGroup controlId="agesServed" onChange={e => this.handleMultipleChange(e, 'agesServed')}>
@@ -535,6 +747,11 @@ export default class ProfileNew extends Component {
             <Checkbox value="Adolescent: 13 - 21 years">Adolescent: 13 - 21 years</Checkbox>
           </FormGroup>
         </Well>
+        :
+        null}
+
+        {listingCategory === "Counselor / Mental Health" || listingCategory === "Dietitian" || listingCategory ===  "Feeding Therapist"
+        ?
         <Well>
           <h6>Payment Types Accepted</h6>
           <FormGroup controlId="paymentTypes" onChange={e => this.handleMultipleChange(e, 'paymentTypes')}>
@@ -545,6 +762,36 @@ export default class ProfileNew extends Component {
             <Checkbox value="Part C">Part C</Checkbox>
           </FormGroup>
         </Well>
+        :
+        null}
+
+
+
+        {listingCategory === "Counselor / Mental Health"
+        ?
+        <Well>
+          <h6>Mental Health / Counseling Services</h6>
+          <FormGroup controlId="MentalHealth" onChange={e => this.handleMultipleChange(e, 'MentalHealth')}>
+            <ControlLabel>Select all counseling services you provide</ControlLabel>
+            <Checkbox value="Applied Behavior Analysis">Applied Behavior Analysis</Checkbox>
+            <Checkbox value="Child play therapy">Child play therapy</Checkbox>
+            <Checkbox value="Cognitive behavioral therapy">Cognitive behavioral therapy</Checkbox>
+            <Checkbox value="Family / marital counseling">Family / marital counseling</Checkbox>
+            <Checkbox value="General psychosocial and mental health support for families with special needs / medically fragile children and youth">General psychosocial and mental health support for families with special needs / medically fragile children and youth</Checkbox>
+            <Checkbox value="Group therapy">Group therapy</Checkbox>
+            <Checkbox value="Individual and family therap">Individual and family therap</Checkbox>
+            <Checkbox value="Parent counseling and support">Parent counseling and support</Checkbox>
+            <Checkbox value="Parent education / support groups">Parent education / support groups</Checkbox>
+            <Checkbox value="Sibling counseling">Sibling counseling</Checkbox>
+            <Checkbox value="Terminal illness / life-shortening conditions / grief work">Terminal illness / life-shortening conditions / grief work</Checkbox>
+          </FormGroup>
+        </Well>
+        :
+        null}
+
+
+        {listingCategory === "Counselor / Mental Health" || listingCategory ===  "Feeding Therapist"
+        ?
         <Well>
           <h6>Experience in Treating Children with These Medical Conditions</h6>
           <FormGroup controlId="medicalConditions" onChange={e => this.handleMultipleChange(e, 'medicalConditions')}>
@@ -568,6 +815,11 @@ export default class ProfileNew extends Component {
             <Checkbox value="Traumatic brain injury">Traumatic brain injury</Checkbox>
           </FormGroup>
         </Well>
+        :
+        null}
+
+        {listingCategory === "Counselor / Mental Health" || listingCategory ===  "Feeding Therapist"
+        ?
         <Well>
           <h6>Experience in Treating Children with These Feeding Conditions</h6>
           <FormGroup controlId="feedingConditions" onChange={e => this.handleMultipleChange(e, 'feedingConditions')}>
@@ -583,6 +835,28 @@ export default class ProfileNew extends Component {
             <Checkbox value="Tongue tie">Tongue tie</Checkbox>
           </FormGroup>
         </Well>
+        :
+        null}
+
+        {listingCategory === "Dietitian"
+        ?
+        <Well>
+          <h6>Feeding Clinical Practice Secialties</h6>
+          <FormGroup controlId="practiceSpecialties" onChange={e => this.handleMultipleChange(e, 'practiceSpecialties')}>
+            <ControlLabel>Select all practice areas related to feeding that apply</ControlLabel>
+            <Checkbox value="Behavioral management">Behavioral management</Checkbox>
+            <Checkbox value="Blenderized diets">Blenderized diets</Checkbox>
+            <Checkbox value="Breastfeeding management">Breastfeeding management</Checkbox>
+            <Checkbox value="Nutritional assessment and management">Nutritional assessment and management</Checkbox>
+            <Checkbox value="Weaning from feeding tubes">Weaning from feeding tubes</Checkbox>
+          </FormGroup>
+        </Well>
+        :
+        null}
+
+
+        {listingCategory === "Feeding Therapist"
+        ?
         <Well>
           <h6>Feeding Clinical Practice Secialties</h6>
           <FormGroup controlId="practiceSpecialties" onChange={e => this.handleMultipleChange(e, 'practiceSpecialties')}>
@@ -606,6 +880,12 @@ export default class ProfileNew extends Component {
             <Checkbox value="Weaning from feeding tubes">Weaning from feeding tubes</Checkbox>
           </FormGroup>
         </Well>
+        :
+        null
+        }
+
+        {listingCategory === "Counselor / Mental Health" || listingCategory === "Dietitian" || listingCategory ===  "Feeding Therapist"
+        ?
         <Well>
           <h6>Years of Experience Related to Pediatric Feeding</h6>
           <FormGroup controlId="experience">
@@ -630,6 +910,129 @@ export default class ProfileNew extends Component {
             </Radio>{' '}
           </FormGroup>
         </Well>
+        :
+        null}
+
+        {listingCategory === "Medical Care Provider"
+        ?
+        <Well>
+          <h6>Professional Experience Treating Pediatric Feeding</h6>
+          <FormGroup controlId="experience">
+            <ControlLabel className="required">*</ControlLabel>
+            <ControlLabel>Number of years</ControlLabel>
+            <Radio
+              name="radioExperience"
+              value="None"
+              required
+              onChange={this.handleExperience}>
+              None
+            </Radio>{' '}
+            <Radio name="radioExperience"
+              value="1 - 5 years"
+              onChange={this.handleExperience}>
+              1 - 5 years
+            </Radio>{' '}
+            <Radio name="radioExperience"
+              value="6 - 10 years"
+              onChange={this.handleExperience}>
+              6 - 10 years
+            </Radio>{' '}
+            <Radio name="radioExperience"
+              value="10+ years"
+              onChange={this.handleExperience}>
+              10+ years
+            </Radio>{' '}
+          </FormGroup>
+        </Well>
+        :
+        null}
+
+        {listingCategory === "Medical Care Provider"
+        ?
+        <Well>
+          <h6>Experience Treating Patients with the Following Issues or Conditions</h6>
+          <FormGroup controlId="medicalExperienceTreating" onChange={e => this.handleMultipleChange(e, 'medicalExperienceTreating')}>
+            <ControlLabel>Select all issues or conditions that apply<span className="required">*</span></ControlLabel>
+            <Checkbox value="Central lines for long-term total parenteral nutrition">Central lines for long-term total parenteral nutrition</Checkbox>
+            <Checkbox value="Food allergies">Food allergies</Checkbox>
+            <Checkbox value="Gastrostomy tubes or other tube feedings">Gastrostomy tubes or other tube feedings</Checkbox>
+            <Checkbox value="Growth faltering">Growth faltering</Checkbox>
+            <Checkbox value="History of genetic issues, birth defects, illnesses, surgeries affecting feeding and eating">History of genetic issues, birth defects, illnesses, surgeries affecting feeding and eating</Checkbox>
+            <Checkbox value="Neurodevelopmental issues">Neurodevelopmental issues</Checkbox>
+            <Checkbox value="Sensory / behavioral feeding and eating challenges">Sensory / behavioral feeding and eating challenges</Checkbox>
+            <Checkbox value="Transition to oral feeding">Transition to oral feeding</Checkbox>
+          </FormGroup>
+        </Well>
+        :
+        null}
+
+        {listingCategory === "Medical Care Provider"
+        ?
+        <Well>
+          <h6>Specific Education / Training on Pediatric Feeding</h6>
+          <FormGroup controlId="medicalEducation1">
+            <ControlLabel>If none, this section will not display on your listing</ControlLabel>
+            <br />
+            <ControlLabel>1</ControlLabel>
+            <FormControl
+              type="text"
+              value={this.state.medicalEducation1}
+              onChange={this.handleChange}
+            />
+            </FormGroup>
+            <FormGroup controlId="medicalEducation2">
+            <ControlLabel>2</ControlLabel>
+            <FormControl
+              type="text"
+              value={this.state.medicalEducation2}
+              onChange={this.handleChange}
+            />
+            </FormGroup>
+            <FormGroup controlId="medicalEducation3">
+            <ControlLabel>3</ControlLabel>
+            <FormControl
+              type="text"
+              value={this.state.medicalEducation3}
+              onChange={this.handleChange}
+            />
+            </FormGroup>
+        </Well>
+        :
+        null}
+        {listingCategory === "Medical Care Provider"
+        ?
+        <Well>
+          <h6>Research / Publication / Presentations on Pediatric Feeding</h6>
+          <FormGroup controlId="medicalResearch1">
+            <ControlLabel>If none, this section will not display on your listing</ControlLabel>
+            <br />
+            <ControlLabel>1</ControlLabel>
+            <FormControl
+              type="text"
+              value={this.state.medicalResearch1}
+              onChange={this.handleChange}
+            />
+            </FormGroup>
+            <FormGroup controlId="medicalResearch2">
+            <ControlLabel>2</ControlLabel>
+            <FormControl
+              type="text"
+              value={this.state.medicalResearch2}
+              onChange={this.handleChange}
+            />
+            </FormGroup>
+            <FormGroup controlId="medicalResearch3">
+            <ControlLabel>3</ControlLabel>
+            <FormControl
+              type="text"
+              value={this.state.medicalResearch3}
+              onChange={this.handleChange}
+            />
+            </FormGroup>
+        </Well>
+        :
+        null}
+
         <Well>
           <h6>Agreements</h6>
           <FormGroup controlId="toc">
@@ -642,19 +1045,24 @@ export default class ProfileNew extends Component {
           </Well>
           <Well>
             <FormGroup controlId="file">
-              <ControlLabel>Attach a photo</ControlLabel>
+              <ControlLabel>Attach a photo less than 1MB in size</ControlLabel>
               <FormControl onChange={this.handleFileChange} type="file" />
             </FormGroup>
           </Well>
+          <ButtonToolbar>
         <LoaderButton
             block
-            bsStyle="primary"
+            bsStyle="success"
             bsSize="large"
             type="submit"
             isLoading={this.state.isLoading}
             text="Submit"
             loadingText="Creating…"
           />
+          <Button bsStyle="primary" bsSize="large" active href="/profile">
+            Cancel
+          </Button>
+        </ButtonToolbar>
         </Form>
       </div>
     )

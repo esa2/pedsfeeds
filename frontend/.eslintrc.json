@@ -1,0 +1,60 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest": true,
+    "mocha": true,
+    "jasmine": true,
+    "mongo": true,
+    "jquery": true,
+    "browser": true,
+    "commonjs": true
+  },
+  "globals": {
+    "err": true,
+    "req": true,
+    "res": true,
+    "next": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ],
+    "sourceType": "module",
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "arrowFunctions": true,
+      "classes": true,
+      "jsx": true,
+      "templateStrings": true,
+      "spread": true,
+      "modules": true,
+      "experimentalObjectRestSpread": true,
+      "impliedStrict": true
+    }
+  },
+  "rules": {
+    "no-console": "off",
+    "indent": [
+      "error",
+      2
+    ],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ]
+  }
+}

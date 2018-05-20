@@ -121,9 +121,7 @@ export default class Directory extends Component {
             <ListGroupItem onClick={e => this.handleProviderClick(e, ele)}>
               <Media>
                 <Media.Body>
-                  <Media.Heading>
-                    {ele.listingTitle}
-                  </Media.Heading>
+                  <Media.Heading>{ele.listingTitle}</Media.Heading>
                   <p className="group">{ele.professionalDiscipline}</p>
                   <p className="group">
                     {ele.workCity}, {ele.workState}
@@ -131,44 +129,27 @@ export default class Directory extends Component {
                   <p className="group">{ele.workPhone}</p>
                 </Media.Body>
                 <Media.Right>
-                {ele.attachment === null ? 
-                
-                <img
-                width={70}
-                height={80}
-                src={`https://s3-us-west-2.amazonaws.com/pedsfeeds/images/profile/profile_noimg.jpg`}
-                alt="thumbnail"
-              />
-                
-                : (
-
-
-                <img
-                width={70}
-                height={80}
-                src={`https://s3-us-west-2.amazonaws.com/pedsfeeds/images/profile/${ele.attachment}`}
-                alt="thumbnail"
-              />
-                )}
-            </Media.Right>
+                  {ele.attachment === null ? (
+                    <img
+                      width={70}
+                      height={80}
+                      src={`https://s3-us-west-2.amazonaws.com/pedsfeeds/images/profile/profile_noimg.jpg`}
+                      alt="thumbnail"
+                    />
+                  ) : (
+                    <img
+                      width={70}
+                      height={80}
+                      src={`https://s3-us-west-2.amazonaws.com/pedsfeeds/images/profile/${
+                        ele.attachment
+                      }`}
+                      alt="thumbnail"
+                    />
+                  )}
+                </Media.Right>
               </Media>
             </ListGroupItem>
             <br />
-
-            {/* <ListGroupItem>
-              <p>Ages Served:</p>
-              {ele.agesServed.map((ele, i) =>
-                <p key={i}>{ele}</p>
-              )}
-            </ListGroupItem>
-            <br />
-
-            <ListGroupItem>
-              <h1>Practice Specialties:</h1>
-              {ele.practiceSpecialties.map((ele, i) =>
-                <p key={i}>{ele}</p>
-              )}
-            </ListGroupItem> */}
           </div>
         ) : null
     )

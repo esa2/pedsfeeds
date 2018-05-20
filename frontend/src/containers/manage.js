@@ -12,7 +12,7 @@ export default class Manage extends Component {
 
   async componentDidMount() {
     try {
-      const allProfiles = await this.directory()
+      const allProfiles = await this.profile()
       this.setState({ allProfiles })
       console.log(allProfiles)
     } catch (error) {
@@ -21,8 +21,8 @@ export default class Manage extends Component {
     this.setState({ isLoading: false })
   }
 
-  directory() {
-    return API.get('peds', '/all-profiles')
+  profile() {
+    return API.get('peds', '/manage')
   }
 
   render() {

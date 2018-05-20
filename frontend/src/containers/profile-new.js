@@ -648,7 +648,7 @@ export default class ProfileNew extends Component {
                   Pediatric Speech and Language Therapy (WA)
                 </option>
                 <option value="Private practice">Private practice</option>
-                <option value="Seattle CHilden's Hospital (WA)">
+                <option value="Seattle Childen's Hospital (WA)">
                   Seattle Children's Hospital (WA)
                 </option>
                 <option value="Swedish Hospital (WA)">

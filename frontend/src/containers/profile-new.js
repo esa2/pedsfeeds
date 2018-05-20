@@ -24,7 +24,6 @@ export default class ProfileNew extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleListingDisplay = this.handleListingDisplay.bind(this)
     this.handleDiscipline = this.handleDiscipline.bind(this)
-    this.handleExperience = this.handleExperience.bind(this)
 
     this.state = {
       isLoading: false,
@@ -59,7 +58,6 @@ export default class ProfileNew extends Component {
       mentalHealth: [],
       medicalSpecialty: [],
       medicalExperienceTreating: [],
-      experience: '',
       medicalEducation1: '',
       medicalEducation2: '',
       medicalEducation3: '',
@@ -82,10 +80,6 @@ export default class ProfileNew extends Component {
 
   handleDiscipline(e) {
     this.setState({ professionalDiscipline: e.target.value })
-  }
-
-  handleExperience(e) {
-    this.setState({ experience: e.target.value })
   }
 
   handleLicenseChange = () => {
@@ -142,21 +136,15 @@ export default class ProfileNew extends Component {
         empOrganization: this.state.empOrganization,
         empUrl: this.state.empUrl !== '' ? this.state.empUrl : false,
         workAddress1: this.state.workAddress1,
-        workAddress2:
-          this.state.workAddress2 !== '' ? this.state.workAddress2 : false,
+        workAddress2: this.state.workAddress2 !== '' ? this.state.workAddress2 : false,
         workCity: this.state.workCity,
         workState: this.state.workState,
         workZip: this.state.workZip,
         workPhone: this.state.workPhone,
-        workExtension:
-          this.state.workExtension !== '' ? this.state.workExtension : false,
+        workExtension: this.state.workExtension !== '' ? this.state.workExtension : false,
         workEmail: this.state.workEmail !== '' ? this.state.workEmail : false,
-        providerGroup:
-          this.state.providerGroup !== '' ? this.state.providerGroup : false,
-        providerGroupText:
-          this.state.providerGroupText !== ''
-            ? this.state.providerGroupText
-            : false,
+        providerGroup: this.state.providerGroup !== '' ? this.state.providerGroup : false,
+        providerGroupText: this.state.providerGroupText !== '' ? this.state.providerGroupText : false,
         workSetting: this.state.workSetting,
         agesServed: this.state.agesServed,
         paymentTypes: this.state.paymentTypes,
@@ -167,31 +155,12 @@ export default class ProfileNew extends Component {
         mentalHealth: this.state.mentalHealth,
         medicalSpecialty: this.state.medicalSpecialty,
         medicalExperienceTreating: this.state.medicalExperienceTreating,
-        experience: this.state.experience,
-        medicalEducation1:
-          this.state.medicalEducation1 !== ''
-            ? this.state.medicalEducation1
-            : false,
-        medicalEducation2:
-          this.state.medicalEducation2 !== ''
-            ? this.state.medicalEducation2
-            : false,
-        medicalEducation3:
-          this.state.medicalEducation3 !== ''
-            ? this.state.medicalEducation3
-            : false,
-        medicalResearch1:
-          this.state.medicalResearch1 !== ''
-            ? this.state.medicalResearch1
-            : false,
-        medicalResearch2:
-          this.state.medicalResearch2 !== ''
-            ? this.state.medicalResearch2
-            : false,
-        medicalResearch3:
-          this.state.medicalResearch3 !== ''
-            ? this.state.medicalResearch3
-            : false,
+        medicalEducation1: this.state.medicalEducation1 !== '' ? this.state.medicalEducation1: false,
+        medicalEducation2: this.state.medicalEducation2 !== '' ? this.state.medicalEducation2: false,
+        medicalEducation3: this.state.medicalEducation3 !== '' ? this.state.medicalEducation3: false,
+        medicalResearch1: this.state.medicalResearch1 !== '' ? this.state.medicalResearch1: false,
+        medicalResearch2: this.state.medicalResearch2 !== '' ? this.state.medicalResearch2: false,
+        medicalResearch3: this.state.medicalResearch3 !== '' ? this.state.medicalResearch3: false,
         toc: this.state.toc,
       })
       // this.props.history.push('/profile')
@@ -624,7 +593,7 @@ export default class ProfileNew extends Component {
               <ControlLabel>Appointment Scheduling Phone Number</ControlLabel>
               <FormControl
                 type="text"
-                pattern="[0-9]*"
+                // pattern="[0-9]*"
                 value={this.state.workPhone}
                 onChange={this.handleChange}
               />
@@ -1210,45 +1179,6 @@ export default class ProfileNew extends Component {
                   onChange={this.handleExperience}
                 >
                   5 - 10 years
-                </Radio>{' '}
-                <Radio
-                  name="radioExperience"
-                  value="10+ years"
-                  onChange={this.handleExperience}
-                >
-                  10+ years
-                </Radio>{' '}
-              </FormGroup>
-            </Well>
-          ) : null}
-
-          {listingCategory === 'Medical Care Provider' ? (
-            <Well>
-              <h6>Professional Experience Treating Pediatric Feeding</h6>
-              <FormGroup controlId="experience">
-                <ControlLabel className="required">*</ControlLabel>
-                <ControlLabel>Number of years</ControlLabel>
-                <Radio
-                  name="radioExperience"
-                  value="None"
-                  required
-                  onChange={this.handleExperience}
-                >
-                  None
-                </Radio>{' '}
-                <Radio
-                  name="radioExperience"
-                  value="1 - 5 years"
-                  onChange={this.handleExperience}
-                >
-                  1 - 5 years
-                </Radio>{' '}
-                <Radio
-                  name="radioExperience"
-                  value="6 - 10 years"
-                  onChange={this.handleExperience}
-                >
-                  6 - 10 years
                 </Radio>{' '}
                 <Radio
                   name="radioExperience"

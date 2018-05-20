@@ -4,6 +4,7 @@ import Home from './containers/home'
 import Signin from './containers/signin'
 import Signup from './containers/signup'
 import Profile from './containers/profile'
+import Manage from './containers/manage'
 import CalendarNew from './containers/calendar-new'
 import Calendar from './containers/calendar'
 import About from './containers/about'
@@ -30,6 +31,12 @@ export default ({ childProps }) => (
       path="/profile"
       exact
       component={Profile}
+      props={childProps}
+    />
+    <AppliedRoute
+      path="/manage"
+      exact
+      component={Manage}
       props={childProps}
     />
     <AppliedRoute

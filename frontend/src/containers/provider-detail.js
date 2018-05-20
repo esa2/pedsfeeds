@@ -125,7 +125,9 @@ export default class ProviderDetail extends Component {
           )}
 
           <p className="detail-heading">WORK SETTING</p>
-          <p className="detail-text">{this.props.value.workSetting}</p>
+          {this.props.value.workSetting.map((ele, i) => (
+            <li key={i}>{ele}</li>
+          ))}
           <hr />
 
           {this.props.value.agesServed !== [] ? null : (

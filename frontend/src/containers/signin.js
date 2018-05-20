@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Auth } from 'aws-amplify'
-import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
+import { FormGroup, FormControl, ControlLabel, ButtonToolbar, Button } from 'react-bootstrap'
 import LoaderButton from '../components/loader-button'
 import '../styles/signin.css'
 
@@ -12,6 +12,7 @@ export default class Signin extends Component {
       isLoading: false,
       email: '',
       password: '',
+      code: '',
     }
   }
 
@@ -39,6 +40,18 @@ export default class Signin extends Component {
     }
   }
 
+  handlePassword = event => {
+    event.preventDefault()
+    Auth.forgotPassword(this.state.email)
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+
+// Collect confirmation code and new password, then
+Auth.forgotPasswordSubmit(this.state.email, this.state.code, this.state.password)
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <div className="signin">
@@ -60,6 +73,7 @@ export default class Signin extends Component {
               type="password"
             />
           </FormGroup>
+          <ButtonToolbar>
           <LoaderButton
             block
             bsSize="large"
@@ -70,6 +84,10 @@ export default class Signin extends Component {
             text="Sign in"
             loadingText="Signing in"
           />
+          <Button bsStyle="primary" bsSize="large" onClick={this.handlePassword}>
+              Forgot password
+            </Button>
+            </ButtonToolbar>
         </form>
       </div>
     )

@@ -69,7 +69,6 @@ export default class Directory extends Component {
         <ButtonToolbar>
           <Button
             bsStyle="primary"
-            bsSize="large"
             onClick={this.handleCategoryClick}
             value="Counselor / Mental Health"
           >
@@ -77,7 +76,6 @@ export default class Directory extends Component {
           </Button>
           <Button
             bsStyle="primary"
-            bsSize="large"
             onClick={this.handleCategoryClick}
             value="Dietitian"
           >
@@ -85,7 +83,6 @@ export default class Directory extends Component {
           </Button>
           <Button
             bsStyle="primary"
-            bsSize="large"
             onClick={this.handleCategoryClick}
             value="Feeding Therapist"
           >
@@ -93,7 +90,6 @@ export default class Directory extends Component {
           </Button>
           <Button
             bsStyle="primary"
-            bsSize="large"
             onClick={this.handleCategoryClick}
             value="Medical Care Provider"
           >
@@ -134,9 +130,14 @@ export default class Directory extends Component {
                   </p>
                   <p className="group">{ele.workPhone}</p>
                 </Media.Body>
-                {/* <Media.Right>
-              <img width={70} height={80} src={`https://s3-us-west-2.amazonaws.com/peds-app-uploads/private/us-west-2%3A3a9b35a8-34d4-4c46-a2b1-5529a933337e/${ele.attachment}`} alt="thumbnail" />
-            </Media.Right> */}
+                <Media.Right>
+                <img
+                width={70}
+                height={70}
+                src={`https://s3-us-west-2.amazonaws.com/peds-app-uploads/private/us-west-2%3A51121127-1978-4b7e-a501-13ec365c23f2/${ele.attachment}`}
+                alt="thumbnail"
+              />
+            </Media.Right>
               </Media>
             </ListGroupItem>
             <br />

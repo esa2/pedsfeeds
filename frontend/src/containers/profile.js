@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { API } from 'aws-amplify'
 import {
   ButtonToolbar,
   Button,
@@ -22,21 +21,6 @@ export default class Profile extends Component {
       listingCategory: '',
       showNewListing: false,
     }
-  }
-
-  async componentDidMount() {
-    try {
-      const profile = await this.profile()
-      console.log('getting profile')
-      console.log(profile)
-    } catch (error) {
-      alert(error)
-    }
-    this.setState({ isLoading: false })
-  }
-
-  profile() {
-    return API.get('peds', '/profile')
   }
 
   handleNewClick = e => {
@@ -112,7 +96,7 @@ export default class Profile extends Component {
               >
                 Submit a new listing
               </Button>
-              <Button bsStyle="primary" bsSize="large">
+              <Button bsStyle="primary" bsSize="large" href="/manage">
                 Manage my listings
               </Button>
             </ButtonToolbar>

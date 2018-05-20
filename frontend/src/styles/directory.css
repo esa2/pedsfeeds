@@ -8,3 +8,29 @@
   margin-top: 0;
   margin-bottom: 8px;
 }
+
+.detail-page {
+  margin-top: 20px;
+}
+
+.detail-title {
+  font-size: 1.5em;
+  color: #e47911;
+}
+
+.detail-title-underscore {
+  border-top: 10px solid #ddd
+}
+
+.detail-heading {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.detail-text {
+  margin-bottom: 10px;
+}
+
+.detail-label {
+  font-weight: bold;
+}

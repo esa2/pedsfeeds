@@ -7,20 +7,24 @@ export default class ProviderDetail extends Component {
     return (
       <div>
         <Grid className="detail-page">
-
           <Row>
             <Col md={9}>
               <br />
               <br />
               <h6 className="detail-title">{this.props.value.listingTitle}</h6>
             </Col>
+
             <Col md={3}>
-              <img
-                width={70}
-                height={70}
-                src={`https://s3-us-west-2.amazonaws.com/peds-app-uploads/private/us-west-2%3A51121127-1978-4b7e-a501-13ec365c23f2/${this.props.value.attachment}`}
-                alt="thumbnail"
-              />
+              {this.props.value.attachment === null ? null : (
+                <img
+                  width={70}
+                  height={80}
+                  src={`https://s3-us-west-2.amazonaws.com/pedsfeeds/images/profile/${
+                    this.props.value.attachment
+                  }`}
+                  alt="thumbnail"
+                />
+              )}
             </Col>
           </Row>
 
@@ -61,6 +65,14 @@ export default class ProviderDetail extends Component {
               {this.props.value.workAddress1}
             </Col>
           </Row>
+          {this.props.value.workAddress2 === false ? null : (
+            <Row>
+              <Col className="detail-label" md={3} />
+              <Col className="detail-text" md={9}>
+                {this.props.value.workAddress2}
+              </Col>
+            </Row>
+          )}
           <Row>
             <Col className="detail-label" md={3}>
               City
@@ -95,10 +107,19 @@ export default class ProviderDetail extends Component {
           </Row>
           <hr />
 
-          {this.props.value.providerGroup === '' ? null : (
+          {this.props.value.providerGroup === false ? null : (
             <div>
               <p className="detail-heading">PROVIDER GROUP</p>
               <p className="detail-text">{this.props.value.providerGroup}</p>
+              <hr />
+            </div>
+          )}
+          {this.props.value.providerGroupText === false ? null : (
+            <div>
+              <p className="detail-heading">PROVIDER GROUP</p>
+              <p className="detail-text">
+                {this.props.value.providerGroupText}
+              </p>
               <hr />
             </div>
           )}
@@ -157,7 +178,7 @@ export default class ProviderDetail extends Component {
             <hr />
           </div>
 
-          {this.props.value.experience === [] ? null : (
+          {this.props.value.experience !== [] ? null : (
             <div>
               <p className="detail-heading">
                 YEARS OF EXPERIENCE RELATED TO PEDIATRIC FEEDING

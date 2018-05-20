@@ -131,12 +131,25 @@ export default class Directory extends Component {
                   <p className="group">{ele.workPhone}</p>
                 </Media.Body>
                 <Media.Right>
+                {ele.attachment === null ? 
+                
                 <img
                 width={70}
-                height={70}
-                src={`https://s3-us-west-2.amazonaws.com/peds-app-uploads/private/us-west-2%3A51121127-1978-4b7e-a501-13ec365c23f2/${ele.attachment}`}
+                height={80}
+                src={`https://s3-us-west-2.amazonaws.com/pedsfeeds/images/profile/profile_noimg.jpg`}
                 alt="thumbnail"
               />
+                
+                : (
+
+
+                <img
+                width={70}
+                height={80}
+                src={`https://s3-us-west-2.amazonaws.com/pedsfeeds/images/profile/${ele.attachment}`}
+                alt="thumbnail"
+              />
+                )}
             </Media.Right>
               </Media>
             </ListGroupItem>

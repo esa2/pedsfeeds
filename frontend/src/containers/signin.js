@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Auth } from 'aws-amplify'
-import { FormGroup, FormControl, ControlLabel, ButtonToolbar, Button } from 'react-bootstrap'
+import { FormGroup, FormControl, ControlLabel, ButtonToolbar, Button, HelpBlock } from 'react-bootstrap'
 import LoaderButton from '../components/loader-button'
 import '../styles/signin.css'
 
@@ -12,7 +12,9 @@ export default class Signin extends Component {
       isLoading: false,
       email: '',
       password: '',
-      code: '',
+      confirmPassword: '',
+      forgotPassword: null,
+      confirmationCode: '',
     }
   }
 
@@ -20,14 +22,24 @@ export default class Signin extends Component {
     return this.state.email.length > 7 && this.state.password.length > 7
   }
 
-  handleChange = event => {
+  validateFormForgot() {
+    return this.state.email.length > 7
+  }
+
+  validateConfirmationForm() {
+    return this.state.confirmationCode.length > 0 &&
+    this.state.password.length > 7 &&
+    this.state.password === this.state.confirmPassword
+  }
+
+  handleChange = e => {
     this.setState({
-      [event.target.id]: event.target.value,
+      [e.target.id]: e.target.value,
     })
   }
 
-  handleSubmit = async event => {
-    event.preventDefault()
+  handleSubmit = async e => {
+    e.preventDefault()
 
     this.setState({ isLoading: true })
     try {
@@ -35,24 +47,80 @@ export default class Signin extends Component {
       this.props.userHasAuthenticated(true)
       this.props.history.push('/')
     } catch (error) {
+      console.log(error)
       alert(error.message)
       this.setState({ isLoading: false })
     }
   }
 
-  handlePassword = event => {
-    event.preventDefault()
-    Auth.forgotPassword(this.state.email)
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
+  handleConfirmationSubmit = async e => {
+    e.preventDefault()
 
-// Collect confirmation code and new password, then
-Auth.forgotPasswordSubmit(this.state.email, this.state.code, this.state.password)
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
+    this.setState({ isLoading: true })
+    try {
+      await Auth.forgotPasswordSubmit(this.state.email, this.state.confirmationCode, this.state.password)
+    } catch (error) {
+      alert(error.message)
+      this.setState({ isLoading: false })
+    }
   }
 
-  render() {
+  handlePasswordReset = async e => {
+    e.preventDefault()
+    try {
+      await Auth.forgotPassword(this.state.email)
+    } catch (error) {
+      alert(error.message)
+    }
+      this.setState({ forgotPassword: true })
+  }
+
+  renderConfirmationForm() {
+    return (
+      <form onSubmit={this.handleConfirmationSubmit}>
+        <FormGroup controlId="confirmationCode" bsSize="large">
+          <ControlLabel>Confirmation Code</ControlLabel>
+          <FormControl
+            autoFocus
+            type="tel"
+            value={this.state.confirmationCode}
+            onChange={this.handleChange}
+          />
+          <HelpBlock>Please check your email for the code.</HelpBlock>
+        </FormGroup>
+        <FormGroup controlId="password" bsSize="large">
+          <ControlLabel>
+            Enter new password - requires minimum length of 8 and must contain at least
+            one lowercase, uppercase, numeric and symbol
+          </ControlLabel>
+          <FormControl
+            value={this.state.password}
+            onChange={this.handleChange}
+            type="password"
+          />
+        </FormGroup>
+        <FormGroup controlId="confirmPassword" bsSize="large">
+          <ControlLabel>Confirm new password</ControlLabel>
+          <FormControl
+            value={this.state.confirmPassword}
+            onChange={this.handleChange}
+            type="password"
+          />
+        </FormGroup>
+        <LoaderButton
+          block
+          bsSize="large"
+          disabled={!this.validateConfirmationForm()}
+          type="submit"
+          isLoading={this.state.isLoading}
+          text="Verify"
+          loadingText="Verifying…"
+        />
+      </form>
+    )
+  }
+
+  renderForm() {
     return (
       <div className="signin">
         <form onSubmit={this.handleSubmit}>
@@ -84,11 +152,21 @@ Auth.forgotPasswordSubmit(this.state.email, this.state.code, this.state.password
             text="Sign in"
             loadingText="Signing in"
           />
-          <Button bsStyle="primary" bsSize="large" onClick={this.handlePassword}>
+          <Button bsStyle="primary" bsSize="large"  disabled={!this.validateFormForgot()} onClick={this.handlePasswordReset}>
               Forgot password
             </Button>
             </ButtonToolbar>
         </form>
+      </div>
+    )
+  }
+
+  render() {
+    return (
+      <div>
+        {this.state.forgotPassword === null
+          ? this.renderForm()
+          : this.renderConfirmationForm()}
       </div>
     )
   }

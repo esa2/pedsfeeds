@@ -104,7 +104,7 @@ export default class Directory extends Component {
     const show = this.state.show
     return show ? (
       <div>
-        <PageHeader>Providers</PageHeader>
+        <PageHeader></PageHeader>
         <ListGroup>
           {!this.state.isLoading &&
             this.renderProviderList(this.state.category)}

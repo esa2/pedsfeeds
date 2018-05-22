@@ -44,16 +44,18 @@ export default class ProviderDetail extends Component {
               {this.props.value.empOrganization}
             </Col>
           </Row>
-          <Row>
-            <Col className="detail-label" md={3}>
-              Employer's Website
-            </Col>
-            <Col md={9}>
-              <a className="detail-text" href={`${this.props.value.empUrl}`}>
-                {this.props.value.empUrl}
-              </a>
-            </Col>
-          </Row>
+          {this.props.value.empUrl === false ? null : (
+            <Row>
+              <Col className="detail-label" md={3}>
+                Employer's Website
+              </Col>
+              <Col md={9}>
+                <a className="detail-text" href={`${this.props.value.empUrl}`}>
+                  {this.props.value.empUrl}
+                </a>
+              </Col>
+            </Row>
+          )}
           <hr />
 
           <p className="detail-heading">WORK CONTACT INFORMATION</p>
@@ -130,67 +132,72 @@ export default class ProviderDetail extends Component {
           ))}
           <hr />
 
-          {this.props.value.agesServed !== [] ? null : (
+          {this.props.value.agesServed.length === 0 ? null : (
             <div>
               <p className="detail-heading">AGES SERVED</p>
-              <p className="detail-text">{this.props.value.agesServed}</p>
+              {this.props.value.agesServed.map((ele, i) => (
+                <li key={i}>{ele}</li>
+              ))}
               <hr />
             </div>
           )}
 
-          {this.props.value.paymentTypes !== [] ? null : (
+          {this.props.value.paymentTypes.length === 0 ? null : (
             <div>
               <p className="detail-heading">PAYMENT TYPES ACCEPTED</p>
+              {this.props.value.paymentTypes.map((ele, i) => (
+                <li key={i}>{ele}</li>
+              ))}
               <hr />
             </div>
           )}
 
-          {this.props.value.medicalConditions !== [] ? null : (
+          {this.props.value.medicalConditions.length === 0 ? null : (
             <div>
               <p className="detail-heading">
                 EXPERIENCE IN TREATING CHILDREN WITH THESE MEDICAL CONDITIONS
               </p>
+              {this.props.value.medicalConditions.map((ele, i) => (
+                <li key={i}>{ele}</li>
+              ))}
               <hr />
             </div>
           )}
 
-          {this.props.value.feedingConditions !== [] ? null : (
+          {this.props.value.feedingConditions.length === 0 ? null : (
             <div>
               <p className="detail-heading">
                 EXPERIENCE IN TREATING CHILDREN WITH THESE FEEDING CONDITIONS
               </p>
+              {this.props.value.feedingConditions.map((ele, i) => (
+                <li key={i}>{ele}</li>
+              ))}
               <hr />
             </div>
           )}
 
-          {this.props.value.practiceSpecialties !== [] ? null : (
+          {this.props.value.practiceSpecialties.length === 0 ? null : (
             <div>
               <p className="detail-heading">
-                FEEDING CLINICAL PRACTICE SPECIALTIES
-              </p>
+                FEEDING CLINICAL PRACTICE SPECIALTIES </p>
+              {this.props.value.practiceSpecialties.map((ele, i) => (
+                <li key={i}>{ele}</li>
+              ))}
               <hr />
             </div>
           )}
 
-          <div>
-            <p className="detail-heading">SPECIALTY</p>
-            {this.props.value.medicalSpecialty.map((ele, i) => (
-              <li key={i}>{ele}</li>
-            ))}
-            <hr />
-          </div>
-
-          {this.props.value.experience !== [] ? null : (
+          {this.props.value.medicalSpecialty.length === 0 ? null : (
             <div>
-              <p className="detail-heading">
-                YEARS OF EXPERIENCE RELATED TO PEDIATRIC FEEDING
-              </p>
-              <p className="detail-text">{this.props.value.experience}</p>
+              <p className="detail-heading">SPECIALTY</p>
+              {this.props.value.medicalSpecialty.map((ele, i) => (
+                <li key={i}>{ele}</li>
+              ))}
               <hr />
             </div>
           )}
 
-          {this.props.value.medicalExperienceTreating === [] ? null : (
+          {this.props.value.medicalExperienceTreating.length === 0 ? null : (
             <div>
               <p className="detail-heading">
                 EXPERIENCE TREATING PATIENTS WITH THE FOLLOWING ISSUES OR

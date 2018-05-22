@@ -117,7 +117,6 @@ export default class Home extends Component {
 
   renderModal() {
     const show = this.state.show
-    console.log(this.state)
     return (
       <div>
         {show ? (

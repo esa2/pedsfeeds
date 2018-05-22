@@ -26,6 +26,7 @@ export default class Directory extends Component {
   handleCategoryClick = e => {
     e.preventDefault()
     let category = []
+    console.log(e)
 
     // this.state.allProfiles
     // .filter(listingCategory => listingCategory === e.target.value)
@@ -85,6 +86,7 @@ export default class Directory extends Component {
             bsStyle="primary"
             onClick={this.handleCategoryClick}
             value="Feeding Therapist"
+            data="Feeding Therapists, OT/PT, SLP"
           >
             Feeding Therapists, OT/PT, SLP
           </Button>
@@ -104,7 +106,7 @@ export default class Directory extends Component {
     const show = this.state.show
     return show ? (
       <div>
-        <PageHeader>Providers</PageHeader>
+        <PageHeader></PageHeader>
         <ListGroup>
           {!this.state.isLoading &&
             this.renderProviderList(this.state.category)}

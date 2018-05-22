@@ -4,6 +4,10 @@
   margin-bottom: 10px;
 }
 
+.page-header {
+  text-align: center;
+}
+
 .group {
   margin-top: 0;
   margin-bottom: 8px;

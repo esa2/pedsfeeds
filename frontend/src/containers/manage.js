@@ -14,7 +14,7 @@ export default class Manage extends Component {
     try {
       const allProfiles = await this.profile()
       this.setState({ allProfiles })
-      console.log(allProfiles)
+      // console.log(allProfiles)
     } catch (error) {
       alert(error)
     }

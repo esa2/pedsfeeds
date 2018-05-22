@@ -54,7 +54,7 @@ export default class EventNew extends Component {
               new Date(this.state.endDate.replace(/-/g, '/')).toDateString()
             : null,
         startTime: this.state.startTime,
-        endTime: this.state.endTime,
+        endTime: this.state.endTime !== '' ? this.state.endTime : null,
         multiDay: this.state.multiDay,
         contact:
           this.state.contact !== '' ? 'Contact: ' + this.state.contact : null,
@@ -72,7 +72,7 @@ export default class EventNew extends Component {
   }
 
   createEvent(event) {
-    return API.post('peds', '/events', {
+    return API.post('peds', '/calendar', {
       body: event,
     })
   }

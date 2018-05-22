@@ -47,7 +47,6 @@ export default class Signin extends Component {
       this.props.userHasAuthenticated(true)
       this.props.history.push('/')
     } catch (error) {
-      console.log(error)
       alert(error.message)
       this.setState({ isLoading: false })
     }

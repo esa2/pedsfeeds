@@ -69,8 +69,6 @@ export default class ProfileNew extends Component {
   }
 
   handleChange(e) {
-    console.log('state')
-    console.log(this.state)
     this.setState({ [e.target.id]: e.target.value })
   }
 

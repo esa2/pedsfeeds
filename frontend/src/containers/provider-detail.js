@@ -3,7 +3,6 @@ import { Grid, Row, Col } from 'react-bootstrap'
 
 export default class ProviderDetail extends Component {
   render() {
-    console.log(this.props)
     return (
       <div>
         <Grid className="detail-page">

@@ -33,7 +33,7 @@ export default class Events extends Component {
   }
 
   getEvent() {
-    return API.get('events', `/calendar/${this.props.match.params.id}`)
+    return API.get('peds', `/calendar/${this.props.match.params.id}`)
   }
 
   validateForm() {
@@ -47,7 +47,7 @@ export default class Events extends Component {
   }
 
   saveEvent(event) {
-    return API.put('events', `/events/${this.props.match.params.id}`, {
+    return API.put('peds', `/calendar/${this.props.match.params.id}`, {
       body: event,
     })
   }
@@ -70,7 +70,7 @@ export default class Events extends Component {
   }
 
   deleteEvent() {
-    return API.del('events', `/events/${this.props.match.params.id}`)
+    return API.del('peds', `/calendar/${this.props.match.params.id}`)
   }
 
   handleDelete = async event => {

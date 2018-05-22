@@ -92,15 +92,15 @@ export default class Home extends Component {
             {entry.theLocation}
           </ListGroupItem>
         ) : null
-      // : <ListGroupItem
-      //     key="new"
-      //     href="/calendar/new"
-      //     onClick={this.handleNewClick}
-      //   >
-      //     <h4>
-      //       <b>{"\uFF0B"}</b> Create a new event
-      //     </h4>
-      //   </ListGroupItem>
+        // ) : <ListGroupItem
+        //   key="new"
+        //   href="/calendar/new"
+        //   onClick={this.handleNewClick}
+        // >
+        //   <h4>
+        //     <b>{"\uFF0B"}</b> Create a new event
+        //   </h4>
+        // </ListGroupItem>
     )
   }
 
@@ -117,6 +117,7 @@ export default class Home extends Component {
 
   renderModal() {
     const show = this.state.show
+    console.log(this.state)
     return (
       <div>
         {show ? (
@@ -133,7 +134,8 @@ export default class Home extends Component {
               <p>Starts: {this.state.startDate}</p>
               <p>{this.state.endDate}</p>
               <p>
-                From: {this.state.startTime} To: {this.state.endTime}
+                From: {this.state.startTime}
+                {this.state.endTime === null ? null : ` To: ${this.state.endTime}`}
               </p>
               <hr />
               <div className="pre-wrap">{this.state.description}</div>

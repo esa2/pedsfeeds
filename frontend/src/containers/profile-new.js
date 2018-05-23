@@ -623,6 +623,8 @@ export default class ProfileNew extends Component {
               <ControlLabel>Zip Code</ControlLabel>
               <FormControl
                 required
+                type="number"
+                placeholder="0 - 9"
                 value={this.state.workZip}
                 onChange={this.handleChange}
               />
@@ -632,6 +634,8 @@ export default class ProfileNew extends Component {
               <ControlLabel>Appointment Scheduling Phone Number</ControlLabel>
               <FormControl
                 required
+                type="number"
+                placeholder="0 - 9"
                 value={this.state.workPhone}
                 onChange={this.handleChange}
               />
@@ -639,8 +643,8 @@ export default class ProfileNew extends Component {
             <FormGroup controlId="workExtension">
               <ControlLabel>Extension</ControlLabel>
               <FormControl
-                type="text"
-                placeholder="Extension digits only"
+                type="number"
+                placeholder="0 - 9"
                 value={this.state.workExtension}
                 onChange={this.handleChange}
               />

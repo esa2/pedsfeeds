@@ -37,7 +37,7 @@ export default class Contact extends Component {
         <h4 className="header-green-center">Contact Us</h4>
         <p className="required-text">*Required field</p>
         <form
-          action="https://formspree.io/info@pedsfeeds.com"
+          action="https://formspree.io/pedsfeedsinfo@gmail.com"
           method="POST"
         >
           <FormGroup className="field-size" controlId="name">

@@ -48,6 +48,7 @@ class App extends Component {
     return (
       !this.state.isAuthenticating && (
         <div>
+          <div className="nav-filler"></div>
           <Navbar fluid collapseOnSelect>
             <Navbar.Header>
               <a href="/">

@@ -2,10 +2,19 @@
   background-color: #333;
 }
 
+.navbar-default {
+  border-color:  #333;
+}
+
 .navbar-default .navbar-nav > li > a {
   color: #e47911;
 }
 
 .navbar-default .navbar-nav > li > a:hover {
   background-color: #8bb02e;
+}
+
+.nav-filler {
+  height: 10px;
+  background-color: #333;
 }

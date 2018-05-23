@@ -8,6 +8,7 @@ import {
   Well,
 } from 'react-bootstrap'
 import ProfileNew from './profile-new'
+import '../styles/profile.css'
 
 export default class Profile extends Component {
   constructor(props) {

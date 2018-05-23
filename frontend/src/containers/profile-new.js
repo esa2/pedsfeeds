@@ -14,7 +14,6 @@ import {
 } from 'react-bootstrap'
 import LoaderButton from '../components/loader-button'
 import Config from '../amplify-config'
-import '../styles/profile-new.css'
 
 export default class ProfileNew extends Component {
   constructor(props) {
@@ -109,6 +108,7 @@ export default class ProfileNew extends Component {
 
   handleSubmit = async e => {
     e.preventDefault()
+
     if (this.file && this.file.size > Config.MAX_ATTACHMENT_SIZE) {
       alert('Your image file must be smaller than 1MB')
       return
@@ -174,6 +174,44 @@ export default class ProfileNew extends Component {
     })
   }
 
+  checkRequired(e) {
+    e.preventDefault()
+    if (this.state.workSetting.length === 0) {
+      const requiredCheckbox = document.getElementById("workSettingReq")
+      requiredCheckbox.scrollIntoView()
+      return
+    }
+    if (this.props.value === 'Medical Care Provider') {
+      if (this.state.medicalSpecialty.length === 0) {
+        const requiredCheckbox = document.getElementById("medicalSpecialtyReq")
+        requiredCheckbox.scrollIntoView()
+        return
+      }
+    }
+    if (this.props.value === 'Counselor / Mental Health' || this.props.value === 'Medical Care Provider') {
+      if (this.state.certifications.length === 0) {
+        const requiredCheckbox = document.getElementById("certificationsReq")
+        requiredCheckbox.scrollIntoView()
+        return
+      }
+    }
+    if (this.props.value !== 'Medical Care Provider') {
+      if (this.state.agesServed.length === 0) {
+        const requiredCheckbox = document.getElementById("agesServedReq")
+        requiredCheckbox.scrollIntoView()
+        return
+      }
+    }
+    if (this.props.value !== 'Medical Care Provider') {
+      if (this.state.paymentTypes.length === 0) {
+        const requiredCheckbox = document.getElementById("paymentTypesReq")
+        requiredCheckbox.scrollIntoView()
+        return
+      }
+    }
+    this.handleSubmit(e)
+  }
+
   render() {
     const listingCategory = this.props.value
     return (
@@ -182,7 +220,7 @@ export default class ProfileNew extends Component {
         <p>
           Required fields<span className="required">*</span>
         </p>
-        <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={e => this.checkRequired(e)}>
           <Well>
             <h6>Listing Title</h6>
             <FormGroup controlId="listingTitle">
@@ -449,8 +487,8 @@ export default class ProfileNew extends Component {
                 confidentiality and will not be displayed in your profile.
               </ControlLabel>
               <FormControl
-                type="text"
                 required
+                type="text"
                 value={this.state.licenseNumber}
                 onChange={this.handleChange}
               />
@@ -459,7 +497,7 @@ export default class ProfileNew extends Component {
               <Well>
                 <ControlLabel className="required">*</ControlLabel>
                 <ControlLabel>Check standing</ControlLabel>
-                <Checkbox onChange={this.handleLicenseChange}>
+                <Checkbox required onChange={this.handleLicenseChange}>
                   I am in good standing with the state and national liscensing
                   or certification bodies required for my profession
                 </Checkbox>
@@ -472,6 +510,7 @@ export default class ProfileNew extends Component {
               <ControlLabel className="required">*</ControlLabel>
               <ControlLabel>Organization / Company</ControlLabel>
               <FormControl
+                required
                 type="text"
                 value={this.state.empOrganization}
                 onChange={this.handleChange}
@@ -493,6 +532,7 @@ export default class ProfileNew extends Component {
               <ControlLabel className="required">*</ControlLabel>
               <ControlLabel>Work Address 1</ControlLabel>
               <FormControl
+                required
                 type="text"
                 value={this.state.workAddress1}
                 onChange={this.handleChange}
@@ -510,6 +550,7 @@ export default class ProfileNew extends Component {
               <ControlLabel className="required">*</ControlLabel>
               <ControlLabel>City</ControlLabel>
               <FormControl
+                required
                 type="text"
                 value={this.state.workCity}
                 onChange={this.handleChange}
@@ -581,7 +622,7 @@ export default class ProfileNew extends Component {
               <ControlLabel className="required">*</ControlLabel>
               <ControlLabel>Zip Code</ControlLabel>
               <FormControl
-                type="text"
+                required
                 value={this.state.workZip}
                 onChange={this.handleChange}
               />
@@ -590,8 +631,7 @@ export default class ProfileNew extends Component {
               <ControlLabel className="required">*</ControlLabel>
               <ControlLabel>Appointment Scheduling Phone Number</ControlLabel>
               <FormControl
-                type="text"
-                // pattern="[0-9]*"
+                required
                 value={this.state.workPhone}
                 onChange={this.handleChange}
               />
@@ -675,7 +715,7 @@ export default class ProfileNew extends Component {
           {listingCategory === 'Counselor / Mental Health' ||
           listingCategory === 'Feeding Therapist' ? (
             <Well>
-              <h6>Work Setting</h6>
+              <h6 id="workSettingReq">Work Setting</h6>
               <FormGroup
                 controlId="workSetting"
                 onChange={e => this.handleMultipleChange(e, 'workSetting')}
@@ -708,7 +748,7 @@ export default class ProfileNew extends Component {
 
           {listingCategory === 'Dietitian' ? (
             <Well>
-              <h6>Work Setting</h6>
+              <h6 id="workSettingReq">Work Setting</h6>
               <FormGroup
                 controlId="workSetting"
                 onChange={e => this.handleMultipleChange(e, 'workSetting')}
@@ -732,7 +772,7 @@ export default class ProfileNew extends Component {
 
           {listingCategory === 'Medical Care Provider' ? (
             <Well>
-              <h6>Work Setting</h6>
+              <h6 id="workSettingReq">Work Setting</h6>
               <FormGroup
                 controlId="workSetting"
                 onChange={e => this.handleMultipleChange(e, 'workSetting')}
@@ -750,7 +790,7 @@ export default class ProfileNew extends Component {
 
           {listingCategory === 'Medical Care Provider' ? (
             <Well>
-              <h6>Specialty</h6>
+              <h6 id="medicalSpecialtyReq">Specialty</h6>
               <FormGroup
                 controlId="medicalSpecialty"
                 onChange={e => this.handleMultipleChange(e, 'medicalSpecialty')}
@@ -777,7 +817,7 @@ export default class ProfileNew extends Component {
 
           {listingCategory === 'Counselor / Mental Health' ? (
             <Well>
-              <h6>Certifications</h6>
+              <h6 id="certificationsReq">Certifications</h6>
               <FormGroup
                 controlId="certifications"
                 onChange={e => this.handleMultipleChange(e, 'certifications')}
@@ -820,7 +860,7 @@ export default class ProfileNew extends Component {
 
           {listingCategory === 'Medical Care Provider' ? (
             <Well>
-              <h6>Certifications</h6>
+              <h6 id="certificationsReq">Certifications</h6>
               <FormGroup
                 controlId="Certifications"
                 onChange={e => this.handleMultipleChange(e, 'certifications')}
@@ -862,7 +902,7 @@ export default class ProfileNew extends Component {
           listingCategory === 'Dietitian' ||
           listingCategory === 'Feeding Therapist' ? (
             <Well>
-              <h6>Ages Served</h6>
+              <h6 id="agesServedReq">Ages Served</h6>
               <FormGroup
                 controlId="agesServed"
                 onChange={e => this.handleMultipleChange(e, 'agesServed')}
@@ -895,7 +935,7 @@ export default class ProfileNew extends Component {
           listingCategory === 'Dietitian' ||
           listingCategory === 'Feeding Therapist' ? (
             <Well>
-              <h6>Payment Types Accepted</h6>
+              <h6 id="paymentTypesReq">Payment Types Accepted</h6>
               <FormGroup
                 controlId="paymentTypes"
                 onChange={e => this.handleMultipleChange(e, 'paymentTypes')}
@@ -1304,7 +1344,7 @@ export default class ProfileNew extends Component {
               <ControlLabel>
                 Terms and Conditions<span className="required">*</span>
               </ControlLabel>
-              <Checkbox onChange={this.handleTocChange}>
+              <Checkbox required onChange={this.handleTocChange}>
                 I have read the terms and conditions and certify that the above
                 data is accurate and true and that I have liability insurance. I
                 understand that PedsFeeds.com is not liable for any consequences

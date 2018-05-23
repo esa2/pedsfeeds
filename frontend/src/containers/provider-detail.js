@@ -106,6 +106,16 @@ export default class ProviderDetail extends Component {
               {this.props.value.workPhone}
             </Col>
           </Row>
+          {this.props.value.workExtension === false ? null : (
+            <Row>
+              <Col className="detail-label" md={3}>
+                Extension
+              </Col>
+              <Col className="detail-text" md={9}>
+                {this.props.value.workExtension}
+              </Col>
+            </Row>
+          )}
           <hr />
 
           {this.props.value.providerGroup === false ? null : (

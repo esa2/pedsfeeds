@@ -63,6 +63,7 @@ export default class ProfileNew extends Component {
       medicalResearch1: '',
       medicalResearch2: '',
       medicalResearch3: '',
+      yearsExperience: '',
       toc: false,
     }
   }
@@ -168,6 +169,7 @@ export default class ProfileNew extends Component {
         medicalResearch1: this.state.medicalResearch1 !== '' ? this.state.medicalResearch1: false,
         medicalResearch2: this.state.medicalResearch2 !== '' ? this.state.medicalResearch2: false,
         medicalResearch3: this.state.medicalResearch3 !== '' ? this.state.medicalResearch3: false,
+        yearsExperience: this.state.yearsExperience !== '' ? this.state.yearsExperience: false,
         toc: this.state.toc,
         lat: this.state.lat,
         lng: this.state.lng,
@@ -634,8 +636,7 @@ export default class ProfileNew extends Component {
               <ControlLabel>Zip Code</ControlLabel>
               <FormControl
                 required
-                type="number"
-                placeholder="0 - 9"
+                type="text"
                 value={this.state.workZip}
                 onChange={this.handleChange}
               />
@@ -645,8 +646,7 @@ export default class ProfileNew extends Component {
               <ControlLabel>Appointment Scheduling Phone Number</ControlLabel>
               <FormControl
                 required
-                type="number"
-                placeholder="0 - 9"
+                type="text"
                 value={this.state.workPhone}
                 onChange={this.handleChange}
               />

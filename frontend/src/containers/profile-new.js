@@ -80,15 +80,11 @@ export default class ProfileNew extends Component {
   }
 
   handleLicenseChange = () => {
-    this.setState({
-      licenseStanding: !this.state.licenseStanding,
-    })
+    this.setState({ licenseStanding: !this.state.licenseStanding })
   }
 
   handleTocChange = () => {
-    this.setState({
-      toc: !this.state.toc,
-    })
+    this.setState({ toc: !this.state.toc })
   }
 
   handleMultipleChange = (e, stateName) => {
@@ -106,6 +102,12 @@ export default class ProfileNew extends Component {
     this.file = e.target.files[0]
   }
 
+  fetchAddress = async (street, city, state) => {
+    var fetchStreet = street.replace(/ /gi, '+')
+    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${fetchStreet},+${city},+${state}&key=API_KEY`)
+    return response.json()
+  }
+  
   handleSubmit = async e => {
     e.preventDefault()
 
@@ -115,6 +117,13 @@ export default class ProfileNew extends Component {
     }
 
     this.setState({ isLoading: true })
+
+    try {
+      const address = await this.fetchAddress(this.state.workAddress1, this.state.workCity, this.state.workState)
+      this.setState({ lat: address.results[0].geometry.location.lat, lng: address.results[0].geometry.location.lng })
+    } catch (error) {
+      alert(error)
+    }
 
     try {
       const attachment = this.file ? await s3Upload(this.file) : null
@@ -160,6 +169,8 @@ export default class ProfileNew extends Component {
         medicalResearch2: this.state.medicalResearch2 !== '' ? this.state.medicalResearch2: false,
         medicalResearch3: this.state.medicalResearch3 !== '' ? this.state.medicalResearch3: false,
         toc: this.state.toc,
+        lat: this.state.lat,
+        lng: this.state.lng,
       })
       // this.props.history.push('/profile')
     } catch (error) {

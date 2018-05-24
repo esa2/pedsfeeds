@@ -8,6 +8,7 @@ import {
   Button,
   Media,
 } from 'react-bootstrap'
+import Map from './map'
 import ProviderDetail from './provider-detail'
 
 import '../styles/directory.css'
@@ -100,6 +101,15 @@ export default class Directory extends Component {
     )
   }
 
+  renderMap() {
+    const isLoading = this.state.isLoading
+    return !isLoading ? (
+      <div>
+        <Map value={this.state.allProfiles}></Map>
+      </div>
+    ) : null
+  }
+
   renderProviders() {
     const show = this.state.show
     return show ? (
@@ -168,6 +178,7 @@ export default class Directory extends Component {
     return (
       <div>
         {this.renderButtons()}
+        {this.renderMap()}
         {this.renderProviders()}
         {this.renderSelectedProvider(this.state.currentProvider)}
       </div>

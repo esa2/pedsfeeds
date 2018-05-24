@@ -219,6 +219,15 @@ export default class ProviderDetail extends Component {
               <hr />
             </div>
           )}
+
+          {this.props.value.yearsExperience === false ? null : (
+            <div>
+              <p className="detail-heading">YEARS OF EXPERIENCE RELATED TO PEDIATRIC FEEDING</p>
+              <p className="detail-text">{this.props.value.yearsExperience}</p>
+              <hr />
+            </div>
+          )}
+
         </Grid>
       </div>
     )

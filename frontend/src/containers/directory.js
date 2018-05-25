@@ -21,6 +21,7 @@ export default class Directory extends Component {
       isLoading: true,
       show: false,
       showProvider: false,
+      showMap: true,
     }
   }
 
@@ -34,13 +35,13 @@ export default class Directory extends Component {
     this.state.allProfiles.map(ele => {
       if (ele.listingCategory === e.target.value) category.push(ele)
     })
-    this.setState({ show: true, showProvider: false, category })
+    this.setState({ show: true, showProvider: false, showMap: false, category })
     // console.log(this.state.allProfiles)
   }
 
   handleProviderClick = (e, currentProvider) => {
     e.preventDefault()
-    this.setState({ showProvider: true, show: false, currentProvider })
+    this.setState({ showProvider: true, show: false,  showMap: false, currentProvider })
   }
 
   async componentDidMount() {
@@ -103,7 +104,8 @@ export default class Directory extends Component {
 
   renderMap() {
     const isLoading = this.state.isLoading
-    return !isLoading ? (
+    const showMap = this.state.showMap
+    return (!isLoading && showMap) ? (
       <div>
         <Map value={this.state.allProfiles}></Map>
       </div>

@@ -23,6 +23,7 @@ export default class ProfileNew extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleListingDisplay = this.handleListingDisplay.bind(this)
     this.handleDiscipline = this.handleDiscipline.bind(this)
+    this.handleExperience = this.handleExperience.bind(this)
 
     this.state = {
       isLoading: false,
@@ -78,6 +79,10 @@ export default class ProfileNew extends Component {
 
   handleDiscipline(e) {
     this.setState({ professionalDiscipline: e.target.value })
+  }
+
+  handleExperience(e) {
+    this.setState({ yearsExperience: e.target.value })
   }
 
   handleLicenseChange = () => {
@@ -1215,7 +1220,7 @@ export default class ProfileNew extends Component {
           listingCategory === 'Feeding Therapist' ? (
             <Well>
               <h6>Years of Experience Related to Pediatric Feeding</h6>
-              <FormGroup controlId="experience">
+              <FormGroup controlId="yearsExperience">
                 <ControlLabel className="required">*</ControlLabel>
                 <ControlLabel>Select one experience category</ControlLabel>
                 <Radio

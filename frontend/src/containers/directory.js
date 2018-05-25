@@ -46,7 +46,11 @@ export default class Directory extends Component {
 
   async componentDidMount() {
     try {
-      const allProfiles = await this.directory()
+      const listings = await this.directory()
+      const allProfiles = []
+      listings.map(ele => {
+        if (ele.approvedListing && ele.displayListing) allProfiles.push(ele)
+      })
       this.setState({ allProfiles })
     } catch (error) {
       alert(error)

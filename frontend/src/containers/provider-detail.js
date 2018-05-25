@@ -116,21 +116,25 @@ export default class ProviderDetail extends Component {
               </Col>
             </Row>
           )}
+          {this.props.value.workEmail === false ? null : (
+            <Row>
+              <Col className="detail-label" md={3}>
+                Email
+              </Col>
+              <Col className="detail-text" md={9}>
+                {this.props.value.workEmail}
+              </Col>
+            </Row>
+          )}
           <hr />
 
           {this.props.value.providerGroup === false ? null : (
             <div>
               <p className="detail-heading">PROVIDER GROUP</p>
               <p className="detail-text">{this.props.value.providerGroup}</p>
-              <hr />
-            </div>
-          )}
-          {this.props.value.providerGroupText === false ? null : (
-            <div>
-              <p className="detail-heading">PROVIDER GROUP</p>
-              <p className="detail-text">
-                {this.props.value.providerGroupText}
-              </p>
+              {this.props.value.providerGroupText === false ? null : (
+                <p className="detail-text">{this.props.value.providerGroupText}</p>
+              )}
               <hr />
             </div>
           )}

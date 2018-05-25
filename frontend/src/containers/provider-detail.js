@@ -128,13 +128,21 @@ export default class ProviderDetail extends Component {
           )}
           <hr />
 
-          {this.props.value.providerGroup === false ? null : (
+          {this.props.value.providerGroup === false && this.props.value.providerGroupText === false ? null : (
+
+
             <div>
               <p className="detail-heading">PROVIDER GROUP</p>
-              <p className="detail-text">{this.props.value.providerGroup}</p>
+
+              {this.props.value.providerGroup === false ? null : (
+                <p className="detail-text">{this.props.value.providerGroup}</p>
+              )}
+
+
               {this.props.value.providerGroupText === false ? null : (
                 <p className="detail-text">{this.props.value.providerGroupText}</p>
               )}
+
               <hr />
             </div>
           )}

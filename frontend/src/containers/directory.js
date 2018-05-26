@@ -48,9 +48,12 @@ export default class Directory extends Component {
     try {
       const listings = await this.directory()
       const allProfiles = []
+      
       listings.map(ele => {
         if (ele.approvedListing && ele.displayListing) allProfiles.push(ele)
       })
+      allProfiles.sort((a, b) => a.lastName.localeCompare(b.lastName))
+
       this.setState({ allProfiles })
     } catch (error) {
       alert(error)

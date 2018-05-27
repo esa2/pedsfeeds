@@ -36,7 +36,7 @@ export default class Directory extends Component {
       if (ele.listingCategory === e.target.value) category.push(ele)
     })
     this.setState({ show: true, showProvider: false, showMap: false, category })
-    // console.log(this.state.allProfiles)
+    console.log(this.state.allProfiles)
   }
 
   handleProviderClick = (e, currentProvider) => {
@@ -157,7 +157,7 @@ export default class Directory extends Component {
                     />
                   ) : (
                     <img
-                      width={70}
+                      width='auto'
                       height={80}
                       src={`https://s3-us-west-2.amazonaws.com/pedsfeeds/images/profile/${
                         ele.attachment

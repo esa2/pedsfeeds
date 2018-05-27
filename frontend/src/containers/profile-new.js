@@ -1063,7 +1063,7 @@ export default class ProfileNew extends Component {
                   Neurologic deficits (cerebral palsy, static encephalopathy,
                   hydrocephalus, etc)
                 </Checkbox>
-                <Checkbox value=">NG/ND tube placement">
+                <Checkbox value="NG/ND tube placement">
                   NG/ND tube placement
                 </Checkbox>
                 <Checkbox value="Premature infants">Premature infants</Checkbox>

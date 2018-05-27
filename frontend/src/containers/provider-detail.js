@@ -2,22 +2,24 @@ import React, { Component } from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
 
 export default class ProviderDetail extends Component {
+  componentDidMount() {
+    window.scrollTo(0,0)
+  }
   render() {
     return (
       <div>
         <Grid className="detail-page">
           <Row>
             <Col md={9}>
-              <br />
-              <br />
+              <br /><br /><br /><br /><br />
               <h6 className="detail-title">{this.props.value.listingTitle}</h6>
             </Col>
 
             <Col md={3}>
               {this.props.value.attachment === null ? null : (
                 <img
-                  width={70}
-                  height={80}
+                  width='auto'
+                  height={120}
                   src={`https://s3-us-west-2.amazonaws.com/pedsfeeds/images/profile/${
                     this.props.value.attachment
                   }`}
@@ -153,6 +155,18 @@ export default class ProviderDetail extends Component {
           ))}
           <hr />
 
+          {this.props.value.certifications.length === 0 ? null : (
+            <div>
+              <p className="detail-heading">
+                CERTIFICATIONS
+              </p>
+              {this.props.value.certifications.map((ele, i) => (
+                <li key={i}>{ele}</li>
+              ))}
+              <hr />
+            </div>
+          )}
+
           {this.props.value.agesServed.length === 0 ? null : (
             <div>
               <p className="detail-heading">AGES SERVED</p>
@@ -167,6 +181,18 @@ export default class ProviderDetail extends Component {
             <div>
               <p className="detail-heading">PAYMENT TYPES ACCEPTED</p>
               {this.props.value.paymentTypes.map((ele, i) => (
+                <li key={i}>{ele}</li>
+              ))}
+              <hr />
+            </div>
+          )}
+
+          {this.props.value.mentalHealth.length === 0 ? null : (
+            <div>
+              <p className="detail-heading">
+                MENTAL HEALTH / COUNSELING SERVICES
+              </p>
+              {this.props.value.mentalHealth.map((ele, i) => (
                 <li key={i}>{ele}</li>
               ))}
               <hr />

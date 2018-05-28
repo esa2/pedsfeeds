@@ -85,7 +85,7 @@ export default class Profile extends Component {
     return (
       <div>
         <h4 className="header-green-center">
-          Create, Edit or Delete your profile
+          Create, Edit or Delete your listing
         </h4>
         {this.props.isAuthenticated ? (
           <div>

@@ -155,7 +155,7 @@ export default class ProviderDetail extends Component {
           ))}
           <hr />
 
-          {this.props.value.certifications.length === 0 ? null : (
+          {/* {this.props.value.certifications.length === 0 ? null : (
             <div>
               <p className="detail-heading">
                 CERTIFICATIONS
@@ -165,7 +165,7 @@ export default class ProviderDetail extends Component {
               ))}
               <hr />
             </div>
-          )}
+          )} */}
 
           {this.props.value.agesServed.length === 0 ? null : (
             <div>
@@ -262,6 +262,34 @@ export default class ProviderDetail extends Component {
             <div>
               <p className="detail-heading">YEARS OF EXPERIENCE RELATED TO PEDIATRIC FEEDING</p>
               <p className="detail-text">{this.props.value.yearsExperience}</p>
+              <hr />
+            </div>
+          )}
+
+          {this.props.value.medicalEducation1 === false ? null : (
+            <div>
+              <p className="detail-heading">SPECIFIC EDUCATION / TRAINING ON PEDIATRIC FEEDING</p>
+              <p className="detail-text">{this.props.value.medicalEducation1}</p>
+              {this.props.value.medicalMedical2 === false ? null : (
+                <p className="detail-text">{this.props.value.medicalMedical2}</p>
+              )}
+              {this.props.value.medicalMedical3 === false ? null : (
+                <p className="detail-text">{this.props.value.medicalMedical3}</p>
+              )}
+              <hr />
+            </div>
+          )}
+
+          {this.props.value.medicalResearch1 === false ? null : (
+            <div>
+              <p className="detail-heading">RESEARCH / PUBLICATION / PRESENTATIONS ON PEDIATRIC FEEDING</p>
+              <p className="detail-text">{this.props.value.medicalResearch1}</p>
+              {this.props.value.medicalResearch2 === false ? null : (
+                <p className="detail-text">{this.props.value.medicalResearch2}</p>
+              )}
+              {this.props.value.medicalResearch3 === false ? null : (
+                <p className="detail-text">{this.props.value.medicalResearch3}</p>
+              )}
               <hr />
             </div>
           )}

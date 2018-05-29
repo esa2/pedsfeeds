@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { API } from 'aws-amplify'
+import { s3Upload } from '../lib/aws-lib'
 import {
   Form,
   FormGroup,
@@ -12,10 +13,17 @@ import {
   Well,
 } from 'react-bootstrap'
 import LoaderButton from '../components/loader-button'
+import Config from '../amplify-config'
 
 export default class Manage extends Component {
   constructor(props) {
     super(props)
+
+    this.file = null
+    this.handleChange = this.handleChange.bind(this)
+    this.handleListingDisplay = this.handleListingDisplay.bind(this)
+    this.handleDiscipline = this.handleDiscipline.bind(this)
+    this.handleExperience = this.handleExperience.bind(this)
 
     this.state = {
       isLoading: true,
@@ -23,13 +31,133 @@ export default class Manage extends Component {
     }
   }
 
+  handleChange(e) {
+    this.setState({ [e.target.id]: e.target.value })
+  }
+
+  handleListingDisplay() {
+    this.setState({ displayListing: !this.state.displayListing })
+  }
+
+  handleDiscipline(e) {
+    this.setState({ professionalDiscipline: e.target.value })
+  }
+
+  handleExperience(e) {
+    this.setState({ yearsExperience: e.target.value })
+  }
+
+  handleLicenseChange = () => {
+    this.setState({ licenseStanding: !this.state.licenseStanding })
+  }
+
+  handleTocChange = () => {
+    this.setState({ toc: !this.state.toc })
+  }
+
+  handleMultipleChange = (e, stateName) => {
+    let updateState = this.state[stateName]
+    if (e.target.checked) {
+      updateState.push(e.target.value)
+      this.setState({ [stateName]: updateState })
+    } else {
+      const index = updateState.indexOf(e.target.value)
+      if (~index) updateState.splice(index, 1)
+    }
+  }
+
+  handleFileChange = e => {
+    this.file = e.target.files[0]
+  }
+
+  fetchAddress = async (street, city, state) => {
+    var fetchStreet = street.replace(/ /gi, '+')
+    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${fetchStreet},+${city},+${state}&key=API_KEY`)
+    return response.json()
+  }
+
+  handleSubmit = async e => {
+    e.preventDefault()
+
+    if (this.file && this.file.size > Config.MAX_ATTACHMENT_SIZE) {
+      alert('Your image file must be smaller than 1MB')
+      return
+    }
+
+    this.setState({ isLoading: true })
+
+    try {
+      const address = await this.fetchAddress(this.state.workAddress1, this.state.workCity, this.state.workState)
+      this.setState({ lat: address.results[0].geometry.location.lat, lng: address.results[0].geometry.location.lng })
+    } catch (error) {
+      alert(error)
+    }
+
+    try {
+      const attachment = this.file ? await s3Upload(this.file) : null
+
+      await this.updateProfile({
+        attachment,
+        approvedListing: this.state.approvedListing,
+        listingCategory: this.props.value,
+        listingTitle: this.state.listingTitle,
+        lastName: this.state.lastName,
+        firstName: this.state.firstName,
+        displayListing: this.state.displayListing,
+        professionalDiscipline: this.state.professionalDiscipline,
+        licenseState: this.state.licenseState,
+        licenseStanding: this.state.licenseStanding,
+        licenseNumber: this.state.licenseNumber,
+        empOrganization: this.state.empOrganization,
+        empUrl: this.state.empUrl !== '' ? this.state.empUrl : false,
+        workAddress1: this.state.workAddress1,
+        workAddress2: this.state.workAddress2 !== '' ? this.state.workAddress2 : false,
+        workCity: this.state.workCity,
+        workState: this.state.workState,
+        workZip: this.state.workZip,
+        workPhone: this.state.workPhone,
+        workExtension: this.state.workExtension !== '' ? this.state.workExtension : false,
+        workEmail: this.state.workEmail !== '' ? this.state.workEmail : false,
+        providerGroup: this.state.providerGroup !== '' ? this.state.providerGroup : false,
+        providerGroupText: this.state.providerGroupText !== '' ? this.state.providerGroupText : false,
+        workSetting: this.state.workSetting,
+        agesServed: this.state.agesServed,
+        paymentTypes: this.state.paymentTypes,
+        medicalConditions: this.state.medicalConditions,
+        feedingConditions: this.state.feedingConditions,
+        practiceSpecialties: this.state.practiceSpecialties,
+        certifications: this.state.certifications,
+        mentalHealth: this.state.mentalHealth,
+        medicalSpecialty: this.state.medicalSpecialty,
+        medicalExperienceTreating: this.state.medicalExperienceTreating,
+        medicalEducation1: this.state.medicalEducation1 !== '' ? this.state.medicalEducation1: false,
+        medicalEducation2: this.state.medicalEducation2 !== '' ? this.state.medicalEducation2: false,
+        medicalEducation3: this.state.medicalEducation3 !== '' ? this.state.medicalEducation3: false,
+        medicalResearch1: this.state.medicalResearch1 !== '' ? this.state.medicalResearch1: false,
+        medicalResearch2: this.state.medicalResearch2 !== '' ? this.state.medicalResearch2: false,
+        medicalResearch3: this.state.medicalResearch3 !== '' ? this.state.medicalResearch3: false,
+        yearsExperience: this.state.yearsExperience !== '' ? this.state.yearsExperience: false,
+        toc: this.state.toc,
+        lat: this.state.lat,
+        lng: this.state.lng,
+      })
+    } catch (error) {
+      alert(error)
+      this.setState({ isLoading: false })
+    }
+  }
+
+  updateProfile(profile) {
+    return API.put('peds', '/profile', {
+      body: profile,
+    })
+  }
+
   async componentDidMount() {
     try {
       const allProfiles = await this.profile()
-      this.setState({ allProfiles })
-      if (allProfiles.length > 0) this.setState({ userHasListing: true})
-      console.log(this.state.allProfiles)
-      console.log(this.state.allProfiles[0].listingCategory)
+      if (allProfiles.length > 0) this.setState({ ...allProfiles[0], userHasListing: true, approvedListing: false })
+      console.log(this.state)
 
     } catch (error) {
       alert(error)
@@ -39,6 +167,44 @@ export default class Manage extends Component {
 
   profile() {
     return API.get('peds', '/manage')
+  }
+
+  checkRequired(e) {
+    e.preventDefault()
+    if (this.state.workSetting.length === 0) {
+      const requiredCheckbox = document.getElementById("workSettingReq")
+      requiredCheckbox.scrollIntoView()
+      return
+    }
+    if (this.props.value === 'Medical Care Provider') {
+      if (this.state.medicalSpecialty.length === 0) {
+        const requiredCheckbox = document.getElementById("medicalSpecialtyReq")
+        requiredCheckbox.scrollIntoView()
+        return
+      }
+    }
+    if (this.props.value === 'Counselor / Mental Health' || this.props.value === 'Medical Care Provider') {
+      if (this.state.certifications.length === 0) {
+        const requiredCheckbox = document.getElementById("certificationsReq")
+        requiredCheckbox.scrollIntoView()
+        return
+      }
+    }
+    if (this.props.value !== 'Medical Care Provider') {
+      if (this.state.agesServed.length === 0) {
+        const requiredCheckbox = document.getElementById("agesServedReq")
+        requiredCheckbox.scrollIntoView()
+        return
+      }
+    }
+    if (this.props.value !== 'Medical Care Provider') {
+      if (this.state.paymentTypes.length === 0) {
+        const requiredCheckbox = document.getElementById("paymentTypesReq")
+        requiredCheckbox.scrollIntoView()
+        return
+      }
+    }
+    this.handleSubmit(e)
   }
 
   render() {
@@ -54,7 +220,7 @@ export default class Manage extends Component {
 
 
 <div>
-<h6 className="header-green-center">{this.state.allProfiles[0].listingTitle} listing</h6>
+<h6 className="header-green-center">{this.state.listingTitle} listing</h6>
 <p>
   Required fields<span className="required">*</span>
 </p>
@@ -67,7 +233,7 @@ export default class Manage extends Component {
       <FormControl
         autoFocus
         type="text"
-        defaultValue={this.state.allProfiles[0].listingTitle}
+        defaultValue={this.state.listingTitle}
         required
         onChange={this.handleChange}
       />
@@ -80,7 +246,7 @@ export default class Manage extends Component {
       <ControlLabel>Last Name</ControlLabel>
       <FormControl
         type="text"
-        defaultValue={this.state.allProfiles[0].lastName}
+        defaultValue={this.state.lastName}
         required
         onChange={this.handleChange}
       />
@@ -90,7 +256,7 @@ export default class Manage extends Component {
       <ControlLabel>First Name</ControlLabel>
       <FormControl
         type="text"
-        defaultValue={this.state.allProfiles[0].firstName}
+        defaultValue={this.state.firstName}
         required
         onChange={this.handleChange}
       />
@@ -101,14 +267,16 @@ export default class Manage extends Component {
     <FormGroup controlId="displayListing">
       <ControlLabel className="required">*</ControlLabel>
       <ControlLabel>Select one</ControlLabel>
-      <Radio
-        defaultChecked
+        <Radio
         name="radioDisplay"
         onChange={this.handleListingDisplay}
       >
         No thanks please keep it private
-      </Radio>{' '}
-      <Radio name="radioDisplay" onChange={this.handleListingDisplay}>
+      </Radio>
+      <Radio
+        name="radioDisplay"
+        onChange={this.handleListingDisplay}
+      >
         Yes display my profile
       </Radio>{' '}
     </FormGroup>
@@ -260,7 +428,7 @@ export default class Manage extends Component {
       <FormControl
         componentClass="select"
         required
-        defaultValue={this.state.allProfiles[0].licenseState}
+        defaultValue={this.state.licenseState}
         onChange={this.handleChange}
       >
         <option value="">-- Select State --</option>
@@ -326,7 +494,7 @@ export default class Manage extends Component {
       <FormControl
         required
         type="text"
-        defaultValue={this.state.allProfiles[0].licenseNumber}
+        defaultValue={this.state.licenseNumber}
         onChange={this.handleChange}
       />
     </FormGroup>
@@ -349,7 +517,7 @@ export default class Manage extends Component {
       <FormControl
         required
         type="text"
-        defaultValue={this.state.allProfiles[0].empOrganization}
+        defaultValue={this.state.empOrganization}
         onChange={this.handleChange}
       />
     </FormGroup>
@@ -357,8 +525,7 @@ export default class Manage extends Component {
       <ControlLabel>Employer's Website</ControlLabel>
       <FormControl
         type="text"
-        defaultValue={this.state.allProfiles[0].empUrl}
-        placeholder=""
+        defaultValue={this.state.empUrl === false ? '' : this.state.empUrl}
         onChange={this.handleChange}
       />
     </FormGroup>
@@ -371,7 +538,7 @@ export default class Manage extends Component {
       <FormControl
         required
         type="text"
-        defaultValue={this.state.allProfiles[0].workAddress1}
+        defaultValue={this.state.workAddress1}
         onChange={this.handleChange}
       />
     </FormGroup>
@@ -379,7 +546,7 @@ export default class Manage extends Component {
       <ControlLabel>Work Address 2</ControlLabel>
       <FormControl
         type="text"
-        defaultValue={this.state.allProfiles[0].workAddress2}
+        defaultValue={this.state.workAddress2 === false ? '' : this.state.workAddress2}
         onChange={this.handleChange}
       />
     </FormGroup>
@@ -389,7 +556,7 @@ export default class Manage extends Component {
       <FormControl
         required
         type="text"
-        defaultValue={this.state.allProfiles[0].workCity}
+        defaultValue={this.state.workCity}
         onChange={this.handleChange}
       />
     </FormGroup>
@@ -399,7 +566,7 @@ export default class Manage extends Component {
       <FormControl
         componentClass="select"
         required
-        defaultValue={this.state.allProfiles[0].workState}
+        defaultValue={this.state.workState}
         onChange={this.handleChange}
       >
         <option value="">-- Select State --</option>
@@ -461,7 +628,7 @@ export default class Manage extends Component {
       <FormControl
         required
         type="text"
-        defaultValue={this.state.allProfiles[0].workZip}
+        defaultValue={this.state.workZip}
         onChange={this.handleChange}
       />
     </FormGroup>
@@ -471,16 +638,15 @@ export default class Manage extends Component {
       <FormControl
         required
         type="text"
-        defaultValue={this.state.allProfiles[0].workPhone}
+        defaultValue={this.state.workPhone}
         onChange={this.handleChange}
       />
     </FormGroup>
     <FormGroup controlId="workExtension">
       <ControlLabel>Extension</ControlLabel>
       <FormControl
-        type="number"
-        placeholder="0 - 9"
-        defaultValue={this.state.allProfiles[0].workExtension}
+        type="text"
+        defaultValue={this.state.workExtension === false ? '' : this.state.workExtension}
         onChange={this.handleChange}
       />
     </FormGroup>
@@ -492,7 +658,7 @@ export default class Manage extends Component {
       </ControlLabel>
       <FormControl
         type="text"
-        defaultValue={this.state.allProfiles[0].workEmail}
+        defaultValue={this.state.workEmail === false ? '' : this.state.workEmail}
         onChange={this.handleChange}
       />
     </FormGroup>
@@ -502,7 +668,7 @@ export default class Manage extends Component {
     <FormGroup controlId="providerGroup">
       <FormControl
         componentClass="select"
-        defaultValue={this.state.allProfiles[0].providerGroup}
+        defaultValue={this.state.providerGroup}
         onChange={this.handleChange}
       >
         <option value="">-- Select Provider Group --</option>
@@ -545,7 +711,7 @@ export default class Manage extends Component {
       </ControlLabel>
       <FormControl
         type="text"
-        defaultValue={this.state.allProfiles[0].providerGroupText}
+        defaultValue={this.state.providerGroupText === false ? '' : this.state.providerGroupText}
         onChange={this.handleChange}
       />
     </FormGroup>
@@ -564,28 +730,59 @@ export default class Manage extends Component {
             *
           </span>
         </ControlLabel>
-        <Checkbox value="Center-based services">
+        <Checkbox
+          value="Center-based services"
+          defaultChecked={this.state.workSetting.includes('Center-based services') ? true : false}
+        >
           Center-based services
         </Checkbox>
-        <Checkbox value="Early Intervention program">
+
+        <Checkbox
+          value="Early Intervention program"
+          defaultChecked={this.state.workSetting.includes('Early Intervention program') ? true : false}
+          >
           Early Intervention program
         </Checkbox>
-        <Checkbox value="Home-based services">
+
+        <Checkbox
+          value="Home-based services"
+          defaultChecked={this.state.workSetting.includes('Home-based services') ? true : false}
+        >
           Home-based services
         </Checkbox>
-        <Checkbox value="Hospital inpatient">
+
+        <Checkbox
+          value="Hospital inpatient"
+          defaultChecked={this.state.workSetting.includes('Hospital inpatient') ? true : false}
+        >
           Hospital inpatient
         </Checkbox>
-        <Checkbox value="Hospital outpatient">
+
+        <Checkbox
+          value="Hospital outpatient"
+          defaultChecked={this.state.workSetting.includes('Hospital outpatient') ? true : false}
+        >
           Hospital outpatient
         </Checkbox>
-        <Checkbox value="Private practice">Private practice</Checkbox>
-        <Checkbox value="School based">School based</Checkbox>
+
+        <Checkbox
+          value="Private practice"
+          defaultChecked={this.state.workSetting.includes('Private practice') ? true : false}
+        >
+        Private practice
+        </Checkbox>
+
+        <Checkbox
+          value="School based"
+          defaultChecked={this.state.workSetting.includes('School based') ? true : false}
+        >
+        School based
+        </Checkbox>
       </FormGroup>
     </Well>
   ) : null}
 
-  {this.state.allProfiles[0].listingCategory === 'Dietitian' ? (
+  {this.state.listingCategory === 'Dietitian' ? (
     <Well>
       <h6 id="workSettingReq">Work Setting</h6>
       <FormGroup
@@ -1043,6 +1240,7 @@ export default class Manage extends Component {
         <ControlLabel className="required">*</ControlLabel>
         <ControlLabel>Select one experience category</ControlLabel>
         <Radio
+          defaultChecked={this.state.yearsExperience === "0 - 5 years" ? true : false}
           name="radioExperience"
           value="0 - 5 years"
           required
@@ -1051,6 +1249,7 @@ export default class Manage extends Component {
           0 - 5 years
         </Radio>{' '}
         <Radio
+          defaultChecked={this.state.yearsExperience === "5 - 10 years" ? true : false}
           name="radioExperience"
           value="5 - 10 years"
           onChange={this.handleExperience}
@@ -1058,12 +1257,13 @@ export default class Manage extends Component {
           5 - 10 years
         </Radio>{' '}
         <Radio
+          defaultChecked={this.state.yearsExperience === "10+ years" ? true : false}
           name="radioExperience"
           value="10+ years"
           onChange={this.handleExperience}
         >
           10+ years
-        </Radio>{' '}
+        </Radio>
       </FormGroup>
     </Well>
   ) : null}
@@ -1119,7 +1319,7 @@ export default class Manage extends Component {
         <ControlLabel>1</ControlLabel>
         <FormControl
           type="text"
-          defaultValue={this.state.allProfiles[0].medicalEducation1}
+          defaultValue={this.state.medicalEducation1}
           onChange={this.handleChange}
         />
       </FormGroup>
@@ -1127,7 +1327,7 @@ export default class Manage extends Component {
         <ControlLabel>2</ControlLabel>
         <FormControl
           type="text"
-          defaultValue={this.state.allProfiles[0].medicalEducation2}
+          defaultValue={this.state.medicalEducation2}
           onChange={this.handleChange}
         />
       </FormGroup>
@@ -1135,7 +1335,7 @@ export default class Manage extends Component {
         <ControlLabel>3</ControlLabel>
         <FormControl
           type="text"
-          defaultValue={this.state.allProfiles[0].medicalEducation3}
+          defaultValue={this.state.medicalEducation3}
           onChange={this.handleChange}
         />
       </FormGroup>
@@ -1154,7 +1354,7 @@ export default class Manage extends Component {
         <ControlLabel>1</ControlLabel>
         <FormControl
           type="text"
-          defaultValue={this.state.allProfiles[0].medicalResearch1}
+          defaultValue={this.state.medicalResearch1}
           onChange={this.handleChange}
         />
       </FormGroup>
@@ -1162,7 +1362,7 @@ export default class Manage extends Component {
         <ControlLabel>2</ControlLabel>
         <FormControl
           type="text"
-          defaultValue={this.state.allProfiles[0].medicalResearch2}
+          defaultValue={this.state.medicalResearch2}
           onChange={this.handleChange}
         />
       </FormGroup>
@@ -1170,7 +1370,7 @@ export default class Manage extends Component {
         <ControlLabel>3</ControlLabel>
         <FormControl
           type="text"
-          defaultValue={this.state.allProfiles[0].medicalResearch3}
+          defaultValue={this.state.medicalResearch3}
           onChange={this.handleChange}
         />
       </FormGroup>
@@ -1193,7 +1393,7 @@ export default class Manage extends Component {
   </Well>
   <Well>
     <FormGroup controlId="file">
-      <ControlLabel>Attach a photo less than 1MB in size</ControlLabel>
+      <ControlLabel>Attach a new photo?</ControlLabel>
       <FormControl onChange={this.handleFileChange} type="file" />
     </FormGroup>
   </Well>
@@ -1204,9 +1404,12 @@ export default class Manage extends Component {
       bsSize="large"
       type="submit"
       isLoading={this.state.isLoading}
-      text="Submit"
+      text="Update listing"
       loadingText="Creating profile"
     />
+    <Button bsStyle="primary" bsSize="large">
+      Delete listing
+    </Button>
     <Button bsStyle="primary" bsSize="large" active href="/profile">
       Cancel
     </Button>

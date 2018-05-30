@@ -110,7 +110,7 @@ export default class ProfileNew extends Component {
 
   fetchAddress = async (street, city, state) => {
     var fetchStreet = street.replace(/ /gi, '+')
-    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${fetchStreet},+${city},+${state}&key=MAP_API`)
+    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${fetchStreet},+${city},+${state}&key=API_KEY`)
     return response.json()
   }
   
@@ -137,7 +137,7 @@ export default class ProfileNew extends Component {
       await this.createProfile({
         attachment,
         approvedListing: this.state.approvedListing,
-        listingCategory: this.props.value,
+        listingCategory: this.props.listingCategory,
         listingTitle: this.state.listingTitle,
         lastName: this.state.lastName,
         firstName: this.state.firstName,
@@ -179,7 +179,6 @@ export default class ProfileNew extends Component {
         lat: this.state.lat,
         lng: this.state.lng,
       })
-      // this.props.history.push('/profile')
     } catch (error) {
       alert(error)
       this.setState({ isLoading: false })
@@ -199,28 +198,28 @@ export default class ProfileNew extends Component {
       requiredCheckbox.scrollIntoView()
       return
     }
-    if (this.props.value === 'Medical Care Provider') {
+    if (this.props.listingCategory === 'Medical Care Provider') {
       if (this.state.medicalSpecialty.length === 0) {
         const requiredCheckbox = document.getElementById("medicalSpecialtyReq")
         requiredCheckbox.scrollIntoView()
         return
       }
     }
-    if (this.props.value === 'Counselor / Mental Health' || this.props.value === 'Medical Care Provider') {
+    if (this.props.listingCategory === 'Counselor / Mental Health' || this.props.listingCategory === 'Medical Care Provider') {
       if (this.state.certifications.length === 0) {
         const requiredCheckbox = document.getElementById("certificationsReq")
         requiredCheckbox.scrollIntoView()
         return
       }
     }
-    if (this.props.value !== 'Medical Care Provider') {
+    if (this.props.listingCategory !== 'Medical Care Provider') {
       if (this.state.agesServed.length === 0) {
         const requiredCheckbox = document.getElementById("agesServedReq")
         requiredCheckbox.scrollIntoView()
         return
       }
     }
-    if (this.props.value !== 'Medical Care Provider') {
+    if (this.props.listingCategory !== 'Medical Care Provider') {
       if (this.state.paymentTypes.length === 0) {
         const requiredCheckbox = document.getElementById("paymentTypesReq")
         requiredCheckbox.scrollIntoView()
@@ -231,10 +230,11 @@ export default class ProfileNew extends Component {
   }
 
   render() {
-    const listingCategory = this.props.value
+    const listingCategory = this.props.listingCategory
     return (
+
       <div>
-        <h6 className="header-green-center">{this.props.value} listing</h6>
+        <h6 className="header-green-center">{this.props.listingCategory} listing</h6>
         <p>
           Required fields<span className="required">*</span>
         </p>
@@ -1391,6 +1391,9 @@ export default class ProfileNew extends Component {
             <Button bsStyle="primary" bsSize="large" active href="/profile">
               Cancel
             </Button>
+            <button className="square" onClick={this.props.onClick}>
+      {this.props.listingCategory}
+    </button>
           </ButtonToolbar>
         </Form>
       </div>

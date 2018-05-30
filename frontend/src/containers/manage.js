@@ -72,7 +72,7 @@ export default class Manage extends Component {
 
   fetchAddress = async (street, city, state) => {
     var fetchStreet = street.replace(/ /gi, '+')
-    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${fetchStreet},+${city},+${state}&key=MAP_API`)
+    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${fetchStreet},+${city},+${state}&key=API_KEY`)
     return response.json()
   }
 

@@ -9,6 +9,7 @@ import {
   Media,
 } from 'react-bootstrap'
 import Map from './map'
+import MapDetial from './map-detail'
 import ProviderDetail from './provider-detail'
 
 import '../styles/directory.css'
@@ -179,6 +180,7 @@ export default class Directory extends Component {
     return showProvider ? (
       <div>
         <ProviderDetail value={current} />
+        <MapDetial value={current} />
       </div>
     ) : null
   }

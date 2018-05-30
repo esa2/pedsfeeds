@@ -271,10 +271,10 @@ export default class ProviderDetail extends Component {
               <p className="detail-heading">SPECIFIC EDUCATION / TRAINING ON PEDIATRIC FEEDING</p>
               <p className="detail-text">{this.props.value.medicalEducation1}</p>
               {this.props.value.medicalMedical2 === false ? null : (
-                <p className="detail-text">{this.props.value.medicalMedical2}</p>
+                <p className="detail-text">{this.props.value.medicalEducation2}</p>
               )}
               {this.props.value.medicalMedical3 === false ? null : (
-                <p className="detail-text">{this.props.value.medicalMedical3}</p>
+                <p className="detail-text">{this.props.value.medicalEducation3}</p>
               )}
               <hr />
             </div>

@@ -27,7 +27,7 @@ export default class ProfileNew extends Component {
 
     this.state = {
       isLoading: false,
-      approvedListing: false,
+      approvedListing: true,
       listingTitle: '',
       lastName: '',
       firstName: '',

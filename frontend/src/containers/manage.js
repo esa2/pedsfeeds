@@ -87,59 +87,59 @@ export default class Manage extends Component {
     this.setState({ isLoading: true })
 
     try {
-      const address = await this.fetchAddress(this.state.workAddress1, this.state.workCity, this.state.workState)
-      this.setState({ lat: address.results[0].geometry.location.lat, lng: address.results[0].geometry.location.lng })
+      // const address = await this.fetchAddress(this.state.workAddress1, this.state.workCity, this.state.workState)
+      // this.setState({ lat: address.results[0].geometry.location.lat, lng: address.results[0].geometry.location.lng })
     } catch (error) {
       alert(error)
     }
 
     try {
-      const attachment = this.file ? await s3Upload(this.file) : null
+      // const attachment = this.file ? await s3Upload(this.file) : null
 
       await this.updateProfile({
-        attachment,
-        approvedListing: this.state.approvedListing,
-        listingCategory: this.props.value,
-        listingTitle: this.state.listingTitle,
+        // attachment,
+        // approvedListing: this.state.approvedListing,
+        // listingCategory: this.props.value,
+        // listingTitle: this.state.listingTitle,
         lastName: this.state.lastName,
-        firstName: this.state.firstName,
-        displayListing: this.state.displayListing,
-        professionalDiscipline: this.state.professionalDiscipline,
-        licenseState: this.state.licenseState,
-        licenseStanding: this.state.licenseStanding,
-        licenseNumber: this.state.licenseNumber,
-        empOrganization: this.state.empOrganization,
-        empUrl: this.state.empUrl !== '' ? this.state.empUrl : false,
-        workAddress1: this.state.workAddress1,
-        workAddress2: this.state.workAddress2 !== '' ? this.state.workAddress2 : false,
-        workCity: this.state.workCity,
-        workState: this.state.workState,
-        workZip: this.state.workZip,
-        workPhone: this.state.workPhone,
-        workExtension: this.state.workExtension !== '' ? this.state.workExtension : false,
-        workEmail: this.state.workEmail !== '' ? this.state.workEmail : false,
-        providerGroup: this.state.providerGroup !== '' ? this.state.providerGroup : false,
-        providerGroupText: this.state.providerGroupText !== '' ? this.state.providerGroupText : false,
-        workSetting: this.state.workSetting,
-        agesServed: this.state.agesServed,
-        paymentTypes: this.state.paymentTypes,
-        medicalConditions: this.state.medicalConditions,
-        feedingConditions: this.state.feedingConditions,
-        practiceSpecialties: this.state.practiceSpecialties,
-        certifications: this.state.certifications,
-        mentalHealth: this.state.mentalHealth,
-        medicalSpecialty: this.state.medicalSpecialty,
-        medicalExperienceTreating: this.state.medicalExperienceTreating,
-        medicalEducation1: this.state.medicalEducation1 !== '' ? this.state.medicalEducation1: false,
-        medicalEducation2: this.state.medicalEducation2 !== '' ? this.state.medicalEducation2: false,
-        medicalEducation3: this.state.medicalEducation3 !== '' ? this.state.medicalEducation3: false,
-        medicalResearch1: this.state.medicalResearch1 !== '' ? this.state.medicalResearch1: false,
-        medicalResearch2: this.state.medicalResearch2 !== '' ? this.state.medicalResearch2: false,
-        medicalResearch3: this.state.medicalResearch3 !== '' ? this.state.medicalResearch3: false,
-        yearsExperience: this.state.yearsExperience !== '' ? this.state.yearsExperience: false,
-        toc: this.state.toc,
-        lat: this.state.lat,
-        lng: this.state.lng,
+        // firstName: this.state.firstName,
+        // displayListing: this.state.displayListing,
+        // professionalDiscipline: this.state.professionalDiscipline,
+        // licenseState: this.state.licenseState,
+        // licenseStanding: this.state.licenseStanding,
+        // licenseNumber: this.state.licenseNumber,
+        // empOrganization: this.state.empOrganization,
+        // empUrl: this.state.empUrl !== '' ? this.state.empUrl : false,
+        // workAddress1: this.state.workAddress1,
+        // workAddress2: this.state.workAddress2 !== '' ? this.state.workAddress2 : false,
+        // workCity: this.state.workCity,
+        // workState: this.state.workState,
+        // workZip: this.state.workZip,
+        // workPhone: this.state.workPhone,
+        // workExtension: this.state.workExtension !== '' ? this.state.workExtension : false,
+        // workEmail: this.state.workEmail !== '' ? this.state.workEmail : false,
+        // providerGroup: this.state.providerGroup !== '' ? this.state.providerGroup : false,
+        // providerGroupText: this.state.providerGroupText !== '' ? this.state.providerGroupText : false,
+        // workSetting: this.state.workSetting,
+        // agesServed: this.state.agesServed,
+        // paymentTypes: this.state.paymentTypes,
+        // medicalConditions: this.state.medicalConditions,
+        // feedingConditions: this.state.feedingConditions,
+        // practiceSpecialties: this.state.practiceSpecialties,
+        // certifications: this.state.certifications,
+        // mentalHealth: this.state.mentalHealth,
+        // medicalSpecialty: this.state.medicalSpecialty,
+        // medicalExperienceTreating: this.state.medicalExperienceTreating,
+        // medicalEducation1: this.state.medicalEducation1 !== '' ? this.state.medicalEducation1: false,
+        // medicalEducation2: this.state.medicalEducation2 !== '' ? this.state.medicalEducation2: false,
+        // medicalEducation3: this.state.medicalEducation3 !== '' ? this.state.medicalEducation3: false,
+        // medicalResearch1: this.state.medicalResearch1 !== '' ? this.state.medicalResearch1: false,
+        // medicalResearch2: this.state.medicalResearch2 !== '' ? this.state.medicalResearch2: false,
+        // medicalResearch3: this.state.medicalResearch3 !== '' ? this.state.medicalResearch3: false,
+        // yearsExperience: this.state.yearsExperience !== '' ? this.state.yearsExperience: false,
+        // toc: this.state.toc,
+        // lat: this.state.lat,
+        // lng: this.state.lng,
       })
     } catch (error) {
       alert(error)
@@ -148,7 +148,8 @@ export default class Manage extends Component {
   }
 
   updateProfile(profile) {
-    return API.put('peds', '/profile', {
+    console.log('param', this.state.uuId)
+    return API.put('peds', `/manage/${this.state.uuId}`, {
       body: profile,
     })
   }

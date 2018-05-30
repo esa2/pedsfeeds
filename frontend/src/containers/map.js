@@ -1,6 +1,5 @@
 import React from 'react'
-
-const { compose, withProps, withHandlers } = require('recompose')
+import { compose, withProps } from 'recompose'
 const {
   withScriptjs,
   withGoogleMap,
@@ -14,17 +13,10 @@ const {
 const MapWithAMarkerClusterer = compose(
   withProps({
     googleMapURL:
-      'https://maps.googleapis.com/maps/api/js?key=API_KEY&v=3.exp&libraries=geometry,drawing,places',
+      'https://maps.googleapis.com/maps/api/js?key=MAP_API&v=3.exp&libraries=geometry,drawing,places',
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `400px` }} />,
     mapElement: <div style={{ height: `100%` }} />,
-  }),
-  withHandlers({
-    onMarkerClustererClick: () => markerClusterer => {
-      const clickedMarkers = markerClusterer.getMarkers()
-      console.log(`Current clicked markers length: ${clickedMarkers.length}`)
-      console.log(clickedMarkers)
-    },
   }),
   withScriptjs,
   withGoogleMap
@@ -40,6 +32,7 @@ const MapWithAMarkerClusterer = compose(
         <Marker
           key={marker.uuId}
           position={{ lat: marker.lat, lng: marker.lng }}
+          title={`${marker.firstName} ${marker.lastName}, ${marker.professionalDiscipline}`}
         />
       ))}
     </MarkerClusterer>

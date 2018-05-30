@@ -72,7 +72,7 @@ export default class Manage extends Component {
 
   fetchAddress = async (street, city, state) => {
     var fetchStreet = street.replace(/ /gi, '+')
-    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${fetchStreet},+${city},+${state}&key=API_KEY`)
+    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${fetchStreet},+${city},+${state}&key=MAP_API`)
     return response.json()
   }
 
@@ -269,17 +269,19 @@ export default class Manage extends Component {
       <ControlLabel className="required">*</ControlLabel>
       <ControlLabel>Select one</ControlLabel>
         <Radio
+        defaultChecked={this.state.displayListing === false ? false : true}
         name="radioDisplay"
         onChange={this.handleListingDisplay}
       >
         No thanks please keep it private
       </Radio>
       <Radio
+      defaultChecked={this.state.displayListing === true  ? true : false}
         name="radioDisplay"
         onChange={this.handleListingDisplay}
       >
         Yes display my profile
-      </Radio>{' '}
+      </Radio>
     </FormGroup>
   </Well>
 
@@ -347,34 +349,38 @@ export default class Manage extends Component {
         <ControlLabel className="required">*</ControlLabel>
         <ControlLabel>Select one Discipline</ControlLabel>
         <Radio
+          defaultChecked={this.state.professionalDiscipline === "Occupational Therapist" ? true : false}
           name="radioDiscipline"
           value="Occupational Therapist"
           required
           onChange={this.handleDiscipline}
         >
           Occupational Therapist
-        </Radio>{' '}
+        </Radio>
         <Radio
+          defaultChecked={this.state.professionalDiscipline === "Behavioral / Clinical Child Psychologist" ? true : false}
           name="radioDiscipline"
           value="Behavioral / Clinical Child Psychologist"
           onChange={this.handleDiscipline}
         >
           Behavioral / Clinical Child Psychologist
-        </Radio>{' '}
+        </Radio>
         <Radio
+          defaultChecked={this.state.professionalDiscipline === "Physical Therapist" ? true : false}
           name="radioDiscipline"
           value="Physical Therapist"
           onChange={this.handleDiscipline}
         >
           Physical Therapist
-        </Radio>{' '}
+        </Radio>
         <Radio
+          defaultChecked={this.state.professionalDiscipline === "Speech Language Pathologist" ? true : false}
           name="radioDiscipline"
           value="Speech Language Pathologist"
           onChange={this.handleDiscipline}
         >
           Speech Language Pathologist
-        </Radio>{' '}
+        </Radio>
       </FormGroup>
     </Well>
   ) : null}
@@ -503,7 +509,7 @@ export default class Manage extends Component {
       <Well>
         <ControlLabel className="required">*</ControlLabel>
         <ControlLabel>Check standing</ControlLabel>
-        <Checkbox required onChange={this.handleLicenseChange}>
+        <Checkbox required onChange={this.handleLicenseChange} defaultChecked>
           I am in good standing with the state and national liscensing
           or certification bodies required for my profession
         </Checkbox>

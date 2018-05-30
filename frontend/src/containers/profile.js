@@ -101,9 +101,9 @@ export default class Profile extends Component {
                 Manage my listings
               </Button>
             </ButtonToolbar>
-            {this.renderCategories()}{' '}
+            {this.renderCategories()}
             {showNewListing ? (
-              <ProfileNew value={this.state.listingCategory} />
+              <ProfileNew listingCategory={this.state.listingCategory} />
             ) : null}
           </div>
         ) : (

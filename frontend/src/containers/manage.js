@@ -363,6 +363,12 @@ export default class Manage extends Component {
                         <ControlLabel className="required">*</ControlLabel>
                         <ControlLabel>Select one Discipline</ControlLabel>
                         <Radio
+                          defaultChecked={
+                            this.state.professionalDiscipline ===
+                            'Counselor / Therapist'
+                              ? true
+                              : false
+                          }
                           name="radioDiscipline"
                           value="Counselor / Therapist"
                           required
@@ -371,6 +377,11 @@ export default class Manage extends Component {
                           Counselor / Therapist
                         </Radio>{' '}
                         <Radio
+                          defaultChecked={
+                            this.state.professionalDiscipline === 'Psychiatrist'
+                              ? true
+                              : false
+                          }
                           name="radioDiscipline"
                           value="Psychiatrist"
                           onChange={this.handleDiscipline}
@@ -378,6 +389,11 @@ export default class Manage extends Component {
                           Psychiatrist
                         </Radio>{' '}
                         <Radio
+                          defaultChecked={
+                            this.state.professionalDiscipline === 'Psychologist'
+                              ? true
+                              : false
+                          }
                           name="radioDiscipline"
                           value="Psychologist"
                           onChange={this.handleDiscipline}
@@ -385,6 +401,12 @@ export default class Manage extends Component {
                           Psychologist
                         </Radio>{' '}
                         <Radio
+                          defaultChecked={
+                            this.state.professionalDiscipline ===
+                            'Social Worker'
+                              ? true
+                              : false
+                          }
                           name="radioDiscipline"
                           value="Social Worker"
                           onChange={this.handleDiscipline}
@@ -402,6 +424,12 @@ export default class Manage extends Component {
                         <ControlLabel className="required">*</ControlLabel>
                         <ControlLabel>Select one Discipline</ControlLabel>
                         <Radio
+                          defaultChecked={
+                            this.state.professionalDiscipline ===
+                            'Registerd Dietitian'
+                              ? true
+                              : false
+                          }
                           name="radioDiscipline"
                           value="Registerd Dietitian"
                           required
@@ -483,6 +511,12 @@ export default class Manage extends Component {
                         <ControlLabel className="required">*</ControlLabel>
                         <ControlLabel>Select one Discipline</ControlLabel>
                         <Radio
+                          defaultChecked={
+                            this.state.professionalDiscipline ===
+                            'Nurse Practitioner'
+                              ? true
+                              : false
+                          }
                           required
                           name="radioDiscipline"
                           value="Nurse Practitioner"
@@ -491,6 +525,11 @@ export default class Manage extends Component {
                           Nurse Practitioner
                         </Radio>{' '}
                         <Radio
+                          defaultChecked={
+                            this.state.professionalDiscipline === 'Psychiatrist'
+                              ? true
+                              : false
+                          }
                           name="radioDiscipline"
                           value="Psychiatrist"
                           required
@@ -499,6 +538,11 @@ export default class Manage extends Component {
                           Psychiatrist
                         </Radio>{' '}
                         <Radio
+                          defaultChecked={
+                            this.state.professionalDiscipline === 'Physician'
+                              ? true
+                              : false
+                          }
                           name="radioDiscipline"
                           value="Physician"
                           required
@@ -507,6 +551,12 @@ export default class Manage extends Component {
                           Physician
                         </Radio>{' '}
                         <Radio
+                          defaultChecked={
+                            this.state.professionalDiscipline ===
+                            "Physician's Assistant"
+                              ? true
+                              : false
+                          }
                           name="radioDiscipline"
                           value="Physician's Assistant"
                           required
@@ -963,16 +1013,48 @@ export default class Manage extends Component {
                             *
                           </span>
                         </ControlLabel>
-                        <Checkbox value="Home health care">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.workSetting.includes('Home health care')
+                              ? true
+                              : false
+                          }
+                          value="Home health care"
+                        >
                           Home health care
                         </Checkbox>
-                        <Checkbox value="Hospital inpatient">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.workSetting.includes(
+                              'Hospital inpatient'
+                            )
+                              ? true
+                              : false
+                          }
+                          value="Hospital inpatient"
+                        >
                           Hospital inpatient
                         </Checkbox>
-                        <Checkbox value="Hospital outpatient">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.workSetting.includes(
+                              'Hospital outpatient'
+                            )
+                              ? true
+                              : false
+                          }
+                          value="Hospital outpatient"
+                        >
                           Hospital outpatient
                         </Checkbox>
-                        <Checkbox value="Office setting">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.workSetting.includes('Office setting')
+                              ? true
+                              : false
+                          }
+                          value="Office setting"
+                        >
                           Office setting
                         </Checkbox>
                       </FormGroup>
@@ -993,8 +1075,24 @@ export default class Manage extends Component {
                             *
                           </span>
                         </ControlLabel>
-                        <Checkbox value="Hospital">Hospital</Checkbox>
-                        <Checkbox value="Office setting">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.workSetting.includes('Hospital')
+                              ? true
+                              : false
+                          }
+                          value="Hospital"
+                        >
+                          Hospital
+                        </Checkbox>
+                        <Checkbox
+                          defaultChecked={
+                            this.state.workSetting.includes('Office setting')
+                              ? true
+                              : false
+                          }
+                          value="Office setting"
+                        >
                           Office setting
                         </Checkbox>
                       </FormGroup>
@@ -1015,21 +1113,122 @@ export default class Manage extends Component {
                             *
                           </span>
                         </ControlLabel>
-                        <Checkbox value="Cardiology">Cardiology</Checkbox>
-                        <Checkbox value="Craniofacial">Craniofacial</Checkbox>
-                        <Checkbox value="Internal medicine">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.medicalSpecialty.includes('Cardiology')
+                              ? true
+                              : false
+                          }
+                          value="Cardiology"
+                        >
+                          Cardiology
+                        </Checkbox>
+                        <Checkbox
+                          defaultChecked={
+                            this.state.medicalSpecialty.includes(
+                              'Craniofacial"'
+                            )
+                              ? true
+                              : false
+                          }
+                          value="Craniofacial"
+                        >
+                          Craniofacial
+                        </Checkbox>
+                        <Checkbox
+                          defaultChecked={
+                            this.state.medicalSpecialty.includes(
+                              'Internal medicine'
+                            )
+                              ? true
+                              : false
+                          }
+                          value="Internal medicine"
+                        >
                           Internal medicine
                         </Checkbox>
-                        <Checkbox value="Neonatology">Neonatology</Checkbox>
-                        <Checkbox value="Neurology">Neurology</Checkbox>
-                        <Checkbox value="Pediatrics">Pediatrics</Checkbox>
-                        <Checkbox value="Pulmonology">Pulmonology</Checkbox>
-                        <Checkbox value="Oncology">Oncology</Checkbox>
-                        <Checkbox value="Radiology">Radiology</Checkbox>
-                        <Checkbox value="Rehabilitation">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.medicalSpecialty.includes('Neonatology')
+                              ? true
+                              : false
+                          }
+                          value="Neonatology"
+                        >
+                          Neonatology
+                        </Checkbox>
+                        <Checkbox
+                          defaultChecked={
+                            this.state.medicalSpecialty.includes('Neurology')
+                              ? true
+                              : false
+                          }
+                          value="Neurology"
+                        >
+                          Neurology
+                        </Checkbox>
+                        <Checkbox
+                          defaultChecked={
+                            this.state.medicalSpecialty.includes('Pediatrics')
+                              ? true
+                              : false
+                          }
+                          value="Pediatrics"
+                        >
+                          Pediatrics
+                        </Checkbox>
+                        <Checkbox
+                          defaultChecked={
+                            this.state.medicalSpecialty.includes('Pulmonology')
+                              ? true
+                              : false
+                          }
+                          value="Pulmonology"
+                        >
+                          Pulmonology
+                        </Checkbox>
+                        <Checkbox
+                          defaultChecked={
+                            this.state.medicalSpecialty.includes('Oncology')
+                              ? true
+                              : false
+                          }
+                          value="Oncology"
+                        >
+                          Oncology
+                        </Checkbox>
+                        <Checkbox
+                          defaultChecked={
+                            this.state.medicalSpecialty.includes('Radiology')
+                              ? true
+                              : false
+                          }
+                          value="Radiology"
+                        >
+                          Radiology
+                        </Checkbox>
+                        <Checkbox
+                          defaultChecked={
+                            this.state.medicalSpecialty.includes(
+                              'Rehabilitation'
+                            )
+                              ? true
+                              : false
+                          }
+                          value="Rehabilitation"
+                        >
                           Rehabilitation
                         </Checkbox>
-                        <Checkbox value="Surgery">Surgery</Checkbox>
+                        <Checkbox
+                          defaultChecked={
+                            this.state.medicalSpecialty.includes('Surgery')
+                              ? true
+                              : false
+                          }
+                          value="Surgery"
+                        >
+                          Surgery
+                        </Checkbox>
                       </FormGroup>
                     </Well>
                   ) : null}
@@ -1682,19 +1881,64 @@ export default class Manage extends Component {
                           Select all practice areas related to feeding that
                           apply
                         </ControlLabel>
-                        <Checkbox value="Behavioral management">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.practiceSpecialties.includes(
+                              'Behavioral management'
+                            )
+                              ? true
+                              : false
+                          }
+                          value="Behavioral management"
+                        >
                           Behavioral management
                         </Checkbox>
-                        <Checkbox value="Blenderized diets">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.practiceSpecialties.includes(
+                              'Blenderized diets'
+                            )
+                              ? true
+                              : false
+                          }
+                          value="Blenderized diets"
+                        >
                           Blenderized diets
                         </Checkbox>
-                        <Checkbox value="Breastfeeding management">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.practiceSpecialties.includes(
+                              'Breastfeeding management'
+                            )
+                              ? true
+                              : false
+                          }
+                          value="Breastfeeding management"
+                        >
                           Breastfeeding management
                         </Checkbox>
-                        <Checkbox value="Nutritional assessment and management">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.practiceSpecialties.includes(
+                              'Nutritional assessment and management'
+                            )
+                              ? true
+                              : false
+                          }
+                          value="Nutritional assessment and management"
+                        >
                           Nutritional assessment and management
                         </Checkbox>
-                        <Checkbox value="Weaning from feeding tubes">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.practiceSpecialties.includes(
+                              'Weaning from feeding tubes'
+                            )
+                              ? true
+                              : false
+                          }
+                          value="Weaning from feeding tubes"
+                        >
                           Weaning from feeding tubes
                         </Checkbox>
                       </FormGroup>

@@ -906,13 +906,10 @@ export default class ProfileNew extends Component {
                 <Checkbox value="Licensed Professional Counselor">
                   Licensed Professional Counselor
                 </Checkbox>
-                <Checkbox
-                  value="National Board for Certi􏰀ed Counselors
-            "
-                >
+                <Checkbox value="National Board for Certified Counselors">
                   National Board for Certified Counselors
                 </Checkbox>
-                <Checkbox value="National Certi􏰀ed Counselor">
+                <Checkbox value="National Certified Counselor">
                   National Certified Counselor
                 </Checkbox>
                 <Checkbox value="None">None</Checkbox>

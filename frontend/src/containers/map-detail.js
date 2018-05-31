@@ -31,6 +31,6 @@ const MapWithAMarker = compose(
 
 export default class MapDetail extends React.PureComponent {
   render() {
-    return <MapWithAMarker marker={this.props.value} />
+    return <MapWithAMarker marker={this.props.currentProvider} />
   }
 }

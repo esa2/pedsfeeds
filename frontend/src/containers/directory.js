@@ -115,7 +115,7 @@ export default class Directory extends Component {
     const showMap = this.state.showMap
     return (!isLoading && showMap) ? (
       <div>
-        <Map value={this.state.allProfiles}></Map>
+        <Map allProfiles={this.state.allProfiles}></Map>
       </div>
     ) : null
   }
@@ -179,8 +179,8 @@ export default class Directory extends Component {
     const showProvider = this.state.showProvider
     return showProvider ? (
       <div>
-        <ProviderDetail value={current} />
-        <MapDetial value={current} />
+        <ProviderDetail currentProvider={current} />
+        <MapDetial currentProvider={current} />
       </div>
     ) : null
   }

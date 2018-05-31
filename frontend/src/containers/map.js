@@ -28,11 +28,11 @@ const MapWithAMarkerClusterer = compose(
       enableRetinaIcons
       gridSize={60}
     >
-      {props.markers.map(marker => (
+      {props.allProfiles.map(profile => (
         <Marker
-          key={marker.uuId}
-          position={{ lat: marker.lat, lng: marker.lng }}
-          title={`${marker.firstName} ${marker.lastName}, ${marker.professionalDiscipline}`}
+          key={profile.uuId}
+          position={{ lat: profile.lat, lng: profile.lng }}
+          title={`${profile.firstName} ${profile.lastName}, ${profile.professionalDiscipline}`}
         />
       ))}
     </MarkerClusterer>
@@ -42,6 +42,6 @@ const MapWithAMarkerClusterer = compose(
 export default class Map extends React.PureComponent {
 
   render() {
-    return <MapWithAMarkerClusterer markers={this.props.value} />
+    return <MapWithAMarkerClusterer allProfiles={this.props.allProfiles} />
   }
 }

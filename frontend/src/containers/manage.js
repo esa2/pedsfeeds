@@ -211,6 +211,7 @@ export default class Manage extends Component {
   render() {
     const userHasListing = this.state.userHasListing
     const isLoading = this.state.isLoading
+    console.log('manage props', this.props)
     return (
       <div>
         <h4 className="header-green-center">
@@ -1422,9 +1423,7 @@ export default class Manage extends Component {
     </Button>
   </ButtonToolbar>
 </Form>
-</div>
-
-              
+</div>  
             ) : <p>No listings were found. If this is an error please contact us.</p>}
           </div>
       </div>

@@ -26,6 +26,7 @@ export default class ProfileNew extends Component {
     this.handleExperience = this.handleExperience.bind(this)
 
     this.state = {
+      wat: '',
       isLoading: false,
       approvedListing: true,
       listingTitle: '',
@@ -1391,9 +1392,6 @@ export default class ProfileNew extends Component {
             <Button bsStyle="primary" bsSize="large" active href="/profile">
               Cancel
             </Button>
-            <button className="square" onClick={this.props.onClick}>
-      {this.props.listingCategory}
-    </button>
           </ButtonToolbar>
         </Form>
       </div>

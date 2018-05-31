@@ -1422,9 +1422,7 @@ export default class Manage extends Component {
     </Button>
   </ButtonToolbar>
 </Form>
-</div>
-
-              
+</div>  
             ) : <p>No listings were found. If this is an error please contact us.</p>}
           </div>
       </div>

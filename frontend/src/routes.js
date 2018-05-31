@@ -34,12 +34,6 @@ export default ({ childProps }) => (
       props={childProps}
     />
     <AppliedRoute
-      path="/manage"
-      exact
-      component={Manage}
-      props={childProps}
-    />
-    <AppliedRoute
       path="/calendar/new"
       exact
       component={CalendarNew}
@@ -51,6 +45,7 @@ export default ({ childProps }) => (
       component={Calendar}
       props={childProps}
     />
+    <Route path="/manage" exact component={Manage} />
     <Route path="/directory" exact component={Directory} />
     <Route path="/about" exact component={About} />
     <Route path="/resources" exact component={Resources} />

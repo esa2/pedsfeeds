@@ -1126,8 +1126,7 @@ export default class Manage extends Component {
                         </Checkbox>
                         <Checkbox
                           defaultChecked={
-                            this.state.medicalSpecialty.includes(
-                              'Craniofacial"'
+                            this.state.medicalSpecialty.includes('Craniofacial'
                             )
                               ? true
                               : false
@@ -1371,33 +1370,77 @@ export default class Manage extends Component {
                           Select applicable certifications or select "none" if
                           not certified<span className="required">*</span>
                         </ControlLabel>
-                        <Checkbox value="American Board of Otolaryngology - Head and Neck Surgery">
+                        <Checkbox 
+                          defaultChecked={
+                            this.state.certifications.includes('American Board of Otolaryngology - Head and Neck Surgery')
+                              ? true
+                              : false
+                          }
+                          value="American Board of Otolaryngology - Head and Neck Surgery">
                           American Board of Otolaryngology - Head and Neck
                           Surgery
                         </Checkbox>
-                        <Checkbox value="American Board of Pediatrics">
+                        <Checkbox 
+                          defaultChecked={
+                            this.state.certifications.includes('American Board of Pediatrics')
+                              ? true
+                              : false
+                          }
+                          value="American Board of Pediatrics">
                           American Board of Pediatrics
                         </Checkbox>
-                        <Checkbox value="American Board of Surgery">
+                        <Checkbox 
+                          defaultChecked={
+                            this.state.certifications.includes('American Board of Surgery')
+                              ? true
+                              : false
+                          }
+                          value="American Board of Surgery">
                           American Board of Surgery
                         </Checkbox>
-                        <Checkbox value="Pediatric Surgery Specialty Board">
+                        <Checkbox 
+                          defaultChecked={
+                            this.state.certifications.includes('Pediatric Surgery Specialty Board')
+                              ? true
+                              : false
+                          }
+                          value="Pediatric Surgery Specialty Board">
                           Pediatric Surgery Specialty Board
                         </Checkbox>
-                        <Checkbox value="Pediatric Nursing Certification Board">
+                        <Checkbox 
+                          defaultChecked={
+                            this.state.certifications.includes('Pediatric Nursing Certification Board')
+                              ? true
+                              : false
+                          }
+                          value="Pediatric Nursing Certification Board">
                           Pediatric Nursing Certification Board
                         </Checkbox>
-                        <Checkbox value="National Certification Board">
+                        <Checkbox 
+                          defaultChecked={
+                            this.state.certifications.includes('National Certification Board')
+                              ? true
+                              : false
+                          }
+                          value="National Certification Board">
                           National Certification Board
                         </Checkbox>
                         <Checkbox
-                          value="National Commission on Certification of Physician Assistants
-    "
-                        >
-                          National Commission on Certification of Physician
-                          Assistants
+                          defaultChecked={
+                            this.state.certifications.includes('National Commission on Certification of Physician Assistants')
+                              ? true
+                              : false
+                          }
+                          value="National Commission on Certification of Physician Assistants">
+                          National Commission on Certification of Physician Assistants
                         </Checkbox>
-                        <Checkbox value="None">None</Checkbox>
+                        <Checkbox 
+                          defaultChecked={
+                            this.state.certifications.includes('None')
+                              ? true
+                              : false
+                          }
+                          value="None">None</Checkbox>
                       </FormGroup>
                     </Well>
                   ) : null}
@@ -1557,37 +1600,103 @@ export default class Manage extends Component {
                         <ControlLabel>
                           Select all counseling services you provide
                         </ControlLabel>
-                        <Checkbox value="Applied Behavior Analysis">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.mentalHealth.includes('Applied Behavior Analysis')
+                              ? true
+                              : false
+                          }
+                          value="Applied Behavior Analysis">
                           Applied Behavior Analysis
                         </Checkbox>
-                        <Checkbox value="Child play therapy">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.mentalHealth.includes('Child play therapy')
+                              ? true
+                              : false
+                          }
+                          value="Child play therapy">
                           Child play therapy
                         </Checkbox>
-                        <Checkbox value="Cognitive behavioral therapy">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.mentalHealth.includes('Cognitive behavioral therapy')
+                              ? true
+                              : false
+                          }
+                          value="Cognitive behavioral therapy">
                           Cognitive behavioral therapy
                         </Checkbox>
-                        <Checkbox value="Family / marital counseling">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.mentalHealth.includes('Family / marital counseling')
+                              ? true
+                              : false
+                          }
+                          value="Family / marital counseling">
                           Family / marital counseling
                         </Checkbox>
-                        <Checkbox value="General psychosocial and mental health support for families with special needs / medically fragile children and youth">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.mentalHealth.includes('General psychosocial and mental health support for families with special needs / medically fragile children and youth')
+                              ? true
+                              : false
+                          }
+                          value="General psychosocial and mental health support for families with special needs / medically fragile children and youth">
                           General psychosocial and mental health support for
                           families with special needs / medically fragile
                           children and youth
                         </Checkbox>
-                        <Checkbox value="Group therapy">Group therapy</Checkbox>
-                        <Checkbox value="Individual and family therap">
-                          Individual and family therap
+                        <Checkbox
+                          defaultChecked={
+                            this.state.mentalHealth.includes('Group therapy')
+                              ? true
+                              : false
+                          }
+                          value="Group therapy">Group therapy</Checkbox>
+                        <Checkbox
+                          defaultChecked={
+                            this.state.mentalHealth.includes('Individual and family therapy')
+                              ? true
+                              : false
+                          }
+                          value="Individual and family therapy">
+                          Individual and family therapy
                         </Checkbox>
-                        <Checkbox value="Parent counseling and support">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.mentalHealth.includes('Parent counseling and support')
+                              ? true
+                              : false
+                          }
+                          value="Parent counseling and support">
                           Parent counseling and support
                         </Checkbox>
-                        <Checkbox value="Parent education / support groups">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.mentalHealth.includes('Parent education / support groups')
+                              ? true
+                              : false
+                          }
+                          value="Parent education / support groups">
                           Parent education / support groups
                         </Checkbox>
-                        <Checkbox value="Sibling counseling">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.mentalHealth.includes('Sibling counseling')
+                              ? true
+                              : false
+                          }
+                          value="Sibling counseling">
                           Sibling counseling
                         </Checkbox>
-                        <Checkbox value="Terminal illness / life-shortening conditions / grief work">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.mentalHealth.includes('Terminal illness / life-shortening conditions / grief work')
+                              ? true
+                              : false
+                          }
+                          value="Terminal illness / life-shortening conditions / grief work">
                           Terminal illness / life-shortening conditions / grief
                           work
                         </Checkbox>
@@ -2315,29 +2424,77 @@ export default class Manage extends Component {
                         <ControlLabel>
                           Select all issues or conditions that apply
                         </ControlLabel>
-                        <Checkbox value="Central lines for long-term total parenteral nutrition">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.medicalExperienceTreating.includes('Central lines for long-term total parenteral nutrition')
+                              ? true
+                              : false
+                          }
+                          value="Central lines for long-term total parenteral nutrition">
                           Central lines for long-term total parenteral nutrition
                         </Checkbox>
-                        <Checkbox value="Food allergies">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.medicalExperienceTreating.includes('Food allergies')
+                              ? true
+                              : false
+                          }
+                          value="Food allergies">
                           Food allergies
                         </Checkbox>
-                        <Checkbox value="Gastrostomy tubes or other tube feedings">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.medicalExperienceTreating.includes('Gastrostomy tubes or other tube feedings')
+                              ? true
+                              : false
+                          }
+                          value="Gastrostomy tubes or other tube feedings">
                           Gastrostomy tubes or other tube feedings
                         </Checkbox>
-                        <Checkbox value="Growth faltering">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.medicalExperienceTreating.includes('Growth faltering')
+                              ? true
+                              : false
+                          }
+                          value="Growth faltering">
                           Growth faltering
                         </Checkbox>
-                        <Checkbox value="History of genetic issues, birth defects, illnesses, surgeries affecting feeding and eating">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.medicalExperienceTreating.includes('History of genetic issues, birth defects, illnesses, surgeries affecting feeding and eating')
+                              ? true
+                              : false
+                          }
+                          value="History of genetic issues, birth defects, illnesses, surgeries affecting feeding and eating">
                           History of genetic issues, birth defects, illnesses,
                           surgeries affecting feeding and eating
                         </Checkbox>
-                        <Checkbox value="Neurodevelopmental issues">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.medicalExperienceTreating.includes('Neurodevelopmental issues')
+                              ? true
+                              : false
+                          }
+                          value="Neurodevelopmental issues">
                           Neurodevelopmental issues
                         </Checkbox>
-                        <Checkbox value="Sensory / behavioral feeding and eating challenges">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.medicalExperienceTreating.includes('Sensory / behavioral feeding and eating challenges')
+                              ? true
+                              : false
+                          }
+                          value="Sensory / behavioral feeding and eating challenges">
                           Sensory / behavioral feeding and eating challenges
                         </Checkbox>
-                        <Checkbox value="Transition to oral feeding">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.medicalExperienceTreating.includes('Transition to oral feeding')
+                              ? true
+                              : false
+                          }
+                          value="Transition to oral feeding">
                           Transition to oral feeding
                         </Checkbox>
                       </FormGroup>

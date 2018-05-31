@@ -947,8 +947,7 @@ export default class ProfileNew extends Component {
                   National Certification Board
                 </Checkbox>
                 <Checkbox
-                  value="National Commission on Certification of Physician Assistants
-            "
+                  value="National Commission on Certification of Physician Assistants"
                 >
                   National Commission on Certification of Physician Assistants
                 </Checkbox>
@@ -1039,8 +1038,8 @@ export default class ProfileNew extends Component {
                   with special needs / medically fragile children and youth
                 </Checkbox>
                 <Checkbox value="Group therapy">Group therapy</Checkbox>
-                <Checkbox value="Individual and family therap">
-                  Individual and family therap
+                <Checkbox value="Individual and family therapy">
+                  Individual and family therapy
                 </Checkbox>
                 <Checkbox value="Parent counseling and support">
                   Parent counseling and support

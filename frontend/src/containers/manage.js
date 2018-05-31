@@ -14,7 +14,6 @@ import {
 } from 'react-bootstrap'
 import LoaderButton from '../components/loader-button'
 import Config from '../amplify-config'
-import ManageFrom from './manage-form'
 
 export default class Manage extends Component {
   constructor(props) {

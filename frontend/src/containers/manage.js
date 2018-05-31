@@ -274,6 +274,7 @@ export default class Manage extends Component {
     const isGetting = this.state.isGetting
     const updatedListing = this.state.updatedListing
     const deletedListing = this.state.deletedListing
+    console.log('manage state', this.state)
     return (
       <div>
         <h4 className="header-green-center">Edit or Delete your listing</h4>
@@ -1247,34 +1248,112 @@ export default class Manage extends Component {
                           Select applicable certifications or select "none" if
                           not certified<span className="required">*</span>
                         </ControlLabel>
-                        <Checkbox value="Behavior Analyst Certi􏰀cation Board">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.certifications.includes(
+                              'Behavior Analyst Certi􏰀cation Board'
+                            )
+                              ? true
+                              : false
+                          }
+                          value="Behavior Analyst Certi􏰀cation Board"
+                        >
                           Behavior Analyst Certification Board
                         </Checkbox>
-                        <Checkbox value="Licensed Clinical Social Worker">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.certifications.includes(
+                              'Licensed Clinical Social Worker'
+                            )
+                              ? true
+                              : false
+                          }
+                          value="Licensed Clinical Social Worker"
+                        >
                           Licensed Clinical Social Worker
                         </Checkbox>
-                        <Checkbox value="Licensed Marriage and Family Therapist">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.certifications.includes(
+                              'Licensed Marriage and Family Therapist'
+                            )
+                              ? true
+                              : false
+                          }
+                          value="Licensed Marriage and Family Therapist"
+                        >
                           Licensed Marriage and Family Therapist
                         </Checkbox>
-                        <Checkbox value="Licensed Master Social Worker">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.certifications.includes(
+                              'Licensed Master Social Worker'
+                            )
+                              ? true
+                              : false
+                          }
+                          value="Licensed Master Social Worker"
+                        >
                           Licensed Master Social Worker
                         </Checkbox>
-                        <Checkbox value="Licensed Mental Health Counselor">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.certifications.includes(
+                              'Licensed Mental Health Counselor'
+                            )
+                              ? true
+                              : false
+                          }
+                          value="Licensed Mental Health Counselor"
+                        >
                           Licensed Mental Health Counselor
                         </Checkbox>
-                        <Checkbox value="Licensed Professional Counselor">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.certifications.includes(
+                              'Licensed Professional Counselor'
+                            )
+                              ? true
+                              : false
+                          }
+                          value="Licensed Professional Counselor"
+                        >
                           Licensed Professional Counselor
                         </Checkbox>
                         <Checkbox
-                          value="National Board for Certi􏰀ed Counselors
-    "
+                          defaultChecked={
+                            this.state.certifications.includes(
+                              'National Board for Certified Counselors'
+                            )
+                              ? true
+                              : false
+                          }
+                          value="National Board for Certified Counselors"
                         >
                           National Board for Certified Counselors
                         </Checkbox>
-                        <Checkbox value="National Certi􏰀ed Counselor">
+                        <Checkbox
+                          defaultChecked={
+                            this.state.certifications.includes(
+                              'National Certified Counselor'
+                            )
+                              ? true
+                              : false
+                          }
+                          value="National Certified Counselor"
+                        >
                           National Certified Counselor
                         </Checkbox>
-                        <Checkbox value="None">None</Checkbox>
+                        <Checkbox
+                          defaultChecked={
+                            this.state.certifications.includes('None')
+                              ? true
+                              : false
+                          }
+                          value="None"
+                        >
+                          None
+                        </Checkbox>
                       </FormGroup>
                     </Well>
                   ) : null}

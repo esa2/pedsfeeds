@@ -94,52 +94,52 @@ export default class Manage extends Component {
     }
 
     try {
-      // const attachment = this.file ? await s3Upload(this.file) : null
+      const attachment = this.file ? await s3Upload(this.file) : null
 
       await this.updateProfile({
-        // attachment,
-        // approvedListing: this.state.approvedListing,
-        // listingCategory: this.props.value,
-        // listingTitle: this.state.listingTitle,
+        attachment,
+        approvedListing: this.state.approvedListing,
+        listingCategory: this.state.listingCategory,
+        listingTitle: this.state.listingTitle,
         lastName: this.state.lastName,
-        // firstName: this.state.firstName,
-        // displayListing: this.state.displayListing,
-        // professionalDiscipline: this.state.professionalDiscipline,
-        // licenseState: this.state.licenseState,
-        // licenseStanding: this.state.licenseStanding,
-        // licenseNumber: this.state.licenseNumber,
-        // empOrganization: this.state.empOrganization,
-        // empUrl: this.state.empUrl !== '' ? this.state.empUrl : false,
-        // workAddress1: this.state.workAddress1,
-        // workAddress2: this.state.workAddress2 !== '' ? this.state.workAddress2 : false,
-        // workCity: this.state.workCity,
-        // workState: this.state.workState,
-        // workZip: this.state.workZip,
-        // workPhone: this.state.workPhone,
-        // workExtension: this.state.workExtension !== '' ? this.state.workExtension : false,
-        // workEmail: this.state.workEmail !== '' ? this.state.workEmail : false,
-        // providerGroup: this.state.providerGroup !== '' ? this.state.providerGroup : false,
-        // providerGroupText: this.state.providerGroupText !== '' ? this.state.providerGroupText : false,
-        // workSetting: this.state.workSetting,
-        // agesServed: this.state.agesServed,
-        // paymentTypes: this.state.paymentTypes,
-        // medicalConditions: this.state.medicalConditions,
-        // feedingConditions: this.state.feedingConditions,
-        // practiceSpecialties: this.state.practiceSpecialties,
-        // certifications: this.state.certifications,
-        // mentalHealth: this.state.mentalHealth,
-        // medicalSpecialty: this.state.medicalSpecialty,
-        // medicalExperienceTreating: this.state.medicalExperienceTreating,
-        // medicalEducation1: this.state.medicalEducation1 !== '' ? this.state.medicalEducation1: false,
-        // medicalEducation2: this.state.medicalEducation2 !== '' ? this.state.medicalEducation2: false,
-        // medicalEducation3: this.state.medicalEducation3 !== '' ? this.state.medicalEducation3: false,
-        // medicalResearch1: this.state.medicalResearch1 !== '' ? this.state.medicalResearch1: false,
-        // medicalResearch2: this.state.medicalResearch2 !== '' ? this.state.medicalResearch2: false,
-        // medicalResearch3: this.state.medicalResearch3 !== '' ? this.state.medicalResearch3: false,
-        // yearsExperience: this.state.yearsExperience !== '' ? this.state.yearsExperience: false,
-        // toc: this.state.toc,
-        // lat: this.state.lat,
-        // lng: this.state.lng,
+        firstName: this.state.firstName,
+        displayListing: this.state.displayListing,
+        professionalDiscipline: this.state.professionalDiscipline,
+        licenseState: this.state.licenseState,
+        licenseStanding: this.state.licenseStanding,
+        licenseNumber: this.state.licenseNumber,
+        empOrganization: this.state.empOrganization,
+        empUrl: this.state.empUrl !== '' ? this.state.empUrl : false,
+        workAddress1: this.state.workAddress1,
+        workAddress2: this.state.workAddress2 !== '' ? this.state.workAddress2 : false,
+        workCity: this.state.workCity,
+        workState: this.state.workState,
+        workZip: this.state.workZip,
+        workPhone: this.state.workPhone,
+        workExtension: this.state.workExtension !== '' ? this.state.workExtension : false,
+        workEmail: this.state.workEmail !== '' ? this.state.workEmail : false,
+        providerGroup: this.state.providerGroup !== '' ? this.state.providerGroup : false,
+        providerGroupText: this.state.providerGroupText !== '' ? this.state.providerGroupText : false,
+        workSetting: this.state.workSetting,
+        agesServed: this.state.agesServed,
+        paymentTypes: this.state.paymentTypes,
+        medicalConditions: this.state.medicalConditions,
+        feedingConditions: this.state.feedingConditions,
+        practiceSpecialties: this.state.practiceSpecialties,
+        certifications: this.state.certifications,
+        mentalHealth: this.state.mentalHealth,
+        medicalSpecialty: this.state.medicalSpecialty,
+        medicalExperienceTreating: this.state.medicalExperienceTreating,
+        medicalEducation1: this.state.medicalEducation1 !== '' ? this.state.medicalEducation1: false,
+        medicalEducation2: this.state.medicalEducation2 !== '' ? this.state.medicalEducation2: false,
+        medicalEducation3: this.state.medicalEducation3 !== '' ? this.state.medicalEducation3: false,
+        medicalResearch1: this.state.medicalResearch1 !== '' ? this.state.medicalResearch1: false,
+        medicalResearch2: this.state.medicalResearch2 !== '' ? this.state.medicalResearch2: false,
+        medicalResearch3: this.state.medicalResearch3 !== '' ? this.state.medicalResearch3: false,
+        yearsExperience: this.state.yearsExperience !== '' ? this.state.yearsExperience: false,
+        toc: this.state.toc,
+        lat: this.state.lat,
+        lng: this.state.lng,
       })
     } catch (error) {
       alert(error)
@@ -148,7 +148,6 @@ export default class Manage extends Component {
   }
 
   updateProfile(profile) {
-    console.log('param', this.state.uuId)
     return API.put('peds', `/manage/${this.state.uuId}`, {
       body: profile,
     })
@@ -158,7 +157,7 @@ export default class Manage extends Component {
     try {
       const allProfiles = await this.profile()
       if (allProfiles.length > 0) this.setState({ ...allProfiles[0], userHasListing: true, approvedListing: false })
-      console.log(this.state)
+      console.log('manage state', this.state)
 
     } catch (error) {
       alert(error)
@@ -177,28 +176,28 @@ export default class Manage extends Component {
       requiredCheckbox.scrollIntoView()
       return
     }
-    if (this.props.value === 'Medical Care Provider') {
+    if (this.state.listingCategory === 'Medical Care Provider') {
       if (this.state.medicalSpecialty.length === 0) {
         const requiredCheckbox = document.getElementById("medicalSpecialtyReq")
         requiredCheckbox.scrollIntoView()
         return
       }
     }
-    if (this.props.value === 'Counselor / Mental Health' || this.props.value === 'Medical Care Provider') {
+    if (this.state.listingCategory === 'Counselor / Mental Health' || this.state.listingCategory === 'Medical Care Provider') {
       if (this.state.certifications.length === 0) {
         const requiredCheckbox = document.getElementById("certificationsReq")
         requiredCheckbox.scrollIntoView()
         return
       }
     }
-    if (this.props.value !== 'Medical Care Provider') {
+    if (this.state.listingCategory !== 'Medical Care Provider') {
       if (this.state.agesServed.length === 0) {
         const requiredCheckbox = document.getElementById("agesServedReq")
         requiredCheckbox.scrollIntoView()
         return
       }
     }
-    if (this.props.value !== 'Medical Care Provider') {
+    if (this.state.listingCategory !== 'Medical Care Provider') {
       if (this.state.paymentTypes.length === 0) {
         const requiredCheckbox = document.getElementById("paymentTypesReq")
         requiredCheckbox.scrollIntoView()
@@ -509,7 +508,10 @@ export default class Manage extends Component {
       <Well>
         <ControlLabel className="required">*</ControlLabel>
         <ControlLabel>Check standing</ControlLabel>
-        <Checkbox required onChange={this.handleLicenseChange} defaultChecked>
+        <Checkbox
+          required onChange={this.handleLicenseChange}
+          defaultChecked={this.state.licenseStanding}
+        >
           I am in good standing with the state and national liscensing
           or certification bodies required for my profession
         </Checkbox>
@@ -955,19 +957,34 @@ export default class Manage extends Component {
             *
           </span>
         </ControlLabel>
-        <Checkbox value="Infants: 0 - 12 months">
+        <Checkbox
+          value="Infants: 0 - 12 months"
+          defaultChecked={this.state.agesServed.includes('Infants: 0 - 12 months') ? true : false}
+        >
           Infants: 0 - 12 months
         </Checkbox>
-        <Checkbox value="Toddlers: 13 - 36 months">
+        <Checkbox
+          value="Toddlers: 13 - 36 months"
+          defaultChecked={this.state.agesServed.includes('Toddlers: 13 - 36 months') ? true : false}
+        >
           Toddlers: 13 - 36 months
         </Checkbox>
-        <Checkbox value="Preschool: 3 - 5 years">
+        <Checkbox
+          value="Preschool: 3 - 5 years"
+          defaultChecked={this.state.agesServed.includes('Preschool: 3 - 5 years') ? true : false}
+        >
           Preschool: 3 - 5 years
         </Checkbox>
-        <Checkbox value="School age: 5 - 12 years">
+        <Checkbox
+          value="School age: 5 - 12 years"
+          defaultChecked={this.state.agesServed.includes('School age: 5 - 12 years') ? true : false}
+        >
           School age: 5 - 12 years
         </Checkbox>
-        <Checkbox value="Adolescent: 13 - 21 years">
+        <Checkbox
+          value="Adolescent: 13 - 21 years"
+          defaultChecked={this.state.agesServed.includes('Adolescent: 13 - 21 years') ? true : false}
+        >
           Adolescent: 13 - 21 years
         </Checkbox>
       </FormGroup>
@@ -988,10 +1005,23 @@ export default class Manage extends Component {
             *
           </span>
         </ControlLabel>
-        <Checkbox value="Medicaid">Medicaid</Checkbox>
-        <Checkbox value="Private insurance">Private insurance</Checkbox>
-        <Checkbox value="Private pay">Private pay</Checkbox>
-        <Checkbox value="Part C">Part C</Checkbox>
+        <Checkbox
+          value="Medicaid"
+          defaultChecked={this.state.paymentTypes.includes('Medicaid') ? true : false}
+        >Medicaid
+        </Checkbox>
+        <Checkbox
+          value="Private insurance"
+          defaultChecked={this.state.paymentTypes.includes('Private insurance') ? true : false}
+        >Private insurance</Checkbox>
+        <Checkbox
+          value="Private pay"
+          defaultChecked={this.state.paymentTypes.includes('Private pay') ? true : false}
+        >Private pay</Checkbox>
+        <Checkbox
+          value="Part C"
+          defaultChecked={this.state.paymentTypes.includes('Part C') ? true : false}
+        >Part C</Checkbox>
       </FormGroup>
     </Well>
   ) : null}
@@ -1057,51 +1087,91 @@ export default class Manage extends Component {
         <ControlLabel>
           Select all medical conditions you treat
         </ControlLabel>
-        <Checkbox value="Autism spectrum disorders">
-          Autism spectrum disorders
+        <Checkbox
+          value="Autism spectrum disorders"
+          defaultChecked={this.state.medicalConditions.includes('Autism spectrum disorders') ? true : false}
+        >Autism spectrum disorders
         </Checkbox>
-        <Checkbox value="Cancer">Cancer</Checkbox>
-        <Checkbox value="Craniofacial anomalies (including cleft lip and palate)">
-          Craniofacial anomalies (including cleft lip and palate)
+        <Checkbox
+          value="Cancer"
+          defaultChecked={this.state.medicalConditions.includes('Cancer') ? true : false}
+        >Cancer
         </Checkbox>
-        <Checkbox value="Developmental delay">
-          Developmental delay
+        <Checkbox
+          value="Craniofacial anomalies (including cleft lip and palate)"
+          defaultChecked={this.state.medicalConditions.includes('Craniofacial anomalies (including cleft lip and palate)') ? true : false}
+        >Craniofacial anomalies (including cleft lip and palate)
         </Checkbox>
-        <Checkbox value="Gastroesophageal reflux disease (GERD)">
-          Gastroesophageal reflux disease (GERD)
+        <Checkbox
+          value="Developmental delay"
+          defaultChecked={this.state.medicalConditions.includes('Developmental delay') ? true : false}
+        >Developmental delay
         </Checkbox>
-        <Checkbox value="GI issued (short gut syndrome, necrotizing enterocolitis, eosinophilic esophagitis, etc)">
-          GI issued (short gut syndrome, necrotizing enterocolitis,
-          eosinophilic esophagitis, etc)
+        <Checkbox
+          value="Gastroesophageal reflux disease (GERD)"
+          defaultChecked={this.state.medicalConditions.includes('Gastroesophageal reflux disease (GERD)') ? true : false}
+          >Gastroesophageal reflux disease (GERD)
         </Checkbox>
-        <Checkbox value="Growth issues (FTT, poor weight gain)">
-          Growth issues (FTT, poor weight gain)
+        <Checkbox
+          value="GI issued (short gut syndrome, necrotizing enterocolitis, eosinophilic esophagitis, etc)"
+          defaultChecked={this.state.medicalConditions.includes('GI issued (short gut syndrome, necrotizing enterocolitis, eosinophilic esophagitis, etc)') ? true : false}
+        >GI issued (short gut syndrome, necrotizing enterocolitis, eosinophilic esophagitis, etc)
         </Checkbox>
-        <Checkbox value="G-tube placement">G-tube placement</Checkbox>
-        <Checkbox value="Heart defects">Heart defects</Checkbox>
-        <Checkbox value="Medically fragile children">
-          Medically fragile children
+        <Checkbox
+          value="Growth issues (FTT, poor weight gain)"
+          defaultChecked={this.state.medicalConditions.includes('Growth issues (FTT, poor weight gain)') ? true : false}
+        >Growth issues (FTT, poor weight gain)
         </Checkbox>
-        <Checkbox value="Neurologic deficits (cerebral palsy, static encephalopathy, hydrocephalus, etc)">
-          Neurologic deficits (cerebral palsy, static encephalopathy,
+        <Checkbox
+          value="G-tube placement"
+          defaultChecked={this.state.medicalConditions.includes('G-tube placement') ? true : false}
+        >G-tube placement
+        </Checkbox>
+        <Checkbox
+          value="Heart defects"
+          defaultChecked={this.state.medicalConditions.includes('Heart defects') ? true : false}
+        >Heart defects
+        </Checkbox>
+        <Checkbox
+          value="Medically fragile children"
+          defaultChecked={this.state.medicalConditions.includes('Medically fragile children') ? true : false}
+          >Medically fragile children
+        </Checkbox>
+        <Checkbox
+          value="Neurologic deficits (cerebral palsy, static encephalopathy, hydrocephalus, etc)"
+          defaultChecked={this.state.medicalConditions.includes('Neurologic deficits (cerebral palsy, static encephalopathy, hydrocephalus, etc)') ? true : false}
+          >Neurologic deficits (cerebral palsy, static encephalopathy,
           hydrocephalus, etc)
         </Checkbox>
-        <Checkbox value="NG/ND tube placement">
-          NG/ND tube placement
+        <Checkbox
+          value="NG/ND tube placement"
+          defaultChecked={this.state.medicalConditions.includes('NG/ND tube placement') ? true : false}
+          >NG/ND tube placement
         </Checkbox>
-        <Checkbox value="Premature infants">Premature infants</Checkbox>
-        <Checkbox value="Pulmonary issues (chronic lung disease, reactive airway disease)">
-          Pulmonary issues (chronic lung disease, reactive airway
-          disease)
+        <Checkbox
+          value="Premature infants"
+          defaultChecked={this.state.medicalConditions.includes('Premature infants') ? true : false}
+          >Premature infants
+          </Checkbox>
+        <Checkbox
+          value="Pulmonary issues (chronic lung disease, reactive airway disease)"
+          defaultChecked={this.state.medicalConditions.includes('Pulmonary issues (chronic lung disease, reactive airway disease)') ? true : false}
+          >Pulmonary issues (chronic lung disease, reactive airway disease)
         </Checkbox>
-        <Checkbox value="Spinal cord injury">
-          Spinal cord injury
+        <Checkbox
+          value="Spinal cord injury"
+          defaultChecked={this.state.medicalConditions.includes('Spinal cord injury') ? true : false}
+          >Spinal cord injury
         </Checkbox>
-        <Checkbox value="Tracheotomy/ventilator dependent">
-          Tracheotomy/ventilator dependent
+        <Checkbox
+          value="Tracheotomy/ventilator dependent"
+          defaultChecked={this.state.medicalConditions.includes('Tracheotomy/ventilator dependent') ? true : false}
+          >Tracheotomy/ventilator dependent
         </Checkbox>
-        <Checkbox value="Traumatic brain injury">
-          Traumatic brain injury
+        <Checkbox
+          value="Traumatic brain injury"
+          defaultChecked={this.state.medicalConditions.includes('Traumatic brain injury') ? true : false}
+          >Traumatic brain injury
         </Checkbox>
       </FormGroup>
     </Well>
@@ -1122,29 +1192,51 @@ export default class Manage extends Component {
         <ControlLabel>
           Select all feeding conditions of children you treat
         </ControlLabel>
-        <Checkbox value="Breastfeeding issues">
-          Breastfeeding issues
+        <Checkbox
+          value="Breastfeeding issues"
+          defaultChecked={this.state.feedingConditions.includes('Breastfeeding issues') ? true : false}
+          >Breastfeeding issues
         </Checkbox>
-        <Checkbox value="Difficulty transitioning to solids">
-          Difficulty transitioning to solids
+        <Checkbox
+          value="Difficulty transitioning to solids"
+          defaultChecked={this.state.feedingConditions.includes('Difficulty transitioning to solids') ? true : false}
+          >Difficulty transitioning to solids
         </Checkbox>
-        <Checkbox value="Non-oral feeders (fed via NG, ND, g-tube, etc)">
-          Non-oral feeders (fed via NG, ND, g-tube, etc)
+        <Checkbox
+          value="Non-oral feeders (fed via NG, ND, g-tube, etc)"
+          defaultChecked={this.state.feedingConditions.includes('Non-oral feeders (fed via NG, ND, g-tube, etc)') ? true : false}
+          >Non-oral feeders (fed via NG, ND, g-tube, etc)
         </Checkbox>
-        <Checkbox value="Oral aversion">Oral aversion</Checkbox>
-        <Checkbox value="Oral sensory dysfunction">
-          Oral sensory dysfunction
+        <Checkbox
+          value="Oral aversion"
+          defaultChecked={this.state.feedingConditions.includes('Oral aversion') ? true : false}
+        >Oral aversion
         </Checkbox>
-        <Checkbox value="Oral dyspraxia/apraxia">
-          Oral dyspraxia/apraxia
+        <Checkbox
+          value="Oral sensory dysfunction"
+          defaultChecked={this.state.feedingConditions.includes('Oral sensory dysfunction') ? true : false}
+        >Oral sensory dysfunction
         </Checkbox>
-        <Checkbox value="Psychosocial dysfunction related to feeding">
-          Psychosocial dysfunction related to feeding
+        <Checkbox
+          value="Oral dyspraxia/apraxia"
+          defaultChecked={this.state.feedingConditions.includes('Oral dyspraxia/apraxia') ? true : false}
+          >Oral dyspraxia/apraxia
         </Checkbox>
-        <Checkbox value="Swallowing difficulty">
-          Swallowing difficulty
+        <Checkbox
+        value="Psychosocial dysfunction related to feeding"
+        defaultChecked={this.state.feedingConditions.includes('Psychosocial dysfunction related to feeding') ? true : false}
+        >Psychosocial dysfunction related to feeding
         </Checkbox>
-        <Checkbox value="Tongue tie">Tongue tie</Checkbox>
+        <Checkbox
+          value="Swallowing difficulty"
+          defaultChecked={this.state.feedingConditions.includes('Swallowing difficulty') ? true : false}
+          >Swallowing difficulty
+        </Checkbox>
+        <Checkbox
+          value="Tongue tie"
+          defaultChecked={this.state.feedingConditions.includes('Tongue tie') ? true : false}
+        >Tongue tie
+        </Checkbox>
       </FormGroup>
     </Well>
   ) : null}
@@ -1190,49 +1282,91 @@ export default class Manage extends Component {
         <ControlLabel>
           Select all practice areas related to feeding that apply
         </ControlLabel>
-        <Checkbox value="Behavioral management">
-          Behavioral management
+        <Checkbox
+          value="Behavioral management"
+          defaultChecked={this.state.practiceSpecialties.includes('Behavioral management') ? true : false}
+          >Behavioral management
         </Checkbox>
-        <Checkbox value="Blenderized diets">Blenderized diets</Checkbox>
-        <Checkbox value="Breastfeeding management">
-          Breastfeeding management
+        <Checkbox
+          value="Blenderized diets"
+          defaultChecked={this.state.practiceSpecialties.includes('Blenderized diets') ? true : false}
+        >Blenderized diets
         </Checkbox>
-        <Checkbox value="clinical feeding and / or swallowing assessment">
-          clinical feeding and / or swallowing assessment
+        <Checkbox
+          value="Breastfeeding management"
+          defaultChecked={this.state.practiceSpecialties.includes('Breastfeeding management') ? true : false}
+          >Breastfeeding management
         </Checkbox>
-        <Checkbox value="Craniosacral therapy">
-          Craniosacral therapy
+        <Checkbox
+          value="clinical feeding and / or swallowing assessment"
+          defaultChecked={this.state.practiceSpecialties.includes('clinical feeding and / or swallowing assessment') ? true : false}
+          >clinical feeding and / or swallowing assessment
         </Checkbox>
-        <Checkbox value="E stim / Vital stim">
-          E stim / Vital stim
+        <Checkbox
+          value="Craniosacral therapy"
+          defaultChecked={this.state.practiceSpecialties.includes('Craniosacral therapy') ? true : false}
+          >Craniosacral therapy
         </Checkbox>
-        <Checkbox value="Feeding groups">Feeding groups</Checkbox>
-        <Checkbox value="Fiberoptic endoscope evaluation of swallowing (FEES)">
-          Fiberoptic endoscope evaluation of swallowing (FEES)
+        <Checkbox
+          value="E stim / Vital stim"
+          defaultChecked={this.state.practiceSpecialties.includes('E stim / Vital stim') ? true : false}
+          >E stim / Vital stim
         </Checkbox>
-        <Checkbox value="Food texture advancement">
-          Food texture advancement
+        <Checkbox
+          value="Feeding groups"
+          defaultChecked={this.state.practiceSpecialties.includes('"Feeding groups') ? true : false}
+        >Feeding groups
         </Checkbox>
-        <Checkbox value="Kinesiotaping">Kinesiotaping</Checkbox>
-        <Checkbox value="Manual therapy">Manual therapy</Checkbox>
-        <Checkbox value="Nutritional assessment and management">
-          Nutritional assessment and management
+        <Checkbox
+          value="Fiberoptic endoscope evaluation of swallowing (FEES)"
+          defaultChecked={this.state.practiceSpecialties.includes('Fiberoptic endoscope evaluation of swallowing (FEES)') ? true : false}
+          >Fiberoptic endoscope evaluation of swallowing (FEES)
         </Checkbox>
-        <Checkbox value="Oral motor therapy">
-          Oral motor therapy
+        <Checkbox
+          value="Food texture advancement"
+          defaultChecked={this.state.practiceSpecialties.includes('Food texture advancement') ? true : false}
+          >Food texture advancement
         </Checkbox>
-        <Checkbox value="Psychosocial treatment">
-          Psychosocial treatment
+        <Checkbox
+          value="Kinesiotaping"
+          defaultChecked={this.state.practiceSpecialties.includes('Kinesiotaping') ? true : false}
+        >Kinesiotaping
         </Checkbox>
-        <Checkbox value="Sensory processing related to feeding">
-          Sensory processing related to feeding
+        <Checkbox
+          value="Manual therapy"
+          defaultChecked={this.state.practiceSpecialties.includes('Manual therapy') ? true : false}
+        >Manual therapy
         </Checkbox>
-        <Checkbox value="Videofluoroscopic swallowing studies (VFSS) / Modified barium swallows (MBS)">
-          Videofluoroscopic swallowing studies (VFSS) / Modified barium
+        <Checkbox
+          value="Nutritional assessment and management"
+          defaultChecked={this.state.practiceSpecialties.includes('Nutritional assessment and management') ? true : false}
+        >Nutritional assessment and management
+        </Checkbox>
+        <Checkbox
+          value="Oral motor therapy"
+          defaultChecked={this.state.practiceSpecialties.includes('Oral motor therapy') ? true : false}
+          >Oral motor therapy
+        </Checkbox>
+        <Checkbox
+          value="Psychosocial treatment"
+          defaultChecked={this.state.practiceSpecialties.includes('Psychosocial treatment') ? true : false}
+          >Psychosocial treatment
+        </Checkbox>
+        <Checkbox
+          value="Sensory processing related to feeding"
+          defaultChecked={this.state.practiceSpecialties.includes('Sensory processing related to feeding') ? true : false}
+        >Sensory processing related to feeding
+        </Checkbox>
+        <Checkbox
+          value="Videofluoroscopic swallowing studies (VFSS) / Modified barium swallows (MBS)"
+          defaultChecked={this.state.practiceSpecialties.includes('Videofluoroscopic swallowing studies (VFSS) / Modified barium swallows (MBS)') ? true : false}
+          >Videofluoroscopic swallowing studies (VFSS) / Modified barium
           swallows (MBS)
         </Checkbox>
-        <Checkbox value="Weaning from feeding tubes">
-          Weaning from feeding tubes
+        <Checkbox
+          value="Weaning from feeding tubes"
+          defaultChecked={this.state.practiceSpecialties.includes('Weaning from feeding tubes') ? true : false}
+          >Weaning from feeding tubes
         </Checkbox>
       </FormGroup>
     </Well>
@@ -1390,7 +1524,10 @@ export default class Manage extends Component {
       <ControlLabel>
         Terms and Conditions<span className="required">*</span>
       </ControlLabel>
-      <Checkbox required onChange={this.handleTocChange}>
+      <Checkbox
+        required onChange={this.handleTocChange}
+        defaultChecked={this.state.toc} 
+        >
         I have read the terms and conditions and certify that the above
         data is accurate and true and that I have liability insurance. I
         understand that PedsFeeds.com is not liable for any consequences

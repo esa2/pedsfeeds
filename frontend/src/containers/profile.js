@@ -87,28 +87,24 @@ export default class Profile extends Component {
         <h4 className="header-green-center">
           Create, Edit or Delete your listing
         </h4>
-        {this.props.isAuthenticated ? (
-          <div>
-            <ButtonToolbar>
-              <Button
-                bsStyle="primary"
-                bsSize="large"
-                onClick={this.handleNewClick}
-              >
-                Submit a new listing
-              </Button>
-              <Button bsStyle="primary" bsSize="large" href="/manage">
-                Manage my listings
-              </Button>
-            </ButtonToolbar>
-            {this.renderCategories()}
-            {showNewListing ? (
-              <ProfileNew listingCategory={this.state.listingCategory} />
-            ) : null}
-          </div>
-        ) : (
-          <p>You must be logged in to access your listings</p>
-        )}
+        <div>
+          <ButtonToolbar>
+            <Button
+              bsStyle="primary"
+              bsSize="large"
+              onClick={this.handleNewClick}
+            >
+              Submit a new listing
+            </Button>
+            <Button bsStyle="primary" bsSize="large" href="/manage">
+              Manage my listings
+            </Button>
+          </ButtonToolbar>
+          {this.renderCategories()}
+          {showNewListing ? (
+            <ProfileNew listingCategory={this.state.listingCategory} />
+          ) : null}
+        </div>
       </div>
     )
   }

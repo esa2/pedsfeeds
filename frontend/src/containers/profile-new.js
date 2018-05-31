@@ -27,6 +27,7 @@ export default class ProfileNew extends Component {
 
     this.state = {
       isLoading: false,
+      createdListing: false,
       approvedListing: true,
       listingTitle: '',
       lastName: '',
@@ -110,10 +111,12 @@ export default class ProfileNew extends Component {
 
   fetchAddress = async (street, city, state) => {
     var fetchStreet = street.replace(/ /gi, '+')
-    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${fetchStreet},+${city},+${state}&key=API_KEY`)
+    const response = await fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${fetchStreet},+${city},+${state}&key=API_KEY`
+    )
     return response.json()
   }
-  
+
   handleSubmit = async e => {
     e.preventDefault()
 
@@ -125,8 +128,15 @@ export default class ProfileNew extends Component {
     this.setState({ isLoading: true })
 
     try {
-      const address = await this.fetchAddress(this.state.workAddress1, this.state.workCity, this.state.workState)
-      this.setState({ lat: address.results[0].geometry.location.lat, lng: address.results[0].geometry.location.lng })
+      const address = await this.fetchAddress(
+        this.state.workAddress1,
+        this.state.workCity,
+        this.state.workState
+      )
+      this.setState({
+        lat: address.results[0].geometry.location.lat,
+        lng: address.results[0].geometry.location.lng,
+      })
     } catch (error) {
       alert(error)
     }
@@ -149,15 +159,21 @@ export default class ProfileNew extends Component {
         empOrganization: this.state.empOrganization,
         empUrl: this.state.empUrl !== '' ? this.state.empUrl : false,
         workAddress1: this.state.workAddress1,
-        workAddress2: this.state.workAddress2 !== '' ? this.state.workAddress2 : false,
+        workAddress2:
+          this.state.workAddress2 !== '' ? this.state.workAddress2 : false,
         workCity: this.state.workCity,
         workState: this.state.workState,
         workZip: this.state.workZip,
         workPhone: this.state.workPhone,
-        workExtension: this.state.workExtension !== '' ? this.state.workExtension : false,
+        workExtension:
+          this.state.workExtension !== '' ? this.state.workExtension : false,
         workEmail: this.state.workEmail !== '' ? this.state.workEmail : false,
-        providerGroup: this.state.providerGroup !== '' ? this.state.providerGroup : false,
-        providerGroupText: this.state.providerGroupText !== '' ? this.state.providerGroupText : false,
+        providerGroup:
+          this.state.providerGroup !== '' ? this.state.providerGroup : false,
+        providerGroupText:
+          this.state.providerGroupText !== ''
+            ? this.state.providerGroupText
+            : false,
         workSetting: this.state.workSetting,
         agesServed: this.state.agesServed,
         paymentTypes: this.state.paymentTypes,
@@ -168,21 +184,42 @@ export default class ProfileNew extends Component {
         mentalHealth: this.state.mentalHealth,
         medicalSpecialty: this.state.medicalSpecialty,
         medicalExperienceTreating: this.state.medicalExperienceTreating,
-        medicalEducation1: this.state.medicalEducation1 !== '' ? this.state.medicalEducation1: false,
-        medicalEducation2: this.state.medicalEducation2 !== '' ? this.state.medicalEducation2: false,
-        medicalEducation3: this.state.medicalEducation3 !== '' ? this.state.medicalEducation3: false,
-        medicalResearch1: this.state.medicalResearch1 !== '' ? this.state.medicalResearch1: false,
-        medicalResearch2: this.state.medicalResearch2 !== '' ? this.state.medicalResearch2: false,
-        medicalResearch3: this.state.medicalResearch3 !== '' ? this.state.medicalResearch3: false,
-        yearsExperience: this.state.yearsExperience !== '' ? this.state.yearsExperience: false,
+        medicalEducation1:
+          this.state.medicalEducation1 !== ''
+            ? this.state.medicalEducation1
+            : false,
+        medicalEducation2:
+          this.state.medicalEducation2 !== ''
+            ? this.state.medicalEducation2
+            : false,
+        medicalEducation3:
+          this.state.medicalEducation3 !== ''
+            ? this.state.medicalEducation3
+            : false,
+        medicalResearch1:
+          this.state.medicalResearch1 !== ''
+            ? this.state.medicalResearch1
+            : false,
+        medicalResearch2:
+          this.state.medicalResearch2 !== ''
+            ? this.state.medicalResearch2
+            : false,
+        medicalResearch3:
+          this.state.medicalResearch3 !== ''
+            ? this.state.medicalResearch3
+            : false,
+        yearsExperience:
+          this.state.yearsExperience !== ''
+            ? this.state.yearsExperience
+            : false,
         toc: this.state.toc,
         lat: this.state.lat,
         lng: this.state.lng,
       })
     } catch (error) {
       alert(error)
-      this.setState({ isLoading: false })
     }
+    this.setState({ isLoading: false, createdListing: true })
   }
 
   createProfile(profile) {
@@ -194,34 +231,37 @@ export default class ProfileNew extends Component {
   checkRequired(e) {
     e.preventDefault()
     if (this.state.workSetting.length === 0) {
-      const requiredCheckbox = document.getElementById("workSettingReq")
+      const requiredCheckbox = document.getElementById('workSettingReq')
       requiredCheckbox.scrollIntoView()
       return
     }
     if (this.props.listingCategory === 'Medical Care Provider') {
       if (this.state.medicalSpecialty.length === 0) {
-        const requiredCheckbox = document.getElementById("medicalSpecialtyReq")
+        const requiredCheckbox = document.getElementById('medicalSpecialtyReq')
         requiredCheckbox.scrollIntoView()
         return
       }
     }
-    if (this.props.listingCategory === 'Counselor / Mental Health' || this.props.listingCategory === 'Medical Care Provider') {
+    if (
+      this.props.listingCategory === 'Counselor / Mental Health' ||
+      this.props.listingCategory === 'Medical Care Provider'
+    ) {
       if (this.state.certifications.length === 0) {
-        const requiredCheckbox = document.getElementById("certificationsReq")
+        const requiredCheckbox = document.getElementById('certificationsReq')
         requiredCheckbox.scrollIntoView()
         return
       }
     }
     if (this.props.listingCategory !== 'Medical Care Provider') {
       if (this.state.agesServed.length === 0) {
-        const requiredCheckbox = document.getElementById("agesServedReq")
+        const requiredCheckbox = document.getElementById('agesServedReq')
         requiredCheckbox.scrollIntoView()
         return
       }
     }
     if (this.props.listingCategory !== 'Medical Care Provider') {
       if (this.state.paymentTypes.length === 0) {
-        const requiredCheckbox = document.getElementById("paymentTypesReq")
+        const requiredCheckbox = document.getElementById('paymentTypesReq')
         requiredCheckbox.scrollIntoView()
         return
       }
@@ -231,10 +271,12 @@ export default class ProfileNew extends Component {
 
   render() {
     const listingCategory = this.props.listingCategory
+    const createdListing = this.state.createdListing
     return (
-
       <div>
-        <h6 className="header-green-center">{this.props.listingCategory} listing</h6>
+        <h6 className="header-green-center">
+          {this.props.listingCategory} listing
+        </h6>
         <p>
           Required fields<span className="required">*</span>
         </p>
@@ -1385,14 +1427,15 @@ export default class ProfileNew extends Component {
               bsSize="large"
               type="submit"
               isLoading={this.state.isLoading}
-              text="Submit"
-              loadingText="Creating profile"
+              text="Submit new listing"
+              loadingText="Creating new listing"
             />
             <Button bsStyle="primary" bsSize="large" active href="/profile">
               Cancel
             </Button>
           </ButtonToolbar>
         </Form>
+        {createdListing ? <p>Your listing was successfully created</p> : null}
       </div>
     )
   }

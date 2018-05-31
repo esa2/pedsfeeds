@@ -26,7 +26,6 @@ export default class ProfileNew extends Component {
     this.handleExperience = this.handleExperience.bind(this)
 
     this.state = {
-      wat: '',
       isLoading: false,
       approvedListing: true,
       listingTitle: '',

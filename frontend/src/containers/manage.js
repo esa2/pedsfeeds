@@ -211,7 +211,6 @@ export default class Manage extends Component {
   render() {
     const userHasListing = this.state.userHasListing
     const isLoading = this.state.isLoading
-    console.log('manage props', this.props)
     return (
       <div>
         <h4 className="header-green-center">

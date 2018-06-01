@@ -211,17 +211,17 @@ export default class Manage extends Component {
   async componentDidMount() {
     try {
       const allProfiles = await this.profile()
-      allProfiles.length > 0
-        ? this.setState({
+      if (allProfiles.length > 0)
+        this.setState({
             ...allProfiles[0],
             userHasListing: true,
             approvedListing: false,
           })
-        : { userHasListing: false }
     } catch (error) {
       alert(error)
     }
     this.setState({ isGetting: false })
+    if (!this.state.userHasListing) this.setState({ userHasListing: false })
   }
 
   profile() {
@@ -337,7 +337,7 @@ export default class Manage extends Component {
                       <ControlLabel>Select one</ControlLabel>
                       <Radio
                         defaultChecked={
-                          this.state.displayListing === false ? false : true
+                          this.state.displayListing === false ? true : false
                         }
                         name="radioDisplay"
                         onChange={this.handleListingDisplay}
@@ -2222,7 +2222,7 @@ export default class Manage extends Component {
                           value="Feeding groups"
                           defaultChecked={
                             this.state.practiceSpecialties.includes(
-                              '"Feeding groups'
+                              'Feeding groups'
                             )
                               ? true
                               : false

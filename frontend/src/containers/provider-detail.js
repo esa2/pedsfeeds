@@ -155,18 +155,6 @@ export default class ProviderDetail extends Component {
           ))}
           <hr />
 
-          {/* {this.props.currentProvider.certifications.length === 0 ? null : (
-            <div>
-              <p className="detail-heading">
-                CERTIFICATIONS
-              </p>
-              {this.props.currentProvider.certifications.map((ele, i) => (
-                <li key={i}>{ele}</li>
-              ))}
-              <hr />
-            </div>
-          )} */}
-
           {this.props.currentProvider.agesServed.length === 0 ? null : (
             <div>
               <p className="detail-heading">AGES SERVED</p>

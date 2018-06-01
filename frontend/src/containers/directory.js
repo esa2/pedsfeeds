@@ -30,12 +30,9 @@ export default class Directory extends Component {
     e.preventDefault()
     let category = []
 
-    // this.state.allProfiles
-    // .filter(listingCategory => listingCategory === e.target.value)
-    // .map((listingCategory) => category.push(listingCategory))
-    this.state.allProfiles.map(ele => {
-      if (ele.listingCategory === e.target.value) category.push(ele)
-    })
+    this.state.allProfiles
+    .filter(ele => ele.listingCategory === e.target.value)
+    .map((ele) => category.push(ele))
     this.setState({ show: true, showProvider: false, showMap: false, category })
     console.log(this.state.allProfiles)
   }
@@ -49,10 +46,10 @@ export default class Directory extends Component {
     try {
       const listings = await this.directory()
       const allProfiles = []
-      
-      listings.map(ele => {
-        if (ele.approvedListing && ele.displayListing) allProfiles.push(ele)
-      })
+
+      listings.filter(ele => ele.approvedListing && ele.displayListing)
+      .map((ele) => allProfiles.push(ele))
+
       allProfiles.sort((a, b) => a.lastName.localeCompare(b.lastName))
 
       this.setState({ allProfiles })

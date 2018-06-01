@@ -92,8 +92,8 @@ export default class Manage extends Component {
     this.setState({ isLoading: true })
 
     try {
-      // const address = await this.fetchAddress(this.state.workAddress1, this.state.workCity, this.state.workState)
-      // this.setState({ lat: address.results[0].geometry.location.lat, lng: address.results[0].geometry.location.lng })
+      const address = await this.fetchAddress(this.state.workAddress1, this.state.workCity, this.state.workState)
+      this.setState({ lat: address.results[0].geometry.location.lat, lng: address.results[0].geometry.location.lng })
     } catch (error) {
       alert(error)
     }

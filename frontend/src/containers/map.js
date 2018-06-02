@@ -5,6 +5,7 @@ const {
   withGoogleMap,
   GoogleMap,
   Marker,
+  InfoWindow,
 } = require('react-google-maps')
 const {
   MarkerClusterer,
@@ -21,27 +22,60 @@ const MapWithAMarkerClusterer = compose(
   withScriptjs,
   withGoogleMap
 )(props => (
-  <GoogleMap defaultZoom={4} defaultCenter={{ lat: 41.850, lng: -87.650 }}>
-    <MarkerClusterer
-      onClick={props.onMarkerClustererClick}
-      averageCenter
-      enableRetinaIcons
-      gridSize={60}
-    >
+  <GoogleMap defaultZoom={4} defaultCenter={{ lat: 41.85, lng: -87.65 }}>
+    <MarkerClusterer averageCenter enableRetinaIcons gridSize={40}>
       {props.allProfiles.map(profile => (
         <Marker
+          onClick={() => {
+            props.markerClick(profile.uuId)
+            props.onToggleOpen
+          }}
           key={profile.uuId}
           position={{ lat: profile.lat, lng: profile.lng }}
           title={`${profile.firstName} ${profile.lastName}, ${profile.professionalDiscipline}`}
-        />
+        >
+         {props.showInfoWindow &&  props.showInfoIndex === profile.uuId ? (
+            <InfoWindow onCloseClick={props.closeClick}>
+              <div>
+                {profile.firstName} {profile.lastName}, {profile.professionalDiscipline}
+              </div>
+            </InfoWindow>
+          ) : null}
+          )}
+        </Marker>
       ))}
     </MarkerClusterer>
   </GoogleMap>
 ))
 
 export default class Map extends React.PureComponent {
+  state = {
+    showInfoWindow: false,
+  }
+
+  handleMarkerClick = markerId => {
+    this.setState({
+      showInfoIndex: markerId, showInfoWindow: !this.state.showInfoWindow
+    })
+    console.log(this.state.showInfoWindow)
+  }
+
+  handleCloseClick = () => {
+    this.setState({
+      showInfoWindow: !this.state.showInfoWindow
+    })
+    console.log(this.state.showInfoWindow)
+  }
 
   render() {
-    return <MapWithAMarkerClusterer allProfiles={this.props.allProfiles} />
+    return (
+      <MapWithAMarkerClusterer
+        allProfiles={this.props.allProfiles}
+        showInfoIndex={this.state.showInfoIndex}
+        markerClick={this.handleMarkerClick}
+        closeClick={this.handleCloseClick}
+        showInfoWindow={this.state.showInfoWindow}
+      />
+    )
   }
 }

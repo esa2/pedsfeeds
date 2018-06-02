@@ -18,7 +18,7 @@ const MapWithAMarker = compose(
   withScriptjs,
   withGoogleMap
 )(props => (
-  <GoogleMap defaultZoom={15} defaultCenter={{ lat: props.marker.lat, lng: props.marker.lng }}> 
+  <GoogleMap defaultZoom={16} defaultCenter={{ lat: props.marker.lat, lng: props.marker.lng }}> 
     <Marker
       position={{ lat: props.marker.lat, lng: props.marker.lng }}
     >

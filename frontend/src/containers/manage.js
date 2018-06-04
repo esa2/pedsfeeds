@@ -24,6 +24,7 @@ export default class Manage extends Component {
     this.handleListingDisplay = this.handleListingDisplay.bind(this)
     this.handleDiscipline = this.handleDiscipline.bind(this)
     this.handleExperience = this.handleExperience.bind(this)
+    this.handleEdit = this.handleEdit.bind(this)
 
     this.state = {
       isLoading: false,
@@ -31,6 +32,7 @@ export default class Manage extends Component {
       userHasListing: null,
       updatedListing: false,
       deletedListing: false,
+      listings: [],
     }
   }
 
@@ -92,8 +94,15 @@ export default class Manage extends Component {
     this.setState({ isLoading: true })
 
     try {
-      const address = await this.fetchAddress(this.state.workAddress1, this.state.workCity, this.state.workState)
-      this.setState({ lat: address.results[0].geometry.location.lat, lng: address.results[0].geometry.location.lng })
+      const address = await this.fetchAddress(
+        this.state.workAddress1,
+        this.state.workCity,
+        this.state.workState
+      )
+      this.setState({
+        lat: address.results[0].geometry.location.lat,
+        lng: address.results[0].geometry.location.lng,
+      })
     } catch (error) {
       alert(error)
     }
@@ -191,21 +200,20 @@ export default class Manage extends Component {
     const confirmed = window.confirm(
       'Are you sure you want to delete this listing?'
     )
-
     if (!confirmed) {
       return
     }
 
     try {
-      await this.deleteListing()
+      await this.deleteListing(e.target.value)
     } catch (e) {
       alert(e)
     }
     this.setState({ deletedListing: true })
   }
 
-  deleteListing() {
-    return API.del('peds', `/delete/${this.state.uuId}`)
+  deleteListing(uuId) {
+    return API.del('peds', `/delete/${uuId}`)
   }
 
   async componentDidMount() {
@@ -213,10 +221,10 @@ export default class Manage extends Component {
       const allProfiles = await this.profile()
       if (allProfiles.length > 0)
         this.setState({
-            ...allProfiles[0],
-            userHasListing: true,
-            approvedListing: false,
-          })
+          listings: allProfiles,
+          userHasListing: true,
+          approvedListing: false,
+        })
     } catch (error) {
       alert(error)
     }
@@ -269,22 +277,69 @@ export default class Manage extends Component {
     this.handleSubmit(e)
   }
 
-  render() {
+  handleEdit(e) {
+    this.setState({ ...this.state.listings[e.target.value], listingChosen: true })
+  }
+
+  renderListingLinks() {
     const userHasListing = this.state.userHasListing
     const isGetting = this.state.isGetting
-    const updatedListing = this.state.updatedListing
+    const listingChosen = this.state.listingChosen
     const deletedListing = this.state.deletedListing
-    console.log('manage state', this.state)
+    return (
+      <div>
+        {userHasListing && !listingChosen && !deletedListing ?  (
+          <div>
+            <p className="detail-heading">LISTING TITLE</p>
+            {this.state.listings.map((ele, i) => (
+              <div key={ele.uuId}>
+                <li key={ele.uuId}>{ele.listingTitle}</li>
+                <ButtonToolbar>
+                  <Button
+                    value={i}
+                    bsStyle="primary"
+                    onClick={this.handleEdit}
+                  >
+                    Edit listing
+                  </Button>
+                  <Button
+                    value={ele.uuId}
+                    bsStyle="primary"
+                    onClick={this.handleDelete}
+                  >
+                    Delete listing
+                  </Button>
+                </ButtonToolbar>
+                <hr />
+              </div>
+            ))}
+          </div>
+        ) : null}
+        {!isGetting && !userHasListing ? (
+          <p>No listings were found. If this is an error please contact us.</p>
+        ) : null}
+
+        {deletedListing ? (
+          <p className="success-message">
+          Your listing was successfully deleted
+        </p>
+        ) : null}
+      </div>
+    )
+  }
+
+  render() {
+    const listingChosen = this.state.listingChosen
+    const updatedListing = this.state.updatedListing
     return (
       <div>
         <h4 className="header-green-center">Edit or Delete your listing</h4>
-        {userHasListing && !isGetting ? (
+        {this.renderListingLinks()}
+        {listingChosen ? (
           <div>
             <h6 className="header-green-center">
               {this.state.listingTitle} listing
             </h6>
-
-            {!deletedListing ? (
               <div>
                 <p>
                   Required fields<span className="required">*</span>
@@ -1126,8 +1181,7 @@ export default class Manage extends Component {
                         </Checkbox>
                         <Checkbox
                           defaultChecked={
-                            this.state.medicalSpecialty.includes('Craniofacial'
-                            )
+                            this.state.medicalSpecialty.includes('Craniofacial')
                               ? true
                               : false
                           }
@@ -1370,77 +1424,102 @@ export default class Manage extends Component {
                           Select applicable certifications or select "none" if
                           not certified<span className="required">*</span>
                         </ControlLabel>
-                        <Checkbox 
+                        <Checkbox
                           defaultChecked={
-                            this.state.certifications.includes('American Board of Otolaryngology - Head and Neck Surgery')
+                            this.state.certifications.includes(
+                              'American Board of Otolaryngology - Head and Neck Surgery'
+                            )
                               ? true
                               : false
                           }
-                          value="American Board of Otolaryngology - Head and Neck Surgery">
+                          value="American Board of Otolaryngology - Head and Neck Surgery"
+                        >
                           American Board of Otolaryngology - Head and Neck
                           Surgery
                         </Checkbox>
-                        <Checkbox 
+                        <Checkbox
                           defaultChecked={
-                            this.state.certifications.includes('American Board of Pediatrics')
+                            this.state.certifications.includes(
+                              'American Board of Pediatrics'
+                            )
                               ? true
                               : false
                           }
-                          value="American Board of Pediatrics">
+                          value="American Board of Pediatrics"
+                        >
                           American Board of Pediatrics
                         </Checkbox>
-                        <Checkbox 
+                        <Checkbox
                           defaultChecked={
-                            this.state.certifications.includes('American Board of Surgery')
+                            this.state.certifications.includes(
+                              'American Board of Surgery'
+                            )
                               ? true
                               : false
                           }
-                          value="American Board of Surgery">
+                          value="American Board of Surgery"
+                        >
                           American Board of Surgery
                         </Checkbox>
-                        <Checkbox 
+                        <Checkbox
                           defaultChecked={
-                            this.state.certifications.includes('Pediatric Surgery Specialty Board')
+                            this.state.certifications.includes(
+                              'Pediatric Surgery Specialty Board'
+                            )
                               ? true
                               : false
                           }
-                          value="Pediatric Surgery Specialty Board">
+                          value="Pediatric Surgery Specialty Board"
+                        >
                           Pediatric Surgery Specialty Board
                         </Checkbox>
-                        <Checkbox 
+                        <Checkbox
                           defaultChecked={
-                            this.state.certifications.includes('Pediatric Nursing Certification Board')
+                            this.state.certifications.includes(
+                              'Pediatric Nursing Certification Board'
+                            )
                               ? true
                               : false
                           }
-                          value="Pediatric Nursing Certification Board">
+                          value="Pediatric Nursing Certification Board"
+                        >
                           Pediatric Nursing Certification Board
                         </Checkbox>
-                        <Checkbox 
+                        <Checkbox
                           defaultChecked={
-                            this.state.certifications.includes('National Certification Board')
+                            this.state.certifications.includes(
+                              'National Certification Board'
+                            )
                               ? true
                               : false
                           }
-                          value="National Certification Board">
+                          value="National Certification Board"
+                        >
                           National Certification Board
                         </Checkbox>
                         <Checkbox
                           defaultChecked={
-                            this.state.certifications.includes('National Commission on Certification of Physician Assistants')
+                            this.state.certifications.includes(
+                              'National Commission on Certification of Physician Assistants'
+                            )
                               ? true
                               : false
                           }
-                          value="National Commission on Certification of Physician Assistants">
-                          National Commission on Certification of Physician Assistants
+                          value="National Commission on Certification of Physician Assistants"
+                        >
+                          National Commission on Certification of Physician
+                          Assistants
                         </Checkbox>
-                        <Checkbox 
+                        <Checkbox
                           defaultChecked={
                             this.state.certifications.includes('None')
                               ? true
                               : false
                           }
-                          value="None">None</Checkbox>
+                          value="None"
+                        >
+                          None
+                        </Checkbox>
                       </FormGroup>
                     </Well>
                   ) : null}
@@ -1602,47 +1681,62 @@ export default class Manage extends Component {
                         </ControlLabel>
                         <Checkbox
                           defaultChecked={
-                            this.state.mentalHealth.includes('Applied Behavior Analysis')
+                            this.state.mentalHealth.includes(
+                              'Applied Behavior Analysis'
+                            )
                               ? true
                               : false
                           }
-                          value="Applied Behavior Analysis">
+                          value="Applied Behavior Analysis"
+                        >
                           Applied Behavior Analysis
                         </Checkbox>
                         <Checkbox
                           defaultChecked={
-                            this.state.mentalHealth.includes('Child play therapy')
+                            this.state.mentalHealth.includes(
+                              'Child play therapy'
+                            )
                               ? true
                               : false
                           }
-                          value="Child play therapy">
+                          value="Child play therapy"
+                        >
                           Child play therapy
                         </Checkbox>
                         <Checkbox
                           defaultChecked={
-                            this.state.mentalHealth.includes('Cognitive behavioral therapy')
+                            this.state.mentalHealth.includes(
+                              'Cognitive behavioral therapy'
+                            )
                               ? true
                               : false
                           }
-                          value="Cognitive behavioral therapy">
+                          value="Cognitive behavioral therapy"
+                        >
                           Cognitive behavioral therapy
                         </Checkbox>
                         <Checkbox
                           defaultChecked={
-                            this.state.mentalHealth.includes('Family / marital counseling')
+                            this.state.mentalHealth.includes(
+                              'Family / marital counseling'
+                            )
                               ? true
                               : false
                           }
-                          value="Family / marital counseling">
+                          value="Family / marital counseling"
+                        >
                           Family / marital counseling
                         </Checkbox>
                         <Checkbox
                           defaultChecked={
-                            this.state.mentalHealth.includes('General psychosocial and mental health support for families with special needs / medically fragile children and youth')
+                            this.state.mentalHealth.includes(
+                              'General psychosocial and mental health support for families with special needs / medically fragile children and youth'
+                            )
                               ? true
                               : false
                           }
-                          value="General psychosocial and mental health support for families with special needs / medically fragile children and youth">
+                          value="General psychosocial and mental health support for families with special needs / medically fragile children and youth"
+                        >
                           General psychosocial and mental health support for
                           families with special needs / medically fragile
                           children and youth
@@ -1653,50 +1747,68 @@ export default class Manage extends Component {
                               ? true
                               : false
                           }
-                          value="Group therapy">Group therapy</Checkbox>
+                          value="Group therapy"
+                        >
+                          Group therapy
+                        </Checkbox>
                         <Checkbox
                           defaultChecked={
-                            this.state.mentalHealth.includes('Individual and family therapy')
+                            this.state.mentalHealth.includes(
+                              'Individual and family therapy'
+                            )
                               ? true
                               : false
                           }
-                          value="Individual and family therapy">
+                          value="Individual and family therapy"
+                        >
                           Individual and family therapy
                         </Checkbox>
                         <Checkbox
                           defaultChecked={
-                            this.state.mentalHealth.includes('Parent counseling and support')
+                            this.state.mentalHealth.includes(
+                              'Parent counseling and support'
+                            )
                               ? true
                               : false
                           }
-                          value="Parent counseling and support">
+                          value="Parent counseling and support"
+                        >
                           Parent counseling and support
                         </Checkbox>
                         <Checkbox
                           defaultChecked={
-                            this.state.mentalHealth.includes('Parent education / support groups')
+                            this.state.mentalHealth.includes(
+                              'Parent education / support groups'
+                            )
                               ? true
                               : false
                           }
-                          value="Parent education / support groups">
+                          value="Parent education / support groups"
+                        >
                           Parent education / support groups
                         </Checkbox>
                         <Checkbox
                           defaultChecked={
-                            this.state.mentalHealth.includes('Sibling counseling')
+                            this.state.mentalHealth.includes(
+                              'Sibling counseling'
+                            )
                               ? true
                               : false
                           }
-                          value="Sibling counseling">
+                          value="Sibling counseling"
+                        >
                           Sibling counseling
                         </Checkbox>
                         <Checkbox
                           defaultChecked={
-                            this.state.mentalHealth.includes('Terminal illness / life-shortening conditions / grief work')
+                            this.state.mentalHealth.includes(
+                              'Terminal illness / life-shortening conditions / grief work'
+                            )
                               ? true
                               : false
                           }
-                          value="Terminal illness / life-shortening conditions / grief work">
+                          value="Terminal illness / life-shortening conditions / grief work"
+                        >
                           Terminal illness / life-shortening conditions / grief
                           work
                         </Checkbox>
@@ -2426,75 +2538,99 @@ export default class Manage extends Component {
                         </ControlLabel>
                         <Checkbox
                           defaultChecked={
-                            this.state.medicalExperienceTreating.includes('Central lines for long-term total parenteral nutrition')
+                            this.state.medicalExperienceTreating.includes(
+                              'Central lines for long-term total parenteral nutrition'
+                            )
                               ? true
                               : false
                           }
-                          value="Central lines for long-term total parenteral nutrition">
+                          value="Central lines for long-term total parenteral nutrition"
+                        >
                           Central lines for long-term total parenteral nutrition
                         </Checkbox>
                         <Checkbox
                           defaultChecked={
-                            this.state.medicalExperienceTreating.includes('Food allergies')
+                            this.state.medicalExperienceTreating.includes(
+                              'Food allergies'
+                            )
                               ? true
                               : false
                           }
-                          value="Food allergies">
+                          value="Food allergies"
+                        >
                           Food allergies
                         </Checkbox>
                         <Checkbox
                           defaultChecked={
-                            this.state.medicalExperienceTreating.includes('Gastrostomy tubes or other tube feedings')
+                            this.state.medicalExperienceTreating.includes(
+                              'Gastrostomy tubes or other tube feedings'
+                            )
                               ? true
                               : false
                           }
-                          value="Gastrostomy tubes or other tube feedings">
+                          value="Gastrostomy tubes or other tube feedings"
+                        >
                           Gastrostomy tubes or other tube feedings
                         </Checkbox>
                         <Checkbox
                           defaultChecked={
-                            this.state.medicalExperienceTreating.includes('Growth faltering')
+                            this.state.medicalExperienceTreating.includes(
+                              'Growth faltering'
+                            )
                               ? true
                               : false
                           }
-                          value="Growth faltering">
+                          value="Growth faltering"
+                        >
                           Growth faltering
                         </Checkbox>
                         <Checkbox
                           defaultChecked={
-                            this.state.medicalExperienceTreating.includes('History of genetic issues, birth defects, illnesses, surgeries affecting feeding and eating')
+                            this.state.medicalExperienceTreating.includes(
+                              'History of genetic issues, birth defects, illnesses, surgeries affecting feeding and eating'
+                            )
                               ? true
                               : false
                           }
-                          value="History of genetic issues, birth defects, illnesses, surgeries affecting feeding and eating">
+                          value="History of genetic issues, birth defects, illnesses, surgeries affecting feeding and eating"
+                        >
                           History of genetic issues, birth defects, illnesses,
                           surgeries affecting feeding and eating
                         </Checkbox>
                         <Checkbox
                           defaultChecked={
-                            this.state.medicalExperienceTreating.includes('Neurodevelopmental issues')
+                            this.state.medicalExperienceTreating.includes(
+                              'Neurodevelopmental issues'
+                            )
                               ? true
                               : false
                           }
-                          value="Neurodevelopmental issues">
+                          value="Neurodevelopmental issues"
+                        >
                           Neurodevelopmental issues
                         </Checkbox>
                         <Checkbox
                           defaultChecked={
-                            this.state.medicalExperienceTreating.includes('Sensory / behavioral feeding and eating challenges')
+                            this.state.medicalExperienceTreating.includes(
+                              'Sensory / behavioral feeding and eating challenges'
+                            )
                               ? true
                               : false
                           }
-                          value="Sensory / behavioral feeding and eating challenges">
+                          value="Sensory / behavioral feeding and eating challenges"
+                        >
                           Sensory / behavioral feeding and eating challenges
                         </Checkbox>
                         <Checkbox
                           defaultChecked={
-                            this.state.medicalExperienceTreating.includes('Transition to oral feeding')
+                            this.state.medicalExperienceTreating.includes(
+                              'Transition to oral feeding'
+                            )
                               ? true
                               : false
                           }
-                          value="Transition to oral feeding">
+                          value="Transition to oral feeding"
+                        >
                           Transition to oral feeding
                         </Checkbox>
                       </FormGroup>
@@ -2601,7 +2737,11 @@ export default class Manage extends Component {
                       />
                     </FormGroup>
                   </Well>
-                  {updatedListing ? <p className="success-message">Your listing was successfully updated</p> : null}
+                  {updatedListing ? (
+                    <p className="success-message">
+                      Your listing was successfully updated
+                    </p>
+                  ) : null}
                   <ButtonToolbar>
                     <LoaderButton
                       block
@@ -2612,13 +2752,13 @@ export default class Manage extends Component {
                       text="Update listing"
                       loadingText="Updating listing"
                     />
-                    <Button
+                    {/* <Button
                       bsStyle="primary"
                       bsSize="large"
                       onClick={this.handleDelete}
                     >
                       Delete listing
-                    </Button>
+                    </Button> */}
                     <Button
                       bsStyle="primary"
                       bsSize="large"
@@ -2630,13 +2770,7 @@ export default class Manage extends Component {
                   </ButtonToolbar>
                 </Form>
               </div>
-            ) : (
-              <p className="success-message">Your listing was successfully deleted</p>
-            )}
           </div>
-        ) : null}
-        {!userHasListing && !isGetting ? (
-          <p>No listings were found. If this is an error please contact us.</p>
         ) : null}
       </div>
     )

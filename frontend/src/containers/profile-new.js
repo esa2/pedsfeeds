@@ -1416,6 +1416,7 @@ export default class ProfileNew extends Component {
               <FormControl onChange={this.handleFileChange} type="file" />
             </FormGroup>
           </Well>
+          {createdListing ? <p className="success-message">Your listing was successfully created</p> : null}
           <ButtonToolbar>
             <LoaderButton
               block
@@ -1431,7 +1432,6 @@ export default class ProfileNew extends Component {
             </Button>
           </ButtonToolbar>
         </Form>
-        {createdListing ? <p>Your listing was successfully created</p> : null}
       </div>
     )
   }

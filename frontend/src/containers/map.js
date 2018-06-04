@@ -41,7 +41,6 @@ const MapWithAMarkerClusterer = compose(
               </div>
             </InfoWindow>
           ) : null}
-          )}
         </Marker>
       ))}
     </MarkerClusterer>

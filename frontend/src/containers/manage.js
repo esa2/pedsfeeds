@@ -2601,6 +2601,7 @@ export default class Manage extends Component {
                       />
                     </FormGroup>
                   </Well>
+                  {updatedListing ? <p className="success-message">Your listing was successfully updated</p> : null}
                   <ButtonToolbar>
                     <LoaderButton
                       block
@@ -2630,15 +2631,13 @@ export default class Manage extends Component {
                 </Form>
               </div>
             ) : (
-              <p>Your listing was successfully deleted</p>
+              <p className="success-message">Your listing was successfully deleted</p>
             )}
           </div>
         ) : null}
         {!userHasListing && !isGetting ? (
           <p>No listings were found. If this is an error please contact us.</p>
         ) : null}
-        {updatedListing ? <p>Your listing was successfully updated</p> : null}
-        {/* {deletedListing ? <p>Your listing was successfully deleted</p> : null} */}
       </div>
     )
   }

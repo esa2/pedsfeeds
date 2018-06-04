@@ -34,7 +34,6 @@ export default class Directory extends Component {
     .filter(ele => ele.listingCategory === e.target.value)
     .map((ele) => category.push(ele))
     this.setState({ show: true, showProvider: false, showMap: false, category })
-    console.log(this.state.allProfiles)
   }
 
   handleProviderClick = (e, currentProvider) => {

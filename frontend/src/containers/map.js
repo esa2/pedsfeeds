@@ -56,14 +56,12 @@ export default class Map extends React.PureComponent {
     this.setState({
       showInfoIndex: markerId, showInfoWindow: !this.state.showInfoWindow
     })
-    console.log(this.state.showInfoWindow)
   }
 
   handleCloseClick = () => {
     this.setState({
       showInfoWindow: !this.state.showInfoWindow
     })
-    console.log(this.state.showInfoWindow)
   }
 
   render() {

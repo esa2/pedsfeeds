@@ -123,6 +123,10 @@ input[type=checkbox] {
   font-size: 1.5em;
 }
 
+.info-name {
+  cursor: pointer;
+}
+
 @media all and (min-width: 480px) {
 
   .dropdown:hover .dropdown-menu {

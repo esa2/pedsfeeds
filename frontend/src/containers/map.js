@@ -1,5 +1,7 @@
 import React from 'react'
 import { compose, withProps } from 'recompose'
+import ProviderDetail from './provider-detail'
+import MapDetial from './map-detail'
 const {
   withScriptjs,
   withGoogleMap,
@@ -36,7 +38,7 @@ const MapWithAMarkerClusterer = compose(
         >
          {props.showInfoWindow &&  props.showInfoIndex === profile.uuId ? (
             <InfoWindow onCloseClick={props.closeClick}>
-              <div>
+              <div className="info-name" onClick={props.nameClick(profile)}>
                 {profile.firstName} {profile.lastName}, {profile.professionalDiscipline}
               </div>
             </InfoWindow>
@@ -50,29 +52,50 @@ const MapWithAMarkerClusterer = compose(
 export default class Map extends React.PureComponent {
   state = {
     showInfoWindow: false,
+    showListing: false,
   }
 
   handleMarkerClick = markerId => {
     this.setState({
-      showInfoIndex: markerId, showInfoWindow: !this.state.showInfoWindow
+      showInfoIndex: markerId, showInfoWindow: !this.state.showInfoWindow,
+      showListing: false
     })
+  }
+
+  handleNameClick = (provider) => {
+    this.setState({ provider: provider, showListing: true})
   }
 
   handleCloseClick = () => {
     this.setState({
-      showInfoWindow: !this.state.showInfoWindow
+      showInfoWindow: !this.state.showInfoWindow,
+      showListing: !this.state.showListing
     })
+  }
+
+  renderListing() {
+    const showListing = this.state.showListing
+    return showListing ? (
+      <div id="providerDetail">
+        <ProviderDetail currentProvider={this.state.provider} />
+        <MapDetial currentProvider={this.state.provider} />
+      </div>
+    ) : null
   }
 
   render() {
     return (
-      <MapWithAMarkerClusterer
-        allProfiles={this.props.allProfiles}
-        showInfoIndex={this.state.showInfoIndex}
-        markerClick={this.handleMarkerClick}
-        closeClick={this.handleCloseClick}
-        showInfoWindow={this.state.showInfoWindow}
-      />
+      <div>
+        <MapWithAMarkerClusterer
+          allProfiles={this.props.allProfiles}
+          showInfoIndex={this.state.showInfoIndex}
+          markerClick={this.handleMarkerClick}
+          nameClick={this.handleNameClick}
+          closeClick={this.handleCloseClick}
+          showInfoWindow={this.state.showInfoWindow}
+        />
+         {this.renderListing(this.state.provider)}
+      </div>
     )
   }
 }

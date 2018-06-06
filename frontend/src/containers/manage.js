@@ -2752,13 +2752,6 @@ export default class Manage extends Component {
                       text="Update listing"
                       loadingText="Updating listing"
                     />
-                    {/* <Button
-                      bsStyle="primary"
-                      bsSize="large"
-                      onClick={this.handleDelete}
-                    >
-                      Delete listing
-                    </Button> */}
                     <Button
                       bsStyle="primary"
                       bsSize="large"

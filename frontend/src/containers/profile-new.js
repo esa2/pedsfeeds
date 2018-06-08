@@ -274,6 +274,8 @@ export default class ProfileNew extends Component {
     const createdListing = this.state.createdListing
     return (
       <div>
+        {!createdListing ?
+        <div>
         <h6 className="header-green-center">
           {this.props.listingCategory} listing
         </h6>
@@ -1416,8 +1418,6 @@ export default class ProfileNew extends Component {
               <FormControl onChange={this.handleFileChange} type="file" />
             </FormGroup>
           </Well>
-          {createdListing ? <div><p className="success-message">Your listing was successfully submitted.</p>
-          <p>Once your listing has been reviewed and approved by the site administrator it will be added to the provider directory.</p></div> : null}
           <ButtonToolbar>
             <LoaderButton
               block
@@ -1433,6 +1433,11 @@ export default class ProfileNew extends Component {
             </Button>
           </ButtonToolbar>
         </Form>
+        </div>
+        :
+        <div><p className="success-message">Your listing was successfully submitted.</p>
+          <p>Once your listing has been reviewed and approved by the site administrator it will be added to the provider directory.</p>
+        </div>}
       </div>
     )
   }

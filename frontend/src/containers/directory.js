@@ -136,7 +136,7 @@ export default class Directory extends Component {
                   <p className="group">
                     {ele.workCity}, {ele.workState}
                   </p>
-                  <p className="group">{ele.workPhone} {ele.workExtension !== false ? `Ext - ${ele.workExtension}` : null}
+                  <p className="group">{ele.workPhone} {ele.workExtension !== false ? `Ext-${ele.workExtension}` : null}
                   
                   </p>
                 </Media.Body>

@@ -108,11 +108,11 @@ export default class Manage extends Component {
     }
 
     try {
-      const attachment = this.file ? await s3Upload(this.file) : null
+      const attachment = this.file ? await s3Upload(this.file) : this.state.attachment
 
       await this.updateProfile({
         attachment,
-        approvedListing: this.state.approvedListing,
+        approvedListing: false,
         listingCategory: this.state.listingCategory,
         listingTitle: this.state.listingTitle,
         lastName: this.state.lastName,
@@ -223,7 +223,6 @@ export default class Manage extends Component {
         this.setState({
           listings: allProfiles,
           userHasListing: true,
-          approvedListing: false,
         })
     } catch (error) {
       alert(error)
@@ -2738,9 +2737,12 @@ export default class Manage extends Component {
                     </FormGroup>
                   </Well>
                   {updatedListing ? (
-                    <p className="success-message">
-                      Your listing was successfully updated. Once your changes have been reviewed and approved by the site administrator the listing will again be viewable in the provider directory.
-                    </p>
+                    <div>
+                      <p className="success-message">
+                      Your listing was successfully updated.</p>
+                      <p>Once your changes have been reviewed and approved by the site administrator the listing will again be viewable in the provider directory.
+                      </p>
+                    </div>
                   ) : null}
                   <ButtonToolbar>
                     <LoaderButton

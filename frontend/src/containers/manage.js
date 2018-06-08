@@ -316,7 +316,7 @@ export default class Manage extends Component {
           </div>
         ) : null}
         {!isGetting && !userHasListing ? (
-          <p>No listings were found. If this is an error please contact us.</p>
+          <p>No listings were found for your account.</p>
         ) : null}
 
         {deletedListing ? (
@@ -2739,7 +2739,7 @@ export default class Manage extends Component {
                   </Well>
                   {updatedListing ? (
                     <p className="success-message">
-                      Your listing was successfully updated
+                      Your listing was successfully updated. Once your changes have been reviewed and approved by the site administrator the listing will again be viewable in the provider directory.
                     </p>
                   ) : null}
                   <ButtonToolbar>

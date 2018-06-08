@@ -66,10 +66,6 @@ export default class Directory extends Component {
     return (
       <div>
         <h4 className="header-green-center">Provider Directory</h4>
-        <p>
-          The Provider Directory is temporarily offline while the site is being
-          upgraded. Check back soon.
-        </p>
         <ButtonToolbar>
           <Button
             bsStyle="primary"
@@ -140,7 +136,9 @@ export default class Directory extends Component {
                   <p className="group">
                     {ele.workCity}, {ele.workState}
                   </p>
-                  <p className="group">{ele.workPhone}</p>
+                  <p className="group">{ele.workPhone} {ele.workExtension !== false ? `Ext - ${ele.workExtension}` : null}
+                  
+                  </p>
                 </Media.Body>
                 <Media.Right>
                   {ele.attachment === null ? (

@@ -13,8 +13,9 @@ export default class Signin extends Component {
       email: '',
       password: '',
       confirmPassword: '',
-      forgotPassword: null,
+      forgotPassword: false,
       confirmationCode: '',
+      successfullReset: false,
     }
   }
 
@@ -62,6 +63,7 @@ export default class Signin extends Component {
       alert(error.message)
       this.setState({ isLoading: false })
     }
+    this.setState({ successfullReset: true, forgotPassword: false, isLoading: false })
   }
 
   handlePasswordReset = async e => {
@@ -76,6 +78,7 @@ export default class Signin extends Component {
 
   renderConfirmationForm() {
     return (
+      <div className="signin">
       <form onSubmit={this.handleConfirmationSubmit}>
         <FormGroup controlId="confirmationCode" bsSize="large">
           <ControlLabel>Confirmation Code</ControlLabel>
@@ -89,7 +92,7 @@ export default class Signin extends Component {
         </FormGroup>
         <FormGroup controlId="password" bsSize="large">
           <ControlLabel>
-            Enter new password - requires minimum length of 8 and must contain at least
+            Enter new password: Min length of 8, must contain at least
             one lowercase, uppercase, numeric and symbol
           </ControlLabel>
           <FormControl
@@ -109,6 +112,7 @@ export default class Signin extends Component {
         <LoaderButton
           block
           bsSize="large"
+          bsStyle="primary"
           disabled={!this.validateConfirmationForm()}
           type="submit"
           isLoading={this.state.isLoading}
@@ -116,14 +120,19 @@ export default class Signin extends Component {
           loadingText="Verifying…"
         />
       </form>
+      </div>
     )
   }
 
   renderForm() {
+    const successfullReset = this.state.successfullReset
     return (
       <div className="signin">
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="email" bsSize="large">
+            {successfullReset ?
+            <HelpBlock className="success-message">Your password was successfully reset</HelpBlock> : null}
+            <hr></hr>
             <ControlLabel>Email</ControlLabel>
             <FormControl
               autoFocus
@@ -163,7 +172,7 @@ export default class Signin extends Component {
   render() {
     return (
       <div>
-        {this.state.forgotPassword === null
+        {this.state.forgotPassword === false
           ? this.renderForm()
           : this.renderConfirmationForm()}
       </div>

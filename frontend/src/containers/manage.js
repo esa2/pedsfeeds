@@ -327,14 +327,30 @@ export default class Manage extends Component {
     )
   }
 
-  render() {
+  renderUpdated() {
+    const updatedListing = this.state.updatedListing
+    return (
+      <div>
+        {updatedListing ?
+        <div>
+          <p className="success-message">
+          Your listing was successfully updated.</p>
+          <p>Once your changes have been reviewed and approved by the site administrator the listing will again be viewable in the provider directory.
+          </p>
+        </div>
+        : null}
+      </div>
+    )
+  }
+
+  renderForm() {
     const listingChosen = this.state.listingChosen
     const updatedListing = this.state.updatedListing
     return (
       <div>
         <h4 className="header-green-center">Edit or Delete your listing</h4>
         {this.renderListingLinks()}
-        {listingChosen ? (
+        {listingChosen && !updatedListing ?  (
           <div>
             <h6 className="header-green-center">
               {this.state.listingTitle} listing
@@ -2736,14 +2752,6 @@ export default class Manage extends Component {
                       />
                     </FormGroup>
                   </Well>
-                  {updatedListing ? (
-                    <div>
-                      <p className="success-message">
-                      Your listing was successfully updated.</p>
-                      <p>Once your changes have been reviewed and approved by the site administrator the listing will again be viewable in the provider directory.
-                      </p>
-                    </div>
-                  ) : null}
                   <ButtonToolbar>
                     <LoaderButton
                       block
@@ -2767,7 +2775,22 @@ export default class Manage extends Component {
               </div>
           </div>
         ) : null}
+        
       </div>
     )
   }
+
+  render() {
+    return (
+      <div>
+        <div>
+          {this.renderForm()}
+          {this.renderUpdated()}
+        </div>
+      </div>
+    )
+  }
+
+
+
 }

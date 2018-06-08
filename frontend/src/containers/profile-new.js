@@ -1416,7 +1416,8 @@ export default class ProfileNew extends Component {
               <FormControl onChange={this.handleFileChange} type="file" />
             </FormGroup>
           </Well>
-          {createdListing ? <p className="success-message">Your listing was successfully created</p> : null}
+          {createdListing ? <div><p className="success-message">Your listing was successfully submitted.</p>
+          <p>Once your listing has been reviewed and approved by the site administrator it will be added to the provider directory.</p></div> : null}
           <ButtonToolbar>
             <LoaderButton
               block

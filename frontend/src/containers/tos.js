@@ -44,8 +44,7 @@ export default class Tos extends Component {
           changes. Therefore, you should frequently review these Terms and
           applicable policies from time-to-time to understand the terms and
           conditions that apply to your use of the Website. If you do not agree
-          to the revised terms, then you are not <a className="temp-login"
-            href="/signin"> authorized</a> to continue to use
+          to the revised terms, then you are not authorized to continue to use
           the Website, and you must cease to use it effective immediately.
         </p>
         <hr />

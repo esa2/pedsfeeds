@@ -25,18 +25,16 @@ export default class Faq extends Component {
         <p>Follow these simple steps:</p>
         <ol>
           <li>
-            Create an account by clicking on the link at the top of the page.
+            Create an account by clicking on the sign up link.
           </li>
           <li>
-            Check your email, and click on the link in the registration email to
-            activate your account.
+            Verify your email with the code sent to your sign up email address.
           </li>
           <li>
-            Log in to the site and click on Submit a New Listing under the My
-            Account link at the top of the page.
+            Log in to the site and click on "Your Listings".
           </li>
           <li>
-            Fill out the form, and click submit! Get a digital photo and your
+            Click on "Submit A New Listing" Fill out the form, and click submit! Get a digital photo and your
             state license number ready before filling out the form.
           </li>
         </ol>

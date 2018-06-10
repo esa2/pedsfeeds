@@ -2745,7 +2745,7 @@ export default class Manage extends Component {
                   </Well>
                   <Well>
                     <FormGroup controlId="file">
-                      <ControlLabel>Attach a new photo?</ControlLabel>
+                      <ControlLabel>Add or replace a photo?</ControlLabel>
                       <FormControl
                         onChange={this.handleFileChange}
                         type="file"

@@ -14,6 +14,7 @@ src/amplify-config.js
 
 # misc
 .DS_Store
+/utilities
 
 # dotenv environment variables file
 .env

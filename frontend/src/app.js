@@ -89,12 +89,12 @@ class App extends Component {
                   </Fragment>
                 ) : (
                   <Fragment>
-                    {/* <LinkContainer to="/signin">
+                    <LinkContainer to="/signin">
                       <NavItem>Sign in</NavItem>
                     </LinkContainer>
                     <LinkContainer to="/signup">
                       <NavItem>Sign up</NavItem>
-                    </LinkContainer> */}
+                    </LinkContainer>
                   </Fragment>
                 )}
               </Nav>

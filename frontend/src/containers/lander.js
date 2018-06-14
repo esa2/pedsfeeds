@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image } from 'react-bootstrap'
 
-const Welcome = function() {
+const Welcome = () => {
   return (
     <div>
       <div className="flex-box">

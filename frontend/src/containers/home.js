@@ -141,7 +141,7 @@ export default class Home extends Component {
               <hr />
               {this.state.contact}
               <p>{this.state.contact}</p>
-              <p>{this.state.theLocation}</p>
+              <p>Location: {this.state.theLocation}</p>
               <p>
                 <a href={this.state.urlName}>{this.state.urlName}</a>
               </p>

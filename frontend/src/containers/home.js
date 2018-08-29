@@ -133,7 +133,7 @@ export default class Home extends Component {
               <p>Starts: {this.state.startDate}</p>
               <p>{this.state.endDate}</p>
               <p>
-                From: {this.state.startTime}
+                {this.state.startTime === null ? null : ` From: ${this.state.startTime}`}
                 {this.state.endTime === null ? null : ` To: ${this.state.endTime}`}
               </p>
               <hr />

@@ -53,7 +53,7 @@ export default class EventNew extends Component {
             ? 'Ends: ' +
               new Date(this.state.endDate.replace(/-/g, '/')).toDateString()
             : null,
-        startTime: this.state.startTime,
+        startTime: this.state.startTime !== '' ? this.state.startTime : null,
         endTime: this.state.endTime !== '' ? this.state.endTime : null,
         multiDay: this.state.multiDay,
         contact:

@@ -3,12 +3,13 @@ import { Grid, Row, Col } from 'react-bootstrap'
 
 export default class ProviderDetail extends Component {
   componentDidMount() {
-    window.scrollTo(0,0)
+    const heading = document.getElementById('scroll-point')
+    heading.scrollIntoView({behavior: 'smooth', block: 'start'})
   }
   render() {
     return (
       <div>
-        <Grid className="detail-page">
+        <Grid className="detail-page" id="scroll-point">
           <Row>
             <Col md={9}>
               <br /><br /><br /><br /><br />
@@ -281,7 +282,6 @@ export default class ProviderDetail extends Component {
               <hr />
             </div>
           )}
-
         </Grid>
       </div>
     )

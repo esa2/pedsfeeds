@@ -1,7 +1,7 @@
 import React from 'react'
 import { compose, withProps } from 'recompose'
 import ProviderDetail from './provider-detail'
-import MapDetial from './map-detail'
+import MapDetail from './map-detail'
 const {
   withScriptjs,
   withGoogleMap,
@@ -78,7 +78,7 @@ export default class Map extends React.PureComponent {
     return showListing ? (
       <div id="providerDetail">
         <ProviderDetail currentProvider={this.state.provider} />
-        <MapDetial currentProvider={this.state.provider} />
+        <MapDetail currentProvider={this.state.provider} />
       </div>
     ) : null
   }

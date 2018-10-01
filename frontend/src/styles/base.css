@@ -136,4 +136,10 @@ input[type=checkbox] {
   .field-size {
     max-width: 320px;
   }
+
+  .consent-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

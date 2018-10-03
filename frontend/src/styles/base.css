@@ -137,7 +137,7 @@ input[type=checkbox] {
     max-width: 320px;
   }
 
-  .consent-buttons {
+  .center-buttons {
     display: flex;
     justify-content: center;
     align-items: center;

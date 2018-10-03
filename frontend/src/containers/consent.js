@@ -43,7 +43,7 @@ const Consent = () => {
           </a>.
         </em>
       </p>
-      <ButtonToolbar className="consent-buttons">
+      <ButtonToolbar className="center-buttons">
         <Button bsStyle="success" bsSize="large" active href="/directory">
           I agree
         </Button>

@@ -149,7 +149,7 @@ export default class Signin extends Component {
               type="password"
             />
           </FormGroup>
-          <ButtonToolbar>
+          <ButtonToolbar className="center-buttons">
           <LoaderButton
             block
             bsSize="large"
@@ -160,6 +160,8 @@ export default class Signin extends Component {
             text="Sign in"
             loadingText="Signing in"
           />
+          </ButtonToolbar>
+          <ButtonToolbar className="center-buttons">
           <Button bsStyle="primary" bsSize="large"  disabled={!this.validateFormForgot()} onClick={this.handlePasswordReset}>
               Forgot password
             </Button>

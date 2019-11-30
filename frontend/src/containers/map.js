@@ -30,7 +30,7 @@ const MapWithAMarkerClusterer = compose(
         <Marker
           onClick={() => {
             props.markerClick(profile.uuId)
-            props.onToggleOpen
+            // props.onToggleOpen
           }}
           key={profile.uuId}
           position={{ lat: profile.lat, lng: profile.lng }}

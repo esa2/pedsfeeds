@@ -8,7 +8,13 @@ const Jobs = () => {
         greater Seattle Community. They are not sponsored or endorsed by the
         Pediatric Feeding Association.
       </h4>
-      <p>None listed at this time.</p>
+      <a
+        href="http://jobs.jobvite.com/careers/northwest-center/job/or57afwx?__jvst=Job+Board&__jvsd=Pediatric_Feeding_Association"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Feeding Therapist - Pediatric - OT/PT/SLP
+      </a>
     </div>
   )
 }

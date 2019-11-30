@@ -6,6 +6,24 @@ const Library = () => {
       <h4 className="header-green-center">Presentations and other materials</h4>
       <hr />
       <p>
+        <a href="https://s3-us-west-2.amazonaws.com/pedsfeeds/pdf/HO_PFA_When+frenotomy+is+not+enough.pdf">
+        When frenotomy is not enough: Motor programing and it’s relationship to breastfeeding issues
+        </a>
+      </p>
+      <hr />
+      <p>
+        <a href="https://s3-us-west-2.amazonaws.com/pedsfeeds/pdf/ref+list+when+frenotomy+not+enough.pdf">
+        Ref list when frenotomy not enough
+        </a>
+      </p>
+      <hr />
+      <p>
+        <a href="https://s3-us-west-2.amazonaws.com/pedsfeeds/pdf/The+Role+of+Applied+Behavior+Analysis.pdf">
+        The Role of Applied Behavior Analysis in the Treatment of Mealtime Challenges (Focus on Autism) by Yev Veverka, Ph.D., BCBA, Jan 22, 2019
+        </a>
+      </p>
+      <hr />
+      <p>
         <a href="https://s3-us-west-2.amazonaws.com/pedsfeeds/pdf/Anticipation+in+Fetus.pdf">
           The Development of Anticipation in the Fetus: A Longitudinal Account
           of Human Fetal Mouth Movements in Reaction to and Anticipation of
